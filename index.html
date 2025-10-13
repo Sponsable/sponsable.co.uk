@@ -1,1 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sponsable – Prove Your Influence</title>
+  <meta name="description" content="Sponsable gives creators and brands a trusted way to build, measure, and prove authentic influence." />
+
+  <style>
+    /* --- RESET & BASE --- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      color: #1a1a1a;
+      background: linear-gradient(180deg, #f8f9fa 0%, #e8f0ed 100%);
+      line-height: 1.6;
+    }
+    a { color: #2a6d6d; text-decoration: none; }
+    h1, h2, h3 { font-weight: 600; }
+
+    /* --- LAYOUT --- */
+    header {
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+      background: linear-gradient(160deg, #b5d5cc, #e7ebe8);
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #0b3d3d;
+      margin-bottom: 1rem;
+      text-transform: lowercase;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #3b3b3b;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
+    .cta {
+      display: inline-block;
+      background: #0b3d3d;
+      color: #fff;
+      padding: 0.9rem 1.8rem;
+      border-radius: 999px;
+      margin-top: 2rem;
+      font-weight: 600;
+      transition: all 0.2s ease-in-out;
+    }
+    .cta:hover { background: #125b5b; }
+
+    .features {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-top: 2rem;
+    }
+    .feature {
+      background: #fff;
+      padding: 1.8rem;
+      border-radius: 1.2rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    .feature h3 {
+      color: #0b3d3d;
+      margin-bottom: 0.6rem;
+    }
+
+    .signup {
+      text-align: center;
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      padding: 3rem 1rem;
+    }
+    .signup h2 {
+      margin-bottom: 1rem;
+      color: #0b3d3d;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    input, select, textarea {
+      padding: 0.8rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      width: 100%;
+    }
+    button {
+      background: #0b3d3d;
+      color: #fff;
+      border: none;
+      padding: 0.9rem;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+    }
+    button:hover { background: #125b5b; }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>sponsable</h1>
+    <p>Prove your influence. Earn real sponsorships.  
+      <br>Sponsable turns affiliate work into proof of performance that brands trust.</p>
+    <a href="#waitlist" class="cta">Join the waitlist</a>
+  </header>
+
+  <section>
+    <h2 style="text-align:center; color:#0b3d3d;">How it works</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>1. Track your impact</h3>
+        <p>Sponsable turns your posts and affiliate sales into measurable, verifiable performance.</p>
+      </div>
+      <div class="feature">
+        <h3>2. Build credibility</h3>
+        <p>Earn a Sponsorship Score that shows brands your real value — not just follower counts.</p>
+      </div>
+      <div class="feature">
+        <h3>3. Get discovered</h3>
+        <p>Join a verified network of ethical, value-aligned brands who want long-term partnerships.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="waitlist" class="signup">
+    <h2>Join the waitlist</h2>
+    <p>Be among the first creators or brands to join Sponsable when we launch.</p>
+    <!-- Replace the 'action' link below with your Google Form, Airtable, or any form endpoint -->
+    <form action="https://forms.gle/your-google-form-link" method="get" target="_blank">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+      <select name="role" required>
+        <option value="">I am a...</option>
 
