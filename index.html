@@ -1,156 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sponsable – Prove Your Influence</title>
-  <meta name="description" content="Sponsable gives creators and brands a trusted way to build, measure, and prove authentic influence." />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sponsable | Adventure Sponsorships</title>
   <style>
-    /* --- RESET & BASE --- */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', Arial, sans-serif;
-      color: #1a1a1a;
-      background: linear-gradient(180deg, #f8f9fa 0%, #e8f0ed 100%);
-      line-height: 1.6;
+    /* ====== Reset & Base ====== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
     }
-    a { color: #2a6d6d; text-decoration: none; }
-    h1, h2, h3 { font-weight: 600; }
+    body {
+      line-height: 1.6;
+      color: #333;
+      background-color: #fdfaf5;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
 
-    /* --- LAYOUT --- */
+    /* ====== Colors ====== */
+    :root {
+      --primary-color: #2c5d63; /* muted teal/blue */
+      --secondary-color: #f08a5d; /* muted coral */
+      --accent-color: #6a8d73; /* soft green */
+      --neutral-light: #fdfaf5;
+      --neutral-dark: #333;
+    }
+
+    /* ====== Layout ====== */
     header {
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: #fff;
+      padding: 2rem 1rem;
       text-align: center;
-      padding: 4rem 1rem 3rem;
-      background: linear-gradient(160deg, #b5d5cc, #e7ebe8);
     }
     header h1 {
       font-size: 2.5rem;
-      color: #0b3d3d;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       text-transform: lowercase;
     }
     header p {
       font-size: 1.2rem;
-      color: #3b3b3b;
-      max-width: 600px;
-      margin: 0 auto;
+      margin-bottom: 1.5rem;
+    }
+    .cta-btn {
+      background-color: var(--secondary-color);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .cta-btn:hover {
+      background-color: #e6764a;
     }
 
     section {
-      max-width: 900px;
-      margin: 4rem auto;
-      padding: 0 1rem;
-    }
-
-    .cta {
-      display: inline-block;
-      background: #0b3d3d;
-      color: #fff;
-      padding: 0.9rem 1.8rem;
-      border-radius: 999px;
-      margin-top: 2rem;
-      font-weight: 600;
-      transition: all 0.2s ease-in-out;
-    }
-    .cta:hover { background: #125b5b; }
-
-    .features {
-      display: grid;
-      gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      margin-top: 2rem;
-    }
-    .feature {
-      background: #fff;
-      padding: 1.8rem;
-      border-radius: 1.2rem;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    }
-    .feature h3 {
-      color: #0b3d3d;
-      margin-bottom: 0.6rem;
-    }
-
-    .signup {
-      text-align: center;
-      background: #fff;
-      border-radius: 1rem;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-      padding: 3rem 1rem;
-    }
-    .signup h2 {
-      margin-bottom: 1rem;
-      color: #0b3d3d;
-    }
-    form {
-      max-width: 400px;
+      padding: 4rem 1rem;
+      max-width: 1200px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
     }
-    input, select, textarea {
-      padding: 0.8rem;
-      border-radius: 0.5rem;
-      border: 1px solid #ccc;
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      text-transform: lowercase;
+      font-size: 2rem;
+    }
+    p {
+      margin-bottom: 1rem;
       font-size: 1rem;
-      width: 100%;
+      color: var(--neutral-dark);
     }
-    button {
-      background: #0b3d3d;
-      color: #fff;
-      border: none;
-      padding: 0.9rem;
-      border-radius: 0.5rem;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.2s ease-in-out;
+    .features, .market, .business-model {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
     }
-    button:hover { background: #125b5b; }
-
+    .feature-card {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
     footer {
+      background-color: var(--primary-color);
+      color: #fff;
       text-align: center;
-      padding: 3rem 1rem;
-      font-size: 0.9rem;
-      color: #555;
+      padding: 2rem 1rem;
+    }
+
+    /* ====== Responsive ====== */
+    @media(max-width:768px){
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Hero Section -->
   <header>
     <h1>sponsable</h1>
-    <p>Prove your influence. Earn real sponsorships.  
-      <br>Sponsable turns affiliate work into proof of performance that brands trust.</p>
-    <a href="#waitlist" class="cta">Join the waitlist</a>
+    <p>Democratizing sponsorships for adventure-driven creators</p>
+    <a href="#join" class="cta-btn">Join as a Creator</a>
   </header>
 
-  <section>
-    <h2 style="text-align:center; color:#0b3d3d;">How it works</h2>
+  <!-- About Section -->
+  <section id="about">
+    <h2>about</h2>
+    <p>Sponsable provides adventure and lifestyle creators a pathway from affiliate earnings to real sponsorships, backed by a Sponsorship Score that proves professionalism and brand fit.</p>
+    <p>For brands, we connect pre-vetted, values-driven creators who drive authentic engagement and measurable ROI.</p>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features">
+    <h2>core offerings</h2>
     <div class="features">
-      <div class="feature">
-        <h3>1. Track your impact</h3>
-        <p>Sponsable turns your posts and affiliate sales into measurable, verifiable performance.</p>
+      <div class="feature-card">
+        <h3>mobile-first app</h3>
+        <p>Built for the way creators work, directly on their phones.</p>
       </div>
-      <div class="feature">
-        <h3>2. Build credibility</h3>
-        <p>Earn a Sponsorship Score that shows brands your real value — not just follower counts.</p>
+      <div class="feature-card">
+        <h3>creator scoring</h3>
+        <p>Metrics include Reach, Sales, and Sponsorship scores for professional credibility.</p>
       </div>
-      <div class="feature">
-        <h3>3. Get discovered</h3>
-        <p>Join a verified network of ethical, value-aligned brands who want long-term partnerships.</p>
+      <div class="feature-card">
+        <h3>brand matching</h3>
+        <p>Algorithms connect brands with creators aligned to campaign objectives.</p>
+      </div>
+      <div class="feature-card">
+        <h3>eco-prioritized campaigns</h3>
+        <p>Boosts sustainability-focused campaigns for greater visibility and impact.</p>
       </div>
     </div>
   </section>
 
-  <section id="waitlist" class="signup">
-    <h2>Join the waitlist</h2>
-    <p>Be among the first creators or brands to join Sponsable when we launch.</p>
-    <!-- Replace the 'action' link below with your Google Form, Airtable, or any form endpoint -->
-    <form action="https://forms.gle/your-google-form-link" method="get" target="_blank">
-      <input type="text" name="name" placeholder="Full Name" required />
-      <input type="email" name="email" placeholder="Email Address" required />
-      <select name="role" required>
-        <option value="">I am a...</option>
+  <!-- Market Opportunity -->
+  <section id="market">
+    <h2>market opportunity</h2>
+    <p>The creator economy includes over 300 million participants and is projected to reach $500B by 2027. Micro- and nano-influencers often deliver higher engagement and stronger ROI than macro-influencers.</p>
+  </section>
 
+  <!-- Business Model -->
+  <section id="business-model">
+    <h2>business model</h2>
+    <div class="business-model">
+      <div class="feature-card">
+        <h3>SaaS Subscriptions</h3>
+        <p>Brands pay for platform access and analytics.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Affiliate Commissions</h3>
+        <p>Creators earn from affiliate sales through our platform.</p>
+      </div>
+      <div class="feature-card">
+        <h3>In-App Advertising</h3>
+        <p>Brands can promote tools or services inside the platform.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join Section -->
+  <section id="join">
+    <h2>join the community</h2>
+    <p>Creators and brands can sign up to start earning, growing, and partnering responsibly.</p>
+    <a href="#" class="cta-btn">Sign Up Now</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Sponsable Ltd | Adventure Sponsorships for Creators</p>
+  </footer>
+
+</body>
+</html>
