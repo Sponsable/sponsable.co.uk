@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sponsable — Affiliate Commissions with a Sponsorship Outcome</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
   <meta name="description" content="A Pathway To Sponsorship" />
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -24,13 +23,9 @@
 
       <a href="#apply" class="cta apply-btn">Apply</a>
 
-      <!-- mobile menu toggle -->
-      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" id="menuToggle">
-        ☰
-      </button>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" id="menuToggle">☰</button>
     </div>
 
-    <!-- Mobile nav (hidden by default) -->
     <div id="mobileNav" class="mobile-nav" aria-hidden="true">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -41,31 +36,26 @@
   </header>
 
   <main>
-    <!-- HERO -->
     <section class="hero fade-in" aria-label="Primary value proposition">
       <div class="hero-overlay" role="img" aria-hidden="true"></div>
-
       <div class="container hero-content">
         <h1 class="brand-head">sponsable</h1>
         <p class="lead">Affiliate Commissions with a Sponsorship Outcome</p>
         <a href="#apply" class="cta pill">Start Earning</a>
       </div>
-
       <div class="hero-bottom-fade" aria-hidden="true"></div>
     </section>
 
-    <!-- WITH SPONSABLE YOU CAN -->
     <section class="container section highlight two-col fade-in" data-delay="1">
       <div class="text-block">
         <h2>For Creators</h2>
         <ul class="features">
           <li>Start earning affiliate commissions from day one.</li>
-          <li>Easily track your sales, audience reach, and engagement in one place.</li>
-          <li>Build a trusted Sponsorship Score that shows your value to brands.</li>
+          <li>Track your sales, reach, and engagement in one place.</li>
+          <li>Build a trusted Sponsorship Score that shows your value.</li>
           <li>Access sponsorships tailored to your niche and values.</li>
           <li>Connect only with vetted, trustworthy brands.</li>
-          <li>Boost motivation with streaks, challenges, and leaderboards.</li>
-          <li>Receive insights and tips to help you earn more.</li>
+          <li>Boost motivation with streaks and leaderboards.</li>
         </ul>
       </div>
 
@@ -75,22 +65,20 @@
           <li><strong>Discover authentic creators.</strong> Verified profiles and human vetting eliminate fake reach.</li>
           <li><strong>Launch performance-based campaigns.</strong> Reward genuine influence and measurable sales.</li>
           <li><strong>Promote ethical alignment.</strong> Partner with creators who share your values.</li>
-          <li><strong>Reduce risk and guesswork.</strong> Data-backed Sponsorship Scores ensure brand-safe choices.</li>
+          <li><strong>Reduce risk and guesswork.</strong> Sponsorship Scores ensure brand-safe choices.</li>
         </ul>
       </div>
     </section>
 
-    <!-- App preview image -->
     <section class="image-section fade-in" data-delay="2" aria-label="App preview">
-      <img src="images/AppPages.png" alt="Sponsable app pages" />
+      <img src="images/AppPages.png" alt="Sponsable app preview" />
     </section>
 
-    <!-- Apply (short form) -->
     <section id="apply" class="container section form-section fade-in" data-delay="3">
       <h2>Apply To Join Sponsable</h2>
       <p>Applications are reviewed manually. Please provide accurate details. A £9.99 review fee applies (secure payment).</p>
 
-      <form id="applyForm" class="apply-form" onsubmit="return handleFormSubmit(event)">
+      <form id="applyForm" class="apply-form">
         <div class="form-grid">
           <label>Full Name<input name="name" type="text" required /></label>
           <label>Email<input name="email" type="email" required /></label>
@@ -123,6 +111,10 @@
           <p class="muted">We do not share your data. You may reapply if declined.</p>
         </div>
       </form>
+      <div id="thankYou" class="thank-you-message" hidden>
+        <h3>Thank you for applying!</h3>
+        <p>We’ll review your application and reach out soon.</p>
+      </div>
     </section>
   </main>
 
