@@ -124,7 +124,6 @@ body{
   height: auto;
   border-radius: 16px;
   object-fit: cover;
-  filter: grayscale(100%);
   transition: filter 0.4s ease;
 }
 
