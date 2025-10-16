@@ -114,17 +114,19 @@ body{
   color: #000;
 }
 
-.image-block {
-  display: flex;
-  justify-content: center;   /* centers horizontally */
-  align-items: center;       /* centers vertically */
+
+.fullwidth-image {
+  width: 100vw;              /* full viewport width */
+  margin-left: calc(50% - 50vw);  /* cancel container centering */
+  overflow: hidden;
 }
 
-.image-block img {
-  max-width: 100%;
+.fullwidth-image img {
+  width: 100%;
   height: auto;
   display: block;
 }
+
 
 
 /* Section styling */
