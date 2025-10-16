@@ -75,3 +75,108 @@
     h2 {
       font-size: 1.8rem;
       margin-bottom: 1.5rem;
+      text-transform: capitalize;
+    }
+    h3 {
+      text-transform: uppercase;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: #555;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background-color: #f9f9f9;
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    footer {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* ====== Responsive ====== */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      section {
+        padding: 3rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header>
+    <h1>Sponsable</h1>
+    <p>Ethical sponsorships for creators and brands that care.</p>
+    <a href="#join" class="cta-btn">Join the platform</a>
+  </header>
+
+  <!-- Introduction -->
+  <section id="about">
+    <h2>About</h2>
+    <p>Sponsable connects adventure-driven creators with responsible brands. Our platform empowers genuine partnerships through transparent data, sustainability, and integrity.</p>
+    <p>Every creator and brand is vetted for authenticity, ethics, and measurable performance.</p>
+  </section>
+
+  <!-- Core Offerings -->
+  <section id="features">
+    <h2>Core Offerings</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Mobile-First Design</h3>
+        <p>Created for the way modern creators work — simple, direct, and intuitive.</p>
+      </div>
+      <div class="card">
+        <h3>Scoring Transparency</h3>
+        <p>Each creator is evaluated on reach, sales, and sponsorship performance, ensuring credibility and trust.</p>
+      </div>
+      <div class="card">
+        <h3>Brand Alignment</h3>
+        <p>Advanced matching connects brands with creators who truly represent their values.</p>
+      </div>
+      <div class="card">
+        <h3>Sustainable Campaigns</h3>
+        <p>Eco-friendly projects are prioritised, inspiring cultural momentum toward ethical growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Exclusivity / Ethos -->
+  <section id="ethos">
+    <h2>Our Ethos</h2>
+    <p>We believe that sponsorships should mean something. Every collaboration on Sponsable stands for purpose, professionalism, and progress. We are not for everyone — only for those who value impact, trust, and authenticity.</p>
+  </section>
+
+  <!-- Join -->
+  <section id="join">
+    <h2>Join Sponsable</h2>
+    <p>Creators and brands are invited by application only. Submit your interest to become part of a verified network of responsible storytellers and innovators.</p>
+    <a href="#" class="cta-btn">Apply Now</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Sponsable Ltd | Certified Ethical Sponsorship Platform</p>
+  </footer>
+
+</body>
+</html>
