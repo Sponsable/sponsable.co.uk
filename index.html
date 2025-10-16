@@ -5,17 +5,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sponsable — Affiliate Commissions with a Sponsorship Outcome</title>
 
-  <!-- UI & Fallback Brand Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 
   <meta name="description" content="The only affiliate platform that tracks verified sales, reach and ethical alignment to unlock real sponsorship opportunities." />
 </head>
 <body>
 
-  <!-- Minimal sticky header -->
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <div class="logo">Sponsable</div>
@@ -31,71 +27,56 @@
       <button class="menu-toggle" aria-label="Open menu" onclick="toggleMobileNav()">☰</button>
     </div>
 
-    <!-- Mobile nav (hidden by default) -->
     <div id="mobileNav" class="mobile-nav" aria-hidden="true">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="how-it-works.html">How It Works</a>
       <a href="vetting.html">Vetting</a>
-      <a href="index.html#apply" class="cta">Apply</a>
+      <a href="#apply" class="cta">Apply</a>
     </div>
   </header>
 
-  <div class="hero-bottom-fade"></div>
-    </section>
-  
-  <!-- HERO -->
- <main>
+  <main>
     <section class="hero" aria-label="Primary value proposition">
-      <div class="hero-overlay" role="img" aria-hidden="true"></div>
-
+      <div class="hero-overlay"></div>
       <div class="container hero-content">
         <h1 class="brand-head">sponsable</h1>
         <p class="lead">Affiliate Commissions with a Sponsorship Outcome</p>
         <a href="#apply" class="cta pill">Start Earning</a>
       </div>
-
-   <!-- white panel that overlaps hero bottom  -->     
       <div class="hero-bottom-fade"></div>
     </section>
 
-<!-- WITH SPONSABLE YOU CAN -->
+    <section class="container section highlight two-col">
+      <div class="text-block">
+        <h2>For Creators</h2>
+        <ul class="features">
+          <li>Start earning affiliate commissions from day one.</li>
+          <li>Easily track your sales, audience reach, and engagement in one place.</li>
+          <li>Build a trusted Sponsorship Score that shows your value to brands.</li>
+          <li>Access sponsorships tailored to your niche and values.</li>
+          <li>Connect only with vetted, trustworthy brands.</li>
+        </ul>
+      </div>
 
-   
-<section class="container section highlight two-col">
-  <div class="text-block">
-    <h2>For Creators</h2>
-    <ul class="features">
-      <li>Start earning affiliate commissions from day one.</li>
-      <li>Easily track your sales, audience reach, and engagement in one place.</li>
-      <li>Build a trusted Sponsorship Score that shows your value to brands.</li>
-      <li>Get access to sponsorship opportunities tailored to your niche and values.</li>
-      <li>Connect only with vetted, trustworthy brands—no shady deals.</li>
-      <li>Boost motivation with streaks, challenges, and leaderboards.</li>
-      <li>Receive insights and tips to help you earn more.</li>
-    </ul>
-  </div>
- <div class="text-block">
-    <h2>For Brands</h2>
-    <ul class="features">
-      <li><strong>Discover authentic creators.</strong> Verified profiles and human vetting eliminate fake reach.</li>
-      <li><strong>Launch performance-based campaigns.</strong> Reward genuine influence and measurable sales.</li>
-      <li><strong>Promote ethical alignment.</strong> Partner with creators who share your values.</li>
-      <li><strong>Reduce risk and guesswork.</strong> Data-backed Sponsorship Scores ensure brand-safe choices.</li>
-    </ul>
-  </div>
- 
-</section>
+      <div class="text-block">
+        <h2>For Brands</h2>
+        <ul class="features">
+          <li><strong>Discover authentic creators.</strong> Verified profiles and human vetting eliminate fake reach.</li>
+          <li><strong>Launch performance-based campaigns.</strong> Reward genuine influence and measurable sales.</li>
+          <li><strong>Promote ethical alignment.</strong> Partner with creators who share your values.</li>
+          <li><strong>Reduce risk and guesswork.</strong> Data-backed Sponsorship Scores ensure brand-safe choices.</li>
+        </ul>
+      </div>
+    </section>
 
-   <section class="fullwidth-image">
-  <img src="images/AppPages.png" alt="Sponsable app preview showing creator profile">
-</section>
+    <section class="image-section">
+      <img src="images/AppPages.png" alt="Sponsable app preview showing creator profile" />
+    </section>
 
-
-    <!-- Apply (short form) -->
     <section id="apply" class="container section form-section">
       <h2>Apply To Join Sponsable</h2>
-      <p>Applications are reviewed manually. Please provide accurate details. A £9.99 review fee applies (payment handled securely).</p>
+      <p>Applications are reviewed manually. Please provide accurate details. A £9.99 review fee applies (secure payment).</p>
 
       <form id="applyForm" class="apply-form" onsubmit="return handleFormSubmit(event)">
         <div class="form-grid">
@@ -123,18 +104,16 @@
           </label>
         </div>
 
-        <label class="small"><input type="checkbox" id="agree" required /> I Agree To The £9.99 Review Fee (Secure Payment).</label>
+        <label class="small"><input type="checkbox" id="agree" required /> I Agree To The £9.99 Review Fee.</label>
 
         <div class="form-actions">
           <button type="submit" class="cta dark">Submit Application</button>
-          <p class="muted">We do not share your data. You may reapply if declined.</p>
+          <p class="muted">We do not share your data.</p>
         </div>
       </form>
     </section>
-
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>&copy; 2025 Sponsable Ltd</div>
