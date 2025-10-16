@@ -71,39 +71,89 @@ body{
 
 
 /* Highlight section (With Sponsable You Can) */
-.highlight {
-  text-align: center;
-  padding: 4rem 1rem;
-  background: #fff;
-  color: #000;
+/* Two-column layout */
+.two-col {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
 }
 
-.highlight h2 {
+/* Left text block */
+.text-block {
+  flex: 1 1 45%;
+  text-align: left;
+}
+
+.text-block h2 {
   font-family: 'Monostratt', 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  text-transform: capitalize;
+  color: #000;
 }
 
 .features {
   list-style: none;
-  max-width: 600px;
-  margin: 0 auto;
   padding: 0;
+  margin: 0;
 }
 
 .features li {
   font-size: 1.1rem;
-  margin: 0.5rem 0;
+  margin: 0.75rem 0;
   position: relative;
+  padding-left: 1.5rem;
 }
 
 .features li::before {
   content: "•";
-  margin-right: 0.5rem;
+  position: absolute;
+  left: 0;
   color: #000;
 }
+
+/* Right image block */
+.image-block {
+  flex: 1 1 45%;
+}
+
+.image-block img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: filter 0.4s ease;
+}
+
+.image-block img:hover {
+  filter: grayscale(0%);
+}
+
+/* Section styling */
+.highlight {
+  background: #fff;
+  color: #000;
+  padding: 6rem 2rem;
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+  .two-col {
+    flex-direction: column;
+  }
+
+  .text-block, .image-block {
+    flex: 1 1 100%;
+  }
+
+  .text-block {
+    text-align: center;
+  }
+}
+
 /* Content panel overlapping hero */
 .content-panel{background:var(--white);padding:3.5rem 0;margin-top:-120px;border-top-left-radius:12px;border-top-right-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.06)}
 .content-panel h2{font-size:1.6rem;margin-bottom:1rem;font-family:var(--brand-font)}
