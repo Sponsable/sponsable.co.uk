@@ -114,22 +114,18 @@ body{
   color: #000;
 }
 
-/* Right image block */
 .image-block {
-  flex: 1 1 45%;
+  display: flex;
+  justify-content: center;   /* centers horizontally */
+  align-items: center;       /* centers vertically */
 }
 
 .image-block img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
-  border-radius: 16px;
-  object-fit: cover;
-  transition: filter 0.4s ease;
+  display: block;
 }
 
-.image-block img:hover {
-  filter: grayscale(0%);
-}
 
 /* Section styling */
 .highlight {
