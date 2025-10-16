@@ -13,7 +13,7 @@ body {
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
-  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color:var(--black);
   background:var(--white);
   line-height:1.6;
@@ -115,7 +115,7 @@ body{
 }
 
 .hero-content.centered .accent {
-  font-family: Montserrat, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 }
 
