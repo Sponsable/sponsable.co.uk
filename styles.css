@@ -234,3 +234,35 @@ body {
 
   .mobile-nav.show { display: flex; }
 }
+
+
+/* ---------------------------------
+   SMOOTH SCROLL + ANIMATIONS
+   --------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base animation styles */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+  will-change: opacity, transform;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional subtle delay variations */
+[data-delay="1"] { transition-delay: 0.2s; }
+[data-delay="2"] { transition-delay: 0.4s; }
+[data-delay="3"] { transition-delay: 0.6s; }
+
+/* Smooth hover effect on CTAs */
+.cta:hover {
+  transform: translateY(-3px);
+  transition: transform 0.25s ease;
+}
