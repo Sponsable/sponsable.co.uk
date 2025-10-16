@@ -115,16 +115,23 @@ body{
 }
 
 
-.fullwidth-image {
-  width: 100vw;              /* full viewport width */
-  margin-left: calc(50% - 50vw);  /* cancel container centering */
-  overflow: hidden;
+/* Image sits centered and constrained to its column */
+.image-block {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0;
 }
 
-.fullwidth-image img {
-  width: 100%;
+/* Constrain image to the column width and keep it responsive */
+.image-block img {
+  width: 100%;        /* fill the block's width */
+  max-width: 420px;   /* do not exceed the column width from your grid */
   height: auto;
   display: block;
+  border-radius: 12px;              /* optional polish */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
 }
 
 
