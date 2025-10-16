@@ -1,182 +1,186 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sponsable | Ethical Sponsorships</title>
-  <style>
-    /* ====== Base ====== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-    }
-    body {
-      background-color: #fff;
-      color: #111;
-      line-height: 1.7;
-    }
-    h1, h2, h3 {
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      color: #000;
-    }
-    p {
-      color: #222;
-      margin-bottom: 1rem;
-      font-size: 1.05rem;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* ====== Layout ====== */
-    header {
-      background-color: #000;
-      color: #fff;
-      text-align: center;
-      padding: 6rem 1rem;
-    }
-    header h1 {
-      font-size: 3rem;
-      text-transform: lowercase;
-      letter-spacing: 1px;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: #ddd;
-      margin-top: 1rem;
-    }
-    .cta-btn {
-      display: inline-block;
-      margin-top: 2rem;
-      background-color: #fff;
-      color: #000;
-      padding: 0.9rem 2rem;
-      border-radius: 40px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
-    }
-    .cta-btn:hover {
-      background-color: #111;
-      color: #fff;
-    }
-
-    section {
-      padding: 5rem 1rem;
-      max-width: 1000px;
-      margin: 0 auto;
-      border-bottom: 1px solid #eee;
-    }
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      text-transform: capitalize;
-    }
-    h3 {
-      text-transform: uppercase;
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-      color: #555;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .card {
-      background-color: #f9f9f9;
-      padding: 2rem;
-      border-radius: 8px;
-      border: 1px solid #eee;
-      transition: transform 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-    }
-
-    footer {
-      background-color: #000;
-      color: #fff;
-      text-align: center;
-      padding: 3rem 1rem;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-    }
-
-    /* ====== Responsive ====== */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
-      section {
-        padding: 3rem 1rem;
-      }
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sponsable — Earn Affiliate Commissions Today</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <meta name="description" content="The only affiliate platform that tracks verified sales, reach and ethical alignment to unlock real sponsorship opportunities." />
 </head>
 <body>
 
-  <!-- Hero -->
-  <header>
-    <h1>Sponsable</h1>
-    <p>Ethical sponsorships for creators and brands that care.</p>
-    <a href="#join" class="cta-btn">Join the platform</a>
+  <!-- Minimal sticky header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <div class="logo">Sponsable</div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="vetting.html">Vetting</a>
+        <a href="index.html#apply" class="cta small">Apply</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Open menu" onclick="toggleMobileNav()">☰</button>
+    </div>
+
+    <!-- Mobile nav (hidden by default) -->
+    <div id="mobileNav" class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="vetting.html">Vetting</a>
+      <a href="index.html#apply" class="cta">Apply</a>
+    </div>
   </header>
 
-  <!-- Introduction -->
-  <section id="about">
-    <h2>About</h2>
-    <p>Sponsable connects adventure-driven creators with responsible brands. Our platform empowers genuine partnerships through transparent data, sustainability, and integrity.</p>
-    <p>Every creator and brand is vetted for authenticity, ethics, and measurable performance.</p>
-  </section>
+  <!-- HERO -->
+  <main>
+    <section class="hero" aria-label="Primary value proposition">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h1>Earn Affiliate Commissions Today. Build Sponsorships For Tomorrow.</h1>
+        <p class="lead">The only affiliate platform that tracks your verified sales, reach, and ethical alignment to unlock real sponsorship opportunities.</p>
+        <div class="hero-ctas">
+          <a href="#apply" class="cta large">Apply To Join Sponsable</a>
+          <a href="how-it-works.html" class="ghost">How It Works</a>
+        </div>
+      </div>
+    </section>
 
-  <!-- Core Offerings -->
-  <section id="features">
-    <h2>Core Offerings</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Mobile-First Design</h3>
-        <p>Created for the way modern creators work — simple, direct, and intuitive.</p>
+    <!-- Pain + Solution -->
+    <section class="container section">
+      <div class="two-col">
+        <div>
+          <h2>The Credibility Gap</h2>
+          <p>Traditional metrics do not capture real creator value. Sponsable builds a transparent Sponsorship Score that combines verified sales, reach, and ethical alignment to prove credibility to brands.</p>
+          <a href="how-it-works.html" class="link">See How Scoring Works →</a>
+        </div>
+        <div>
+          <h2>The Affiliate Ceiling</h2>
+          <p>Affiliate commissions are valuable but limited. Sponsable transforms affiliate performance into long-term sponsorship credibility, unlocking higher-value partnerships.</p>
+          <a href="#apply" class="link">Apply To Move Past The Ceiling →</a>
+        </div>
       </div>
-      <div class="card">
-        <h3>Scoring Transparency</h3>
-        <p>Each creator is evaluated on reach, sales, and sponsorship performance, ensuring credibility and trust.</p>
-      </div>
-      <div class="card">
-        <h3>Brand Alignment</h3>
-        <p>Advanced matching connects brands with creators who truly represent their values.</p>
-      </div>
-      <div class="card">
-        <h3>Sustainable Campaigns</h3>
-        <p>Eco-friendly projects are prioritised, inspiring cultural momentum toward ethical growth.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Exclusivity / Ethos -->
-  <section id="ethos">
-    <h2>Our Ethos</h2>
-    <p>We believe that sponsorships should mean something. Every collaboration on Sponsable stands for purpose, professionalism, and progress. We are not for everyone — only for those who value impact, trust, and authenticity.</p>
-  </section>
+    <!-- Proof + Trust Strip -->
+    <section class="trust-strip">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <div class="icon">✓</div>
+          <h3>Manual Vetting</h3>
+          <p>Human review for authenticity and alignment.</p>
+        </div>
+        <div class="trust-item">
+          <div class="icon">🔍</div>
+          <h3>Verified Transparency</h3>
+          <p>Sales and reach are verified for trustable proof.</p>
+        </div>
+        <div class="trust-item">
+          <div class="icon">♻</div>
+          <h3>Ethical Standards</h3>
+          <p>Sustainability and ethics improve visibility and match quality.</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- Join -->
-  <section id="join">
-    <h2>Join Sponsable</h2>
-    <p>Creators and brands are invited by application only. Submit your interest to become part of a verified network of responsible storytellers and innovators.</p>
-    <a href="#" class="cta-btn">Apply Now</a>
-  </section>
+    <!-- How It Works - Simple 4 step -->
+    <section class="container section">
+      <h2>How Sponsable Works</h2>
+      <ol class="steps">
+        <li><strong>Apply.</strong> Submit a short application and pay a £9.99 review fee.</li>
+        <li><strong>Verification.</strong> We verify sales, audience authenticity, and values.</li>
+        <li><strong>Sponsorship Score Activation.</strong> Your Score unlocks eligibility and campaign discoverability.</li>
+        <li><strong>Access Campaigns & Earnings.</strong> Apply to campaigns and earn affiliate commissions and long-term sponsorships.</li>
+      </ol>
+    </section>
+
+    <!-- Founder -->
+    <section class="container section founder">
+      <div class="two-col">
+        <div>
+          <h2>Founder Credibility & Mission</h2>
+          <p>Benjamin Victor Rodriguez-Cobham founded Sponsable from his experience as an athlete and creator. He built the platform to restore trust in sponsorships and create a fair pathway from affiliate earning to sustainable brand partnerships.</p>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Founder image or athlete" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Conversion Zone: Short application -->
+    <section id="apply" class="container section form-section">
+      <h2>Apply To Join Sponsable</h2>
+      <p>Applications are reviewed manually. Please provide accurate details. A £9.99 review fee applies (payment handled securely).</p>
+
+      <form id="applyForm" class="apply-form" onsubmit="return handleFormSubmit(event)">
+        <div class="form-grid">
+          <label>
+            Full Name
+            <input name="name" type="text" required />
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" required />
+          </label>
+          <label>
+            Primary Social Handle
+            <input name="handle" placeholder="@yourhandle" required />
+          </label>
+          <label>
+            Category
+            <select name="category" required>
+              <option value="">Select...</option>
+              <option>Surfing</option>
+              <option>Climbing</option>
+              <option>Running</option>
+              <option>Travel</option>
+              <option>Cycling</option>
+            </select>
+          </label>
+          <label>
+            Region
+            <select name="region" required>
+              <option value="">Select...</option>
+              <option>UK</option>
+              <option>EU</option>
+              <option>US</option>
+              <option>Rest of World</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="payment-row">
+          <label class="small">
+            <input type="checkbox" id="agree" required />
+            I Agree To The £9.99 Review Fee (Secure Payment).
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="cta large">Submit Application</button>
+          <p class="muted">We do not share your data. You may reapply if declined.</p>
+        </div>
+      </form>
+      <p class="privacy">Data Is Processed In Line With Our Privacy Principles. Carbon-Neutral Hosting.</p>
+    </section>
+
+  </main>
 
   <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Sponsable Ltd | Certified Ethical Sponsorship Platform</p>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>&copy; 2025 Sponsable Ltd</div>
+      <nav class="footer-nav">
+        <a href="about.html">About</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="vetting.html">Vetting</a>
+        <a href="blog.html">Resources</a>
+      </nav>
+      <div class="small muted">Carbon-Neutral Hosting. Ethical By Default.</div>
+    </div>
   </footer>
 
+  <script src="js/main.js"></script>
 </body>
 </html>
