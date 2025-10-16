@@ -4,7 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sponsable — Affiliate Commissions with a Sponsorship Outcome</title>
-<link rel="stylesheet" href="styles.css">
+
+  <!-- UI & Fallback Brand Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
   <meta name="description" content="The only affiliate platform that tracks verified sales, reach and ethical alignment to unlock real sponsorship opportunities." />
 </head>
 <body>
@@ -13,19 +19,20 @@
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <div class="logo">Sponsable</div>
+
       <nav class="nav">
- <link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap' rel='stylesheet'>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="how-it-works.html">How It Works</a>
         <a href="vetting.html">Vetting</a>
-        <a href="index.html#apply" class="cta small">Apply</a>
       </nav>
+
+      <a href="#apply" class="cta apply-btn">Apply</a>
       <button class="menu-toggle" aria-label="Open menu" onclick="toggleMobileNav()">☰</button>
     </div>
 
     <!-- Mobile nav (hidden by default) -->
-    <div id="mobileNav" class="mobile-nav">
+    <div id="mobileNav" class="mobile-nav" aria-hidden="true">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="how-it-works.html">How It Works</a>
@@ -35,97 +42,86 @@
   </header>
 
   <!-- HERO -->
- <section class="hero" aria-label="Primary value proposition">
-  <div class="hero-overlay"></div>
-  <div class="container hero-content centered">
-    <h1><span class="accent">spons</span><span class="brand">able</span></h1>
-    <p class="lead">Affiliate Commissions with a Sponsorship Outcome</p>
-    <a href="#apply" class="cta large white">Start Earning</a>
-  </div>
-</section>
+  <main>
+    <section class="hero" aria-label="Primary value proposition">
+      <div class="hero-overlay" role="img" aria-hidden="true"></div>
+
+      <div class="container hero-content">
+        <h1 class="brand-head">sponsable</h1>
+        <p class="lead">Affiliate Commissions with a Sponsorship Outcome</p>
+        <a href="#apply" class="cta pill">Start Earning</a>
+      </div>
+
+      <!-- white panel that overlaps hero bottom -->
+      <div class="hero-bottom-fade"></div>
+    </section>
+
+    <!-- Content panel (white background) -->
+    <section class="content-panel container">
+      <h2>With Sponsable You Can</h2>
+
+      <div class="two-col">
+        <ul class="bullets">
+          <li>Earn affiliate commissions from day one</li>
+          <li>Transform affiliate evidence into sponsorship credibility</li>
+          <li>Show verified sales, authentic reach, and ethical alignment</li>
+        </ul>
+
+        <div class="mock-phone">
+          <!-- placeholder phone image — replace with real mock if you want -->
+          <img src="https://images.unsplash.com/photo-1523475496153-3d6cc2c3a2a5?auto=format&fit=crop&w=600&q=60" alt="" />
+        </div>
+      </div>
+    </section>
 
     <!-- Pain + Solution -->
     <section class="container section">
       <div class="two-col">
         <div>
-          <h2>The Credibility Gap</h2>
+          <h3>The Credibility Gap</h3>
           <p>Traditional metrics do not capture real creator value. Sponsable builds a transparent Sponsorship Score that combines verified sales, reach, and ethical alignment to prove credibility to brands.</p>
           <a href="how-it-works.html" class="link">See How Scoring Works →</a>
         </div>
         <div>
-          <h2>The Affiliate Ceiling</h2>
+          <h3>The Affiliate Ceiling</h3>
           <p>Affiliate commissions are valuable but limited. Sponsable transforms affiliate performance into long-term sponsorship credibility, unlocking higher-value partnerships.</p>
           <a href="#apply" class="link">Apply To Move Past The Ceiling →</a>
         </div>
       </div>
     </section>
 
-    <!-- Proof + Trust Strip -->
+    <!-- Trust strip -->
     <section class="trust-strip">
       <div class="container trust-grid">
         <div class="trust-item">
           <div class="icon">✓</div>
-          <h3>Manual Vetting</h3>
+          <h4>Manual Vetting</h4>
           <p>Human review for authenticity and alignment.</p>
         </div>
         <div class="trust-item">
           <div class="icon">🔍</div>
-          <h3>Verified Transparency</h3>
+          <h4>Verified Transparency</h4>
           <p>Sales and reach are verified for trustable proof.</p>
         </div>
         <div class="trust-item">
           <div class="icon">♻</div>
-          <h3>Ethical Standards</h3>
+          <h4>Ethical Standards</h4>
           <p>Sustainability and ethics improve visibility and match quality.</p>
         </div>
       </div>
     </section>
 
-    <!-- How It Works - Simple 4 step -->
-    <section class="container section">
-      <h2>How Sponsable Works</h2>
-      <ol class="steps">
-        <li><strong>Apply.</strong> Submit a short application and pay a £9.99 review fee.</li>
-        <li><strong>Verification.</strong> We verify sales, audience authenticity, and values.</li>
-        <li><strong>Sponsorship Score Activation.</strong> Your Score unlocks eligibility and campaign discoverability.</li>
-        <li><strong>Access Campaigns & Earnings.</strong> Apply to campaigns and earn affiliate commissions and long-term sponsorships.</li>
-      </ol>
-    </section>
-
-    <!-- Founder -->
-    <section class="container section founder">
-      <div class="two-col">
-        <div>
-          <h2>Founder Credibility & Mission</h2>
-          <p>Benjamin Victor Rodriguez-Cobham founded Sponsable from his experience as an athlete and creator. He built the platform to restore trust in sponsorships and create a fair pathway from affiliate earning to sustainable brand partnerships.</p>
-        </div>
-        <div>
-          <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Founder image or athlete" />
-        </div>
-      </div>
-    </section>
-
-    <!-- Final Conversion Zone: Short application -->
+    <!-- Apply (short form) -->
     <section id="apply" class="container section form-section">
       <h2>Apply To Join Sponsable</h2>
       <p>Applications are reviewed manually. Please provide accurate details. A £9.99 review fee applies (payment handled securely).</p>
 
       <form id="applyForm" class="apply-form" onsubmit="return handleFormSubmit(event)">
         <div class="form-grid">
-          <label>
-            Full Name
-            <input name="name" type="text" required />
-          </label>
-          <label>
-            Email
-            <input name="email" type="email" required />
-          </label>
-          <label>
-            Primary Social Handle
-            <input name="handle" placeholder="@yourhandle" required />
-          </label>
-          <label>
-            Category
+          <label>Full Name<input name="name" type="text" required /></label>
+          <label>Email<input name="email" type="email" required /></label>
+          <label>Primary Social Handle<input name="handle" placeholder="@yourhandle" required /></label>
+          <label>Category
             <select name="category" required>
               <option value="">Select...</option>
               <option>Surfing</option>
@@ -135,8 +131,7 @@
               <option>Cycling</option>
             </select>
           </label>
-          <label>
-            Region
+          <label>Region
             <select name="region" required>
               <option value="">Select...</option>
               <option>UK</option>
@@ -147,19 +142,13 @@
           </label>
         </div>
 
-        <div class="payment-row">
-          <label class="small">
-            <input type="checkbox" id="agree" required />
-            I Agree To The £9.99 Review Fee (Secure Payment).
-          </label>
-        </div>
+        <label class="small"><input type="checkbox" id="agree" required /> I Agree To The £9.99 Review Fee (Secure Payment).</label>
 
         <div class="form-actions">
-          <button type="submit" class="cta large">Submit Application</button>
+          <button type="submit" class="cta dark">Submit Application</button>
           <p class="muted">We do not share your data. You may reapply if declined.</p>
         </div>
       </form>
-      <p class="privacy">Data Is Processed In Line With Our Privacy Principles. Carbon-Neutral Hosting.</p>
     </section>
 
   </main>
