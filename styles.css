@@ -149,19 +149,36 @@ ul {
   }
 }
 
-/* ========== Hero ========== */
+/* ========== Hero (with background image) ========== */
 .hero {
   position: relative;
   padding: 6rem 0 4rem;
   text-align: center;
-  background: linear-gradient(180deg, #f8faff 0%, #fff 100%);
+  color: #fff;
+  overflow: hidden;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://images.unsplash.com/photo-1633542804128-9ae60b3d5249?auto=format&fit=crop&q=80&w=2940");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(60%) saturate(90%);
+  z-index: 0;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top, rgba(0,122,255,0.08), transparent 70%);
-  pointer-events: none;
+  background: rgba(0,0,0,0.25);
+  z-index: 1;
 }
 
 .hero-content {
@@ -178,7 +195,7 @@ ul {
   max-width: 700px;
   margin: 0 auto 2rem;
   font-size: 1.1rem;
-  color: #555;
+  color: #f0f0f0;
 }
 
 /* Pill CTA Buttons */
@@ -223,7 +240,7 @@ ul {
 
 .small-text {
   font-size: 0.9rem;
-  color: #555;
+  color: #eee;
 }
 
 /* ========== App Preview ========== */
@@ -250,6 +267,7 @@ ul {
   border-bottom: 1px solid #eee;
   font-size: 1rem;
 }
+
 /* ========== Creator Benefits Section ========== */
 .creator-benefits {
   display: grid;
@@ -303,6 +321,7 @@ ul {
     border-bottom: none;
   }
 }
+
 /* ========== Social Proof ========== */
 #social-proof {
   text-align: center;
@@ -390,7 +409,6 @@ ul {
     width: 70%;
   }
 }
-
 
 /* ========== Form Section ========== */
 .form-section form {
@@ -487,6 +505,7 @@ input:focus, select:focus {
 
   .hero {
     padding: 4rem 1rem;
+    min-height: 45vh;
   }
 
   .section {
