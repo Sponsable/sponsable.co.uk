@@ -334,6 +334,30 @@ ul {
     order: -1;
   }
 }
+/* ========== Survey Section ========== */
+#survey {
+  background: #f9fafc;
+  color: #222; /* Reset text to dark */
+  text-align: center;
+}
+
+#survey h2 {
+  color: #111;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+#survey .lead {
+  color: #444; /* Makes text readable and soft gray */
+  max-width: 650px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+#survey .cta {
+  margin-top: 1rem;
+}
 
 /* ========== FAQ ========== */
 #faq details {
