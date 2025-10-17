@@ -250,7 +250,47 @@ ul {
   border-bottom: 1px solid #eee;
   font-size: 1rem;
 }
+/* ========== Creator Benefits Section ========== */
+.creator-benefits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+}
 
+.creator-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.creator-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.creator-text ul.features li {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .creator-benefits {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .creator-image {
+    order: -1;
+  }
+
+  .creator-text ul.features li {
+    border-bottom: none;
+  }
+}
 /* ========== Social Proof ========== */
 #social-proof {
   text-align: center;
