@@ -9,101 +9,160 @@
 </head>
 
 <body>
-  <header class="navbar">
-    <div class="container nav-content">
-      <a href="index.html" class="logo">Sponsable</a>
-      <nav>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">sponsable</a>
+      <nav class="nav">
         <a href="index.html">For Creators</a>
         <a href="brands.html" class="active">For Brands</a>
         <a href="#contact">Contact</a>
       </nav>
+      <button class="menu-toggle">☰</button>
+    </div>
+    <div class="mobile-nav">
+      <a href="index.html">For Creators</a>
+      <a href="brands.html" class="active">For Brands</a>
+      <a href="#contact">Contact</a>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero fade-in" aria-label="Brand value proposition">
-    <div class="container hero-content">
-      <h1>Find Trusted Creators Who Deliver Measurable ROI</h1>
+  <!-- HERO -->
+  <section class="hero fade-in" aria-label="For Brands">
+    <div class="hero-content">
+      <h1 class="brand-head">Find Trusted Creators Who Deliver Measurable ROI</h1>
       <p class="lead">
-        Sponsable connects your brand with pre-vetted creators who align with your mission and deliver verified sales, engagement, and sponsorship impact — all backed by transparent data.
+        Sponsable connects your brand with <strong>pre-vetted creators</strong> who align with your values and deliver verified performance across affiliate and sponsorship campaigns — all tracked with transparent data.
       </p>
-      <a href="#brand-benefits" class="cta pill">Explore Brand Benefits</a>
-    </div>
-    <div class="hero-visual fade-in" data-delay="1">
-      <img src="images/BrandDashboard.png" alt="Sponsable brand analytics dashboard" />
+      <a href="#brand-benefits" class="cta pill">See How It Works</a>
+      <div class="for-brands-link">
+        <a href="#brand-signup" class="cta secondary pill">Pre-Register Your Brand</a>
+      </div>
     </div>
   </section>
 
-  <!-- VALUE STACK SECTION -->
+  <!-- VALUE STACK -->
   <section id="brand-benefits" class="section fade-in">
     <div class="container">
       <h2>Why Brands Choose Sponsable</h2>
-      <p class="section-intro">Here are the precise, practical benefits brands receive when working with Sponsable — reflecting real platform value, not generic influencer features.</p>
+      <p class="section-intro">
+        Sponsable removes the guesswork from influencer marketing — combining verified creators, real performance data, and brand-safety assurance in one platform.
+      </p>
 
       <ul class="benefits-list">
-        <li><strong>1.</strong> Find and connect only with pre-vetted creators who match brand values, audience needs, and campaign goals — saving time and reducing risk.</li>
-        <li><strong>2.</strong> Run affiliate and sponsorship campaigns with full transparency: sales data, engagement metrics, and compliance insights for every creator.</li>
-        <li><strong>3.</strong> Confidently attribute affiliate sales and ROI to specific creators, investing more budget in those who prove their impact.</li>
-        <li><strong>4.</strong> Safeguard brand reputation by partnering only with creators verified for ethical content, authentic audiences, and trustworthy conduct.</li>
-        <li><strong>5.</strong> Launch eco-friendly or purpose-driven campaigns that attract modern, value-aligned consumers.</li>
-        <li><strong>6.</strong> Target niche or underrepresented audiences (climbers, runners, surfers) via Sponsable’s specialized creator segments.</li>
-        <li><strong>7.</strong> Review live <strong>Sponsorship Scores</strong> and campaign records before you commit — data-backed partnership choices, every time.</li>
-        <li><strong>8.</strong> Leverage real-time feedback and monitoring to optimize spend and scale proven partnerships.</li>
-        <li><strong>9.</strong> Build long-term creator relationships that drive genuine advocacy, repeated sales, and measurable engagement — not just reach.</li>
+        <li><strong>1.</strong> Connect only with <strong>pre-vetted creators</strong> who match your brand values, audience, and campaign goals — saving time and reducing risk.</li>
+        <li><strong>2.</strong> Access <strong>verified affiliate and sponsorship data</strong> to make every partnership measurable and transparent.</li>
+        <li><strong>3.</strong> Attribute affiliate sales directly to specific creators to reinvest confidently in what works.</li>
+        <li><strong>4.</strong> Protect brand reputation with built-in vetting for authenticity, content ethics, and engagement quality.</li>
+        <li><strong>5.</strong> Launch value-aligned campaigns — from sustainability to outdoor adventure — using curated creator segments.</li>
+        <li><strong>6.</strong> View <strong>Sponsorship Scores</strong> and campaign records before partnering — informed, data-led decisions every time.</li>
+        <li><strong>7.</strong> Monitor live performance dashboards to track ROI and optimize campaigns in real-time.</li>
+        <li><strong>8.</strong> Build long-term relationships that drive genuine advocacy, not just reach.</li>
       </ul>
 
       <p class="summary">
-        Together, these benefits help brands scale affiliate and sponsorship programs faster, more reliably, and with deeper consumer trust.
+        Sponsable gives your brand verified reach, safer partnerships, and measurable return — all before your first campaign even launches.
       </p>
     </div>
   </section>
 
-  <!-- SOCIAL PROOF SECTION -->
-  <section class="section fade-in bg-light">
+  <!-- SOCIAL PROOF -->
+  <section id="social-proof" class="section fade-in highlight">
     <div class="container">
-      <h2>Built With Insight From Real Brands & Creators</h2>
+      <h2>Built With Leading Brands & Real Creators</h2>
       <p>
-        We surveyed <strong>500 influencers and athletes</strong> and interviewed <strong>20 leading brand partners</strong> to ensure Sponsable solves real-world problems on both sides of the table.
+        We collaborated with <strong>20 partner brands</strong> and surveyed <strong>500 creators</strong> to ensure Sponsable fixes what both sides actually need — transparency, trust, and performance.
       </p>
     </div>
   </section>
 
-  <!-- FAQ SECTION -->
+  <!-- BRAND PRE-REGISTER FORM -->
+  <section id="brand-signup" class="section fade-in form-section">
+    <div class="container">
+      <h2>Apply to Join Sponsable (Brand Beta)</h2>
+      <p class="lead">
+        Sponsable is currently in <strong>pre-launch</strong>. Fill out the form to be vetted and secure early access to our brand beta. No payment is collected until the platform goes live.
+      </p>
+
+      <form>
+        <div class="form-grid">
+          <label>Brand Name
+            <input type="text" placeholder="e.g. Alpine Gear Co." required />
+          </label>
+          <label>Contact Name
+            <input type="text" placeholder="Full Name" required />
+          </label>
+          <label>Business Email
+            <input type="email" placeholder="you@brand.com" required />
+          </label>
+          <label>Website
+            <input type="url" placeholder="https://yourbrand.com" />
+          </label>
+          <label>Industry
+            <select required>
+              <option value="">Select Industry</option>
+              <option>Outdoor & Adventure</option>
+              <option>Fitness & Sports</option>
+              <option>Fashion & Lifestyle</option>
+              <option>Health & Wellness</option>
+              <option>Technology</option>
+              <option>Other</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="small">
+          <input type="checkbox" required /> I agree to the vetting process for brand verification.
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" class="cta pill">Join the Brand Waitlist</button>
+        </div>
+        <p class="muted small">Your information is confidential. You’ll be contacted before the official brand launch.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
   <section id="faq" class="section fade-in">
     <div class="container">
       <h2>Frequently Asked Questions</h2>
       <details>
-        <summary>How does Sponsable verify creators?</summary>
-        <p>Each creator is reviewed for content authenticity, engagement legitimacy, and prior brand collaborations before they can join the Sponsable network.</p>
+        <summary>How does Sponsable verify brands?</summary>
+        <p>We verify each brand to ensure authenticity, ethical marketing practices, and audience alignment before allowing creator partnerships.</p>
       </details>
       <details>
-        <summary>Can Sponsable integrate with my affiliate program?</summary>
-        <p>Yes. Sponsable connects with major affiliate networks and allows data import for transparent performance tracking.</p>
+        <summary>When will Sponsable launch?</summary>
+        <p>We’re currently onboarding early brands and creators. Public launch is planned for early 2026.</p>
       </details>
       <details>
-        <summary>How do I measure ROI?</summary>
-        <p>Each creator’s Sponsorship Score tracks real conversions, engagement, and brand sentiment, so you can clearly see which partnerships deliver the best return.</p>
+        <summary>Is there a cost for brands to join?</summary>
+        <p>No upfront fee during pre-launch. Pricing will apply post-launch for premium campaign management tools.</p>
       </details>
       <details>
-        <summary>Is Sponsable suitable for small or mid-size brands?</summary>
-        <p>Absolutely. We’re built to make sponsorships scalable, affordable, and transparent for every marketing team.</p>
+        <summary>Can I choose which creators to work with?</summary>
+        <p>Yes. You can browse verified creators by category, values, and Sponsorship Score before inviting them to campaigns.</p>
       </details>
     </div>
   </section>
 
-  <!-- CTA SECTION -->
+  <!-- CTA -->
   <section class="section fade-in cta-section">
     <div class="container">
-      <h2>Partner with Verified Creators, Confidently</h2>
-      <p>Join Sponsable today and see how transparent, data-driven sponsorships grow your brand reach and credibility.</p>
-      <a href="#contact" class="cta pill">Start Your Brand Account</a>
+      <h2>Join Sponsable’s Brand Beta</h2>
+      <p>Be among the first to access verified creator partnerships and transparent performance insights.</p>
+      <a href="#brand-signup" class="cta pill">Apply Now</a>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <p>© 2025 Sponsable | Built for authentic partnerships</p>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-nav">
+        <a href="index.html">For Creators</a>
+        <a href="brands.html" class="active">For Brands</a>
+      </div>
+      <p class="small muted">© 2025 Sponsable | Built for authentic partnerships</p>
     </div>
   </footer>
 </body>
