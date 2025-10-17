@@ -543,6 +543,31 @@ label.small {
   color: #007aff;
   margin-bottom: 0.5rem;
 }
+/* ========== CTA Buttons ========== */
+.cta {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Inter", sans-serif;
+}
+
+/* Blue Pill Button */
+.cta.blue-pill {
+  background: #007aff;
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+}
+
+.cta.blue-pill:hover {
+  background: #005ed1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 122, 255, 0.25);
+}
 
 
 /* ========== Footer ========== */
