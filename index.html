@@ -8,14 +8,15 @@
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
 
+<body>
+  <!-- HEADER -->
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
-      <div class="logo">sponsable</div>
+      <div class="logo">Sponsable</div>
 
       <nav class="nav" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
         <a href="how-it-works.html">How It Works</a>
         <a href="vetting.html">Vetting</a>
@@ -35,27 +36,37 @@
     </div>
   </header>
 
+  <!-- MAIN -->
   <main>
+
+    <!-- HERO SECTION -->
     <section class="hero fade-in" aria-label="Primary value proposition">
       <div class="hero-overlay" role="img" aria-hidden="true"></div>
+
       <div class="container hero-content">
         <h1 class="brand-head">Affiliate Income with a Sponsorship Outcome</h1>
-          <p class="lead"> Sponsable tracks your affiliate sales, verifies your influence, and builds your 
-      <strong>Sponsorship Score</strong> — and then connects you with vetted brands </p>
+        <p class="lead">
+          Sponsable tracks your affiliate sales, verifies your influence, and builds your 
+          <strong>Sponsorship Score</strong> — and then connects you with vetted brands.
+        </p>
         <a href="#apply" class="cta pill">Start Earning</a>
+
+        <!-- FOR BRANDS CTA -->
+        <div class="for-brands-link fade-in" data-delay="1.5">
+          <p class="small-text">Are you a brand looking to collaborate?</p>
+          <a href="brands.html" class="cta secondary pill">Explore Brand Partnerships</a>
+        </div>
       </div>
-      <!-- Add this below your main "Start Earning" CTA -->
-<div class="for-brands-link fade-in" data-delay="1.5">
-  <p class="small-text">Are you a brand looking to collaborate?</p>
-  <a href="brands.html" class="cta secondary pill">Explore Brand Partnerships</a>
-</div>
+
       <div class="hero-bottom-fade" aria-hidden="true"></div>
     </section>
 
-     <section class="image-section fade-in" data-delay="2" aria-label="App preview">
+    <!-- APP PREVIEW -->
+    <section class="image-section fade-in" data-delay="2" aria-label="App preview">
       <img src="images/AppPages.png" alt="Sponsable app preview" />
     </section>
-    
+
+    <!-- VALUE STACK / FEATURES -->
     <section class="container section highlight two-col fade-in" data-delay="1">
       <div class="text-block">
         <h2>For Creators</h2>
@@ -70,51 +81,81 @@
       </div>
     </section>
 
+    <!-- SOCIAL PROOF -->
+    <section id="social-proof" class="section fade-in">
+      <div class="container">
+        <h2>We built Sponsable with creators, for creators.</h2>
+        <p class="lead">
+          We surveyed <strong>500 influencers and athletes</strong> and interviewed <strong>20 leading creators</strong> 
+          to make sure Sponsable fixes what you actually need.
+        </p>
+      </div>
+    </section>
 
-<section id="social-proof" class="section fade-in">
-  <div class="container">
-    <h2>We built Sponsable with creators, for creators.</h2>
-    <p class="lead">
-      We surveyed <strong>500 influencers and athletes</strong> and interviewed <strong>20 leading creators</strong> to make sure Sponsable fixes what you actually need.
-    </p>
+    <!-- FAQ -->
+    <section id="faq" class="section fade-in">
+      <div class="container">
+        <h2>Got questions?</h2>
 
-<section id="faq" class="section fade-in">
-  <div class="container">
-    <h2>Got questions?</h2>
-    <details><summary>Who can apply?</summary><p>Any creator who authentically promotes products or experiences. No follower minimum.</p></details>
-    <details><summary>What’s the £9.99 fee?</summary><p>It covers our manual vetting process so Sponsable stays ethical and exclusive.</p></details>
-    <details><summary>How do I get paid?</summary><p> You can withdraw your earnings from the wallet section of the app.</p></details>
-    <details><summary>Is this only for UK creators?</summary><p>No — Sponsable is global. Creators have a global audience - so we accommodated.</p></details>
-  </div>
-</section>
-    
-<section id="founder-note" class="section fade-in">
-  <div class="container">
-    <h2>Why I Built Sponsable</h2>
-    <p>
-      I built Sponsable after struggling to get sponsored for an expedition — not because I lacked effort, but because I lacked credibility with brands.
-    </p>
-    <p>
-      I knew affiliate marketing could make me money, but it always felt one-sided. 
-      I was generating sales for brands I believed in, yet never building a real relationship with them.
-    </p>
-    <p>
-      Sponsable was born from that frustration — to give creators a transparent, data-driven way 
-      to prove their value and turn affiliate success into genuine sponsorships.
-    </p>
-    <p>— <strong>Ben, Founder of Sponsable</strong></p>
-  </div>
-</section>
+        <details>
+          <summary>Who can apply?</summary>
+          <p>Any creator who authentically promotes products or experiences. No follower minimum.</p>
+        </details>
 
+        <details>
+          <summary>What’s the £9.99 fee?</summary>
+          <p>It covers our manual vetting process so Sponsable stays ethical and exclusive.</p>
+        </details>
+
+        <details>
+          <summary>How do I get paid?</summary>
+          <p>You can withdraw your earnings from the wallet section of the app.</p>
+        </details>
+
+        <details>
+          <summary>Is this only for UK creators?</summary>
+          <p>No — Sponsable is global. Creators have a global audience, so we accommodated.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- FOUNDER NOTE -->
+    <section id="founder-note" class="section fade-in">
+      <div class="container">
+        <h2>Why I Built Sponsable</h2>
+        <p>
+          I built Sponsable after struggling to get sponsored for an expedition — not because I lacked effort, but because I lacked credibility with brands.
+        </p>
+        <p>
+          I knew affiliate marketing could make me money, but it always felt one-sided. 
+          I was generating sales for brands I believed in, yet never building a real relationship with them.
+        </p>
+        <p>
+          Sponsable was born from that frustration — to give creators a transparent, data-driven way 
+          to prove their value and turn affiliate success into genuine sponsorships.
+        </p>
+        <p>— <strong>Ben, Founder of Sponsable</strong></p>
+      </div>
+    </section>
+
+    <!-- APPLY FORM -->
     <section id="apply" class="container section form-section fade-in" data-delay="3">
       <h2>Apply To Join Sponsable</h2>
-      <p>Applications are reviewed manually. Please provide accurate details. A £9.99 review fee applies (secure payment).</p>
+      <p>
+        Applications are reviewed manually. Please provide accurate details. A £9.99 review fee applies (secure payment).
+      </p>
 
       <form id="applyForm" class="apply-form">
         <div class="form-grid">
-          <label>Full Name<input name="name" type="text" required /></label>
-          <label>Email<input name="email" type="email" required /></label>
-          <label>Primary Social Handle<input name="handle" placeholder="@yourhandle" required /></label>
+          <label>Full Name
+            <input name="name" type="text" required />
+          </label>
+          <label>Email
+            <input name="email" type="email" required />
+          </label>
+          <label>Primary Social Handle
+            <input name="handle" placeholder="@yourhandle" required />
+          </label>
           <label>Category
             <select name="category" required>
               <option value="">Select...</option>
@@ -136,13 +177,17 @@
           </label>
         </div>
 
-        <label class="small"><input type="checkbox" id="agree" required /> I Agree To The £9.99 Review Fee (Secure Payment).</label>
+        <label class="small">
+          <input type="checkbox" id="agree" required />
+          I Agree To The £9.99 Review Fee (Secure Payment).
+        </label>
 
         <div class="form-actions">
           <button type="submit" class="cta dark">Submit Application</button>
           <p class="muted">We do not share your data. You may reapply if declined.</p>
         </div>
       </form>
+
       <div id="thankYou" class="thank-you-message" hidden>
         <h3>Thank you for applying!</h3>
         <p>We’ll review your application and reach out soon.</p>
@@ -150,6 +195,7 @@
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="site-footer fade-in" data-delay="3">
     <div class="container footer-inner">
       <div>&copy; 2025 Sponsable Ltd</div>
