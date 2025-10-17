@@ -258,11 +258,23 @@ ul {
   gap: 3rem;
 }
 
+.creator-image {
+  display: flex;
+  justify-content: center;
+}
+
 .creator-image img {
-  width: 100%;
+  width: 80%;
+  max-width: 400px;
   height: auto;
   border-radius: 1rem;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.creator-image img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
 .creator-text h2 {
