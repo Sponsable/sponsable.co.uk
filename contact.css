@@ -168,28 +168,96 @@ ul {
   }
 }
 
-/* ===== Hero ===== */
+/* ========== Hero (clean, pre-launch style) ========== */
 .hero {
-  padding: 8rem 1rem 6rem;
+  position: relative;
+  padding: 9rem 1rem 7rem;
   text-align: center;
-  background: linear-gradient(135deg, #f5f8ff, #ffffff);
+  color: #111;
+  background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: none; /* removed background image */
+}
+
+.hero-overlay {
+  display: none;
 }
 
 .hero-content {
-  max-width: 750px;
-  margin: 0 auto;
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
+  padding: 0 1rem;
 }
 
-.hero h1 {
-  font-family: "Montserrat", sans-serif;
-  font-size: 2.4rem;
-  margin-bottom: 1rem;
+.brand-head {
+  font-size: 3rem;
+  font-weight: 700;
   color: #111;
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.02em;
 }
 
-.hero p {
-  font-size: 1.1rem;
+.lead {
+  max-width: 680px;
+  margin: 0 auto 3rem;
+  font-size: 1.2rem;
   color: #444;
+  line-height: 1.7;
+}
+
+/* Primary CTA (blue pill) */
+.cta.pill {
+  background: #007aff;
+  color: #fff;
+  font-weight: 600;
+  padding: 1rem 2.4rem;
+  border-radius: 9999px;
+  font-size: 1.05rem;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 122, 255, 0.25);
+  display: inline-block;
+  margin-top: 1rem; /* ensures space below text */
+}
+
+.cta.pill:hover {
+  background: #005ed1;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 122, 255, 0.35);
+}
+
+/* “For Brands” link section */
+.for-brands-link {
+  margin-top: 4rem; /* more gap between pills */
+}
+
+.small-text {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 0.75rem;
+}
+
+.cta.secondary.pill {
+  border: 2px solid #007aff;
+  background: transparent;
+  color: #007aff;
+  font-weight: 600;
+  padding: 0.9rem 2.2rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.cta.secondary.pill:hover {
+  background: #007aff;
+  color: #fff;
 }
 
 /* ===== Contact Section ===== */
