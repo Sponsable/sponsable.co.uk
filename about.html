@@ -2,22 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About — Sponsable</title>
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- HEADER -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sponsable — Affiliate Commissions with a Sponsorship Outcome</title>
+  <meta name="description" content="A Pathway To Sponsorship" />
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <header class="site-header">
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <div class="logo">Sponsable</div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="how-it-works.html">How It Works</a>
-        <a href="vetting.html">Vetting</a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html">For Creators</a>
+        <a href="brands.html">For Brands</a>
+        <a href="about.html"class="active">About</a>
+        <a href="contact.html" >Contact</a>
       </nav>
+
+      <a href="#apply" class="cta apply-btn">Apply</a>
+
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" id="menuToggle">☰</button>
+    </div>
+
+    <div id="mobileNav" class="mobile-nav" aria-hidden="true">
+       <a href="index.html">For Creators</a>
+        <a href="brands.html">For Brands</a>
+        <a href="about.html"class="active">About</a>
+        <a href="contact.html">Contact</a>
+      <a href="#apply" class="cta">Apply</a>
     </div>
   </header>
 
