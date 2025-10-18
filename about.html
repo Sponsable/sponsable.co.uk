@@ -4,13 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About Sponsable</title>
+  <meta name="description" content="Learn about Sponsable's mission, story, values, and vision." />
   <link rel="stylesheet" href="about.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <!-- HEADER -->
-  <header class="site-header">
+  <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <div class="logo">Sponsable</div>
       <nav class="nav" aria-label="Primary navigation">
@@ -20,10 +21,11 @@
         <a href="contact.html">Contact</a>
       </nav>
       <a href="#pre-register" class="cta apply-btn">Pre-Register</a>
-      <button class="menu-toggle" type="button" aria-label="Open menu">☰</button>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">☰</button>
     </div>
 
-    <div class="mobile-nav" aria-hidden="true">
+    <!-- MOBILE NAV -->
+    <div id="mobileNav" class="mobile-nav" aria-hidden="true">
       <a href="index.html">For Creators</a>
       <a href="brands.html">For Brands</a>
       <a href="about.html" class="active">About</a>
@@ -34,7 +36,7 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero about-hero">
+    <section class="hero about-hero" aria-label="About Sponsable">
       <div class="hero-content">
         <h1>Building the Future of Responsible Sponsorships</h1>
       </div>
@@ -56,19 +58,19 @@
     <!-- OUR STORY -->
     <section class="section highlight">
       <div class="container">
-         <h2>Our Story</h2>
-      <p>
-        While preparing for an expedition, I struggled to secure sponsorships — not due to lack of effort, but because there was no clear way to prove my commercial value to brands.
-      </p>
-      <p>
-        That revealed a wider problem: thousands of athletes and outdoor creators drive real sales through affiliate marketing but can’t turn that success into lasting partnerships. Meanwhile, brands have no reliable way to find creators who are both effective and brand-safe.
-      </p>
-      <p>
-       Sponsable solves this by building a <strong>responsible</strong> ecosystem where creators can prove their value and brands can invest with confidence.
-      </p>
-    </div>
+        <h2>Our Story</h2>
+        <p>
+          While preparing for an expedition, I struggled to secure sponsorships — not due to lack of effort, but because there was no clear way to prove my commercial value to brands.
+        </p>
+        <p>
+          That revealed a wider problem: thousands of athletes and outdoor creators drive real sales through affiliate marketing but can’t turn that success into lasting partnerships. Meanwhile, brands have no reliable way to find creators who are both effective and brand-safe.
+        </p>
+        <p>
+          Sponsable solves this by building a <strong>responsible</strong> ecosystem where creators can prove their value and brands can invest with confidence.
+        </p>
+      </div>
     </section>
-    
+
     <!-- VALUES -->
     <section class="section">
       <div class="container">
@@ -106,7 +108,6 @@
       </div>
     </section>
 
-
     <!-- PRE-REGISTER CTA -->
     <section class="section cta-section" id="pre-register">
       <div class="container">
@@ -132,11 +133,3 @@
   </footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
