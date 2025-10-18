@@ -11,28 +11,31 @@
 
 <body>
 <!-- HEADER -->
-<header class="header">
-  <div class="container header-inner">
-    <a href="index.html" class="logo">Sponsable</a>
-    <nav class="nav">
-      <a href="index.html">For Creators</a>
-      <a href="brands.html">For Brands</a>
-      <a href="about.html">About</a>
-      <a href="contact.html" class="active">Contact</a>
-    </nav>
-    <a href="index.html#brand-signup" class="cta-btn">Pre-Register</a>
-    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-  </div>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <div class="logo">Sponsable</div>
 
-  <!-- MOBILE NAV -->
-  <div class="mobile-nav">
-    <a href="index.html">For Creators</a>
-    <a href="brands.html">For Brands</a>
-    <a href="about.html">About</a>
-    <a href="contact.html" class="active">Contact</a>
-    <a href="index.html#brand-signup" class="cta-btn">Pre-Register</a>
-  </div>
-</header>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html">For Creators</a>
+        <a href="brands.html">For Brands</a>
+        <a href="about.html">About</a>
+        <a href="contact.html"class="active">Contact</a>
+      </nav>
+
+      <a href="#apply" class="cta apply-btn">Apply</a>
+
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" id="menuToggle">☰</button>
+    </div>
+
+    <div id="mobileNav" class="mobile-nav" aria-hidden="true">
+       <a href="index.html">For Creators</a>
+        <a href="brands.html">For Brands</a>
+        <a href="about.html">About</a>
+        <a href="contact.html"class="active">Contact</a>
+      <a href="#apply" class="cta">Apply</a>
+    </div>
+  </header>
+
 
   <main>
     <!-- HERO -->
@@ -113,14 +116,14 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="site-footer">
+    <footer class="site-footer">
     <div class="container footer-inner">
       <div>&copy; 2025 Sponsable Ltd</div>
       <nav class="footer-nav" aria-label="Footer">
         <a href="index.html">For Creators</a>
-        <a href="brands.html">For Brands</a>
+        <a href="brands.html" class="active">For Brands</a>
         <a href="about.html">About</a>
-        <a href="contact.html" class="active">Contact</a>
+        <a href="contact.html">Contact</a>
       </nav>
       <div class="small muted">Ethical by Default.</div>
     </div>
