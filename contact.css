@@ -26,7 +26,27 @@ a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
 ul { list-style: none; }
 
 /* ===== CONTAINER ===== */
-.container { max-width: 1150px; margin: 0 auto; padding: 0 1.5rem; }
+.container {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+
 
 /* ===== Header ===== */
 .site-header {
