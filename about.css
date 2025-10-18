@@ -332,3 +332,32 @@ ul {
   transform: translateY(-2px);
 }
 
+/* ========== Footer ========== */
+.site-footer {
+  background: #fafbff;
+  border-top: 1px solid #eee;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.footer-nav a {
+  color: #007aff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #005ed1;
+}
+
+.small.muted {
+  color: #888;
+}
