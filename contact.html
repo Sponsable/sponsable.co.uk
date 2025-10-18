@@ -1,48 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sponsable — Contact</title>
-  <meta name="description" content="Get in touch with Sponsable — ethical sponsorships for the creator economy." />
-  <link rel="stylesheet" href="contact.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sponsable — Affiliate Commissions with a Sponsorship Outcome</title>
+  <meta name="description" content="A Pathway To Sponsorship" />
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <!-- ===== HEADER (identical to Brands page) ===== -->
-  <header class="site-header">
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
     <div class="container header-inner">
-      <a href="index.html" class="logo">Sponsable</a>
-      <nav class="nav">
-        <a href="index.html">For Creators</a>
+      <div class="logo">Sponsable</div>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html" class="active">For Creators</a>
         <a href="brands.html">For Brands</a>
         <a href="about.html">About</a>
-        <a href="contact.html" class="active">Contact</a>
+        <a href="contact.html">Contact</a>
       </nav>
-      <a href="index.html#brand-signup" class="cta-btn">Pre-Register</a>
-      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+      <a href="#apply" class="cta apply-btn">Apply</a>
+
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" id="menuToggle">☰</button>
     </div>
 
-    <div class="mobile-nav">
-      <a href="index.html">For Creators</a>
-      <a href="brands.html">For Brands</a>
-      <a href="about.html">About</a>
-      <a href="contact.html" class="active">Contact</a>
-      <a href="index.html#brand-signup" class="cta-btn">Pre-Register</a>
+    <div id="mobileNav" class="mobile-nav" aria-hidden="true">
+       <a href="index.html" class="active">For Creators</a>
+        <a href="brands.html">For Brands</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      <a href="#apply" class="cta">Apply</a>
     </div>
   </header>
 
-  <!-- ===== HERO (identical structure) ===== -->
-  <section class="hero">
-    <div class="container hero-content">
-      <h1>Let’s Build the Future of Ethical Sponsorships — Together</h1>
-      <p>
-        Sponsable is currently in development, and we’re connecting with early partners, press, and creators who share our vision for a more responsible creator economy.
-      </p>
-    </div>
-  </section>
+  <!-- MAIN -->
+  <main>
 
+  <section class="hero fade-in" aria-label="Primary value proposition">
+  <div class="hero-overlay" role="img" aria-hidden="true"></div>
+  <div class="container hero-content">
+    <h1 class="brand-head">Drop us a Line</h1>
+  </div>
+
+  <div class="hero-bottom-fade" aria-hidden="true"></div>
+</section>
+
+  
   <!-- ===== CONTACT INFO ===== -->
   <section class="contact-section">
     <div class="container">
