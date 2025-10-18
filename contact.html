@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sponsable — Contact</title>
   <meta name="description" content="Contact Sponsable — partnerships, press and general enquiries" />
-  <link rel="stylesheet" href="contact.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="contact.css" />
 </head>
 
 <body>
-  <!-- HEADER (matches Page A) -->
+  <!-- HEADER -->
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <div class="logo">Sponsable</div>
@@ -39,29 +39,24 @@
   <!-- MAIN -->
   <main>
 
-   <!-- HERO SECTION -->
-<section class="hero fade-in" aria-label="Primary value proposition">
-  <div class="hero-overlay" aria-hidden="true"></div>
+    <!-- HERO SECTION -->
+    <section class="hero" aria-label="Primary value proposition">
+      <div class="container hero-content">
+        <h1 class="hero-title">Affiliate Income with a Sponsorship Outcome</h1>
+        <p class="hero-lead">
+          Sponsable is in development. It tracks your affiliate sales, verifies influence,
+          and helps you earn and get sponsored.
+        </p>
+        <a href="#apply" class="cta primary">Pre-Register Now</a>
 
-  <div class="container hero-content">
-    <h1 class="brand-head">Affiliate Income with a Sponsorship Outcome</h1>
-    <p class="lead">
-      Sponsable is in development. It tracks your affiliate sales, verifies influence,
-      and helps you earn and get sponsored.
-    </p>
-    <a href="#apply" class="cta pill">Pre-Register Now</a>
-  </div>
+        <div class="hero-secondary">
+          <p class="small-text">Are you a brand looking to collaborate?</p>
+          <a href="brands.html" class="cta secondary">Explore Brand Partnerships</a>
+        </div>
+      </div>
+    </section>
 
-  <div class="for-brands-link fade-in" data-delay="1.5">
-    <p class="small-text">Are you a brand looking to collaborate?</p>
-    <a href="brands.html" class="cta secondary pill">Explore Brand Partnerships</a>
-  </div>
-
-  <div class="hero-bottom-fade" aria-hidden="true"></div>
-</section>
-
-
-    <!-- ===== CONTACT INFO ===== -->
+    <!-- CONTACT INFO SECTION -->
     <section class="contact-section">
       <div class="container">
         <h2>Contact Options</h2>
@@ -90,7 +85,7 @@
       </div>
     </section>
 
-    <!-- ===== CONTACT FORM ===== -->
+    <!-- CONTACT FORM SECTION -->
     <section class="form-section">
       <div class="container">
         <h2>Send Us a Message</h2>
@@ -131,7 +126,7 @@
 
   </main>
 
-  <!-- ===== FOOTER (keeps the subtle Page A styling) ===== -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>&copy; 2025 Sponsable Ltd</div>
@@ -145,15 +140,14 @@
     </div>
   </footer>
 
+  <!-- SCRIPTS -->
   <script>
     // Mobile nav toggle
     const toggle = document.querySelector('.menu-toggle');
     const mobileNav = document.querySelector('.mobile-nav');
-    toggle.addEventListener('click', () => {
-      mobileNav.classList.toggle('active');
-    });
+    toggle.addEventListener('click', () => mobileNav.classList.toggle('active'));
 
-    // Simple form success message
+    // Form submission
     const form = document.querySelector('#contactForm');
     form.addEventListener('submit', (e) => {
       e.preventDefault();
