@@ -923,3 +923,32 @@ label.small {
     border-radius: 0.75rem;
   }
 }
+/* ========== Brand Hero (separate from creator hero) ========== */
+.brand-hero {
+  position: relative;
+  padding: 8rem 1rem 6rem;
+  text-align: center;
+  color: #111;
+  background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.brand-hero .hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.brand-hero .cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
