@@ -288,15 +288,20 @@ ul {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2.25rem;
   justify-items: center;
+  align-items: stretch; /* makes all items same height */
 }
 
 .contact-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   background: #fff;
   padding: 2.5rem 2rem;
   border-radius: 1.5rem;
   box-shadow: 0 6px 25px rgba(0, 122, 255, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   max-width: 360px;
+  width: 100%;  /* ensures cards stretch in grid */
   text-align: center;
 }
 
