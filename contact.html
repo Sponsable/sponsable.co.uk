@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sponsable — For Brands</title>
-  <meta name="description" content="Trusted Creators. Measurable Results." />
-<link rel="stylesheet" href="brand.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Sponsable — Contact</title>
+  <meta name="description" content="Connect with Sponsable — ethical sponsorships for the creator economy." />
+  <link rel="stylesheet" href="contact.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <!-- HEADER -->
+  <!-- HEADER (unchanged from brand page) -->
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <div class="logo">Sponsable</div>
@@ -18,7 +18,7 @@
         <a href="index.html">For Creators</a>
         <a href="brands.html">For Brands</a>
         <a href="about.html">About</a>
-        <a href="contact.html"class="active">Contact</a>
+        <a href="contact.html" class="active">Contact</a>
       </nav>
       <a href="#brand-signup" class="cta apply-btn">Apply</a>
       <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" id="menuToggle">☰</button>
@@ -29,52 +29,57 @@
       <a href="index.html">For Creators</a>
       <a href="brands.html">For Brands</a>
       <a href="about.html">About</a>
-      <a href="contact.html"class="active">Contact</a>
+      <a href="contact.html" class="active">Contact</a>
       <a href="#brand-signup" class="cta">Apply</a>
     </div>
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="brand-hero" aria-label="For Brands">
+    <!-- HERO (kept identical) -->
+    <section class="brand-hero" aria-label="Contact">
       <div class="hero-content">
-        <h1>Trusted Creators. Measurable Results.</h1>
+        <h1>Let’s Build the Future of Ethical Sponsorships — Together</h1>
         <p>
-          Sponsable connects your brand with <strong>pre-vetted creators</strong> who align with your values and deliver verified performance — all tracked transparently.
+          Sponsable is connecting with early partners, press, and creators who share our vision for a more responsible creator economy.  
+          Reach out — we’d love to collaborate.
         </p>
-        <div class="cta-group">
-          <a href="#brand-signup" class="cta secondary pill">Pre-Register Your Brand</a>
-        </div>
       </div>
     </section>
-    <!-- CONTACT OPTIONS -->
-    <section class="section contact-options">
+
+    <!-- CONTACT INFO -->
+    <section class="contact-section">
       <div class="container">
-        <h2>Contact Options</h2>
+        <div class="contact-intro">
+          <h2>Contact Options</h2>
+          <p>Choose the best way to reach our team.</p>
+        </div>
 
-        <div class="contact-cards">
+        <div class="contact-grid">
           <div class="contact-card">
+            <div class="icon">💬</div>
             <h3>General Enquiries</h3>
-            <p><a href="mailto:hello@sponsable.co.uk">hello@sponsable.co.uk</a></p>
+            <a href="mailto:hello@sponsable.co.uk" class="email">hello@sponsable.co.uk</a>
           </div>
 
           <div class="contact-card">
+            <div class="icon">📰</div>
             <h3>Press & Media</h3>
-            <p><a href="mailto:press@sponsable.co.uk">press@sponsable.co.uk</a></p>
-            <a href="assets/Sponsable-Press-Kit.pdf" class="cta-link">Download Press Kit →</a>
+            <a href="mailto:press@sponsable.co.uk" class="email">press@sponsable.co.uk</a>
+            <a href="assets/Sponsable-Press-Kit.pdf" class="press-link">Download Press Kit →</a>
           </div>
 
           <div class="contact-card">
+            <div class="icon">🤝</div>
             <h3>Partnerships & Collaborations</h3>
-            <p><a href="mailto:partners@sponsable.co.uk">partners@sponsable.co.uk</a></p>
-            <p>We’re seeking early brand partners, agencies, and athlete networks who align with our mission.</p>
+            <a href="mailto:partners@sponsable.co.uk" class="email">partners@sponsable.co.uk</a>
+            <p class="small">We’re seeking early brand partners, agencies, and athlete networks who align with our mission.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- CONTACT FORM -->
-    <section class="section form-section">
+    <section class="form-section">
       <div class="container">
         <h2>Send Us a Message</h2>
         <form class="contact-form">
@@ -85,7 +90,7 @@
             <label>Email
               <input type="email" placeholder="you@example.com" required />
             </label>
-            <label>I'm a
+            <label>I’m a
               <select required>
                 <option value="">Select one</option>
                 <option>Creator</option>
@@ -96,23 +101,20 @@
               </select>
             </label>
           </div>
-
           <label>Message
             <textarea rows="5" placeholder="Tell us how you'd like to collaborate..." required></textarea>
           </label>
-
           <div class="form-actions">
             <button type="submit" class="cta pill">Get in Touch</button>
           </div>
         </form>
-
         <p class="confirmation-message" hidden>Thanks! We’ll be in touch soon.</p>
       </div>
     </section>
   </main>
 
- <!-- FOOTER -->
-  <footer class="site-footer fade-in" data-delay="3">
+  <!-- FOOTER -->
+  <footer class="site-footer fade-in">
     <div class="container footer-inner">
       <div>&copy; 2025 Sponsable Ltd</div>
       <nav class="footer-nav" aria-label="Footer">
@@ -124,14 +126,14 @@
       <div class="small muted">Ethical By Default.</div>
     </div>
   </footer>
-  
+
   <script>
-    // Simple form confirmation (no backend yet)
-    document.querySelector('.contact-form').addEventListener('submit', function(e){
+    // Simple form confirmation
+    document.querySelector('.contact-form').addEventListener('submit', e => {
       e.preventDefault();
       document.querySelector('.confirmation-message').hidden = false;
-      this.reset();
-      this.style.display = 'none';
+      e.target.reset();
+      e.target.style.display = 'none';
     });
   </script>
 </body>
