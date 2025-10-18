@@ -3,8 +3,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
@@ -18,14 +16,36 @@ body {
   background: #fff;
 }
 
-/* ===== TYPOGRAPHY ===== */
-h1,h2,h3 { font-family: "Montserrat", sans-serif; font-weight: 700; margin-bottom: 0.5em; }
-p { margin-bottom: 1em; color: #444; }
-strong { font-weight: 600; }
-a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
-ul { list-style: none; }
+/* ========== Typography ========== */
+h1, h2, h3 {
+  font-family: "Montserrat", sans-serif;
+  margin: 0 0 0.5em;
+  font-weight: 700;
+  line-height: 1.2;
+}
 
-/* ===== CONTAINER ===== */
+p {
+  margin: 0 0 1em;
+  color: #444;
+}
+
+strong {
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========== Layout Utilities ========== */
 .container {
   max-width: 1150px;
   margin: 0 auto;
@@ -46,7 +66,6 @@ ul { list-style: none; }
   opacity: 1;
   transform: none;
 }
-
 
 /* ===== Header ===== */
 .site-header {
