@@ -161,57 +161,88 @@
 </section>
  
 
-    <!-- APPLY FORM -->
-    <section id="apply" class="container section form-section fade-in" data-delay="3">
-      <h2>Apply To Join Sponsable</h2>
-      <p>
-  Sponsable is currently in pre-launch.  
-  Fill out the form to get vetted and secure early access.  
-  No payment is collected until the app officially launches.
-      </p>
+  <!-- APPLY FORM -->
+<section id="apply" class="container section form-section fade-in" data-delay="3">
+  <h2>Apply To Join Sponsable</h2>
+  <p>
+    Sponsable is currently in pre-launch.<br>
+    Fill out the form to get vetted and secure early access.<br>
+    No payment is collected until the app officially launches.
+  </p>
 
-      <form id="applyForm" class="apply-form">
-        <div class="form-grid">
-          <label>Full Name
-            <input name="name" type="text" required />
-          </label>
-          <label>Email
-            <input name="email" type="email" required />
-          </label>
-          <label>Primary Social Handle
-            <input name="handle" placeholder="@yourhandle" required />
-          </label>
-          <label>Platform
-            <select name="Platform" required>
-              <option value="">Select...</option>
-              <option>Instagram</option>
-              <option>TikTok</option>
-              <option>YouTube</option>
-              <option>Facebook</option>
-              <option>Twitter</option>
-              <option>Pinterest</option>
-            </select>
-          </label>
-        
-        </div>
+  <form
+    id="applyForm"
+    class="apply-form"
+    action="https://formspree.io/f/xpwynpqp"
+    method="POST"
+  >
+    <div class="form-grid">
+      <label>Full Name
+        <input name="name" type="text" required />
+      </label>
+      <label>Email
+        <input name="email" type="email" required />
+      </label>
+      <label>Primary Social Handle
+        <input name="handle" placeholder="@yourhandle" required />
+      </label>
+      <label>Platform
+        <select name="platform" required>
+          <option value="">Select...</option>
+          <option>Instagram</option>
+          <option>TikTok</option>
+          <option>YouTube</option>
+          <option>Facebook</option>
+          <option>Twitter</option>
+          <option>Pinterest</option>
+        </select>
+      </label>
+    </div>
 
-        <label class="small">
-          <input type="checkbox" id="agree" required />
-          I Agree To The £4.99 Review Fee.
-        </label>
+    <label class="small">
+      <input type="checkbox" name="agree" required />
+      I Agree To The £4.99 Review Fee.
+    </label>
 
-        <div class="form-actions">
-          <button type="submit" class="cta blue-pill">Join the Waitlist</button>
-          <p class="muted">We do not share your data. You may reapply if declined.</p>
-        </div>
-      </form>
+    <div class="form-actions">
+      <button type="submit" class="cta blue-pill">Join the Waitlist</button>
+      <p class="muted">We do not share your data. You may reapply if declined.</p>
+    </div>
+  </form>
 
-      <div id="thankYou" class="thank-you-message" hidden>
-        <h3>Thank you for applying!</h3>
-        <p>We’ll review your application and reach out soon.</p>
-      </div>
-    </section>
-  </main>
+  <div id="thankYou" class="thank-you-message" hidden>
+    <h3>Thank you for applying!</h3>
+    <p>We’ll review your application and reach out soon.</p>
+  </div>
+</section>
+
+<script>
+  // Optional JS for smooth "thank you" message behavior
+  const form = document.getElementById('applyForm');
+  const thankYou = document.getElementById('thankYou');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.hidden = true;
+        thankYou.hidden = false;
+      } else {
+        alert('Oops! There was a problem submitting your form.');
+      }
+    } catch (error) {
+      alert('Network error — please try again later.');
+    }
+  });
+</script>
 
   <!-- FOOTER -->
   <footer class="site-footer fade-in" data-delay="3">
