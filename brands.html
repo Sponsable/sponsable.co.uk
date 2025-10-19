@@ -119,51 +119,60 @@
       </div>
     </section>
 
-    <!-- BRAND FORM -->
-    <section id="brand-signup" class="section form-section">
-      <div class="container">
-        <h2>Apply to Join Sponsable</h2>
-        <p class="lead">
-          Sponsable is in pre-launch. Apply now to secure early access and be vetted for ethical alignment.
-        </p>
-        <form>
-          <div class="form-grid">
-            <label>Brand Name
-              <input type="text" placeholder="e.g. Alpine Gear Co." required />
-            </label>
-            <label>Contact Name
-              <input type="text" placeholder="Full Name" required />
-            </label>
-            <label>Business Email
-              <input type="email" placeholder="you@brand.com" required />
-            </label>
-            <label>Website
-              <input type="url" placeholder="https://yourbrand.com" />
-            </label>
-            <label>Industry
-              <select required>
-                <option value="">Select Industry</option>
-                <option>Outdoor & Adventure</option>
-                <option>Fitness & Sports</option>
-                <option>Fashion & Lifestyle</option>
-                <option>Health & Wellness</option>
-                <option>Technology</option>
-                <option>Other</option>
-              </select>
-            </label>
-          </div>
+  <!-- BRAND FORM -->
+<section id="brand-signup" class="section form-section">
+  <div class="container">
+    <h2>Apply to Join Sponsable</h2>
+    <p class="lead">
+      Sponsable is in pre-launch. Apply now to secure early access and be vetted for ethical alignment.
+    </p>
 
-          <label class="small">
-            <input type="checkbox" required /> I agree to Sponsable’s brand vetting process.
-          </label>
+    <form action="https://formspree.io/f/mldpvjgy" method="POST">
+      <div class="form-grid">
+        <label>Brand Name
+          <input type="text" name="brand_name" placeholder="e.g. Alpine Gear Co." required />
+        </label>
 
-          <div class="form-actions">
-            <button type="submit" class="cta pill">Join the Brand Waitlist</button>
-          </div>
-          <p class="muted small">Your information remains confidential. You’ll be contacted before the official brand launch.</p>
-        </form>
+        <label>Contact Name
+          <input type="text" name="contact_name" placeholder="Full Name" required />
+        </label>
+
+        <label>Business Email
+          <input type="email" name="email" placeholder="you@brand.com" required />
+        </label>
+
+        <label>Website
+          <input type="url" name="website" placeholder="https://yourbrand.com" />
+        </label>
+
+        <label>Industry
+          <select name="industry" required>
+            <option value="">Select Industry</option>
+            <option>Outdoor & Adventure</option>
+            <option>Fitness & Sports</option>
+            <option>Fashion & Lifestyle</option>
+            <option>Health & Wellness</option>
+            <option>Technology</option>
+            <option>Other</option>
+          </select>
+        </label>
       </div>
-    </section>
+
+      <label class="small">
+        <input type="checkbox" name="vetting_agreement" value="agreed" required />
+        I agree to Sponsable’s brand vetting process.
+      </label>
+
+      <div class="form-actions">
+        <button type="submit" class="cta pill">Join the Brand Waitlist</button>
+      </div>
+
+      <p class="muted small">
+        Your information remains confidential. You’ll be contacted before the official brand launch.
+      </p>
+    </form>
+  </div>
+</section>
 
    
 
