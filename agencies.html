@@ -10,10 +10,11 @@
 </head>
 
 <body>
-  <!-- ===== Header (identical site-wide) ===== -->
-  <header class="site-header">
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <div class="logo">Sponsable</div>
+
       <nav class="nav" aria-label="Primary navigation">
         <a href="index.html">For Creators</a>
         <a href="brands.html">For Brands</a>
@@ -21,38 +22,50 @@
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </nav>
+
       <a href="#apply" class="cta apply-btn">Apply</a>
-      <button class="menu-toggle" type="button" aria-label="Open menu">☰</button>
+
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" id="menuToggle">☰</button>
+    </div>
+
+    <div id="mobileNav" class="mobile-nav" aria-hidden="true">
+      <a href="index.html">For Creators</a>
+      <a href="brands.html">For Brands</a>
+      <a href="agencies.html" class="active">For Agencies</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="#apply" class="cta">Apply</a>
     </div>
   </header>
 
   <main>
-    <!-- ===== Hero ===== -->
-    <section class="hero">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero fade-in">
       <div class="container hero-inner">
         <h1>Data that drives stronger partnerships.</h1>
         <p>Empower your agency with verified insights that prove value, uncover opportunity, and simplify management.</p>
         <div class="hero-actions">
-          <a href="#apply" class="cta primary">Apply for Beta Access</a>
+          <a href="#apply" class="cta blue-pill">Apply for Beta Access</a>
         </div>
       </div>
     </section>
 
-    <!-- ===== Core Value Proposition ===== -->
-    <section id="core" class="core">
+    <!-- ===== CORE VALUE ===== -->
+    <section id="core" class="core fade-in" data-delay="1">
       <div class="container">
         <h2>Designed for agencies who lead with data.</h2>
         <p class="intro">
           Sponsable gives agencies a single platform to quantify athlete performance, discover emerging talent, and streamline campaign management — all backed by verified, real-time data.
         </p>
         <div class="visual-placeholder">
-          <p>[Dashboard Mockup Here]</p>
+          <img src="images/agency-dashboard.png" alt="Sponsable agency dashboard preview" />
         </div>
       </div>
     </section>
 
-    <!-- ===== Core Features ===== -->
-    <section class="features">
+    <!-- ===== FEATURES ===== -->
+    <section class="features fade-in" data-delay="2">
       <div class="container">
         <div class="feature">
           <h3>Verified Athlete Value</h3>
@@ -66,7 +79,7 @@
             <li>Strengthen long-term partnerships</li>
           </ul>
         </div>
-      
+
         <div class="feature">
           <h3>Advanced Talent Discovery</h3>
           <h4>Identify rising talent through real performance indicators.</h4>
@@ -80,8 +93,7 @@
           </ul>
         </div>
 
-        
-    <div class="feature">
+        <div class="feature">
           <h3>Unified Roster & Campaign Management</h3>
           <h4>All your data. One connected dashboard.</h4>
           <p>
@@ -94,11 +106,10 @@
           </ul>
         </div>
       </div>
-      
     </section>
 
-    <!-- ===== Why Sponsable ===== -->
-    <section class="why">
+    <!-- ===== WHY SPONSABLE ===== -->
+    <section class="why fade-in" data-delay="2.5">
       <div class="container">
         <h2>Built for data-driven agencies.</h2>
         <ul class="why-list">
@@ -111,52 +122,46 @@
       </div>
     </section>
 
-  <!-- ===== Beta Invitation / Apply Form ===== -->
-<section id="apply" class="beta" aria-labelledby="apply-title">
-  <div class="container">
-    <h2 id="apply-title">Join the Sponsable Agency Beta</h2>
-    <p>
-      We’re partnering with forward-thinking agencies to shape the future of data-driven athlete management.
-    </p>
+    <!-- ===== APPLY / BETA FORM ===== -->
+    <section id="apply" class="beta fade-in" data-delay="3">
+      <div class="container">
+        <h2>Join the Sponsable Agency Beta</h2>
+        <p>
+          We’re partnering with forward-thinking agencies to shape the future of data-driven athlete management.
+        </p>
 
-    <form class="apply-form" action="https://formspree.io/f/your-form-id" method="POST">
-      <div class="form-group">
-        <label for="name">Full Name<span aria-hidden="true">*</span></label>
-        <input type="text" id="name" name="name" placeholder="Your name" required>
+        <form class="apply-form" action="https://formspree.io/f/xpwynpqp" method="POST">
+          <div class="form-grid">
+            <label>Full Name
+              <input type="text" name="name" placeholder="Your name" required />
+            </label>
+            <label>Agency Name
+              <input type="text" name="agency" placeholder="Agency or company" required />
+            </label>
+            <label>Email
+              <input type="email" name="email" placeholder="you@agency.com" required />
+            </label>
+          </div>
+
+          <label>Tell us about your agency
+            <textarea name="message" rows="4" placeholder="Briefly describe your agency and why you’re interested."></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="cta blue-pill">Apply Now</button>
+            <p class="muted small">By submitting, you agree to be contacted regarding Sponsable’s beta program. We respect your privacy.</p>
+          </div>
+        </form>
       </div>
+    </section>
 
-      <div class="form-group">
-        <label for="agency">Agency Name<span aria-hidden="true">*</span></label>
-        <input type="text" id="agency" name="agency" placeholder="Agency or company" required>
-      </div>
+  </main>
 
-      <div class="form-group">
-        <label for="email">Email<span aria-hidden="true">*</span></label>
-        <input type="email" id="email" name="_replyto" placeholder="you@agency.com" required>
-      </div>
-
-      <div class="form-group">
-        <label for="message">Tell us about your agency</label>
-        <textarea id="message" name="message" rows="4" placeholder="Briefly describe your agency, focus, and why you’re interested in the beta."></textarea>
-      </div>
-
-      <button type="submit" class="cta primary">Apply Now</button>
-    </form>
-
-    <p class="form-note small">
-      By submitting, you agree to be contacted regarding Sponsable’s beta program. We respect your privacy.
-    </p>
-  </div>
-</section>
-
-
-
-  
-  <!-- ===== Footer ===== -->
-  <footer class="site-footer">
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer fade-in" data-delay="3.5">
     <div class="container footer-inner">
       <div>&copy; 2025 Sponsable Ltd</div>
-      <nav class="footer-nav">
+      <nav class="footer-nav" aria-label="Footer">
         <a href="index.html">For Creators</a>
         <a href="brands.html">For Brands</a>
         <a href="agencies.html">For Agencies</a>
@@ -166,5 +171,7 @@
       <div class="small muted">Ethical By Default.</div>
     </div>
   </footer>
+
+  <script src="js/main.js" defer></script>
 </body>
 </html>
