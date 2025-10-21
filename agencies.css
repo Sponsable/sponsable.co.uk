@@ -1,0 +1,254 @@
+/* ===== Base Page Structure ===== */
+body {
+  font-family: "Inter", sans-serif;
+  color: #111;
+  margin: 0;
+  background: #fff;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Montserrat", sans-serif;
+  margin: 0 0 1rem;
+  color: #111;
+}
+
+p {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.container {
+  width: min(1100px, 90%);
+  margin: 0 auto;
+}
+
+/* ===== Header ===== */
+.site-header {
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.logo {
+  font-weight: 700;
+  font-family: "Montserrat";
+  font-size: 1.3rem;
+}
+
+.nav a {
+  margin: 0 1rem;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav a.active {
+  color: #007aff;
+}
+
+.apply-btn {
+  background: #007aff;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ===== Hero ===== */
+.hero {
+  background: linear-gradient(135deg, #f7faff, #ffffff);
+  text-align: center;
+  padding: 7rem 1rem 6rem;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 650px;
+  margin: 0 auto 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta.primary {
+  background: #007aff;
+  color: #fff;
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.cta.primary:hover {
+  background: #005ed1;
+}
+
+.cta.secondary {
+  color: #007aff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ===== Core Value Proposition ===== */
+.core {
+  text-align: center;
+  padding: 6rem 1rem;
+}
+
+.core h2 {
+  font-size: 2rem;
+}
+
+.core .intro {
+  max-width: 700px;
+  margin: 1rem auto 3rem;
+  color: #555;
+}
+
+.visual-placeholder {
+  border: 2px dashed #d0e4ff;
+  padding: 4rem;
+  color: #007aff;
+  border-radius: 1rem;
+}
+
+/* ===== Features ===== */
+.features {
+  background: #f9fafc;
+  padding: 6rem 1rem;
+}
+
+.features .feature {
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.features h3 {
+  color: #007aff;
+  font-size: 1.4rem;
+}
+
+.features h4 {
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 0.75rem;
+}
+
+.features ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  color: #333;
+}
+
+/* ===== Why Section ===== */
+.why {
+  text-align: center;
+  padding: 6rem 1rem;
+}
+
+.why h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.why-list {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.why-list li {
+  background: #f2f7ff;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 0.6rem;
+  color: #333;
+}
+
+/* ===== Beta Section ===== */
+.beta {
+  background: linear-gradient(135deg, #e8f2ff, #f7faff);
+  text-align: center;
+  padding: 6rem 1rem;
+}
+
+.beta h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.beta ul {
+  list-style: none;
+  padding: 0;
+  max-width: 500px;
+  margin: 1.5rem auto 2.5rem;
+  color: #333;
+}
+
+.beta ul li {
+  margin-bottom: 0.75rem;
+}
+
+.beta .cta.primary {
+  background: #007aff;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  background: #fff;
+  border-top: 1px solid #eee;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.footer-nav a {
+  margin: 0 0.75rem;
+  color: #555;
+  text-decoration: none;
+}
+
+.small.muted {
+  margin-top: 0.5rem;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .core h2, .why h2, .beta h2 {
+    font-size: 1.8rem;
+  }
+
+  .features .feature {
+    margin-bottom: 2rem;
+  }
+}
