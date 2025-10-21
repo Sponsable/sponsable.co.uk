@@ -168,45 +168,55 @@ ul {
   }
 }
 
-
-/* ========== Hero (agency-focused) ======== */
+/* ========== Hero (clean, pre-launch style) ========== */
 .hero {
   position: relative;
-  padding: 8.5rem 1rem 6rem;
+  padding: 9rem 1rem 7rem;
   text-align: center;
-  color: var(--text-dark);
+  color: #111;
   background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
-  min-height: 64vh;
+  min-height: 75vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-.hero-inner {
-  max-width: 880px;
+.hero::before {
+  content: none; /* removed background image */
+}
+
+.hero-overlay {
+  display: none;
+}
+
+.hero-content {
+  max-width: 800px;
   position: relative;
   z-index: 1;
   padding: 0 1rem;
 }
 
-.hero h1 {
-  font-size: 2.75rem;
-  margin-bottom: 0.75rem;
+.brand-head {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.02em;
 }
 
-.hero p {
-  max-width: 720px;
-  margin: 0 auto 1.5rem;
-  font-size: 1.12rem;
-  color: var(--text-muted);
+.lead {
+  max-width: 680px;
+  margin: 0 auto 3rem;
+  font-size: 1.2rem;
+  color: #444;
   line-height: 1.7;
 }
 
-/* Hero actions */
-.hero-actions .cta.primary {
-  display: inline-block;
-  background: var(--brand-blue);
+/* Primary CTA (blue pill) */
+.cta.pill {
+  background: #007aff;
   color: #fff;
   font-weight: 600;
   padding: 1rem 2.4rem;
@@ -214,13 +224,43 @@ ul {
   font-size: 1.05rem;
   transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   box-shadow: 0 6px 20px rgba(0, 122, 255, 0.25);
+  display: inline-block;
+  margin-top: 1rem; /* ensures space below text */
 }
 
-.hero-actions .cta.primary:hover {
-  background: var(--brand-blue-dark);
+.cta.pill:hover {
+  background: #005ed1;
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(0, 122, 255, 0.35);
 }
+
+/* “For Brands” link section */
+.for-brands-link {
+  margin-top: 4rem; /* more gap between pills */
+}
+
+.small-text {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 0.75rem;
+}
+
+.cta.secondary.pill {
+  border: 2px solid #007aff;
+  background: transparent;
+  color: #007aff;
+  font-weight: 600;
+  padding: 0.9rem 2.2rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.cta.secondary.pill:hover {
+  background: #007aff;
+  color: #fff;
+}
+
+
 
 
 /* ===== Core Section ===== */
