@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How Sponsable Works — Visual Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <meta name="color-scheme" content="light only">
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#0066ff;
+      --accent-2:#00bfa6;
+      --glass: rgba(255,255,255,0.8);
+      --radius:18px;
+      --soft-shadow: 0 10px 30px rgba(15,23,42,0.06);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:linear-gradient(180deg,var(--bg),#ffffff 40%);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:48px 20px;
+    }
+
+    .wrapper{max-width:1100px;margin:0 auto}
+
+    header{display:flex;align-items:center;gap:18px;margin-bottom:28px}
+    .brand{font-family:Montserrat, Inter; color:var(--accent);font-weight:700;font-size:1.25rem}
+    .title{font-size:1.6rem;font-weight:700}
+    .subtitle{color:var(--muted);margin-top:6px}
+
+    .hero{background:var(--card);border-radius:22px;padding:26px;box-shadow:var(--soft-shadow);display:grid;grid-template-columns:1fr 520px;gap:22px;align-items:center}
+
+    /* SVG canvas container */
+    .canvas-wrap{padding:18px;border-radius:14px;background:linear-gradient(180deg,rgba(0,102,255,0.03),rgba(0,191,166,0.02));border:1px solid rgba(0,0,0,0.03);}
+    .explain{font-weight:600;margin-bottom:6px}
+
+    /* textual steps */
+    .steps{margin-top:28px;display:grid;gap:18px}
+    .step{background:var(--card);padding:18px;border-radius:14px;box-shadow:0 6px 22px rgba(3,7,18,0.04);display:flex;gap:16px;align-items:flex-start}
+    .step .num{background:linear-gradient(180deg,var(--accent),var(--accent-2));color:#fff;width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-weight:700;font-size:1.05rem}
+    .step h3{margin:0;font-size:1.05rem}
+    .step p{margin:6px 0 0;color:var(--muted)}
+    .step ul{margin:8px 0 0;padding-left:1.1rem;color:var(--muted)}
+    .hint{margin-top:8px;color:#2b3440;font-weight:600}
+
+    /* responsive */
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr}
+      .canvas-wrap{order:-1}
+    }
+
+    /* --- SVG styling --- */
+    .flow-svg{width:100%;height:auto;display:block}
+    .node{cursor:default}
+    .node .box{filter:drop-shadow(0 6px 20px rgba(3,7,18,0.06))}
+    .label{font-family:Montserrat, Inter;font-weight:700;font-size:0.95rem}
+    .sub{font-size:0.85rem;fill:#24303f}
+
+    /* small footer */
+    footer{margin-top:22px;text-align:center;color:var(--muted);font-size:0.95rem}
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="brand">Sponsable</div>
+      <div>
+        <div class="title">🧭 How Sponsable Works</div>
+        <div class="subtitle">A transparent ecosystem connecting <strong>athletes, brands, and agencies</strong> — built to turn affiliate marketing into real sponsorships.</div>
+      </div>
+    </header>
+
+    <main class="hero" role="main">
+
+      <section>
+        <div class="explain">A single image to explain the flow — scroll or zoom to explore.</div>
+        <div class="canvas-wrap" aria-hidden="false">
+          <!-- Inline SVG: flow diagram that visualizes the 5 steps. -->
+          <svg class="flow-svg" viewBox="0 0 1000 560" role="img" aria-label="Flow diagram showing Athletes, Brands, Agencies, Private Market, Career Record">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0" stop-color="#00bfa6"/>
+                <stop offset="1" stop-color="#0066ff"/>
+              </linearGradient>
+              <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#0b1725" flood-opacity="0.06"/>
+              </filter>
+            </defs>
+
+            <!-- Background whisper grid -->
+            <rect x="0" y="0" width="1000" height="560" fill="transparent"/>
+
+            <!-- Nodes: 1 Athletes (left) -->
+            <g class="node" id="n-athletes" transform="translate(80,80)">
+              <rect class="box" x="0" y="0" rx="16" ry="16" width="220" height="120" fill="#ffffff" stroke="#e6eefc" stroke-width="1"/>
+              <text x="18" y="34" class="label" fill="#0f172a">1️⃣ Athletes — Open Market</text>
+              <text x="18" y="58" class="sub">Join, earn affiliates, track performance</text>
+
+              <!-- small list bullets -->
+              <g transform="translate(18,78)" fill="#0f172a" opacity="0.85">
+                <circle cx="6" cy="6" r="5" fill="#0066ff"/>
+                <text x="18" y="10" font-size="12">Earn via affiliate campaigns</text>
+                <g transform="translate(0,18)">
+                  <circle cx="6" cy="6" r="5" fill="#00bfa6"/>
+                  <text x="18" y="10" font-size="12">Track social & sales data</text>
+                </g>
+              </g>
+            </g>
+
+            <!-- Node: Brands (top-right) -->
+            <g class="node" id="n-brands" transform="translate(540,28)">
+              <rect class="box" x="0" y="0" rx="18" ry="18" width="320" height="100" fill="#ffffff" stroke="#e6f2ff" stroke-width="1"/>
+              <text x="20" y="36" class="label" fill="#063b8d">2️⃣ Brands — Discover Talent</text>
+              <text x="20" y="60" class="sub">Find brand-safe, data-backed creators</text>
+            </g>
+
+            <!-- Node: Agencies (right-center) -->
+            <g class="node" id="n-agencies" transform="translate(600,200)">
+              <rect class="box" x="0" y="0" rx="18" ry="18" width="280" height="120" fill="#ffffff" stroke="#eaf9f6" stroke-width="1"/>
+              <text x="18" y="36" class="label" fill="#056a5a">3️⃣ Agencies — Scout & Manage</text>
+              <text x="18" y="60" class="sub">Centralize rosters, export reports</text>
+            </g>
+
+            <!-- Node: Private Market (center-bottom) -->
+            <g class="node" id="n-private" transform="translate(320,360)">
+              <rect class="box" x="0" y="0" rx="16" ry="16" width="360" height="120" fill="#ffffff" stroke="#f0f1ff" stroke-width="1"/>
+              <text x="18" y="36" class="label" fill="#5a2d8c">4️⃣ Private Market</text>
+              <text x="18" y="60" class="sub">Agency-managed sponsorships & negotiations</text>
+            </g>
+
+            <!-- Node: Career Record (left-bottom) -->
+            <g class="node" id="n-career" transform="translate(20,340)">
+              <rect class="box" x="0" y="0" rx="14" ry="14" width="260" height="100" fill="#ffffff" stroke="#f7f5ff" stroke-width="1"/>
+              <text x="18" y="34" class="label" fill="#1f2937">5️⃣ Career-Long Record</text>
+              <text x="18" y="58" class="sub">A verified commercial passport over time</text>
+            </g>
+
+            <!-- Arrows/flows -->
+            <!-- Athletes -> Brands (top curve) -->
+            <path d="M300 120 C380 80, 490 80, 540 80" stroke="#9fbfff" stroke-width="4" fill="none" marker-end="url(#arrow)" opacity="0.95"/>
+
+            <!-- Athletes -> Private Market (down-right) -->
+            <path d="M200 200 C260 250, 320 300, 360 360" stroke="#88e6cf" stroke-width="4" fill="none" marker-end="url(#arrow)" opacity="0.95"/>
+
+            <!-- Brands -> Agencies -->
+            <path d="M640 128 C700 160, 720 180, 640 210" stroke="#c8d9ff" stroke-width="4" fill="none" marker-end="url(#arrow)" opacity="0.95"/>
+
+            <!-- Agencies -> Private Market -->
+            <path d="M680 320 C620 320, 560 320, 480 350" stroke="#bfeee6" stroke-width="4" fill="none" marker-end="url(#arrow)" opacity="0.95"/>
+
+            <!-- Private Market -> Career Record (left) -->
+            <path d="M340 420 C200 420, 120 420, 140 380" stroke="#d5d0ff" stroke-width="4" fill="none" marker-end="url(#arrow)" opacity="0.95"/>
+
+            <!-- circular marker definition -->
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0 0 L10 5 L0 10 z" fill="#152238" opacity="0.9"/>
+              </marker>
+            </defs>
+
+            <!-- Annotations (small callouts) -->
+            <g transform="translate(240,10)">
+              <rect x="0" y="0" width="420" height="48" rx="12" fill="url(#g1)" opacity="0.12"/>
+              <text x="18" y="28" font-family="Inter" font-weight="600" font-size="14" fill="#063b8d">A picture-first summary: athletes prove value → brands find winners → agencies scale deals → private market manages contracts → career-long record.</text>
+            </g>
+
+            <!-- Small legend at bottom right -->
+            <g transform="translate(720,460)">
+              <rect x="0" y="0" width="250" height="80" rx="10" fill="#fff" stroke="#eef3ff"/>
+              <text x="12" y="22" font-weight="700" font-size="13">Legend</text>
+              <g transform="translate(12,32)" font-size="12" fill="#334155">
+                <rect x="0" y="0" width="12" height="8" rx="2" fill="#0066ff"/>
+                <text x="20" y="8">Affiliate → initial earning & score</text>
+                <g transform="translate(0,16)">
+                  <rect x="0" y="0" width="12" height="8" rx="2" fill="#00bfa6"/>
+                  <text x="20" y="8">Private Market → agency-managed</text>
+                </g>
+              </g>
+            </g>
+
+          </svg>
+        </div>
+
+        <p style="margin-top:12px;color:var(--muted);font-size:0.95rem">Tip: This drawing is vector — open it in a new tab to zoom without losing clarity.</p>
+      </section>
+
+      <aside>
+        <!-- concise list of the five steps for readability -->
+        <div style="padding:12px;border-radius:12px;background:linear-gradient(180deg,#fbfdff,#ffffff);border:1px solid #eef6ff;">
+          <h3 style="margin:0 0 8px 0;font-size:1.05rem;color:#0b1b33">Step-by-step</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="num">1</div>
+              <div>
+                <h3>Athletes — Start in the Open Market</h3>
+                <p>Earn via affiliate campaigns, track performance, and build a Sponsorship Score to attract brands.</p>
+                <div class="hint">Goal: prove professionalism and attract brand attention.</div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="num">2</div>
+              <div>
+                <h3>Brands — Discover Proven Talent</h3>
+                <p>Search creators with verified scores and run affiliate or sponsorship campaigns directly.</p>
+                <div class="hint">Result: no guesswork — data-driven partnerships.</div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="num">3</div>
+              <div>
+                <h3>Agencies — Scout and Manage</h3>
+                <p>Spot rising talent and centralize rosters, campaign results and reports in one dashboard.</p>
+                <div class="hint">Saves hours of admin so agencies can focus on growth.</div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="num">4</div>
+              <div>
+                <h3>The Private Market</h3>
+                <p>When signed with an agency, sponsorships move into the private market for professional management.</p>
+                <div class="hint">Agencies negotiate smarter, scale rosters, strengthen brand trust.</div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="num">5</div>
+              <div>
+                <h3>A Career-Long Record</h3>
+                <p>Sponsable becomes a creator's commercial passport — a complete verified history of partnerships and performance.</p>
+                <div class="hint">Use Sponsable to earn, grow, and get sponsored for your whole career.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </aside>
+
+    </main>
+
+    <footer>
+      A visual-first explainer — want a version adapted for slides or social (SVG optimized or PNG export)? I can generate one.
+    </footer>
+  </div>
+</body>
+</html>
