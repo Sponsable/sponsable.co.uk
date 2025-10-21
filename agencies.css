@@ -1,21 +1,3 @@
-/* agencies.css
-   Complete stylesheet for Sponsable — For Agencies
-   Header kept exactly the same as requested for visual continuity.
-*/
-
-/* ========== Base Variables ========== */
-:root {
-  --brand-blue: #007aff;
-  --brand-blue-dark: #005ed1;
-  --text-dark: #111;
-  --text-muted: #444;
-  --muted-2: #666;
-  --bg-soft: #f8fbff;
-  --card-bg: #fff;
-  --border: #eee;
-  --shadow-1: 0 4px 12px rgba(0, 122, 255, 0.08);
-}
-
 /* ========== Base Reset ========== */
 *,
 *::before,
@@ -33,8 +15,6 @@ body {
   line-height: 1.6;
   color: #1a1a1a;
   background-color: #fff;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ========== Typography ========== */
@@ -43,31 +23,11 @@ h1, h2, h3 {
   margin: 0 0 0.5em;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--text-dark);
-}
-
-h1 {
-  font-size: 2.25rem;
-  letter-spacing: -0.02em;
-}
-
-h2 {
-  font-size: 1.9rem;
-}
-
-h3 {
-  font-size: 1.25rem;
-}
-
-h4 {
-  font-weight: 600;
-  margin: 0.25rem 0 0.75rem;
-  color: #333;
 }
 
 p {
   margin: 0 0 1em;
-  color: var(--text-muted);
+  color: #444;
 }
 
 strong {
@@ -207,6 +167,7 @@ ul {
     display: flex;
   }
 }
+
 
 /* ========== Hero (agency-focused) ======== */
 .hero {
