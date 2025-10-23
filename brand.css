@@ -306,6 +306,55 @@ ul {
   color: #007aff;
 }
 
+
+/* ===== Features ===== */
+.features {
+  padding: 6rem 1rem;
+  background: #fff;
+}
+
+.features .feature {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  text-align: left;
+}
+
+.features h3 {
+  font-size: 1.6rem;
+  color: #007aff;
+  margin-bottom: 0.5rem;
+}
+
+.features h4 {
+  font-size: 1.15rem;
+  color: #111;
+  margin-bottom: 0.75rem;
+}
+
+.features p {
+  color: #444;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.features ul li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.features ul li::before {
+  content: "•";
+  color: #007aff;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
 /* ========== Form Section ========== */
 .form-section {
   padding: 5rem 1.5rem;
