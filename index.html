@@ -9,58 +9,60 @@
 </head>
 
 <body>
-  <header class="site-header" id="siteHeader" role="banner">
+  <header class="site-header" role="banner">
     <div class="container header-inner">
-      <div class="logo">S P O N S A B L E</div>
+      <div class="logo" aria-hidden="true">S P O N S A B L E</div>
 
-      <nav class="nav" aria-label="Primary">
-        <a href="index.html" class="active">For Creators</a>
-        <a href="brands.html">For Brands</a>
-        <a href="agencies.html">For Agencies</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+      <nav class="nav" aria-label="Primary navigation" id="primaryNav">
+        <a href="index.html" class="nav-link active">For Creators</a>
+        <a href="brands.html" class="nav-link">For Brands</a>
+        <a href="agencies.html" class="nav-link">For Agencies</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
       </nav>
 
       <div class="right-controls">
         <a href="#apply" class="cta apply-btn">Apply</a>
-        <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle menu">☰</button>
+        <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">☰</button>
       </div>
     </div>
 
-    <div id="mobileNav" class="mobile-nav" aria-hidden="true">
-      <a href="index.html" class="active">For Creators</a>
-      <a href="brands.html">For Brands</a>
-      <a href="agencies.html">For Agencies</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="#apply" class="cta">Apply</a>
+    <div id="mobileNav" class="mobile-nav" aria-hidden="true" role="navigation">
+      <a href="index.html" class="mobile-link active">For Creators</a>
+      <a href="brands.html" class="mobile-link">For Brands</a>
+      <a href="agencies.html" class="mobile-link">For Agencies</a>
+      <a href="about.html" class="mobile-link">About</a>
+      <a href="contact.html" class="mobile-link">Contact</a>
+      <a href="#apply" class="mobile-cta">Apply</a>
     </div>
   </header>
 
   <main>
     <!-- HERO -->
-    <section class="hero" aria-label="Primary value proposition">
-      <div class="container hero-grid">
-        <div class="hero-text">
-          <h1>Affiliate Income with a<br><span class="accent">a Sponsorship Outcome</span></h1>
+    <section class="hero fade-in" aria-label="Primary value proposition">
+      <div class="container hero-inner">
+        <div class="hero-left">
+          <h1 class="brand-head">Affiliate Income with a<br><span class="brand-sub">a Sponsorship Outcome</span></h1>
           <p class="lead"><strong>Sponsable is in development.</strong> It tracks your affiliate sales, verifies influence, and helps you earn and get sponsored.</p>
-          <a class="cta blue-pill" href="#apply">Pre-Register Now</a>
 
-          <div class="for-brands">
-            <p class="small-text">Are you a brand looking to collaborate?</p>
-            <a href="brands.html" class="cta secondary pill">Explore Brand Partnerships</a>
+          <div class="hero-ctas">
+            <a href="#apply" class="cta blue-pill">Pre-Register Now</a>
+            <div class="for-brands">
+              <p class="small-text">Are you a brand looking to collaborate?</p>
+              <a href="brands.html" class="cta secondary pill">Explore Brand Partnerships</a>
+            </div>
           </div>
         </div>
 
-        <div class="hero-image">
-          <!-- Replace with your phone mockup -->
+        <div class="hero-right" aria-hidden="true">
+          <!-- Tilted phone mockup (image should have transparent background ideally) -->
           <img src="images/hero-phone-mockup.png" alt="Sponsable app profile page" class="phone phone-hero">
         </div>
       </div>
     </section>
 
     <!-- TOOLS CARD -->
-    <section class="section section-tools">
+    <section class="section section-tools fade-in">
       <div class="container tools-card-wrap">
         <div class="tools-card">
           <div class="tools-image">
@@ -83,11 +85,11 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="section">
+    <section id="faq" class="section fade-in" aria-labelledby="faqHeading">
       <div class="container">
-        <h2>Everything you need to know before joining the Sponsable waitlist</h2>
+        <h2 id="faqHeading">Everything you need to know before joining the Sponsable waitlist</h2>
 
-        <div class="faq-list">
+        <div class="faq-list" id="faqList">
           <details>
             <summary>What is an affiliate marketing platform and how does Sponsable benefit me?</summary>
             <div class="faq-body">
@@ -120,7 +122,7 @@
     </section>
 
     <!-- SURVEY -->
-    <section id="survey" class="section">
+    <section id="survey" class="section fade-in">
       <div class="container survey-grid">
         <div class="survey-text">
           <h2>We’ve asked 168 athletes, 332 creators, 20 brands, and 50 agencies for feedback.</h2>
@@ -128,31 +130,31 @@
           <a href="https://forms.gle/SMqoeLWBcXxMLWLM9" target="_blank" rel="noopener" class="cta secondary pill">Help Shape Sponsable</a>
         </div>
 
-        <div class="survey-image">
+        <div class="survey-image" aria-hidden="true">
           <img src="images/survey-phone-mockup.png" alt="Sponsable app feed" class="phone phone-survey">
         </div>
       </div>
     </section>
 
     <!-- APPLY FORM -->
-    <section id="apply" class="section form-section">
+    <section id="apply" class="section form-section fade-in" aria-labelledby="applyHeading">
       <div class="container">
-        <h2>Apply To Join Sponsable</h2>
-        <p>Sponsable is currently in pre-launch. Fill out the form to get vetted and secure early access. No payment is collected until the app officially launches.</p>
+        <h2 id="applyHeading">Apply To Join Sponsable</h2>
+        <p class="subtext">Sponsable is currently in pre-launch. Fill out the form to get vetted and secure early access. No payment is collected until the app officially launches.</p>
 
         <form id="applyForm" class="apply-form" action="https://formspree.io/f/xpwynpqp" method="POST" novalidate>
           <div class="form-grid">
             <label>
               Name
-              <input name="name" type="text" required>
+              <input name="name" type="text" required />
             </label>
             <label>
               Email
-              <input name="email" type="email" required>
+              <input name="email" type="email" required />
             </label>
             <label>
               Primary Social Handle
-              <input name="handle" type="text" placeholder="@yourhandle" required>
+              <input name="handle" type="text" placeholder="@yourhandle" required />
             </label>
             <label>
               Platform
@@ -168,14 +170,16 @@
             </label>
           </div>
 
-          <label class="small">
-            <input type="checkbox" name="agree" required>
-            I Agree To The £4.99 Review Fee.
-          </label>
+          <div class="form-bottom">
+            <label class="agree">
+              <input type="checkbox" name="agree" required />
+              <span>I Agree To The £4.99 Review Fee.</span>
+            </label>
 
-          <div class="form-actions">
-            <button type="submit" class="cta blue-pill">Join the Waitlist</button>
-            <p class="muted">We do not share your data. You may reapply if declined.</p>
+            <div class="form-actions">
+              <button type="submit" class="cta blue-pill">Join the Waitlist</button>
+              <p class="muted">We do not share your data. You may reapply if declined.</p>
+            </div>
           </div>
         </form>
 
@@ -189,7 +193,7 @@
 
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-inner">
-      <div>&copy; 2025 Sponsable Ltd</div>
+      <div class="copyright">© 2025 Sponsable Ltd</div>
       <nav class="footer-nav" aria-label="Footer">
         <a href="index.html">For Creators</a>
         <a href="brands.html">For Brands</a>
@@ -201,54 +205,6 @@
     </div>
   </footer>
 
-  <script>
-    // Mobile menu toggle
-    (function () {
-      const toggle = document.getElementById('menuToggle');
-      const mobile = document.getElementById('mobileNav');
-
-      toggle.addEventListener('click', () => {
-        const expanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!expanded));
-        mobile.classList.toggle('active');
-        mobile.setAttribute('aria-hidden', String(expanded));
-      });
-
-      // Fade-in on scroll (intersection observer)
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.15 });
-
-      document.querySelectorAll('.fade-in, .hero, .section-tools, #survey, .form-section').forEach(el => io.observe(el));
-
-      // Form submission: local thank you swap (keeps Formspree post)
-      const form = document.getElementById('applyForm');
-      const thank = document.getElementById('thankYou');
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const data = new FormData(form);
-        try {
-          const res = await fetch(form.action, {
-            method: 'POST',
-            body: data,
-            headers: { 'Accept': 'application/json' }
-          });
-          if (res.ok) {
-            form.hidden = true;
-            thank.hidden = false;
-          } else {
-            alert('There was a problem submitting the form. Please try again.');
-          }
-        } catch (err) {
-          alert('Network error — please try again later.');
-        }
-      });
-    })();
-  </script>
+  <script src="main.js" defer></script>
 </body>
 </html>
