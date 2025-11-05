@@ -153,13 +153,7 @@ body {
 }
 
 /* FAQ */
-.faq {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(6px);
-  border-radius: 16px;
-  margin: 3rem auto;
-  padding: 4rem 2rem;
-}
+.faq 
 .faq h2 {
   margin-bottom: 2rem;
   text-align: center;
@@ -185,14 +179,7 @@ body {
 }
 
 /* FEEDBACK */
-.feedback {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(6px);
-  border-radius: 16px;
-  margin: 3rem auto;
-  padding: 4rem 2rem;
-  text-align: left;
-}
+.feedback
 .feedback-image img {
   margin-top: 2rem;
   width: 100%;
