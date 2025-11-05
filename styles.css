@@ -160,6 +160,13 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .mobile-apply {
+    display: inline-block !important;
+    margin-top: 1rem;
+  }
+}
+
 /* Fade animation for mobile menu */
 @keyframes fadeIn {
   from {
