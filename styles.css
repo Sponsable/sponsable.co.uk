@@ -160,7 +160,7 @@ body {
   margin-bottom: 6rem; /* adds space below the FAQ section */
 }
 .faq h2 {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 .faq-grid {
@@ -185,6 +185,11 @@ body {
 
 /* FEEDBACK */
 .feedback
+
+.feedback h2 {
+  margin-bottom: 2rem;
+}
+
 .feedback-image img {
   margin-top: 2rem;
   width: 100%;
