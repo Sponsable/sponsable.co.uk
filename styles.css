@@ -252,11 +252,13 @@ body {
 
 /* APPLY */
 .apply-section {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 16px;
-  margin: 3rem auto;
-  padding: 4rem 2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  padding: 4rem 3rem; /* inner space */
+  margin: 5rem auto;  /* outer space */
+  width: 90%;
+  max-width: 1000px; /* optional - keeps it from touching edges on big screens */
   text-align: center;
 }
 .apply-form {
