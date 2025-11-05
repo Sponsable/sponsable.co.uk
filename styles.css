@@ -99,6 +99,10 @@ p {
   color: #fff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* HERO */
 .hero {
   background: linear-gradient(to bottom, #e8f1fa, #cfe3f5);
