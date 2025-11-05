@@ -156,7 +156,9 @@ body {
 }
 
 /* FAQ */
-.faq 
+.faq {
+  margin-bottom: 6rem; /* adds space below the FAQ section */
+}
 .faq h2 {
   margin-bottom: 2rem;
   text-align: center;
