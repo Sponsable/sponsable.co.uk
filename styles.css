@@ -421,3 +421,117 @@ select:focus {
     grid-template-columns: 1fr;
   }
 }
+
+
+
+
+/* ------------------------- */
+/* 📱 MOBILE FIXES (max 600px) */
+/* ------------------------- */
+@media (max-width: 600px) {
+  /* Prevent content from touching screen edges */
+  body {
+    padding: 0 1rem;
+  }
+
+  /* HEADER */
+  .nav {
+    display: none; /* hide full nav on tiny screens for now */
+  }
+
+  .btn.small.black {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  /* HERO */
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .hero-image img {
+    margin-top: 2rem;
+    max-width: 80%;
+  }
+
+  /* TOOLS */
+  .tools {
+    padding: 2rem 1.5rem;
+    margin: 3rem auto;
+  }
+
+  .tools-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .tools-image img {
+    max-width: 260px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .tools-text h2 {
+    font-size: 1.4rem;
+  }
+
+  /* FAQ */
+  .faq h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .faq-item {
+    padding: 1rem;
+  }
+
+  /* FEEDBACK */
+  .feedback .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .feedback h2 {
+    font-size: 1.5rem;
+  }
+
+  .feedback p {
+    font-size: 1rem;
+  }
+
+  /* APPLY */
+  .apply-section {
+    padding: 3rem 1.5rem;
+    margin: 3rem auto;
+  }
+
+  .apply-form {
+    padding: 1.5rem;
+  }
+
+  .cta.blue-pill {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  /* FOOTER */
+  .site-footer {
+    padding: 2rem 0;
+    font-size: 0.9rem;
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
