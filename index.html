@@ -7,13 +7,12 @@
     <link rel="stylesheet" href="styles.css" />
     <script defer src="main.js"></script>
   </head>
-
   <body>
     <!-- HEADER -->
     <header class="header">
       <div class="container nav-container">
         <div class="logo">
-          <img src="images/logo-bird-type.png" alt="Sponsable Logo" />
+          <img src="images/sponsable-logo.png" alt="Sponsable Logo" />
         </div>
         <nav class="nav" aria-label="Primary navigation">
           <a href="index.html" class="active">For Creators</a>
@@ -78,44 +77,42 @@
     <section class="faq">
       <div class="container">
         <h2>Everything you need to know before joining the Sponsable waitlist</h2>
-        <div class="faq-list">
-          <details>
+
+        <div class="faq-grid">
+          <details class="faq-item">
             <summary>What is an affiliate marketing platform and how does Sponsable benefit me?</summary>
             <p>
-              Sponsable connects creators with brands so you can earn commissions and build a
-              <strong>Sponsorship Score</strong> that proves your value to brands for long-term
-              partnerships.
+              Sponsable connects creators with brands so you can earn commissions by promoting products.
+              It also tracks your performance to build a <strong>Sponsorship Score</strong> that helps you secure real sponsorship opportunities.
             </p>
           </details>
 
-          <details>
+          <details class="faq-item">
             <summary>Do I pay a subscription to use Sponsable?</summary>
             <p>
-              No. Sponsable has a one-time £4.99 vetting fee — ensuring creators are authentic and brands are protected.
+              No subscription — just a one-time £4.99 vetting fee to ensure all creators meet our quality standards.
             </p>
           </details>
 
-          <details>
+          <details class="faq-item">
             <summary>Why is there a vetting process?</summary>
             <p>
-              To maintain a safe and high-quality space for brands and creators, ensuring only trusted, authentic influencers join.
+              It keeps Sponsable trusted for brands and creators by verifying authenticity and professionalism.
             </p>
           </details>
 
-          <details>
-            <summary>How do I find offers that fit my values?</summary>
+          <details class="faq-item">
+            <summary>How do I find offers that fit my values and audience?</summary>
             <p>
-              We tailor your recommendations based on your content and niche — and you can browse or favorite specific brands.
+              During onboarding, you complete a short questionnaire to help us match you with relevant campaigns and sponsorships.
             </p>
           </details>
 
-          <details>
-            <summary>What are the requirements to join?</summary>
-            <ul>
-              <li><strong>Authenticity:</strong> Verified audience and engagement.</li>
-              <li><strong>Alignment:</strong> Content aligns with brand ethics.</li>
-              <li><strong>Professionalism:</strong> Ongoing partnership quality checks.</li>
-            </ul>
+          <details class="faq-item">
+            <summary>What are the requirements to join Sponsable?</summary>
+            <p>
+              We evaluate creators for audience authenticity, content quality, and brand alignment to maintain a high standard platform.
+            </p>
           </details>
         </div>
       </div>
@@ -124,20 +121,19 @@
     <!-- FEEDBACK -->
     <section class="feedback">
       <div class="container feedback-content">
-        <div class="feedback-text">
-          <h2>
-            We’ve asked 168 athletes, 332 creators, 20 brands, and 50 agencies for feedback.
-          </h2>
-          <p>
-            Now we’d love to hear from you — share your insights to help us build a
-            fairer path to sponsorship.
-          </p>
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLScxCfHCeOSKGIpLuwHDKBzAFKExu0oSAaDGMMzc57yZ5B3uhA/viewform?usp=dialog"
-            class="btn black"
-            >Help Shape Sponsable</a
-          >
-        </div>
+        <h2>
+          We’ve asked 168 athletes, 332 creators, 20 brands, and 50 agencies for
+          feedback.
+        </h2>
+        <p>
+          Now we’d love to hear from you — share your insights to help us build a
+          fairer path to sponsorship.
+        </p>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLScxCfHCeOSKGIpLuwHDKBzAFKExu0oSAaDGMMzc57yZ5B3uhA/viewform?usp=dialog"
+          class="btn black"
+          >Help Shape Sponsable</a
+        >
         <div class="feedback-image">
           <img src="images/survey-phone-mockup.png" alt="App Display" />
         </div>
@@ -145,13 +141,13 @@
     </section>
 
     <!-- APPLY FORM -->
-    <section id="apply" class="form-section">
+    <section id="apply" class="apply-section">
       <div class="container">
         <h2>Apply To Join Sponsable</h2>
         <p>
           Sponsable is currently in pre-launch.<br />
           Fill out the form to get vetted and secure early access.<br />
-          No payment is collected until launch.
+          No payment is collected until the app officially launches.
         </p>
 
         <form
@@ -190,9 +186,7 @@
 
           <div class="form-actions">
             <button type="submit" class="cta blue-pill">Join the Waitlist</button>
-            <p class="muted">
-              We do not share your data. You may reapply if declined.
-            </p>
+            <p class="muted">We do not share your data. You may reapply if declined.</p>
           </div>
         </form>
 
@@ -217,5 +211,41 @@
         <div class="small muted">Ethical By Default.</div>
       </div>
     </footer>
+
+    <script>
+      // smooth apply form behavior
+      document.querySelector('.btn.small.black').addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector('#apply').scrollIntoView({ behavior: 'smooth' });
+      });
+
+      // header shadow on scroll
+      window.addEventListener('scroll', () => {
+        document.querySelector('.header').classList.toggle('scrolled', window.scrollY > 10);
+      });
+
+      // thank you form message
+      const form = document.getElementById('applyForm');
+      const thankYou = document.getElementById('thankYou');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+          if (response.ok) {
+            form.hidden = true;
+            thankYou.hidden = false;
+          } else {
+            alert('Oops! There was a problem submitting your form.');
+          }
+        } catch {
+          alert('Network error — please try again later.');
+        }
+      });
+    </script>
   </body>
 </html>
