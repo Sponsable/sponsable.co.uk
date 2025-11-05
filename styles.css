@@ -183,7 +183,7 @@ body {
   color: #444;
 }
 
-/* FEEDBACK SECTION (balanced like hero) */
+/* FEEDBACK SECTION */
 .feedback {
   background: transparent; /* same as hero now */
   padding: 6rem 0; /* generous spacing top/bottom */
@@ -246,6 +246,7 @@ body {
     margin-left: auto;
     margin-right: auto;
   }
+}
 
 /* APPLY */
 .apply-section {
