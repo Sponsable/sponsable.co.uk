@@ -18,6 +18,7 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  margin: 0 auto;
 }
 
 .container {
@@ -52,7 +53,7 @@ img {
 }
 
 .logo img {
-  height: 38px;
+  height: 48px; /* increased from 38px for better visibility */
 }
 
 /* NAV LINKS */
@@ -201,7 +202,7 @@ img {
 }
 
 /* =========================================================
-   HERO
+   HERO SECTION
 ========================================================= */
 .hero {
   padding: 6rem 0;
@@ -214,13 +215,14 @@ img {
   gap: 2rem;
 }
 
-.hero-text h1 {
-  font-size: 2.4rem;
+.hero-text h1,
+.hero-text h2 {
+  font-size: 2.3rem;
   margin-bottom: 1.2rem;
 }
 
 .hero-text p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
   max-width: 90%;
 }
 
@@ -231,17 +233,18 @@ img {
 }
 
 .hero-image img {
-  max-width: 400px;
-  transform: rotate(3deg);
+  width: 100%;
+  max-width: 600px; /* increased from 400px */
+  transform: rotate(2deg);
   transition: transform 0.3s ease;
 }
 
 .hero-image img:hover {
-  transform: rotate(0);
+  transform: rotate(0deg) scale(1.03);
 }
 
 /* =========================================================
-   TOOLS / FEATURES
+   TOOLS SECTION
 ========================================================= */
 .tools {
   background: rgba(255, 255, 255, 0.85);
@@ -256,22 +259,12 @@ img {
 .tools-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
   gap: 2rem;
-}
-
-.tools-text h2 {
-  font-size: 1.8rem;
-}
-
-.tools-text h3 {
-  color: #555;
-  font-weight: 600;
-  margin-bottom: 1rem;
+  align-items: center;
 }
 
 .tools-text ul {
-  margin: 1.5rem 0;
+  margin: 1rem 0 2rem;
   padding-left: 1.8rem;
 }
 
@@ -280,24 +273,14 @@ img {
 }
 
 .tools-image img {
-  max-width: 360px;
-}
-
-.tools.alt .tools-content {
-  grid-template-columns: 1fr 1fr;
-}
-
-/* =========================================================
-   CTA SECTION
-========================================================= */
-.hero-style {
-  background: rgba(255, 255, 255, 0.8);
-  padding: 6rem 0;
-  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  display: block;
 }
 
 /* =========================================================
-   BENEFITS
+   FAQ SECTION
 ========================================================= */
 .faq {
   padding: 4rem 0;
@@ -305,26 +288,60 @@ img {
 
 .faq h2 {
   text-align: center;
+  margin-bottom: 2.5rem;
   font-size: 2rem;
-  margin-bottom: 2rem;
 }
 
-.benefits-list {
-  list-style: disc;
+.faq-item {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 1.2rem 1.5rem;
+  background: #f7f9fc;
+  border-bottom: 1px solid #eee;
+}
+
+.faq-item summary:hover {
+  background: #eaf1f8;
+}
+
+.faq-body {
+  padding: 1.2rem 2rem;
+}
+
+.faq-body ul {
   padding-left: 2rem;
-  max-width: 800px;
-  margin: 0 auto;
+  margin: 0.8rem 0;
 }
 
-.benefits-list li {
-  margin-bottom: 0.8rem;
+.faq-body li {
+  margin-bottom: 0.5rem;
 }
 
 /* =========================================================
-   APPLY FORM
+   FEEDBACK (Hero style reuse)
+========================================================= */
+.hero-style {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 6rem 0;
+}
+
+.hero-style .hero-image img {
+  max-width: 550px; /* increased from 350px */
+}
+
+/* =========================================================
+   APPLY SECTION
 ========================================================= */
 .apply-section {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
   padding: 4rem 3rem;
@@ -338,9 +355,9 @@ img {
   margin-bottom: 1rem;
 }
 
-.intro-text {
+.apply-section .intro-text {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .apply-form .form-grid {
@@ -364,21 +381,22 @@ img {
   border: 1px solid #ccc;
 }
 
-.checkbox {
-  margin-top: 1.5rem;
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
 .form-actions {
   margin-top: 2rem;
   text-align: center;
 }
 
-.muted {
-  color: #666;
+.form-actions .muted {
+  margin-top: 0.5rem;
   font-size: 0.85rem;
+  color: #555;
+}
+
+.thank-you-message {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
 }
 
 /* =========================================================
@@ -391,12 +409,18 @@ img {
   text-align: center;
 }
 
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
 .footer-nav {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-top: 1rem;
+  justify-content: center;
 }
 
 .footer-nav a {
@@ -409,7 +433,7 @@ img {
 }
 
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE ADJUSTMENTS
 ========================================================= */
 @media (max-width: 992px) {
   .hero-content,
@@ -425,5 +449,14 @@ img {
 
   .apply-form .form-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-image img,
+  .hero-style .hero-image img,
+  .tools-image img {
+    max-width: 100%;
+    transform: none;
   }
 }
