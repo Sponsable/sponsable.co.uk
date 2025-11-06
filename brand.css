@@ -52,7 +52,7 @@ img {
 }
 
 .logo img {
-  height: 50px; /* larger logo for visibility */
+  height: 50px;
 }
 
 /* NAV LINKS */
@@ -87,97 +87,6 @@ img {
 }
 
 /* =========================================================
-   MOBILE MENU
-========================================================= */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  width: 32px;
-  height: 25px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.menu-toggle span {
-  width: 100%;
-  height: 3px;
-  background: #000;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-.menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translateY(8px);
-}
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-.menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-8px);
-}
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-  }
-
-  .nav {
-    position: absolute;
-    top: 70px;
-    right: 0;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.97);
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.4s ease;
-  }
-
-  .nav.show {
-    max-height: 500px;
-    opacity: 1;
-    transform: translateY(0);
-    padding: 2rem 0;
-  }
-
-  .nav a {
-    color: #000;
-    font-size: 1.1rem;
-  }
-
-  .apply-btn {
-    display: none;
-  }
-}
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-.btn {
-  display: inline-block;
-  padding: 0.8rem 1.4rem;
-  border-radius: 6px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.btn.black {
-  background: #000;
-  color: #fff;
-}
-
-.btn.black:hover {
-  background: #333;
-}
-
-/* =========================================================
    HERO SECTION
 ========================================================= */
 .hero {
@@ -203,7 +112,7 @@ img {
 
 .hero-image img {
   width: 100%;
-  max-width: 650px; /* was 400px */
+  max-width: 700px;
   transform: rotate(2deg);
   transition: transform 0.3s ease, scale 0.3s ease;
 }
@@ -213,33 +122,43 @@ img {
 }
 
 /* =========================================================
-   TOOLS SECTION
+   TOOLS SECTIONS
 ========================================================= */
 .tools {
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-  padding: 5rem 3rem;
-  margin: 5rem auto;
-  max-width: 1000px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  padding: 6rem 4rem;
+  margin: 6rem auto;
+  max-width: 1100px;
+  transition: transform 0.3s ease;
+}
+
+.tools:hover {
+  transform: translateY(-5px);
 }
 
 .tools-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 3rem;
+  gap: 4rem;
 }
 
 .tools-image img {
   width: 100%;
-  max-width: 600px; /* increased from 400px */
+  max-width: 700px; /* increased significantly */
   margin: 0 auto;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+.tools-image img:hover {
+  transform: scale(1.04);
 }
 
 .tools-text h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 0.5rem;
 }
 
@@ -259,59 +178,98 @@ img {
 }
 
 /* =========================================================
-   HERO STYLE (CTA)
+   HERO STYLE (Join Sponsable’s Brand Beta)
 ========================================================= */
 .hero-style {
-  background: rgba(255, 255, 255, 0.8);
-  padding: 6rem 0;
+  background: linear-gradient(135deg, #ffffffcc 0%, #eaf3ff 100%);
   text-align: center;
+  padding: 8rem 1rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  margin: 5rem auto;
+  max-width: 900px;
 }
 
-.hero-style .hero-image img {
-  max-width: 600px; /* was 350px */
+.hero-style .hero-text {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero-style h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-style p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.hero-style .btn {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 10px;
 }
 
 /* =========================================================
-   BENEFITS SECTION
+   WHY BRANDS CHOOSE SPONSABLE (FAQ)
 ========================================================= */
 .faq {
-  padding: 4rem 0;
+  padding: 6rem 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+  margin: 5rem auto;
+  max-width: 1100px;
+  text-align: center;
 }
 
 .faq h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2rem;
+  font-size: 2.4rem;
+  margin-bottom: 1.5rem;
 }
 
 .faq .section-intro {
-  text-align: center;
-  margin-bottom: 2rem;
-  max-width: 700px;
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 3rem;
+  max-width: 750px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .benefits-list {
-  max-width: 800px;
-  margin: 0 auto;
-  list-style: disc;
-  padding-left: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
 }
 
 .benefits-list li {
-  margin-bottom: 0.6rem;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.benefits-list li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
 }
 
 /* =========================================================
    APPLY SECTION
 ========================================================= */
 .apply-section {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
   padding: 4rem 3rem;
-  margin: 5rem auto;
+  margin: 6rem auto;
   max-width: 900px;
 }
 
@@ -438,8 +396,11 @@ img {
     padding: 3rem 1.5rem;
   }
 
-  .hero-image img,
-  .tools-image img {
-    transform: none;
+  .hero-style h2 {
+    font-size: 2rem;
+  }
+
+  .benefits-list {
+    grid-template-columns: 1fr;
   }
 }
