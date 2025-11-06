@@ -23,7 +23,7 @@ img {
 
 .container {
   width: 90%;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -49,11 +49,10 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
 }
 
 .logo img {
-  height: 48px; /* increased from 38px for better visibility */
+  height: 50px; /* larger logo for visibility */
 }
 
 /* NAV LINKS */
@@ -73,7 +72,6 @@ img {
   opacity: 0.8;
 }
 
-/* APPLY BUTTON */
 .apply-btn {
   background: #000;
   color: #fff;
@@ -89,23 +87,17 @@ img {
 }
 
 /* =========================================================
-   MOBILE MENU TOGGLE
+   MOBILE MENU
 ========================================================= */
 .menu-toggle {
   display: none;
   flex-direction: column;
-  justify-content: center;
   gap: 5px;
   width: 32px;
   height: 25px;
   background: none;
   border: none;
-  outline: none;
-  color: transparent;
-  font-size: 0;
-  position: relative;
   cursor: pointer;
-  z-index: 2000;
 }
 
 .menu-toggle span {
@@ -116,7 +108,6 @@ img {
   transition: all 0.3s ease;
 }
 
-/* Hamburger animation */
 .menu-toggle.active span:nth-child(1) {
   transform: rotate(45deg) translateY(8px);
 }
@@ -127,9 +118,6 @@ img {
   transform: rotate(-45deg) translateY(-8px);
 }
 
-/* =========================================================
-   MOBILE NAVIGATION
-========================================================= */
 @media (max-width: 768px) {
   .menu-toggle {
     display: flex;
@@ -161,7 +149,6 @@ img {
   .nav a {
     color: #000;
     font-size: 1.1rem;
-    font-weight: 500;
   }
 
   .apply-btn {
@@ -190,17 +177,6 @@ img {
   background: #333;
 }
 
-.btn.outline {
-  border: 2px solid #000;
-  color: #000;
-  background: transparent;
-}
-
-.btn.outline:hover {
-  background: #000;
-  color: #fff;
-}
-
 /* =========================================================
    HERO SECTION
 ========================================================= */
@@ -212,31 +188,24 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
 }
 
-.hero-text h1,
-.hero-text h2 {
-  font-size: 2.3rem;
-  margin-bottom: 1.2rem;
+.hero-text h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
 }
 
 .hero-text p {
-  margin-bottom: 1.8rem;
+  margin-bottom: 2rem;
   max-width: 90%;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
 }
 
 .hero-image img {
   width: 100%;
-  max-width: 600px; /* increased from 400px */
+  max-width: 650px; /* was 400px */
   transform: rotate(2deg);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, scale 0.3s ease;
 }
 
 .hero-image img:hover {
@@ -250,37 +219,60 @@ img {
   background: rgba(255, 255, 255, 0.85);
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-  padding: 4rem 3rem;
+  padding: 5rem 3rem;
   margin: 5rem auto;
-  max-width: 900px;
-  width: 90%;
+  max-width: 1000px;
 }
 
 .tools-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
   align-items: center;
-}
-
-.tools-text ul {
-  margin: 1rem 0 2rem;
-  padding-left: 1.8rem;
-}
-
-.tools-text li {
-  margin-bottom: 0.5rem;
+  gap: 3rem;
 }
 
 .tools-image img {
-  max-width: 500px;
   width: 100%;
+  max-width: 600px; /* increased from 400px */
   margin: 0 auto;
   display: block;
 }
 
+.tools-text h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.tools-text h3 {
+  color: #333;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.tools-text p {
+  margin-bottom: 1.5rem;
+}
+
+.tools-text ul {
+  margin-left: 1.5rem;
+  list-style: disc;
+}
+
 /* =========================================================
-   FAQ SECTION
+   HERO STYLE (CTA)
+========================================================= */
+.hero-style {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.hero-style .hero-image img {
+  max-width: 600px; /* was 350px */
+}
+
+/* =========================================================
+   BENEFITS SECTION
 ========================================================= */
 .faq {
   padding: 4rem 0;
@@ -288,53 +280,27 @@ img {
 
 .faq h2 {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   font-size: 2rem;
 }
 
-.faq-item {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  overflow: hidden;
+.faq .section-intro {
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.faq-item summary {
-  cursor: pointer;
-  font-weight: 600;
-  padding: 1.2rem 1.5rem;
-  background: #f7f9fc;
-  border-bottom: 1px solid #eee;
+.benefits-list {
+  max-width: 800px;
+  margin: 0 auto;
+  list-style: disc;
+  padding-left: 1.5rem;
 }
 
-.faq-item summary:hover {
-  background: #eaf1f8;
-}
-
-.faq-body {
-  padding: 1.2rem 2rem;
-}
-
-.faq-body ul {
-  padding-left: 2rem;
-  margin: 0.8rem 0;
-}
-
-.faq-body li {
-  margin-bottom: 0.5rem;
-}
-
-/* =========================================================
-   FEEDBACK (Hero style reuse)
-========================================================= */
-.hero-style {
-  background: rgba(255, 255, 255, 0.8);
-  padding: 6rem 0;
-}
-
-.hero-style .hero-image img {
-  max-width: 550px; /* increased from 350px */
+.benefits-list li {
+  margin-bottom: 0.6rem;
 }
 
 /* =========================================================
@@ -347,7 +313,6 @@ img {
   padding: 4rem 3rem;
   margin: 5rem auto;
   max-width: 900px;
-  width: 90%;
 }
 
 .apply-section h2 {
@@ -357,7 +322,7 @@ img {
 
 .apply-section .intro-text {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .apply-form .form-grid {
@@ -379,6 +344,13 @@ img {
   padding: 0.7rem;
   border-radius: 6px;
   border: 1px solid #ccc;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .form-actions {
@@ -433,7 +405,7 @@ img {
 }
 
 /* =========================================================
-   RESPONSIVE ADJUSTMENTS
+   RESPONSIVE
 ========================================================= */
 @media (max-width: 992px) {
   .hero-content,
@@ -447,16 +419,27 @@ img {
     order: -1;
   }
 
+  .hero-image img,
+  .tools-image img {
+    max-width: 100%;
+  }
+
   .apply-form .form-grid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .tools {
+    padding: 3rem 1.5rem;
+  }
+
   .hero-image img,
-  .hero-style .hero-image img,
   .tools-image img {
-    max-width: 100%;
     transform: none;
   }
 }
