@@ -251,6 +251,8 @@ img {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
   padding: 4rem 3rem;
   margin: 5rem auto;
+  max-width: 900px;
+  width: 90%;
 }
 
 .tools-content {
