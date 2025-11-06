@@ -8,7 +8,7 @@
 }
 
 body {
-  font-family: "Inter", "Helvetica", Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   color: #111;
   background: linear-gradient(to bottom, #7794b6 0%, #dffaff 100%);
   line-height: 1.6;
@@ -17,7 +17,6 @@ body {
 img {
   max-width: 100%;
   display: block;
-  height: auto;
 }
 
 .container {
@@ -33,10 +32,10 @@ img {
   background: rgba(119, 148, 182, 0.85);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 1rem 0;
   transition: box-shadow 0.3s ease;
 }
 
@@ -51,10 +50,10 @@ img {
 }
 
 .logo {
-  font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #fff;
+  letter-spacing: 0.5px;
 }
 
 /* NAVIGATION */
@@ -64,10 +63,10 @@ img {
 }
 
 .nav a {
-  text-decoration: none;
   color: #fff;
+  text-decoration: none;
   font-weight: 500;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s;
 }
 
 .nav a:hover {
@@ -78,14 +77,14 @@ img {
   text-decoration: underline;
 }
 
-/* APPLY / CTA BUTTON */
+/* APPLY CTA BUTTON */
 .apply-btn {
   background: #000;
   color: #fff;
   border-radius: 6px;
   padding: 0.6rem 1.2rem;
-  text-decoration: none;
   font-weight: 600;
+  text-decoration: none;
   transition: background 0.3s ease;
 }
 
@@ -93,77 +92,100 @@ img {
   background: #333;
 }
 
-/* MOBILE MENU TOGGLE */
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
 .menu-toggle {
   display: none;
+  font-size: 1.8rem;
   background: none;
   border: none;
-  font-size: 1.8rem;
   color: #fff;
   cursor: pointer;
 }
 
-/* MOBILE NAVIGATION */
 .mobile-nav {
   display: none;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.97);
+  text-align: center;
   position: absolute;
   top: 70px;
+  left: 0;
   right: 0;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 0;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
 }
 
 .mobile-nav a {
-  padding: 1rem;
+  display: block;
+  padding: 0.8rem;
   color: #000;
   text-decoration: none;
   font-weight: 500;
-  border-bottom: 1px solid #eee;
 }
 
-.mobile-nav a:last-child {
-  border-bottom: none;
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .mobile-nav.show {
+    display: flex;
+  }
+
+  .apply-btn {
+    display: none;
+  }
 }
 
 /* =========================================================
    HERO SECTION
 ========================================================= */
 .brand-hero {
-  padding: 6rem 0;
+  padding: 7rem 0;
   text-align: center;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 12px;
-  margin: 3rem auto;
-  width: 90%;
-  max-width: 900px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.brand-hero .hero-content {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .brand-hero h1 {
-  font-family: "Montserrat", sans-serif;
-  font-size: 2.5rem;
-  margin-bottom: 1.2rem;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 1rem;
 }
 
 .brand-hero p {
-  max-width: 700px;
-  margin: 0 auto 2rem;
   font-size: 1.1rem;
-  color: #333;
+  margin-bottom: 2rem;
 }
 
-/* CTA STYLES */
+.cta-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* =========================================================
+   CTA BUTTONS
+========================================================= */
 .cta {
   display: inline-block;
+  padding: 0.8rem 1.6rem;
+  border-radius: 6px;
   background: #000;
   color: #fff;
-  border-radius: 6px;
-  padding: 0.8rem 1.4rem;
-  text-decoration: none;
   font-weight: 600;
+  text-decoration: none;
   transition: all 0.3s ease;
 }
 
@@ -183,60 +205,61 @@ img {
 }
 
 .cta.pill {
-  border-radius: 30px;
+  border-radius: 999px;
 }
 
 /* =========================================================
    FEATURES SECTION
 ========================================================= */
 .features {
-  padding: 4rem 0;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  padding: 4rem 2rem;
+  margin: 4rem auto;
+  width: 90%;
+  max-width: 900px;
 }
 
-.feature {
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 14px;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.05);
-  padding: 2.5rem 2rem;
-  margin-bottom: 2rem;
+.feature + .feature {
+  margin-top: 3rem;
 }
 
 .feature h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.6rem;
-  font-family: "Montserrat", sans-serif;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
 }
 
 .feature h4 {
-  font-size: 1.1rem;
-  color: #444;
+  color: #333;
+  font-weight: 500;
   margin-bottom: 1rem;
 }
 
 .feature p {
   margin-bottom: 1rem;
+  color: #222;
 }
 
 .feature ul {
-  list-style: disc;
-  margin-left: 1.5rem;
+  padding-left: 1.5rem;
+  margin-top: 0.8rem;
 }
 
 .feature li {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 /* =========================================================
-   CTA SECTION
+   CTA SECTION (JOIN BETA)
 ========================================================= */
 .cta-section {
   text-align: center;
   padding: 5rem 1rem;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 16px;
+  margin: 4rem auto;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-  margin: 5rem auto;
-  width: 90%;
   max-width: 900px;
 }
 
@@ -246,8 +269,7 @@ img {
 }
 
 .cta-section p {
-  color: #333;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 /* =========================================================
@@ -255,30 +277,31 @@ img {
 ========================================================= */
 .highlight {
   background: rgba(255, 255, 255, 0.9);
-  padding: 5rem 0;
+  padding: 5rem 1rem;
 }
 
 .highlight h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
 }
 
 .section-intro {
   text-align: center;
-  margin: 0 auto 2rem;
   max-width: 700px;
+  margin: 0 auto 2.5rem;
   color: #333;
 }
 
 .benefits-list {
   list-style: disc;
-  margin: 0 auto;
   max-width: 800px;
+  margin: 0 auto;
   padding-left: 2rem;
 }
 
 .benefits-list li {
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.8rem;
 }
 
 /* =========================================================
@@ -291,7 +314,6 @@ img {
   padding: 4rem 3rem;
   margin: 5rem auto;
   max-width: 900px;
-  width: 90%;
 }
 
 .form-section h2 {
@@ -302,24 +324,23 @@ img {
 .form-section .lead {
   text-align: center;
   margin-bottom: 2.5rem;
-  color: #333;
 }
 
-.form-grid {
+form .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
 }
 
-label {
+form label {
   display: flex;
   flex-direction: column;
   font-weight: 500;
   color: #333;
 }
 
-input,
-select {
+form input,
+form select {
   margin-top: 0.5rem;
   padding: 0.7rem;
   border-radius: 6px;
@@ -330,14 +351,12 @@ select {
   font-size: 0.9rem;
 }
 
-.form-actions {
-  text-align: center;
-  margin-top: 2rem;
+.muted {
+  color: #666;
 }
 
-.muted {
-  color: #555;
-  font-size: 0.85rem;
+.form-actions {
+  margin-top: 2rem;
   text-align: center;
 }
 
@@ -346,6 +365,12 @@ select {
   padding: 3rem 1rem;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 12px;
+}
+
+@media (max-width: 992px) {
+  form .form-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* =========================================================
@@ -361,8 +386,8 @@ select {
 .footer-inner {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 1rem;
+  align-items: center;
 }
 
 .footer-nav {
@@ -379,39 +404,4 @@ select {
 
 .footer-nav a:hover {
   text-decoration: underline;
-}
-
-/* =========================================================
-   RESPONSIVE ADJUSTMENTS
-========================================================= */
-@media (max-width: 992px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .nav {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .mobile-nav.show {
-    display: flex;
-  }
-}
-
-@media (max-width: 600px) {
-  .brand-hero h1 {
-    font-size: 2rem;
-  }
-
-  .feature {
-    padding: 2rem 1.5rem;
-  }
-
-  .cta-section h2 {
-    font-size: 1.7rem;
-  }
 }
