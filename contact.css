@@ -1,16 +1,25 @@
 /* Import all core styles from brand.css */
 @import url("brand.css");
 
+
+/* Override Hero for a text-only layout */
+.hero-content {
+  grid-template-columns: 1fr;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-text p {
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem;
+}
 /* Form Section
   We anchor this to the top as the primary section.
 */
 
-.hero-image img {
-  width: 70%;
-  max-width: 300px;
-  transform: translateX(2rem) rotate(0deg); /* <-- ADD translateX HERE */
-  transition: transform 0.3s ease, scale 0.3s ease;
-}
 
 .apply-section {
   /* This was in brand.css, but ensure it has top padding */
