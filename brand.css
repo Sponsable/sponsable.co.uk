@@ -87,6 +87,11 @@ img {
   background: #333;
 }
 
+.nav a.active {
+  font-weight: 700;
+  border-bottom: 2px solid #fff;
+}
+
 /* =========================================================
    MOBILE MENU TOGGLE
 ========================================================= */
@@ -168,6 +173,11 @@ img {
   }
 }
 
+@media (max-width: 768px) {
+  .nav a.active {
+    border-bottom: 2px solid #000;
+  }
+}
 /* =========================================================
    BUTTONS
 ========================================================= */
@@ -476,6 +486,10 @@ img {
   text-decoration: underline;
 }
 
+.footer-nav a.active {
+  font-weight: 700;
+  text-decoration: underline;
+}
 /* =========================================================
    RESPONSIVE
 ========================================================= */
