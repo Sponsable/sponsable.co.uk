@@ -227,12 +227,12 @@ img {
 .hero-image img {
   width: 100%;
   max-width: 700px;
-  transform: rotate(2deg);
+  transform: rotate(0deg);
   transition: transform 0.3s ease, scale 0.3s ease;
 }
 
 .hero-image img:hover {
-  transform: rotate(0deg) scale(1.03);
+  transform: rotate(2deg) scale(1.03);
 }
 
 /* =========================================================
