@@ -83,3 +83,19 @@
     font-size: 1.8rem;
   }
 }
+/* --- ADD THESE RULES TO THE BOTTOM OF ABOUT.CSS --- */
+
+.about-content .about-image {
+  width: 100%;
+  border-radius: 12px;
+  margin: 1rem 0 1.25rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+.about-content .founder {
+  max-width: 300px; /* Headshot shouldn't be full width */
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border-radius: 50%; /* Makes it a circle */
+}
