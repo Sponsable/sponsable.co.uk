@@ -1,163 +1,212 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sponsable — For Agencies</title>
-  <meta name="description" content="Data that drives stronger partnerships" />
-  <link rel="stylesheet" href="agencies.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
+  <head>
+    <meta charset="UTF-Hence" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sponsable — For Agencies</title>
+    <link rel="stylesheet" href="agencies.css" />
+    <script defer src="js/main.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container nav-container">
+        <div class="logo">
+          <img src="images/sponsable-logo.png" alt="Sponsable Logo" />
+        </div>
 
-<body>
-  <!-- HEADER -->
-  <header class="site-header" id="siteHeader">
-    <div class="container header-inner">
-      <div class="logo">Sponsable</div>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="index.html">For Creators</a>
-        <a href="brands.html">For Brands</a>
-        <a href="agencies.html" class="active">For Agencies</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <a href="#brand-signup" class="cta apply-btn">Apply</a>
-      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" id="menuToggle">☰</button>
-    </div>
+        <button class="menu-toggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
 
-    <!-- MOBILE NAV -->
-    <div id="mobileNav" class="mobile-nav" aria-hidden="true">
-      <a href="index.html">For Creators</a>
-      <a href="brands.html">For Brands</a>
-      <a href="agencies.html" class="active">For Agencies</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="#brand-signup" class="cta">Apply</a>
-    </div>
-  </header>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="index.html">For Creators</a>
+          <a href="brands.html">For Brands</a>
+          <a href="agencies.html" class="active">For Agencies</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
 
-  <main>
-    <!-- HERO -->
-    <section class="brand-hero" aria-label="For Agencies">
-      <div class="hero-content">
-        <h1>Data that drives stronger partnerships</h1>
-        <p>
-          Empower your agency with verified insights that <strong>prove value, uncover opportunity, and simplify management.</strong>
-        </p>
-        <div class="cta-group">
-          <a href="#brand-signup" class="cta secondary pill">Apply for Beta Access</a>
+        <a href="#agency-signup" class="btn small black apply-btn">Apply</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1>Data That Drives Stronger Partnerships</h1>
+          <p>
+            Empower your agency with <strong>verified insights</strong> that
+            <strong>prove value, uncover opportunity, and simplify management.</strong>
+          </p>
+          <div class="hero-buttons">
+            <a href="#agency-signup" class="btn black">Apply for Beta Access</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img
+            src="images/AgencyDashboard.png"
+            alt="Sponsable Agency Dashboard"
+          />
         </div>
       </div>
     </section>
 
-    <!-- INTRO / CHALLENGE -->
-    <section id="challenge" class="section">
-      <div class="container two-col">
-        <div class="text-block">
-          <h2>Designed for agencies who lead with data.</h2>
-          <p>
-            Sponsable gives agencies a single platform to quantify athlete performance, discover emerging talent, and streamline campaign reporting — all backed by verified, real-time data.
-          </p>
+    <section class="tools">
+      <div class="container tools-content">
+        <div class="tools-image">
+          <img
+            src="images/CreatorAnalytics Background Removed.png"
+            alt="Verified Athlete Value"
+          />
         </div>
-        <div class="image-block">
-          <img src="images/AgencyDashboard.png" alt="Sponsable Agency Dashboard Preview" />
+        <div class="tools-text">
+          <h2>Verified Athlete Value</h2>
+          <h3>Move beyond assumptions — back every deal with evidence.</h3>
+          <p>
+            Sponsable captures data across affiliate sales, engagement, and
+            sentiment, transforming it into Sponsorship Scores that quantify
+            each athlete’s commercial impact.
+          </p>
+          <ul>
+            <li>Justify pricing with proof of performance</li>
+            <li>Build brand confidence for your clients</li>
+            <li>Strengthen long-term partnerships with data</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- FEATURES -->
-    <section class="features fade-in">
-      <div class="container">
-        <div class="feature">
-          <h3>Verified Athlete Value</h3>
-          <h4>Move beyond assumptions — back every deal with evidence.</h4>
+    <section class="tools alt">
+      <div class="container tools-content">
+        <div class="tools-text">
+          <h2>Advanced Talent Discovery</h2>
+          <h3>Identify rising talent through real performance indicators.</h3>
           <p>
-            Sponsable captures data across affiliate sales, engagement, and sentiment, transforming it into Sponsorship Scores that quantify each athlete’s commercial impact.
+            Access a vetted database of athletes already proving their market
+            value. Filter by sport, audience demographics, or performance data
+            to find high-potential talent faster than traditional scouting.
           </p>
           <ul>
-            <li>Justify pricing with proof</li>
-            <li>Build brand confidence</li>
-            <li>Strengthen long-term partnerships</li>
+            <li>Discover hidden talent and emerging stars early</li>
+            <li>Compare real commercial performance, not just followers</li>
+            <li>Gain a measurable competitive edge for your roster</li>
           </ul>
         </div>
-
-        <div class="feature">
-          <h3>Advanced Talent Discovery</h3>
-          <h4>Identify rising talent through real performance indicators.</h4>
-          <p>
-            Access a vetted database of athletes already proving their market value. Filter by sport, audience demographics, or performance data to find high-potential talent faster than traditional scouting.
-          </p>
-          <ul>
-            <li>Discover hidden talent early</li>
-            <li>Compare real commercial performance</li>
-            <li>Gain a measurable competitive edge</li>
-          </ul>
+        <div class="tools-image">
+          <img
+            src="images/CreatorDiscovery Background Removed.png"
+            alt="Advanced Talent Discovery"
+          />
         </div>
+      </div>
+    </section>
 
-        <div class="feature">
-          <h3>A Connected Data Dashboard</h3>
-          <h4>All your key performance data. One connected dashboard.</h4>
+    <section class="tools">
+      <div class="container tools-content">
+        <div class="tools-image">
+          <img
+            src="images/Campaign&AffiliateManagement Background Removed.png"
+            alt="Connected Data Dashboard"
+          />
+        </div>
+        <div class="tools-text">
+          <h2>A Connected Data Dashboard</h2>
+          <h3>All your key performance data. One connected dashboard.</h3>
           <p>
-            Track all your Sponsable-powered campaigns in one place. Export performance data to integrate with your existing workflow and make faster, data-driven decisions.
+            Track all your Sponsable-powered campaigns in one place. Export
+            performance data to integrate with your existing workflow and make
+            faster, data-driven decisions.
           </p>
           <ul>
-            <li>Save time and reduce admin</li>
-            <li>Simplify campaign reporting</li>
+            <li>Save time and reduce administrative overhead</li>
+            <li>Simplify campaign reporting for clients</li>
             <li>Focus on strategy, not spreadsheets</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="section cta-section">
-      <div class="container">
+    <section class="hero-style">
+      <div class="hero-text">
         <h2>Join Sponsable’s Agency Beta</h2>
-        <p>Gain an advantage over others.</p>
-        <a href="#brand-signup" class="cta pill">Apply for Beta Access</a>
+        <p>
+          Gain a data-driven advantage. Apply for early access to shape the
+          future of athlete management.
+        </p>
+        <a href="#agency-signup" class="btn black">Apply for Beta Access</a>
       </div>
     </section>
 
-    <!-- WHY AGENCIES CHOOSE SPONSABLE -->
-    <section id="brand-benefits" class="section highlight">
+    <section class="faq">
       <div class="container">
-        <h2>Built for data-driven agencies.</h2>
+        <div class="section-header">
+          <h2>Built for Data-Driven Agencies</h2>
+          <p class="section-intro">
+            Sponsable removes the guesswork, giving you the tools to quantify
+            value, build trust, and scale your operations with confidence.
+          </p>
+        </div>
+
         <ul class="benefits-list">
-          <li>Quantify athlete value with better data.</li>
-          <li>Build brand trust and renew partnerships.</li>
+          <li>Quantify athlete value with real sales data.</li>
+          <li>Build client trust and renew partnerships.</li>
           <li>Discover top-performing talent early.</li>
           <li>Streamline management and reporting.</li>
-          <li>Scale operations with confidence and efficiency.</li>
+          <li>Justify pricing and prove ROI.</li>
+          <li>Access a pre-vetted, authentic talent pool.</li>
+          <li>Mitigate risk with brand-safe creators.</li>
+          <li>Scale operations with efficiency.</li>
+          <li>Gain a competitive, data-driven edge.</li>
         </ul>
       </div>
     </section>
 
-    <!-- APPLY FORM -->
-    <section id="brand-signup" class="section form-section">
+    <section id="agency-signup" class="apply-section">
       <div class="container">
-        <h2>Apply for Beta Access</h2>
-        <p class="lead">
-          Before we launch, we’re partnering with forward-thinking agencies to shape the future of athlete management.
+        <h2>Apply for Agency Beta Access</h2>
+        <p class="intro-text">
+          Before we launch, we’re partnering with forward-thinking agencies.
+          Apply now to secure early access and help shape our platform.
         </p>
 
-        <form id="brandForm" action="https://formspree.io/f/mqayonna" method="POST">
+        <form
+          id="brandForm"
+          class="apply-form"
+          action="https://formspree.io/f/mqayonna"
+          method="POST"
+        >
           <div class="form-grid">
             <label>Agency Name
-              <input type="text" name="brand_name" placeholder="Your Agency" required />
+              <input
+                type="text"
+                name="brand_name"
+                placeholder="e.g. Summit Sports Media"
+                required
+              />
             </label>
-
             <label>Contact Name
-              <input type="text" name="contact_name" placeholder="Full Name" required />
+              <input
+                type="text"
+                name="contact_name"
+                placeholder="Full Name"
+                required
+              />
             </label>
-
             <label>Business Email
-              <input type="email" name="email" placeholder="you@agency.com" required />
+              <input
+                type="email"
+                name="email"
+                placeholder="you@agency.com"
+                required
+              />
             </label>
-
             <label>Website
-              <input type="url" name="website" placeholder="https://youragency.com" />
+              <input
+                type="url"
+                name="website"
+                placeholder="https://youragency.com"
+              />
             </label>
-
             <label>Industry
               <select name="industry" required>
                 <option value="">Select Industry</option>
@@ -171,18 +220,20 @@
             </label>
           </div>
 
-          <label class="small">
-            <input type="checkbox" name="vetting_agreement" value="agreed" required />
+          <label class="checkbox">
+            <input type="checkbox" name="vetting_agreement" required />
             I agree to Sponsable’s agency vetting process.
           </label>
 
           <div class="form-actions">
-            <button type="submit" class="cta pill">Apply for Beta Access</button>
+            <button type="submit" class="btn black square">
+              Apply for Beta Access
+            </button>
+            <p class="muted">
+              Your information remains confidential. You’ll be contacted before
+              the official agency launch.
+            </p>
           </div>
-
-          <p class="muted small">
-            Your information remains confidential. You’ll be contacted before the official agency launch.
-          </p>
         </form>
 
         <div id="thankYouBrand" class="thank-you-message" hidden>
@@ -191,51 +242,19 @@
         </div>
       </div>
     </section>
-  </main>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>&copy; 2025 Sponsable Ltd</div>
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="index.html">For Creators</a>
-        <a href="brands.html">For Brands</a>
-        <a href="agencies.html" class="active">For Agencies</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="small muted">Ethical by Default.</div>
-    </div>
-  </footer>
-
-  <script>
-    // JS: handle form submit
-    const brandForm = document.getElementById('brandForm');
-    const thankYouBrand = document.getElementById('thankYouBrand');
-
-    brandForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(brandForm);
-
-      try {
-        const response = await fetch(brandForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          brandForm.hidden = true;
-          thankYouBrand.hidden = false;
-        } else {
-          alert('Oops! There was a problem submitting your form.');
-        }
-      } catch (error) {
-        alert('Network error — please try again later.');
-      }
-    });
-  </script>
-
-  <script src="js/main.js" defer></script>
-</body>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>&copy; 2025 Sponsable Ltd</div>
+        <nav class="footer-nav">
+          <a href="index.html">For Creators</a>
+          <a href="brands.html">For Brands</a>
+          <a href="agencies.html" class="active">For Agencies</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="small muted">Ethical by Default.</div>
+      </div>
+    </footer>
+  </body>
 </html>
