@@ -4,6 +4,14 @@
 /* Form Section
   We anchor this to the top as the primary section.
 */
+
+.hero-image img {
+  width: 90%;
+  max-width: 500px;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease, scale 0.3s ease;
+}
+
 .apply-section {
   /* This was in brand.css, but ensure it has top padding */
   padding-top: 4rem;
