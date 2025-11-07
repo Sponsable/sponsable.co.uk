@@ -16,10 +16,51 @@
   font-size: 1.1rem;
 }
 
-/* New Styles for Contact Card Section */
+/* Form Section
+  We anchor this to the top as the primary section.
+*/
+.apply-section {
+  /* This was in brand.css, but ensure it has top padding */
+  padding-top: 4rem;
+}
+
+/* Form layout override */
+.apply-form .form-grid {
+  /* We have 3 items on top row */
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.apply-form .grid-span-all {
+  grid-column: 1 / -1; /* This makes the label span all columns */
+}
+
+/* Anti-spam honeypot field */
+.honeypot {
+  position: absolute;
+  left: -5000px;
+  visibility: hidden;
+}
+
+/* Style for the success message */
+.form-success {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(240, 255, 240, 0.9);
+  border: 1px solid #008000;
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+.form-success h3 {
+  margin-bottom: 0.5rem;
+}
+
+
+/* Contact Card Section (Now secondary)
+*/
 .contact-cards {
   padding: 4rem 0;
-  background: rgba(255, 255, 255, 0.5);
+  /* Faded background to show it's secondary */
+  background: var(--color-light-grey, #f9f9f9); 
 }
 
 .contact-grid {
@@ -58,28 +99,6 @@
   text-decoration: underline;
 }
 
-/* Form layout override */
-.apply-form .form-grid {
-  /* We have 3 items on top row */
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.apply-form .grid-span-all {
-  grid-column: 1 / -1; /* This makes the label span all columns */
-}
-
-/* Style for the success message */
-.form-success {
-  text-align: center;
-  padding: 2rem 1rem;
-  background: rgba(240, 255, 240, 0.9);
-  border: 1px solid #008000;
-  border-radius: 12px;
-  margin-top: 2rem;
-}
-.form-success h3 {
-  margin-bottom: 0.5rem;
-}
 
 /* Responsive */
 @media (max-width: 992px) {
