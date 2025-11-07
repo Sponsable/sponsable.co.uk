@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sponsable — For Agencies</title>
-  <meta name="description" content="Uncover opportunity. Simplify management" />
-<link rel="stylesheet" href="agencies.css" />
+  <meta name="description" content="Data that drives stronger partnerships" />
+  <link rel="stylesheet" href="agencies.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
@@ -28,37 +28,36 @@
     <!-- MOBILE NAV -->
     <div id="mobileNav" class="mobile-nav" aria-hidden="true">
       <a href="index.html">For Creators</a>
-        <a href="brands.html">For Brands</a>
-        <a href="agencies.html" class="active">For Agencies</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+      <a href="brands.html">For Brands</a>
+      <a href="agencies.html" class="active">For Agencies</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
       <a href="#brand-signup" class="cta">Apply</a>
     </div>
   </header>
 
   <main>
     <!-- HERO -->
-    <section class="brand-hero" aria-label="For Brands">
+    <section class="brand-hero" aria-label="For Agencies">
       <div class="hero-content">
         <h1>Data that drives stronger partnerships</h1>
         <p>
           Empower your agency with verified insights that <strong>prove value, uncover opportunity, and simplify management.</strong>
         </p>
         <div class="cta-group">
-          <a href="#brand-signup" class="cta secondary pill">Pre-Register Your Agency</a>
+          <a href="#brand-signup" class="cta secondary pill">Apply for Beta Access</a>
         </div>
       </div>
     </section>
 
-    <!-- CHALLENGE -->
+    <!-- INTRO / CHALLENGE -->
     <section id="challenge" class="section">
       <div class="container two-col">
         <div class="text-block">
           <h2>Designed for agencies who lead with data.</h2>
           <p>
-            Sponsable gives agencies a single platform to quantify athlete performance, discover emerging talent, and streamline campaign management — all backed by verified, real-time data.
+            Sponsable gives agencies a single platform to quantify athlete performance, discover emerging talent, and streamline campaign reporting — all backed by verified, real-time data.
           </p>
-         
         </div>
         <div class="image-block">
           <img src="images/AgencyDashboard.png" alt="Sponsable Agency Dashboard Preview" />
@@ -66,8 +65,8 @@
       </div>
     </section>
 
-   <!-- ===== FEATURES ===== -->
-    <section class="features fade-in" data-delay="2">
+    <!-- FEATURES -->
+    <section class="features fade-in">
       <div class="container">
         <div class="feature">
           <h3>Verified Athlete Value</h3>
@@ -96,140 +95,103 @@
         </div>
 
         <div class="feature">
-          <h3>Unified Roster & Campaign Management</h3>
-          <h4>All your data. One connected dashboard.</h4>
+          <h3>A Connected Data Dashboard</h3>
+          <h4>All your key performance data. One connected dashboard.</h4>
           <p>
-            Centralize your current roster, brand partnerships, and campaign performance in one place — automatically updated in real time. No more spreadsheets or manual reporting.
+            Track all your Sponsable-powered campaigns in one place. Export performance data to integrate with your existing workflow and make faster, data-driven decisions.
           </p>
           <ul>
             <li>Save time and reduce admin</li>
-            <li>Simplify campaign tracking</li>
-            <li>Make faster, data-driven decisions</li>
+            <li>Simplify campaign reporting</li>
+            <li>Focus on strategy, not spreadsheets</li>
           </ul>
         </div>
       </div>
     </section>
 
-
     <!-- CTA -->
     <section class="section cta-section">
       <div class="container">
         <h2>Join Sponsable’s Agency Beta</h2>
-        <p>Gain an advantage over others</p>
-        <a href="#brand-signup" class="cta pill">Apply Now</a>
+        <p>Gain an advantage over others.</p>
+        <a href="#brand-signup" class="cta pill">Apply for Beta Access</a>
       </div>
     </section>
-  </main>
-    
+
     <!-- WHY AGENCIES CHOOSE SPONSABLE -->
     <section id="brand-benefits" class="section highlight">
       <div class="container">
         <h2>Built for data-driven agencies.</h2>
         <ul class="benefits-list">
-          <li><strong>Quantify</strong> athlete <strong>value</strong> with better data.</li>
-          <li>Build brand <strong>trust</strong> and renew partnerships</li>
-          <li>Discover top-performing talent <strong>early</strong>.</li>
-          <li><strong>Streamline</strong> management and reporting</li>
-          <li><strong>Scale</strong> operations with confidence and efficiency</li>
+          <li>Quantify athlete value with better data.</li>
+          <li>Build brand trust and renew partnerships.</li>
+          <li>Discover top-performing talent early.</li>
+          <li>Streamline management and reporting.</li>
+          <li>Scale operations with confidence and efficiency.</li>
         </ul>
       </div>
     </section>
 
-<!-- BRAND FORM -->
-<section id="brand-signup" class="section form-section">
-  <div class="container">
-    <h2>Apply to Join Sponsable</h2>
-    <p class="lead">
-      Before we launch, we’re partnering with forward-thinking agencies to shape the future of athlete management.
-    </p>
+    <!-- APPLY FORM -->
+    <section id="brand-signup" class="section form-section">
+      <div class="container">
+        <h2>Apply for Beta Access</h2>
+        <p class="lead">
+          Before we launch, we’re partnering with forward-thinking agencies to shape the future of athlete management.
+        </p>
 
-    <form
-      id="brandForm"
-      action="https://formspree.io/f/mqayonna"
-      method="POST"
-    >
-      <div class="form-grid">
-        <label>Agency Name
-          <input type="text" name="brand_name" placeholder="Your Agency" required />
-        </label>
+        <form id="brandForm" action="https://formspree.io/f/mqayonna" method="POST">
+          <div class="form-grid">
+            <label>Agency Name
+              <input type="text" name="brand_name" placeholder="Your Agency" required />
+            </label>
 
-        <label>Contact Name
-          <input type="text" name="contact_name" placeholder="Full Name" required />
-        </label>
+            <label>Contact Name
+              <input type="text" name="contact_name" placeholder="Full Name" required />
+            </label>
 
-        <label>Business Email
-          <input type="email" name="email" placeholder="you@brand.com" required />
-        </label>
+            <label>Business Email
+              <input type="email" name="email" placeholder="you@agency.com" required />
+            </label>
 
-        <label>Website
-          <input type="url" name="website" placeholder="https://yourbrand.com" />
-        </label>
+            <label>Website
+              <input type="url" name="website" placeholder="https://youragency.com" />
+            </label>
 
-        <label>Industry
-          <select name="industry" required>
-            <option value="">Select Industry</option>
-            <option>Outdoor & Adventure</option>
-            <option>Fitness & Sports</option>
-            <option>Fashion & Lifestyle</option>
-            <option>Health & Wellness</option>
-            <option>Technology</option>
-            <option>Other</option>
-          </select>
-        </label>
+            <label>Industry
+              <select name="industry" required>
+                <option value="">Select Industry</option>
+                <option>Outdoor & Adventure</option>
+                <option>Fitness & Sports</option>
+                <option>Fashion & Lifestyle</option>
+                <option>Health & Wellness</option>
+                <option>Technology</option>
+                <option>Other</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="small">
+            <input type="checkbox" name="vetting_agreement" value="agreed" required />
+            I agree to Sponsable’s agency vetting process.
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="cta pill">Apply for Beta Access</button>
+          </div>
+
+          <p class="muted small">
+            Your information remains confidential. You’ll be contacted before the official agency launch.
+          </p>
+        </form>
+
+        <div id="thankYouBrand" class="thank-you-message" hidden>
+          <h3>Thank you for applying!</h3>
+          <p>We’ll review your agency application and reach out soon.</p>
+        </div>
       </div>
-
-      <label class="small">
-        <input type="checkbox" name="vetting_agreement" value="agreed" required />
-        I agree to Sponsable’s agency vetting process.
-      </label>
-
-      <div class="form-actions">
-        <button type="submit" class="cta pill">Join the Agency Waitlist</button>
-      </div>
-
-      <p class="muted small">
-        Your information remains confidential. You’ll be contacted before the official agency launch.
-      </p>
-    </form>
-
-    <!-- Hidden thank-you message -->
-    <div id="thankYouBrand" class="thank-you-message" hidden>
-      <h3>Thank you for applying!</h3>
-      <p>We’ll review your agency application and reach out soon.</p>
-    </div>
-  </div>
-</section>
-
-<script>
-  // JS to prevent redirect and show thank-you message instead
-  const brandForm = document.getElementById('brandForm');
-  const thankYouBrand = document.getElementById('thankYouBrand');
-
-  brandForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(brandForm);
-
-    try {
-      const response = await fetch(brandForm.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (response.ok) {
-        brandForm.hidden = true;
-        thankYouBrand.hidden = false;
-      } else {
-        alert('Oops! There was a problem submitting your form.');
-      }
-    } catch (error) {
-      alert('Network error — please try again later.');
-    }
-  });
-</script>
-
-
-   
+    </section>
+  </main>
 
   <!-- FOOTER -->
   <footer class="site-footer">
@@ -246,6 +208,34 @@
     </div>
   </footer>
 
-    <script src="js/main.js" defer></script>
+  <script>
+    // JS: handle form submit
+    const brandForm = document.getElementById('brandForm');
+    const thankYouBrand = document.getElementById('thankYouBrand');
+
+    brandForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(brandForm);
+
+      try {
+        const response = await fetch(brandForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          brandForm.hidden = true;
+          thankYouBrand.hidden = false;
+        } else {
+          alert('Oops! There was a problem submitting your form.');
+        }
+      } catch (error) {
+        alert('Network error — please try again later.');
+      }
+    });
+  </script>
+
+  <script src="js/main.js" defer></script>
 </body>
 </html>
