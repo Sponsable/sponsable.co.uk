@@ -1,190 +1,172 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sponsable — Affiliate Commissions with a Sponsorship Outcome</title>
-  <meta name="description" content="A Pathway To Sponsorship" />
-  <link rel="stylesheet" href="contact.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sponsable — Contact Us</title>
+    <link rel="stylesheet" href="contact.css" />
+    <script defer src="js/main.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container nav-container">
+        <div class="logo">
+          <img src="images/sponsable-logo.png" alt="Sponsable Logo" />
+        </div>
 
-<body>
-  <!-- HEADER -->
-  <header class="site-header" id="siteHeader">
-    <div class="container header-inner">
-      <div class="logo">Sponsable</div>
+        <button class="menu-toggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
 
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="index.html">For Creators</a>
-        <a href="brands.html">For Brands</a>
-        <a href="agencies.html">For Agencies</a>
-        <a href="about.html">About</a>
-        <a href="contact.html"class="active">Contact</a>
-      </nav>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="index.html">For Creators</a>
+          <a href="brands.html">For Brands</a>
+          <a href="agencies.html">For Agencies</a>
+          <a href="about.html">About</a>
+          <a href="contact.html" class="active">Contact</a>
+        </nav>
+        <a href="about.html#join" class="btn small black apply-btn">Apply</a>
+      </div>
+    </header>
 
-      <a href="about.html#pre-register" class="cta apply-btn">Apply</a>
-
-      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" id="menuToggle">☰</button>
-    </div>
-
-    <div id="mobileNav" class="mobile-nav" aria-hidden="true">
-       <a href="index.html">For Creators</a>
-        <a href="brands.html">For Brands</a>
-      <a href="agencies.html">For Agencies</a>
-        <a href="about.html">About</a>
-        <a href="contact.html"class="active">Contact</a>
-      <a href="about.html#pre-register" class="cta">Apply</a>
-    </div>
-  </header>
-
-  <!-- MAIN -->
-  <main>
-
-  <section class="hero fade-in" aria-label="Primary value proposition">
-  <div class="hero-overlay" role="img" aria-hidden="true"></div>
-  <div class="container hero-content">
-    <h1 class="brand-head">Drop us a Line :) </h1>
-    <p class="lead">
-      If you’d like to collaborate, cover our story, or explore partnership opportunities, we’d love to hear from you.
-    </p>
-  
-  </div>
-
-
-</section>
-
-
-
-     <!-- CONTACT INFO SECTION -->
-    <section class="contact-section">
-      <div class="container">
-        <h2>Contact Options</h2>
-        <p class="section-intro">
-          If you’d like to collaborate, cover our story, or explore partnership opportunities, we’d love to hear from you.
-        </p>
-
-        <div class="contact-grid">
-          <div class="contact-card">
-            <h3>General Enquiries</h3>
-            <a href="mailto:hello@sponsable.co.uk" class="email">hello@sponsable.co.uk</a>
-          </div>
-
-          <div class="contact-card">
-            <h3>Press & Media</h3>
-            <a href="mailto:press@sponsable.co.uk" class="email">press@sponsable.co.uk</a>
-            <a href="assets/Sponsable-Press-Kit.pdf" class="press-link">Download Press Kit →</a>
-          </div>
-
-          <div class="contact-card">
-            <h3>Partnerships & Collaborations</h3>
-            <a href="mailto:partners@sponsable.co.uk" class="email">partners@sponsable.co.uk</a>
-            <p class="small">We’re seeking early brand partners, agencies, and athlete networks who align with our mission.</p>
+    <main>
+      <section class="hero">
+        <div class="container hero-content">
+          <div class="hero-text">
+            <h1>Drop us a Line</h1>
+            <p>
+              If you’d like to collaborate, cover our story, or explore
+              partnership opportunities, we’d love to hear from you.
+            </p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-  <!-- CONTACT FORM SECTION -->
-<section class="form-section">
-  <div class="container">
-    <h2>Send Us a Message</h2>
+      <section class="contact-cards">
+        <div class="container">
+          <div class="contact-grid">
+            <div class="contact-card">
+              <h3>General Enquiries</h3>
+              <a href="mailto:hello@sponsable.co.uk" class="contact-link"
+                >hello@sponsable.co.uk</a
+              >
+            </div>
 
-    <form
-      class="contact-form"
-      id="contactForm"
-      action="https://formspree.io/f/mrbydppk"
-      method="POST"
-    >
-      <div class="form-grid">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Your full name" required />
+            <div class="contact-card">
+              <h3>Press & Media</h3>
+              <a href="mailto:press@sponsable.co.uk" class="contact-link"
+                >press@sponsable.co.uk</a
+              >
+              </div>
+
+            <div class="contact-card">
+              <h3>Partnerships</h3>
+              <a href="mailto:partners@sponsable.co.uk" class="contact-link"
+                >partners@sponsable.co.uk</a
+              >
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+      <section class="apply-section">
+        <div class="container">
+          <h2 style="text-align: center">Send Us a Message</h2>
+          
+          <form
+            id="contactForm"
+            class="apply-form"
+            action="https://formspree.io/f/mrbydppk"
+            method="POST"
+          >
+            <div class="form-grid">
+              <label>Name
+                <input name="name" type="text" placeholder="Your full name" required />
+              </label>
+
+              <label>Email
+                <input name="email" type="email" placeholder="you@example.com" required />
+              </label>
+
+              <label>I'm a...
+                <select name="role" required>
+                  <option value="">Select one...</option>
+                  <option>Creator</option>
+                  <option>Brand</option>
+                  <option>Agency</option>
+                  <option>Press</option>
+                  <option>Investor</option>
+                  <option>Other</option>
+                </select>
+              </label>
+              
+              <label class="grid-span-all">Message
+                <textarea
+                  name="message"
+                  rows="5"
+                  placeholder="Tell us how you'd like to collaborate..."
+                  required
+                ></textarea>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn black square">
+                Get in Touch
+              </button>
+            </div>
+            
+            <div class="form-success" id="contactSuccess" hidden>
+              <h3>Thank you!</h3>
+              <p>We'll review your message and be in touch soon.</p>
+            </div>
+          </form>
+
         </div>
+      </section>
+    </main>
 
-        <div class="form-group">
-          <label for="role">I’m a</label>
-          <select id="role" name="role" required>
-            <option value="">Select one</option>
-            <option>Creator</option>
-            <option>Brand</option>
-            <option>Press</option>
-            <option>Investor</option>
-            <option>Other</option>
-          </select>
-        </div>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>&copy; 2025 Sponsable Ltd</div>
+        <nav class="footer-nav">
+          <a href="index.html">For Creators</a>
+          <a href="brands.html">For Brands</a>
+          <a href="agencies.html">For Agencies</a>
+          <a href="about.html">About</a>
+          <a href="contact.html" class="active">Contact</a>
+        </nav>
+        <div class="small muted">Ethical By Default.</div>
       </div>
+    </footer>
 
-      <div class="form-group full">
-        <label for="message">Message</label>
-        <textarea
-          id="message"
-          name="message"
-          rows="5"
-          placeholder="Tell us how you'd like to collaborate..."
-          required
-        ></textarea>
-      </div>
+    <script>
+      const contactForm = document.getElementById("contactForm");
+      const contactSuccess = document.getElementById("contactSuccess");
 
-      <button type="submit" class="cta-pill">Get in Touch</button>
-      <p class="form-success" id="contactSuccess" hidden>
-        Thanks! We’ll be in touch soon.
-      </p>
-    </form>
-  </div>
-</section>
+      contactForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formData = new FormData(contactForm);
 
-<script>
-  // JS to handle submission without redirect
-  const contactForm = document.getElementById('contactForm');
-  const contactSuccess = document.getElementById('contactSuccess');
+        try {
+          const response = await fetch(contactForm.action, {
+            method: "POST",
+            body: formData,
+            headers: { Accept: "application/json" },
+          });
 
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(contactForm);
-
-    try {
-      const response = await fetch(contactForm.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
+          if (response.ok) {
+            contactForm.reset();
+            contactSuccess.hidden = false;
+            // Optional: hide the form itself
+            // contactForm.hidden = true; 
+          } else {
+            alert("Oops! There was a problem submitting your form.");
+          }
+        } catch (error) {
+          alert("Network error — please try again later.");
+        }
       });
-
-      if (response.ok) {
-        contactForm.reset();
-        contactSuccess.hidden = false;
-      } else {
-        alert('Oops! There was a problem submitting your form.');
-      }
-    } catch (error) {
-      alert('Network error — please try again later.');
-    }
-  });
-</script>
-
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="site-footer fade-in" data-delay="3">
-    <div class="container footer-inner">
-      <div>&copy; 2025 Sponsable Ltd</div>
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="index.html">For Creators</a>
-        <a href="brands.html">For Brands</a>
-        <a href="agencies.html">For Agencies</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="small muted">Ethical By Default.</div>
-    </div>
-  </footer>
-
-  <script src="js/main.js" defer></script>
-</body>
+    </script>
+  </body>
 </html>
