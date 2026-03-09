@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Fractional Team Problem — Sponsable</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a1e;
+      --ink-mid: #444450;
+      --ink-light: #888898;
+      --rule: #e2e2e8;
+      --accent: #2E4A7A;
+      --accent-light: #4A6FA5;
+      --accent-pale: #EEF2FA;
+      --bg: #FAFAF8;
+      --paper: #FFFFFF;
+      --serif: 'Lora', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
+
+    html { font-size: 18px; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--serif); line-height: 1.75; -webkit-font-smoothing: antialiased; }
+
+    .topbar { background: var(--paper); border-bottom: 1px solid var(--rule); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .topbar-brand { font-family: var(--sans); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+    .topbar-meta { font-family: var(--sans); font-size: 0.75rem; color: var(--ink-light); }
+
+    #progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); width: 0%; z-index: 200; transition: width 0.1s linear; }
+
+    .hero { max-width: 720px; margin: 0 auto; padding: 72px 24px 56px; border-bottom: 1px solid var(--rule); }
+    .hero-kicker { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .hero-kicker::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--accent-light); }
+    .hero h1 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 700; line-height: 1.2; color: var(--ink); margin-bottom: 20px; letter-spacing: -0.02em; }
+    .hero-sub { font-family: var(--serif); font-size: 1.1rem; color: var(--ink-mid); font-style: italic; line-height: 1.6; margin-bottom: 32px; max-width: 580px; }
+    .byline { display: flex; align-items: center; gap: 14px; font-family: var(--sans); font-size: 0.82rem; color: var(--ink-light); }
+    .byline-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-family: var(--sans); font-size: 0.75rem; font-weight: 700; color: white; flex-shrink: 0; }
+    .byline strong { display: block; color: var(--ink); font-weight: 600; font-size: 0.85rem; }
+
+    .article { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+    .article p { margin-bottom: 1.5rem; font-size: 1rem; color: var(--ink); }
+    .article h2 { font-family: var(--serif); font-size: 1.45rem; font-weight: 700; color: var(--ink); margin: 3rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent); letter-spacing: -0.01em; }
+
+    .pullquote { margin: 2.5rem 0; padding: 28px 32px; border-left: 4px solid var(--accent); background: var(--accent-pale); border-radius: 0 8px 8px 0; }
+    .pullquote p { font-family: var(--serif); font-size: 1.05rem; font-style: italic; color: var(--ink); margin: 0; line-height: 1.7; }
+
+    /* ── The four pillars ── */
+    .pillars {
+      margin: 2.5rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .pillar-card {
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--paper);
+      font-family: var(--sans);
+    }
+    .pillar-header {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pillar-icon {
+      width: 30px; height: 30px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; flex-shrink: 0;
+    }
+    .pillar-icon.production { background: #EEF2FA; }
+    .pillar-icon.legal      { background: #FFF9E6; }
+    .pillar-icon.safety     { background: #FFF0F0; }
+    .pillar-icon.coaching   { background: #F0FFF4; }
+    .pillar-title    { font-size: 0.82rem; font-weight: 700; color: var(--ink); }
+    .pillar-subtitle { font-size: 0.68rem; color: var(--ink-light); }
+    .pillar-body { padding: 14px 16px; }
+    .pillar-desc  { font-size: 0.78rem; color: var(--ink-mid); line-height: 1.55; }
+    .pillar-range { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); font-weight: 600; margin-top: 8px; }
+
+    /* ── Embedded moment flow ── */
+    .moment-flow { margin: 2.5rem 0; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+    .moment-flow-header {
+      background: var(--accent-pale); padding: 12px 20px;
+      font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent);
+    }
+    .moment-row {
+      display: grid; grid-template-columns: 200px 1fr;
+      border-top: 1px solid var(--rule); font-family: var(--sans);
+    }
+    .moment-trigger {
+      padding: 14px 16px; font-size: 0.78rem; font-weight: 600; color: var(--ink);
+      border-right: 1px solid var(--rule); background: var(--paper);
+      display: flex; align-items: center;
+    }
+    .moment-row:nth-child(odd) .moment-trigger,
+    .moment-row:nth-child(odd) .moment-suggestion { background: #F7F7F5; }
+    .moment-suggestion {
+      padding: 14px 16px; font-size: 0.78rem; color: var(--ink-mid);
+      line-height: 1.5; background: var(--paper); display: flex; align-items: center;
+    }
+    .moment-badge {
+      display: inline-block; font-family: var(--mono); font-size: 0.6rem;
+      font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 2px 7px; border-radius: 3px; margin-right: 8px; flex-shrink: 0;
+    }
+    .badge-legal      { background: #FFF9E6; color: #7B5E00; }
+    .badge-production { background: var(--accent-pale); color: var(--accent); }
+    .badge-safety     { background: #FFF0F0; color: #9B2C2C; }
+    .badge-coaching   { background: #F0FFF4; color: #276749; }
+
+    .divider { margin: 3rem 0; border: none; border-top: 1px solid var(--rule); }
+
+    .cta-block { margin-top: 3rem; padding: 36px; background: var(--accent); border-radius: 12px; text-align: center; color: white; }
+    .cta-block h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: white; text-transform: none; letter-spacing: 0; }
+    .cta-block p { font-family: var(--sans); font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 22px; }
+    .cta-btn { display: inline-block; background: white; color: var(--accent); font-family: var(--sans); font-weight: 700; font-size: 0.85rem; padding: 12px 28px; border-radius: 8px; text-decoration: none; letter-spacing: 0.04em; }
+
+    .tags { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-light); background: var(--accent-pale); border-radius: 20px; padding: 5px 12px; }
+
+    @media (max-width: 600px) {
+      html { font-size: 17px; }
+      .hero { padding: 48px 20px 40px; }
+      .article { padding: 40px 20px 60px; }
+      .pullquote, .cta-block { padding: 22px 20px; }
+      .pillars { grid-template-columns: 1fr; }
+      .moment-row { grid-template-columns: 1fr; }
+      .moment-trigger { border-right: none; border-bottom: 1px solid var(--rule); }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header class="topbar">
+  <div class="topbar-brand">Sponsable · The Brief</div>
+  <div class="topbar-meta">Sport &amp; Sponsorship · Long Read</div>
+</header>
+
+<div class="hero">
+  <div class="hero-kicker">Analysis &amp; Argument</div>
+  <h1>The Fractional Team Problem: Professional Athletes Need a Team. They Just Can't Justify One Full-Time.</h1>
+  <p class="hero-sub">
+    Lawyers, filmmakers, safety coordinators, coaches — every professional athlete needs all of them, each only a handful of times a year. The market for finding them has always been the same thing: who you happen to know.
+  </p>
+  <div class="byline">
+    <div class="byline-avatar">SP</div>
+    <div>
+      <strong>The Sponsable Team</strong>
+      Published June 2025 · 7 min read
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <p>
+    Running a professional sports career, at the commercial tier where sponsorship matters, requires more than an athlete and their discipline. At various points across a season, that career will need a contract reviewed, a project filmed, a technical shoot safely coordinated, and the kind of strategic coaching that keeps competitive performance and commercial development aligned. These are real, recurring professional needs.
+  </p>
+  <p>
+    None of them justifies a full-time hire. A good sports lawyer might be needed twice a year. An adventure filmmaker might be needed for one or two expeditions. A safety coordinator might be relevant for a single high-risk production. The needs are genuine; the cadence is episodic. And so the natural economic conclusion for most athletes is that these professionals are accessed informally — through personal networks, warm introductions, and community recommendations — or not at all.
+  </p>
+  <p>
+    The network-bound model works reasonably well for athletes who are embedded in established communities with deep professional connections. It works poorly for athletes who are newer, more geographically distributed, or operating in disciplines where the professional service layer around the sport has not been formalized. And it works for no one at the specific moment a need arrives unexpectedly — a contract lands on a Tuesday afternoon, and the question of who to call is one you either know the answer to already, or you don't.
+  </p>
+
+  <div class="pullquote">
+    <p>"The professional support an athlete needs to operate at a commercial standard is not exotic or expensive in aggregate. What makes it inaccessible is the combination of episodic demand and network dependency. You need the right person at the right moment — and whether you find them has historically depended entirely on whether you already know them."</p>
+  </div>
+
+  <h2>The Four Pillars</h2>
+
+  <p>
+    Across disciplines, the professional services that athletes need to operate effectively cluster consistently around four categories. The specifics vary by sport and career stage; the categories do not.
+  </p>
+
+  <div class="pillars">
+    <div class="pillar-card">
+      <div class="pillar-header">
+        <div class="pillar-icon production">🎬</div>
+        <div>
+          <div class="pillar-title">Production</div>
+          <div class="pillar-subtitle">Filmmakers, photographers, editors</div>
+        </div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-desc">Adventure filmmakers and photographers who understand the environments athletes work in — insured, experienced with extreme sport conditions, and available on a project basis rather than on retainer.</div>
+
+      </div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-header">
+        <div class="pillar-icon legal">⚖️</div>
+        <div>
+          <div class="pillar-title">Legal &amp; Negotiation</div>
+          <div class="pillar-subtitle">Sports lawyers, contract advisors</div>
+        </div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-desc">Vetted sports lawyers who can review and advise on contracts quickly — at a price point calibrated to working athlete budgets rather than corporate legal rates, and available without a pre-existing retainer relationship.</div>
+
+      </div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-header">
+        <div class="pillar-icon safety">🧗</div>
+        <div>
+          <div class="pillar-title">Safety &amp; Rigging</div>
+          <div class="pillar-subtitle">Coordinators, riggers, technical guides</div>
+        </div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-desc">High-altitude camera operators, technical riggers, and safety coordinators with the credentials and insurance to operate in the environments action sports production requires — available per project, locally where possible.</div>
+
+      </div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-header">
+        <div class="pillar-icon coaching">🏅</div>
+        <div>
+          <div class="pillar-title">Coaching &amp; Performance</div>
+          <div class="pillar-subtitle">Performance coaches, advisors</div>
+        </div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-desc">Performance coaches, sport psychologists, and commercial strategy advisors who understand the specific demands of professional action sport — supporting both the physical performance and the commercial development of an athlete's career.</div>
+
+      </div>
+    </div>
+  </div>
+
+  <h2>The Embedded Moment</h2>
+
+  <p>
+    A directory of these professionals, however well curated, solves only part of the problem. The other part is timing. The athlete who would benefit most from a contract review is not browsing a legal services marketplace in the abstract — they are responding to a contract that arrived this morning. The athlete planning a Norway expedition is most receptive to filmmaker suggestions while they are building the project pitch, not separately, not later.
+  </p>
+  <p>
+    The design principle that makes professional service access genuinely useful, rather than theoretically available, is contextual embedding — the right suggestion at the moment of highest relevance, surfaced inside the workflow that created the need.
+  </p>
+
+  <div class="moment-flow">
+    <div class="moment-flow-header">Service access at the moment it's actually needed</div>
+    <div class="moment-row">
+      <div class="moment-trigger">Contract received</div>
+      <div class="moment-suggestion"><span class="moment-badge badge-legal">Legal</span>Suggests vetted sports lawyers before the athlete responds to the brand</div>
+    </div>
+    <div class="moment-row">
+      <div class="moment-trigger">Project pitch being built</div>
+      <div class="moment-suggestion"><span class="moment-badge badge-production">Production</span>Recommends local filmmakers matched to the expedition geography and budget</div>
+    </div>
+    <div class="moment-row">
+      <div class="moment-trigger">Expedition or shoot flagged</div>
+      <div class="moment-suggestion"><span class="moment-badge badge-safety">Safety</span>Surfaces safety coordinators with credentials for the relevant environment</div>
+    </div>
+    <div class="moment-row">
+      <div class="moment-trigger">Campaign delivery begins</div>
+      <div class="moment-suggestion"><span class="moment-badge badge-coaching">Coaching</span>Connects to performance advisors to support execution through the season</div>
+    </div>
+  </div>
+
+  <p>
+    The result is not a separate marketplace the athlete has to remember to visit. It is professional support infrastructure embedded in the moments where that support is most needed — and most likely to be used.
+  </p>
+
+  <hr class="divider" />
+
+  <div class="cta-block">
+    <h3>Sponsable's Service Marketplace is the fractional team athletes have never had.</h3>
+    <p>Vetted filmmakers, sports lawyers, safety coordinators, and performance advisors — available on demand, at project scale, surfaced at the exact moment they're needed in your workflow.</p>
+    <a href="#" class="cta-btn">Join the waitlist →</a>
+  </div>
+
+  <div class="tags">
+    <span class="tag">Service Marketplace</span>
+    <span class="tag">Fractional Team</span>
+    <span class="tag">Legal &amp; Contracts</span>
+    <span class="tag">Production</span>
+    <span class="tag">Sports Marketing</span>
+  </div>
+
+</article>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const el = document.documentElement;
+    const scrolled = el.scrollTop || document.body.scrollTop;
+    const height = el.scrollHeight - el.clientHeight;
+    const pct = height > 0 ? (scrolled / height) * 100 : 0;
+    document.getElementById('progress').style.width = pct + '%';
+  });
+</script>
+
+</body>
+</html>

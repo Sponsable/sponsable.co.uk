@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Pitch Problem — Sponsable</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a1e;
+      --ink-mid: #444450;
+      --ink-light: #888898;
+      --rule: #e2e2e8;
+      --accent: #2E4A7A;
+      --accent-light: #4A6FA5;
+      --accent-pale: #EEF2FA;
+      --bg: #FAFAF8;
+      --paper: #FFFFFF;
+      --serif: 'Lora', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
+
+    html { font-size: 18px; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--serif); line-height: 1.75; -webkit-font-smoothing: antialiased; }
+
+    .topbar { background: var(--paper); border-bottom: 1px solid var(--rule); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .topbar-brand { font-family: var(--sans); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+    .topbar-meta { font-family: var(--sans); font-size: 0.75rem; color: var(--ink-light); }
+
+    #progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); width: 0%; z-index: 200; transition: width 0.1s linear; }
+
+    .hero { max-width: 720px; margin: 0 auto; padding: 72px 24px 56px; border-bottom: 1px solid var(--rule); }
+    .hero-kicker { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .hero-kicker::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--accent-light); }
+    .hero h1 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 700; line-height: 1.2; color: var(--ink); margin-bottom: 20px; letter-spacing: -0.02em; }
+    .hero-sub { font-family: var(--serif); font-size: 1.1rem; color: var(--ink-mid); font-style: italic; line-height: 1.6; margin-bottom: 32px; max-width: 580px; }
+    .byline { display: flex; align-items: center; gap: 14px; font-family: var(--sans); font-size: 0.82rem; color: var(--ink-light); }
+    .byline-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-family: var(--sans); font-size: 0.75rem; font-weight: 700; color: white; flex-shrink: 0; }
+    .byline strong { display: block; color: var(--ink); font-weight: 600; font-size: 0.85rem; }
+
+    .article { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+    .article p { margin-bottom: 1.5rem; font-size: 1rem; color: var(--ink); }
+    .article h2 { font-family: var(--serif); font-size: 1.45rem; font-weight: 700; color: var(--ink); margin: 3rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent); letter-spacing: -0.01em; }
+    .article h3 { font-family: var(--sans); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-light); margin: 2.2rem 0 0.8rem; }
+
+    .pullquote { margin: 2.5rem 0; padding: 28px 32px; border-left: 4px solid var(--accent); background: var(--accent-pale); border-radius: 0 8px 8px 0; }
+    .pullquote p { font-family: var(--serif); font-size: 1.05rem; font-style: italic; color: var(--ink); margin: 0; line-height: 1.7; }
+
+    .callout { background: var(--ink); color: white; border-radius: 10px; padding: 28px 32px; margin: 2.5rem 0; }
+    .callout-label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 12px; }
+    .callout p { font-family: var(--sans); font-size: 0.92rem; color: #d0d0e0; margin: 0; line-height: 1.7; }
+    .callout strong { color: white; }
+
+    /* ── The generic email vs project pitch comparison ── */
+    .email-compare {
+      margin: 2.5rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .email-card {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      font-family: var(--sans);
+    }
+    .email-card-header {
+      padding: 11px 16px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--rule);
+    }
+    .email-card-header.before { background: #FFF5F5; color: #9B2C2C; }
+    .email-card-header.after { background: #EEF6EE; color: #276749; }
+    .email-card-body { padding: 16px; background: var(--paper); }
+    .email-meta { font-size: 0.72rem; color: var(--ink-light); margin-bottom: 10px; line-height: 1.8; }
+    .email-meta span { display: block; }
+    .email-meta strong { color: var(--ink-mid); }
+    .email-subject { font-size: 0.85rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+    .email-body-text { font-size: 0.78rem; color: var(--ink-mid); line-height: 1.6; font-style: italic; }
+
+    /* ── Project card mock-up ── */
+    .project-card {
+      margin: 2.5rem 0;
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--paper);
+      font-family: var(--sans);
+      box-shadow: 0 2px 16px rgba(46,74,122,0.07);
+    }
+    .project-card-hero {
+      background: linear-gradient(135deg, #1a2f52 0%, var(--accent) 60%, #4A6FA5 100%);
+      padding: 28px 24px 22px;
+      color: white;
+    }
+    .project-card-tag {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 10px;
+    }
+    .project-card-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .project-card-sub {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.5;
+    }
+    .project-card-budget {
+      margin-top: 16px;
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: white;
+    }
+    .project-card-body { padding: 20px 24px; }
+    .project-section-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 10px;
+      margin-top: 18px;
+    }
+    .project-section-label:first-child { margin-top: 0; }
+    .deliverable-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.82rem;
+    }
+    .deliverable-row:last-child { border-bottom: none; }
+    .deliverable-name { color: var(--ink); font-weight: 500; }
+    .deliverable-count { color: var(--accent-light); font-family: var(--mono); font-size: 0.75rem; }
+    .budget-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.8rem;
+    }
+    .budget-line:last-child { border-bottom: none; }
+    .budget-line-name { color: var(--ink-mid); }
+    .budget-line-amount { font-family: var(--mono); font-size: 0.78rem; color: var(--ink); }
+    .budget-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0 0;
+      margin-top: 4px;
+      border-top: 2px solid var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .budget-total-label { color: var(--ink); }
+    .budget-total-amount { font-family: var(--mono); color: var(--accent); }
+    .project-demo-strip {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .demo-chip {
+      background: var(--accent-pale);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    .project-card-footer {
+      padding: 14px 24px;
+      background: var(--accent-pale);
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+    }
+    .project-card-footer-left { color: var(--ink-mid); }
+    .project-card-footer-right {
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      font-size: 0.75rem;
+      padding: 7px 16px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Spectrum: abstract → concrete ── */
+    .spectrum {
+      margin: 2.5rem 0;
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .spectrum-header {
+      background: var(--accent-pale);
+      padding: 12px 20px;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .spectrum-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans);
+    }
+    .spectrum-tier {
+      padding: 14px 16px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-right: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+    }
+    .spectrum-row:nth-child(2) .spectrum-tier { background: #FFF5F5; color: #9B2C2C; }
+    .spectrum-row:nth-child(3) .spectrum-tier { background: #FFF9E6; color: #7B5E00; }
+    .spectrum-row:nth-child(4) .spectrum-tier { background: #EEF6EE; color: #276749; }
+    .spectrum-content { padding: 14px 18px; font-size: 0.82rem; color: var(--ink-mid); line-height: 1.55; background: var(--paper); }
+    .spectrum-row:nth-child(odd) .spectrum-content { background: var(--bg); }
+
+    /* ── Brand decision framework ── */
+    .decision-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-family: var(--sans); font-size: 0.85rem; }
+    .decision-table th { background: var(--ink); color: white; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 0.78rem; letter-spacing: 0.06em; }
+    .decision-table td { padding: 12px 16px; border-bottom: 1px solid var(--rule); color: var(--ink); vertical-align: top; }
+    .decision-table tr:nth-child(even) td { background: var(--accent-pale); }
+    .decision-table tr:last-child td { border-bottom: none; }
+
+    .divider { margin: 3rem 0; border: none; border-top: 1px solid var(--rule); }
+
+    .cta-block { margin-top: 3rem; padding: 36px; background: var(--accent); border-radius: 12px; text-align: center; color: white; }
+    .cta-block h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: white; text-transform: none; letter-spacing: 0; }
+    .cta-block p { font-family: var(--sans); font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 22px; }
+    .cta-btn { display: inline-block; background: white; color: var(--accent); font-family: var(--sans); font-weight: 700; font-size: 0.85rem; padding: 12px 28px; border-radius: 8px; text-decoration: none; letter-spacing: 0.04em; }
+
+    .tags { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-light); background: var(--accent-pale); border-radius: 20px; padding: 5px 12px; }
+
+    @media (max-width: 600px) {
+      html { font-size: 17px; }
+      .hero { padding: 48px 20px 40px; }
+      .article { padding: 40px 20px 60px; }
+      .pullquote, .callout, .cta-block { padding: 22px 20px; }
+      .email-compare { grid-template-columns: 1fr; }
+      .spectrum-row { grid-template-columns: 1fr; }
+      .spectrum-tier { border-right: none; border-bottom: 1px solid var(--rule); }
+      .project-card-footer { flex-direction: column; gap: 10px; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header class="topbar">
+  <div class="topbar-brand">Sponsable · The Brief</div>
+  <div class="topbar-meta">Sport &amp; Sponsorship · Long Read</div>
+</header>
+
+<div class="hero">
+  <div class="hero-kicker">Analysis &amp; Argument</div>
+  <h1>The Pitch Problem: Why "Sponsor Me" Emails Fail — and What Brands Actually Need to Say Yes</h1>
+  <p class="hero-sub">
+    The sponsorship pitch has been the same for decades: a request, a profile, a hope. It asks brands to imagine a relationship rather than evaluate a proposal. The fix is not better writing — it is a different structure entirely.
+  </p>
+  <div class="byline">
+    <div class="byline-avatar">SP</div>
+    <div>
+      <strong>The Sponsable Team</strong>
+      Published June 2025 · 13 min read
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <p>
+    There is a template that circulates in athlete communities, shared in forums and coaching programmes with the promise that it will improve sponsorship conversion rates. It typically runs to three or four paragraphs. It opens with a brief introduction of the athlete, moves to a description of their competitive achievements and social following, includes something about shared values with the brand, and closes with an invitation to discuss a potential partnership. It is competently written. It is also, from a brand manager's perspective, almost useless.
+  </p>
+  <p>
+    Not because the athlete sending it lacks credibility, or because the brand has no interest in sport partnerships, but because the email asks the brand to do the majority of the cognitive work required to convert the pitch into a decision. It says: here is a person who might be worth working with. The brand manager receiving it must then figure out what working together would actually look like — what it would cost, what it would produce, what it would mean for their current campaign calendar, how it would be explained to the people who approve budgets. That is a significant amount of work to generate from an introductory email, and most brand managers simply do not do it.
+  </p>
+  <p>
+    The template-pitch problem is not a problem of athlete quality or writing skill. It is a structural problem with the pitch format itself. The generic sponsorship email is an optimistic gesture toward a relationship. What a brand manager needs to make a decision is a concrete proposal for a specific project with a defined scope, deliverables, timeline, and budget. These are not the same thing, and conflating them is the central failure of the way athletes currently approach outbound commercial development.
+  </p>
+
+  <h2>I. What a Brand Manager Actually Evaluates</h2>
+
+  <p>
+    Understanding why the generic pitch fails requires understanding what happens on the receiving end — the internal process through which a brand manager translates external commercial interest into a budget-approved partnership.
+  </p>
+  <p>
+    The brand manager who receives a sponsorship pitch is not making the decision alone. They are, in most cases, constructing a case that will be evaluated by a broader team: a marketing director who wants to understand strategic fit, a finance function that wants to understand cost and return, and potentially a legal or procurement team that wants to understand contract structure. The pitch that the brand manager receives needs to be translatable into a format that each of those stakeholders can evaluate in the terms they care about.
+  </p>
+  <p>
+    A generic sponsorship pitch — "here is who I am, here is my audience, let's discuss working together" — gives the brand manager almost nothing to work with in that internal process. There is no budget to evaluate against the marketing plan. There is no deliverable structure to present to the creative team. There is no timeline to align with the campaign calendar. The brand manager who finds the pitch genuinely interesting is forced to construct all of these elements themselves before they can take the conversation anywhere internally — and most of the time, that construction does not happen, because there are other priorities.
+  </p>
+
+  <div class="callout">
+    <div class="callout-label">The construction burden</div>
+    <p>A generic pitch asks the brand to do the work of turning potential into a proposal. <strong>The brand manager who likes the athlete still has to invent the campaign, estimate the budget, imagine the deliverables, and argue for something that doesn't yet exist.</strong> The proposal that does this work in advance removes the primary obstacle between brand interest and brand approval.</p>
+  </div>
+
+  <h2>II. The Abstraction Problem</h2>
+
+  <p>
+    There is a spectrum that runs from abstract to concrete in how athletes present commercial opportunities, and the position on that spectrum is a reliable predictor of how likely the pitch is to convert.
+  </p>
+
+  <div class="spectrum">
+    <div class="spectrum-header">The pitch concreteness spectrum</div>
+    <div class="spectrum-row">
+      <div class="spectrum-tier">Generic</div>
+      <div class="spectrum-content">"I would love to represent your brand. I have 45,000 followers across Instagram and YouTube and compete internationally. My audience aligns with your target demographic. Let me know if you'd like to chat."</div>
+    </div>
+    <div class="spectrum-row">
+      <div class="spectrum-tier">Partial</div>
+      <div class="spectrum-content">"I'm planning a winter expedition to the Norwegian fjords and I think your brand would be a great fit. I can offer four Instagram posts, a YouTube video, and product placement throughout. Open to discussing terms."</div>
+    </div>
+    <div class="spectrum-row">
+      <div class="spectrum-tier">Concrete</div>
+      <div class="spectrum-content">"I'm pitching a six-week van life expedition in Norway, February–March 2026. Budget: £4,800. Deliverables: 6 × Instagram Reels (est. 18K views each), 2 × YouTube vlogs (est. 9K views each), product feature in one editorial. Audience: 72% male, 24–38, UK/EU. Your logo visible across all assets."</div>
+    </div>
+  </div>
+
+  <p>
+    The progression from generic to concrete is not merely stylistic. Each step down the spectrum reduces the amount of work the brand must do to evaluate the pitch, and increases the probability that the pitch reaches the approval process rather than sitting in a "maybe" folder. The concrete pitch has, in effect, pre-built the internal business case. The brand manager receiving it can copy the deliverable list into a briefing document, attach the budget line to a campaign plan, and present the proposal to their team in a form that is ready for evaluation.
+  </p>
+  <p>
+    The reason most pitches sit at the generic end of the spectrum is not that athletes are unaware of the value of concrete proposals — it is that constructing a concrete proposal is genuinely difficult without the structure to do it, and without any guarantee that the investment of time in producing a detailed pitch will yield a response. The athlete who spends two hours building a detailed project proposal for a brand that never replies has lost two hours. The athlete who sends a generic email in ten minutes has lost less, even if the conversion rate is correspondingly lower. The rational response to the absence of pitch infrastructure is the generic email.
+  </p>
+
+  <h2>III. The Reverse RFP</h2>
+
+  <p>
+    The model that most naturally solves the pitch problem already exists in adjacent commercial contexts, under various names. In procurement, it is the request for proposal inverted: rather than the buyer specifying requirements and soliciting bids, the supplier presents a defined project and invites the buyer to evaluate it. In creative industries, it appears as the speculative pitch — the agency that presents a campaign concept rather than a capabilities document. In freelance platforms, it is the project listing: a defined scope, a defined deliverable, a defined price, browsable by buyers who are evaluating fit.
+  </p>
+  <p>
+    What these models have in common is that they transfer the work of conceptualisation from the buyer to the seller. The seller — the athlete, the agency, the freelancer — does the upfront work of defining what they are offering and at what price. The buyer evaluates a concrete proposal rather than an open-ended possibility. The cognitive work that prevents a genuinely interested buyer from converting their interest into a decision is done before the conversation begins.
+  </p>
+  <p>
+    Applied to athlete sponsorship, this model looks like a marketplace of defined projects rather than a directory of available talent. The athlete does not present themselves in the abstract and wait for a brand to imagine a collaboration. They present a specific campaign — a location, a duration, a set of deliverables, a budget — and the brand evaluates whether that specific proposal fits their commercial needs. The question changes from "could we work together?" to "do we want to buy this project?"
+  </p>
+
+  <div class="pullquote">
+    <p>"The shift from profile to project is a shift in who carries the imaginative burden of the commercial relationship. When athletes carry it — when they do the work of turning their plans into proposable campaigns — brands can evaluate rather than speculate. That is a fundamentally more efficient commercial conversation."</p>
+  </div>
+
+  <h2>IV. What a Project Pitch Actually Contains</h2>
+
+  <p>
+    The anatomy of a well-constructed project pitch is worth examining in detail, because the individual components each remove a specific obstacle that brand managers face in the evaluation process.
+  </p>
+  <p>
+    Here is what a structured project pitch looks like when built properly — not the generic email, but the complete commercial object:
+  </p>
+
+  <div class="project-card">
+    <div class="project-card-hero">
+      <div class="project-card-tag">Project Pitch · Adventure / Travel</div>
+      <div class="project-card-title">Van Life in Norway — Winter Edition</div>
+      <div class="project-card-sub">6-week expedition along the Norwegian coast, February – March 2026. Arctic conditions, authentic product use, coastal and mountain environments.</div>
+      <div class="project-card-budget">Total Budget: £4,800</div>
+    </div>
+    <div class="project-card-body">
+      <div class="project-section-label">Deliverables</div>
+      <div class="deliverable-row"><span class="deliverable-name">Instagram Reels</span><span class="deliverable-count">6 × posts · est. 18K views each</span></div>
+      <div class="deliverable-row"><span class="deliverable-name">YouTube Vlogs</span><span class="deliverable-count">2 × videos · est. 9K views each</span></div>
+      <div class="deliverable-row"><span class="deliverable-name">Stories (product feature)</span><span class="deliverable-count">12 × stories across 6 weeks</span></div>
+      <div class="deliverable-row"><span class="deliverable-name">Editorial photo set</span><span class="deliverable-count">20 × hi-res, licensed for brand use</span></div>
+
+      <div class="project-section-label">Budget Breakdown</div>
+      <div class="budget-line"><span class="budget-line-name">Travel &amp; logistics (Norway)</span><span class="budget-line-amount">£2,200</span></div>
+      <div class="budget-line"><span class="budget-line-name">Production &amp; post-production</span><span class="budget-line-amount">£1,400</span></div>
+      <div class="budget-line"><span class="budget-line-name">Equipment &amp; safety</span><span class="budget-line-amount">£700</span></div>
+      <div class="budget-line"><span class="budget-line-name">Athlete fee</span><span class="budget-line-amount">£500</span></div>
+      <div class="budget-total"><span class="budget-total-label">Total ask</span><span class="budget-total-amount">£4,800</span></div>
+
+      <div class="project-section-label">Audience Profile</div>
+      <div class="project-demo-strip">
+        <span class="demo-chip">72% Male</span>
+        <span class="demo-chip">Age 24–38</span>
+        <span class="demo-chip">UK · DE · NO · FR</span>
+        <span class="demo-chip">Outdoor / Adventure</span>
+        <span class="demo-chip">18K median reach</span>
+        <span class="demo-chip">3.4% engagement</span>
+      </div>
+    </div>
+    <div class="project-card-footer">
+      <div class="project-card-footer-left">Category open: Gear · Vehicles · Apparel · Nutrition · Travel · Tech</div>
+      <div class="project-card-footer-right">Express interest →</div>
+    </div>
+  </div>
+
+  <p>
+    Each component of this pitch is doing specific commercial work. The title and location immediately establish the content category and the brand associations available — winter, coastal, Arctic, van life. The deliverable list gives the brand's creative team something concrete to evaluate. The line-item budget removes the most common reason brand managers do not pursue a conversation: not knowing whether the ask is in their range before committing the time to find out. The audience demographics allow the media planning function to evaluate reach and efficiency without requiring a separate data request. The category availability signals which brand relationships the athlete is open to without compromising any existing partnerships.
+  </p>
+  <p>
+    Individually, none of these components is new information. Athletes have always had planned expeditions, social audiences, and budget requirements. What is new is their assembly into a single, structured object that a brand manager can evaluate in the same way they evaluate any other marketing investment — by reading it, not by reconstructing it from fragments of an email thread.
+  </p>
+
+  <h2>V. The Brand Perspective: Browsing vs. Evaluating</h2>
+
+  <p>
+    The difference between a talent directory and a project marketplace is most visible from the brand side, where it changes the nature of the commercial decision in a way that goes beyond convenience.
+  </p>
+  <p>
+    A talent directory presents athletes as potential partners. The brand browses profiles, develops impressions of fit, and initiates conversations about what a collaboration might look like. This process is relationship-forward — it begins with chemistry and constructs the commercial case afterwards. It is also time-intensive, difficult to compare across athletes, and inherently speculative: the brand is imagining partnerships that do not yet have defined shapes.
+  </p>
+  <p>
+    A project marketplace presents campaigns as potential purchases. The brand browses proposals with defined scopes, deliverables, and budgets, and evaluates whether any of them represent good value for a specific commercial need. This process is brief-forward — it begins with what the brand needs and asks whether a listed project fits. It is more efficient, directly comparable across proposals, and concrete: the brand is evaluating something real rather than imagining something hypothetical.
+  </p>
+
+  <table class="decision-table">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>Talent directory</th>
+        <th>Project marketplace</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Starting point</td>
+        <td>Who might we work with?</td>
+        <td>Which of these projects fits our brief?</td>
+      </tr>
+      <tr>
+        <td>Cognitive work for brand</td>
+        <td>High — must imagine the campaign</td>
+        <td>Low — campaign is already defined</td>
+      </tr>
+      <tr>
+        <td>Budget visibility</td>
+        <td>Revealed late in negotiation</td>
+        <td>Visible before first conversation</td>
+      </tr>
+      <tr>
+        <td>Cross-athlete comparison</td>
+        <td>Difficult — different profiles, no common format</td>
+        <td>Direct — same structure across all proposals</td>
+      </tr>
+      <tr>
+        <td>Time to first decision</td>
+        <td>Long — requires multiple rounds of scoping</td>
+        <td>Short — evaluate the proposal as presented</td>
+      </tr>
+      <tr>
+        <td>Internal approval path</td>
+        <td>Brand must construct the business case</td>
+        <td>Pitch already contains the business case</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Neither model is universally superior. The talent directory model makes more sense for long-term strategic partnerships — the kind of multi-year relationship where brand and athlete build an identity together, where the campaign is less important than the association. The project marketplace model makes more sense for campaign-level engagements — the kind of specific, defined activation where a brand wants to reach a particular audience through a particular kind of content in a particular window.
+  </p>
+  <p>
+    In practice, most athlete-brand relationships that are not already at the level of long-term strategic partnership would benefit from beginning in project marketplace logic rather than talent directory logic. The project pitch is a lower-stakes, faster, more evaluable entry point. It is much easier for a brand to say yes to a defined, budgeted, time-limited project than to a relationship whose parameters are undefined. And a well-executed project is the best possible foundation for a longer-term relationship, precisely because it has produced concrete shared evidence of what the collaboration can deliver.
+  </p>
+
+  <h2>VI. The Pitch Builder Problem</h2>
+
+  <p>
+    If the project pitch is so clearly superior to the generic email, the obvious question is why more athletes don't use it. The answer, mostly, is that constructing a good project pitch is genuinely hard without the tools to do it.
+  </p>
+  <p>
+    Building a line-item budget requires knowing what things actually cost and how to present that in a way that looks professional rather than invented. Projecting deliverable performance requires access to historical data from the athlete's own channels in a format that is credible to a brand audience. Presenting audience demographics requires pulling that data from platform APIs and formatting it clearly. Identifying appropriate category availabilities requires knowing what existing deals cover and being able to present that transparently.
+  </p>
+  <p>
+    None of this is beyond a motivated athlete with time and spreadsheet skills. But it is exactly the kind of work that falls between the cracks in a professional sports career — important but not urgent, commercially significant but not technically part of training, competition, or content creation. The athlete who is managing a demanding competition schedule, producing regular content, and navigating existing brand relationships does not have significant unallocated time to build detailed project proposals from scratch, for every campaign idea, without knowing which brands might be receptive.
+  </p>
+  <p>
+    A pitch builder that scaffolds the process — that walks the athlete through each component of a structured project proposal, pre-fills what can be pulled from APIs, and produces a publish-ready pitch card at the end — changes the calculus. The upfront work is reduced from hours to minutes. The output is consistent and professional regardless of the athlete's comfort with commercial documents. And the pitch is posted directly to a marketplace where interested brands can find it, rather than sent cold into an inbox where it may never be read.
+  </p>
+
+  <h2>VII. The Limits of the Project Model</h2>
+
+  <p>
+    As with any structural solution to a commercial problem, it is worth being direct about what the project marketplace model does not fix.
+  </p>
+  <p>
+    A well-constructed project pitch does not guarantee brand interest if the underlying proposition — the athlete's audience, the content quality, the campaign concept — is not commercially compelling. The scaffold cannot substitute for the substance. An athlete with a small, disengaged following and a generic campaign concept will produce a well-formatted pitch that still does not convert, because the proposal structure has made the weaknesses clearer rather than hidden them.
+  </p>
+  <p>
+    The project marketplace model also tends to favour campaigns with clear narrative hooks — expeditions, competitions, defined creative projects — over the more diffuse, ambient value of long-term lifestyle association. An athlete whose primary commercial value is consistent daily presence across a highly engaged community may find that the project structure understates their offer, which is not a campaign but a relationship. The pitch builder should be understood as a tool for campaign-level commercial development, not a replacement for the full spectrum of how athlete-brand relationships form and operate.
+  </p>
+  <p>
+    Finally, the marketplace dynamic introduces competitive pressure that is not present in a profile directory. An athlete whose pitch sits alongside five similar proposals from equally credible athletes is in a different commercial situation from one whose profile is evaluated in isolation. This is a net positive for brands, who benefit from comparison. For athletes, it underlines the importance of proposal quality and differentiation — which is, in the end, an argument for investing in the pitch structure rather than against it.
+  </p>
+
+  <hr class="divider" />
+
+  <h2>Conclusion: The Proposal as Commercial Infrastructure</h2>
+
+  <p>
+    The sponsorship pitch has been optimised at the margins — better subject lines, warmer opening paragraphs, cleaner profile layouts — without addressing the structural problem that makes most pitches ineffective regardless of how well they are written. The generic email is not failing athletes because it is badly constructed. It is failing them because it is the wrong format for the decision it is trying to produce.
+  </p>
+  <p>
+    Brand managers do not approve sponsorship relationships. They approve budgeted proposals with defined deliverables and evaluable returns. The pitch that presents itself as a relationship request is asking to be evaluated on criteria that brand managers cannot apply without doing additional work they typically do not do. The pitch that presents itself as a project proposal is asking to be evaluated on criteria that brand managers apply every day.
+  </p>
+  <p>
+    The structural shift from profile to project, from talent directory to marketplace, from relationship request to concrete proposal, does not change who the best athletes are or which brand partnerships represent the best commercial fit. What it changes is the conversion rate between genuine commercial interest and an actual deal — the gap between a brand manager who finds an athlete interesting and a brand manager who approves a budget line. That gap is currently wide enough to cost both parties significant commercial value. The tools to close it are not technically complex. What they require is the design commitment to build the pitch infrastructure that the market has never had.
+  </p>
+
+  <div class="cta-block">
+    <h3>Sponsable is building the Project Marketplace.</h3>
+    <p>A structured pitch builder that walks athletes through constructing campaign proposals with line-item budgets, deliverables, audience data, and category availability — then posts them directly to a browsable marketplace where brands can evaluate, compare, and say yes to projects rather than relationships they haven't yet imagined.</p>
+    <a href="#" class="cta-btn">Join the waitlist →</a>
+  </div>
+
+  <div class="tags">
+    <span class="tag">Project Marketplace</span>
+    <span class="tag">Pitch Builder</span>
+    <span class="tag">Athlete Outreach</span>
+    <span class="tag">Brand Partnerships</span>
+    <span class="tag">Sports Marketing</span>
+    <span class="tag">Analysis</span>
+  </div>
+
+</article>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const el = document.documentElement;
+    const scrolled = el.scrollTop || document.body.scrollTop;
+    const height = el.scrollHeight - el.clientHeight;
+    const pct = height > 0 ? (scrolled / height) * 100 : 0;
+    document.getElementById('progress').style.width = pct + '%';
+  });
+</script>
+
+</body>
+</html>
