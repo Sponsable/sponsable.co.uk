@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing in the Dark — Sponsable</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a1e;
+      --ink-mid: #444450;
+      --ink-light: #888898;
+      --rule: #e2e2e8;
+      --accent: #2E4A7A;
+      --accent-light: #4A6FA5;
+      --accent-pale: #EEF2FA;
+      --bg: #FAFAF8;
+      --paper: #FFFFFF;
+      --serif: 'Lora', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
+
+    html { font-size: 18px; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Top bar ─────────────────────────────────────── */
+    .topbar {
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .topbar-brand {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .topbar-meta {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--ink-light);
+    }
+
+    /* ── Progress bar ────────────────────────────────── */
+    #progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 200;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Hero ────────────────────────────────────────── */
+    .hero {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 24px 56px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-kicker {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-kicker::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 2px;
+      background: var(--accent-light);
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .hero-sub {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--ink-mid);
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      max-width: 580px;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--ink-light);
+    }
+    .byline-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+    .byline strong {
+      display: block;
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    /* ── Article ─────────────────────────────────────── */
+    .article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+    .article p {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+    .article h2 {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 3rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+      letter-spacing: -0.01em;
+    }
+    .article h3 {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin: 2.2rem 0 0.8rem;
+    }
+    .article ol {
+      padding-left: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+    .article ol li {
+      margin-bottom: 0.7rem;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+    .article ul {
+      padding-left: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+    .article ul li {
+      margin-bottom: 0.6rem;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    /* Pull quote */
+    .pullquote {
+      margin: 2.5rem 0;
+      padding: 28px 32px;
+      border-left: 4px solid var(--accent);
+      background: var(--accent-pale);
+      border-radius: 0 8px 8px 0;
+    }
+    .pullquote p {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.7;
+    }
+    .pullquote cite {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-style: normal;
+      color: var(--ink-light);
+      margin-top: 12px;
+      font-weight: 500;
+    }
+
+    /* Dark callout */
+    .callout {
+      background: var(--ink);
+      color: white;
+      border-radius: 10px;
+      padding: 28px 32px;
+      margin: 2.5rem 0;
+    }
+    .callout-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 12px;
+    }
+    .callout p {
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      color: #d0d0e0;
+      margin: 0;
+      line-height: 1.7;
+    }
+    .callout strong { color: white; }
+
+    /* Stat highlight */
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 2.5rem 0;
+    }
+    .stat-card {
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 22px 24px;
+      background: var(--paper);
+    }
+    .stat-card-num {
+      font-family: var(--mono);
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-card-label {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--ink-mid);
+      line-height: 1.5;
+    }
+
+    /* Comparison table */
+    .cmp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+    }
+    .cmp-table th {
+      background: var(--ink);
+      color: white;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+    }
+    .cmp-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+      vertical-align: top;
+    }
+    .cmp-table tr:nth-child(even) td { background: var(--accent-pale); }
+    .cmp-table tr:last-child td { border-bottom: none; }
+
+    /* Analogy block */
+    .analogy {
+      margin: 2.5rem 0;
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      gap: 0;
+      align-items: stretch;
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      overflow: hidden;
+      font-family: var(--sans);
+    }
+    .analogy-col {
+      padding: 22px 20px;
+      background: var(--paper);
+    }
+    .analogy-col.right {
+      background: var(--accent-pale);
+    }
+    .analogy-divider {
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      writing-mode: vertical-rl;
+      letter-spacing: 0.1em;
+    }
+    .analogy-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 10px;
+    }
+    .analogy-col.right .analogy-label {
+      color: var(--accent);
+    }
+    .analogy-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .analogy-desc {
+      font-size: 0.82rem;
+      color: var(--ink-mid);
+      line-height: 1.55;
+    }
+    .analogy-item {
+      margin-bottom: 14px;
+    }
+    .analogy-item:last-child { margin-bottom: 0; }
+
+    /* Divider */
+    .divider {
+      margin: 3rem 0;
+      border: none;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* CTA */
+    .cta-block {
+      margin-top: 3rem;
+      padding: 36px;
+      background: var(--accent);
+      border-radius: 12px;
+      text-align: center;
+      color: white;
+    }
+    .cta-block h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: white;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .cta-block p {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 22px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: white;
+      color: var(--accent);
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    /* Tags */
+    .tags {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      background: var(--accent-pale);
+      border-radius: 20px;
+      padding: 5px 12px;
+    }
+
+    @media (max-width: 600px) {
+      html { font-size: 17px; }
+      .hero { padding: 48px 20px 40px; }
+      .article { padding: 40px 20px 60px; }
+      .pullquote { padding: 20px 22px; }
+      .callout { padding: 22px 22px; }
+      .cta-block { padding: 28px 22px; }
+      .stat-row { grid-template-columns: 1fr; }
+      .analogy { grid-template-columns: 1fr; }
+      .analogy-divider { writing-mode: horizontal-tb; height: 32px; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header class="topbar">
+  <div class="topbar-brand">Sponsable · The Brief</div>
+  <div class="topbar-meta">Sport &amp; Sponsorship · Long Read</div>
+</header>
+
+<div class="hero">
+  <div class="hero-kicker">Analysis &amp; Argument</div>
+  <h1>Pricing in the Dark: The Information Asymmetry Costing Athletes Their Market Rate</h1>
+  <p class="hero-sub">
+    In almost every professional field, salary data exists somewhere. In sports sponsorship, it does not. That absence is not an accident — and athletes are paying for it at the negotiating table.
+  </p>
+  <div class="byline">
+    <div class="byline-avatar">SP</div>
+    <div>
+      <strong>The Sponsable Team</strong>
+      Published June 2025 · 13 min read
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <p>
+    Imagine two athletes. Both compete at a comparable level in the same discipline. Both have built audiences in the same tier — engaged, category-relevant, commercially attractive. Both are approached by brands in the same product category for broadly similar deliverables: a season's worth of content, a competition appearance or two, some product integrations. One of them signs a deal worth six figures. The other signs for a quarter of that. Neither of them knows the other's number.
+  </p>
+  <p>
+    This is not a hypothetical. It is a description of how the sponsorship market works for a significant proportion of professional athletes in action and outdoor sports. Practitioners who work across this space — agents, athletes who have compared notes with peers, brand managers who manage portfolios across multiple athletes — encounter versions of this disparity regularly. The same deliverables, the same audience size, the same category. Wildly different price points. And almost no mechanism for the athlete who signed the lower deal to even know they did.
+  </p>
+  <p>
+    The cause is not mysterious. It is information asymmetry: a structural imbalance in who has access to pricing data, which systematically advantages the party that does. In sports sponsorship, brands maintain internal rate cards, cross-reference deals across their portfolio, and accumulate years of market intelligence about what athletes in different tiers actually cost. Athletes, almost universally, enter negotiations with none of this. They are guessing. The brand is not.
+  </p>
+  <p>
+    This piece examines how that asymmetry operates, why it persists, and what a market with better pricing transparency might look like.
+  </p>
+
+  <h2>I. The Market That Has No Price List</h2>
+
+  <p>
+    Most professional labour markets have some form of publicly accessible pricing reference. Employment law in some jurisdictions mandates salary band disclosure. Industry surveys publish compensation benchmarks. Professional associations maintain rate guides. The result is imperfect — salary transparency is never complete — but there is enough information in circulation that a reasonably informed professional can walk into a negotiation with some sense of what the market pays for work like theirs.
+  </p>
+  <p>
+    Sports sponsorship has none of this. Contract values are almost universally confidential. Industry bodies do not publish benchmarks. Agents, where athletes have them, hold pricing intelligence that is proprietary to their client roster and rarely shared. The cultural norms of niche sports communities — where discussing money is considered either crass or dangerously divisive — further suppress the informal information-sharing that would otherwise partially correct the imbalance.
+  </p>
+  <p>
+    The result is a market that, from the athlete's side, operates almost entirely on anecdote and instinct. An athlete deciding what to charge a prospective sponsor is working from whatever fragments of information they have assembled: a figure mentioned in passing by a peer, a number from a deal they did two years ago in a different category, a rough sense of what they think sounds reasonable given their follower count. This is not negotiation. It is guesswork in formal clothing.
+  </p>
+
+  <div class="callout">
+    <div class="callout-label">The structural imbalance</div>
+    <p>A brand's partnerships manager sits across the table with years of internal rate data, a full view of what comparable athletes in the portfolio cost, and institutional knowledge of where the category typically prices. The athlete sitting opposite them has almost none of this. The negotiation is structurally unequal before a word is spoken.</p>
+  </div>
+
+  <p>
+    This imbalance is compounded by the peculiar economics of how athletes set their opening numbers. In the absence of reliable market data, the dominant psychological force is not optimism but caution. Athletes — particularly those earlier in their commercial careers, or those negotiating outside their home market — are acutely aware that asking for too much risks losing the deal entirely. The fear of the brand simply walking away, or going cold, or deciding the athlete is "difficult to work with," exerts significant downward pressure on opening asks.
+  </p>
+  <p>
+    Behavioural economics has a name for this: loss aversion. The psychological cost of losing the deal feels greater than the potential gain of a higher number, particularly when the athlete has no reliable sense of how much higher they could reasonably go. The rational response to that uncertainty is to anchor low — to ask for a number that feels safe rather than one that reflects actual market value. Multiplied across thousands of negotiations, this individual psychology produces a systematic market-wide suppression of athlete compensation.
+  </p>
+
+  <h2>II. What the Gap Actually Costs</h2>
+
+  <p>
+    The financial consequences of pricing in the dark are not abstract. Practitioners who work across this space describe specific, documented cases where athletes discovered — after the fact, through chance conversations with peers — that they had signed deals at a fraction of the market rate for identical or comparable work.
+  </p>
+  <p>
+    The pattern is consistent. An athlete in a niche discipline, with limited access to peer pricing data, names a number that feels ambitious relative to their own prior experience. The brand, working from an internal rate card that the athlete has no access to, accepts quickly — often without negotiating. The athlete, relieved to have secured the deal, does not register that the speed of acceptance was itself a signal that they had left significant money on the table. They find out later, if they find out at all.
+  </p>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-card-num">~5×</div>
+      <div class="stat-card-label">The range of deal values practitioners report for athletes with comparable audiences and deliverables in the same category — a spread that reflects information gaps, not performance differences.</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-num">0</div>
+      <div class="stat-card-label">The number of publicly available, cross-verified pricing benchmarks for athlete sponsorship deals in action and outdoor sports categories. The market has no reference point.</div>
+    </div>
+  </div>
+
+  <p>
+    The cost compounds over a career. An athlete who underprices their first three or four major sponsorship deals does not simply lose the immediate delta — they establish a personal price anchor that shapes all subsequent negotiations. Brands with whom they have prior relationships will reference those historical numbers. The athlete, lacking market data to challenge those references, accepts incremental increases on a suppressed baseline rather than recalibrating to actual market rates. The cumulative effect over a five or ten-year career can be substantial.
+  </p>
+  <p>
+    There is also a less visible cost: the opportunity cost of deals not pursued. An athlete who does not know their market rate cannot identify when a brand's offer is so far below it as to be worth walking away from. They cannot make the case, with evidence, for a higher number. They cannot, in any meaningful sense, negotiate — because negotiation requires both parties to be working from some shared reference for what the deal is worth. When one party has that reference and the other does not, what looks like a negotiation is closer to an offer and an acceptance.
+  </p>
+
+  <h2>III. Why the Taboo Persists</h2>
+
+  <p>
+    The cultural prohibition on discussing money in niche sports communities is real, and worth examining seriously rather than simply dismissing as irrational. It has roots that are partly historical, partly sociological, and partly strategic — and understanding those roots matters for understanding why the information asymmetry has persisted so long.
+  </p>
+  <p>
+    The historical dimension: action and outdoor sports disciplines emerged from cultures of passion and amateurism. Climbing, surfing, skiing, mountain biking — these were activities people did because they loved them, often in explicit rejection of the commercial logic of mainstream professional sport. Discussing sponsorship payments in those contexts felt like a category violation: an admission that you were in it for money rather than for the sport. This attitude has softened considerably as the industries have professionalized, but its residue lingers, particularly among athletes who came up in communities where the ethos was explicitly anti-commercial.
+  </p>
+  <p>
+    The sociological dimension: small, tight-knit communities — and most action sport disciplines have scenes that are genuinely small at the professional tier — are acutely sensitive to reputation dynamics. An athlete who is perceived as mercenary, as pushing for money in a way that seems out of proportion to their standing, risks social costs that are real and immediate. The brand manager who feels squeezed is also often a member of the same community. The peers who learn about an aggressive negotiation may form views. In this context, the incentive to discuss money privately rather than publicly is not irrational.
+  </p>
+  <p>
+    The strategic dimension: some of the information suppression in this market is not accidental. Brands benefit from the opacity. A confidentiality clause in an athlete contract — standard practice across the industry — is not neutral. It actively prevents the information that would enable market-correcting transparency from circulating. The clause protects the brand's negotiating position in all future conversations, at the athlete's expense. It is a structural feature of the market that serves one party's interests over the other's, and it has been accepted as routine precisely because athletes have had no alternative basis on which to resist it.
+  </p>
+
+  <div class="pullquote">
+    <p>"The confidentiality clause is, in practice, a device for preserving information asymmetry. It protects not just the specific deal but the brand's ability to offer different athletes different rates for the same work without those differences becoming visible. That is a feature, not an incidental consequence."</p>
+  </div>
+
+  <h2>IV. The Workarounds Athletes Are Already Using</h2>
+
+  <p>
+    The pain of pricing in the dark is severe enough that athletes have already begun constructing informal solutions. The most common is simply asking peers directly — a practice that has become more normalised as younger generations of athletes, less bound by the old cultural taboos, treat financial transparency as a professional norm rather than a social violation.
+  </p>
+  <p>
+    More sophisticated versions of this involve deliberate information-sharing arrangements between athletes in the same discipline or category. A group of peers will agree to share contract data with each other before negotiations — not to collude on pricing in any formal sense, but simply to ensure that no one is negotiating blind. The athlete who knows that three comparable peers signed deals in a certain range has a qualitatively different negotiating position than one who doesn't.
+  </p>
+  <p>
+    These arrangements are effective when they work. Practitioners describe cases where athletes who had access to peer contract data were able to challenge brand claims about budget constraints or market rates with specific, verifiable evidence — and secured deals that would not have been achievable through conventional negotiation. The data does the work that no amount of personal confidence or negotiating skill can do without it: it establishes an objective reference that removes the brand's ability to define the market unilaterally.
+  </p>
+  <p>
+    The limitation of these informal networks is obvious. They are small, they are sport-specific, and they are unevenly distributed. Athletes with strong peer networks in well-established commercial disciplines — surfing, skiing, cycling — have better access to informal pricing intelligence than those in smaller or more fragmented scenes. Athletes who are geographically or linguistically isolated from the centres of their discipline's commercial activity may have almost none. The athletes who benefit most from informal information-sharing are often those who need it least; the athletes who most need market data are those least likely to be embedded in the networks that provide it.
+  </p>
+
+  <div class="analogy">
+    <div class="analogy-col">
+      <div class="analogy-label">Without pricing data</div>
+      <div class="analogy-item">
+        <div class="analogy-title">Anchor on past deals</div>
+        <div class="analogy-desc">Prior contracts become the reference point, regardless of whether they reflected market rate.</div>
+      </div>
+      <div class="analogy-item">
+        <div class="analogy-title">Accept the brand's framing</div>
+        <div class="analogy-desc">"We have a limited regional budget" goes unchallenged. There's no data to contradict it.</div>
+      </div>
+      <div class="analogy-item">
+        <div class="analogy-title">Price defensively</div>
+        <div class="analogy-desc">Fear of losing the deal drives the opening ask down before the conversation begins.</div>
+      </div>
+    </div>
+    <div class="analogy-divider">VS</div>
+    <div class="analogy-col right">
+      <div class="analogy-label">With pricing data</div>
+      <div class="analogy-item">
+        <div class="analogy-title">Anchor on market rate</div>
+        <div class="analogy-desc">The opening number reflects what comparable athletes in the same tier actually earn.</div>
+      </div>
+      <div class="analogy-item">
+        <div class="analogy-title">Challenge brand framing</div>
+        <div class="analogy-desc">"Global athletes in this category are paid in this range" is a verifiable counter to budget claims.</div>
+      </div>
+      <div class="analogy-item">
+        <div class="analogy-title">Price from a position</div>
+        <div class="analogy-desc">The ask reflects evidence, not instinct. The emotional stakes of the number drop considerably.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>V. The Glassdoor Problem in Sports</h2>
+
+  <p>
+    The analogy that comes up most naturally in this conversation is Glassdoor — the platform that changed salary negotiations in conventional employment by making compensation data visible across industries and roles. Before platforms like Glassdoor, most salary negotiation operated on a similar dynamic to sports sponsorship: employers had access to market rate data through HR benchmarks and industry surveys; employees were largely guessing. The platforms did not eliminate information asymmetry entirely, but they shifted it substantially — enough that the typical employee now enters a salary conversation with at least a rough sense of the market range for their role.
+  </p>
+  <p>
+    The sports sponsorship market does not have a Glassdoor equivalent. The reasons are partly structural — sponsorship deals are more heterogeneous than salaries, harder to categorise consistently, and bound by confidentiality in ways that employment contracts typically are not. But the absence is also, at least in part, a function of the fact that no one has built it. The data exists, distributed across thousands of contracts and the memories of the athletes and agents who negotiated them. It has not been aggregated.
+  </p>
+  <p>
+    The obvious challenge is the cold start problem: a pricing database is only useful when it contains enough data to be representative, and athletes are only motivated to contribute data when the database is already useful. This is the same challenge that every market transparency platform faces, and the standard solution is some form of reciprocity mechanism — contribute data to access data — which aligns individual incentives with collective benefit. The athlete who shares a contract value gains access to the market context that makes their next negotiation more informed. The aggregate of those individual contributions is what makes the database valuable.
+  </p>
+  <p>
+    The secondary challenge is verification. Self-reported data in a pricing database is only as useful as it is accurate, and there are obvious incentives for both over- and under-reporting depending on the athlete's goals. Building in verification mechanisms — cross-referencing reported figures against documented evidence, flagging statistical outliers, allowing agents to submit on behalf of clients — is necessary to make the data trustworthy enough to be useful in an actual negotiation.
+  </p>
+
+  <h2>VI. What Pricing Transparency Changes</h2>
+
+  <p>
+    It is worth being precise about what better pricing data actually changes in a sponsorship negotiation, because the claim is sometimes overstated. Pricing transparency does not eliminate brand leverage. It does not guarantee that athletes will be paid their market rate, or that brands will not continue to push for the lowest price the market will bear. The fundamental dynamics of commercial negotiation do not dissolve in the presence of better information.
+  </p>
+  <p>
+    What changes is the nature of the conversation. A negotiation conducted in the presence of verified market data is qualitatively different from one conducted in its absence. The athlete's opening ask is no longer a personal claim about their own worth — a claim that is inherently contestable, emotionally charged, and easy for a brand to deflect by questioning the athlete's self-assessment. It is a reference to an external, third-party verified market standard. The ask has been depersonalised. The athlete is not saying "I think I am worth this." They are saying "the market prices work like this at my tier." That is a different kind of claim, and it is much harder to dismiss.
+  </p>
+  <p>
+    This shift matters psychologically as well as strategically. A significant part of why athletes underprice themselves is not strategic miscalculation but emotional discomfort with the act of asserting value. Asking for a higher number feels exposing in a way that referencing a market standard does not. The data functions as a kind of objective shield: it moves the negotiation from a conversation about the athlete's self-worth to a conversation about market mechanics, which most professionals are considerably more comfortable having.
+  </p>
+
+  <div class="pullquote">
+    <p>"The athlete who can say 'I'm not asking for this because I think I deserve it — I'm asking for it because this is what the data shows athletes in my tier are paid for this kind of work' has fundamentally changed the character of the negotiation. It's no longer personal. It's structural. And structural arguments are much easier to make."</p>
+  </div>
+
+  <p>
+    There is also a longer-term market effect worth naming. Information asymmetry in labour markets does not just disadvantage individual workers in individual negotiations — it suppresses wages structurally across the entire market. When athletes systematically underprice themselves because they lack market data, they collectively establish a lower price anchor that affects every deal that follows. Correcting the asymmetry has individual benefits, but its aggregate effect is to lift the floor for athlete compensation across the sport. That is a collective good, even for the athletes who are already well-informed enough to be negotiating close to market rate.
+  </p>
+
+  <h2>VII. The Limits of Transparency</h2>
+
+  <p>
+    A pricing database is a tool, not a solution, and it is worth being honest about what it cannot do.
+  </p>
+  <p>
+    Sponsorship deals are not salaries. They are complex, multi-variable commercial arrangements that vary along dimensions a simple pricing index cannot fully capture: the specific deliverables, the usage rights, the exclusivity clauses, the term length, the kill fee provisions, the activation support, the renewal options. Two deals that look identical on the surface — same athlete tier, same category, same number of posts — can be meaningfully different in their total commercial value depending on how those variables are structured. A pricing index that reports deal values without accounting for these variables is useful but imprecise, and athletes who use it naively risk either overpricing deals that are simpler than the benchmark or undervaluing complexity that justifies a premium.
+  </p>
+  <p>
+    There is also the question of market segmentation. Sponsorship pricing varies significantly by geography, by category, by discipline, and by the specific commercial context of the brand. A rate that is standard for a major international energy drink may bear no relation to what a regional outdoor apparel brand can credibly offer. A deal in a well-funded action sport discipline may be structured entirely differently from one in a smaller, less commercialised scene. A pricing database that does not segment carefully enough is one that produces averages masking enormous variance — which can mislead as easily as it informs.
+  </p>
+  <p>
+    These are design challenges, not reasons to conclude that pricing transparency is not worth building. They are reasons to build it carefully, with appropriate segmentation, rigorous verification, and clear communication of what the data does and does not represent.
+  </p>
+
+  <hr class="divider" />
+
+  <h2>Conclusion: The Cost of Opacity</h2>
+
+  <p>
+    The sports sponsorship market's information asymmetry is not a natural feature of how markets work. It is a structural condition that has been maintained by cultural taboos, contractual conventions, and the absence of any institution with the interest and capability to build the transparency infrastructure that would correct it.
+  </p>
+  <p>
+    That structural condition has costs. It costs individual athletes, who sign deals at fractions of their market rate and spend careers on a suppressed price anchor. It costs the collective of athletes across disciplines, whose negotiations are all anchored lower than they should be by the cumulative effect of individual underpricing. And it costs the market's ability to allocate commercial value fairly — to direct money toward the athletes who are actually generating it, rather than toward those who happened to negotiate at a moment when the brand's information advantage was greatest.
+  </p>
+  <p>
+    The informal solutions that athletes have already constructed — peer information-sharing, informal collusion rings, agents who trade pricing intelligence across their client base — prove both the demand for market data and its effectiveness when it exists. Athletes with access to peer contract data negotiate materially better deals. The question is not whether pricing transparency would help. It is why it has taken this long to build it.
+  </p>
+  <p>
+    The technology to aggregate, verify, and surface this data in a usable form exists. The reciprocity model that would motivate athletes to contribute to it is well understood. What has been missing is a platform with the reach, the trust, and the structural position in the athlete-brand relationship to make it work. A platform that already sits at the intersection of athlete profiles, brand relationships, and contract management is the natural place to build this — not as a standalone feature, but as an extension of the broader project of giving athletes the information infrastructure that commercial relationships of this kind require.
+  </p>
+  <p>
+    Athletes are not pricing in the dark because the light doesn't exist. They're pricing in the dark because no one has built the switch yet.
+  </p>
+
+  <div class="cta-block">
+    <h3>Sponsable is building OpenBooks.</h3>
+    <p>A verified, anonymised pricing index for athlete sponsorship — built on a give-to-get model that turns collective data into individual negotiating leverage. For athletes who are ready to stop guessing what they're worth.</p>
+    <a href="#" class="cta-btn">Join the waitlist →</a>
+  </div>
+
+  <div class="tags">
+    <span class="tag">Sponsorship</span>
+    <span class="tag">Athlete Compensation</span>
+    <span class="tag">Pricing Transparency</span>
+    <span class="tag">Information Asymmetry</span>
+    <span class="tag">Negotiation</span>
+    <span class="tag">Analysis</span>
+  </div>
+
+</article>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const el = document.documentElement;
+    const scrolled = el.scrollTop || document.body.scrollTop;
+    const height = el.scrollHeight - el.clientHeight;
+    const pct = height > 0 ? (scrolled / height) * 100 : 0;
+    document.getElementById('progress').style.width = pct + '%';
+  });
+</script>
+
+</body>
+</html>
