@@ -5,22 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Our Thinking — Sponsable</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
     :root {
-      --ink: #1a1a1e; --ink-mid: #444450; --ink-light: #888898;
-      --rule: #e2e2e8; --accent: #2E4A7A; --accent-light: #4A6FA5;
-      --accent-pale: #EEF2FA; --bg: #FAFAF8; --paper: #FFFFFF;
+      --ink: #1a1a1e;
+      --ink-mid: #444450;
+      --ink-light: #888898;
+      --rule: #e2e2e8;
+      --accent: #2E4A7A;
+      --accent-light: #4A6FA5;
+      --accent-pale: #EEF2FA;
+      --bg: #FAFAF8;
+      --paper: #FFFFFF;
       --serif: 'Lora', Georgia, serif;
       --sans: 'DM Sans', system-ui, sans-serif;
       --mono: 'DM Mono', monospace;
     }
+ 
     html { font-size: 18px; scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--ink); font-family: var(--serif); line-height: 1.75; -webkit-font-smoothing: antialiased; }
+ 
     #progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); width: 0%; z-index: 200; transition: width 0.1s linear; }
  
-     /* TOPBAR */
+   /* TOPBAR */
     .topbar { background: var(--paper); border-bottom: 1px solid var(--rule); padding: 18px 40px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
     .topbar-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
     .topbar-logo img { height: 56px; width: auto; }
@@ -31,74 +40,97 @@
     .topbar-nav .nav-cta { color: var(--accent); font-weight: 600; border: 1px solid var(--accent); padding: 7px 16px; border-radius: 5px; transition: background 0.2s, color 0.2s; }
     .topbar-nav .nav-cta:hover { background: var(--accent); color: white; }
  
-    /* SHARED */
-    .kicker { font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-    .kicker::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--accent-light); }
-    .prose { font-family: var(--serif); font-size: 0.95rem; color: var(--ink-mid); line-height: 1.85; margin-bottom: 1.4rem; }
-    .prose:last-child { margin-bottom: 0; }
-    .pullquote { margin: 2rem 0; padding: 24px 28px; border-left: 3px solid var(--accent); background: var(--accent-pale); }
-    .pullquote p { font-family: var(--serif); font-size: 1rem; font-style: italic; color: var(--ink); line-height: 1.75; margin: 0; }
- 
     /* HERO */
-    .hero { max-width: 720px; margin: 0 auto; padding: 96px 24px 0; }
-    .hero-kicker { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 28px; display: flex; align-items: center; gap: 10px; }
-    .hero-kicker::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--accent-light); }
-    .hero h1 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; line-height: 1.12; color: var(--ink); letter-spacing: -0.02em; max-width: 600px; }
-    .hero h1 em { font-style: italic; color: var(--ink-light); }
-    .hero-rule { margin: 40px 0 0; border: none; border-top: 1px solid var(--rule); }
-    .hero-meta { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--rule); border-top: none; }
-    .hero-meta-cell { background: var(--paper); padding: 20px; border-right: 1px solid var(--rule); }
-    .hero-meta-cell:last-child { border-right: none; }
-    .hero-meta-num { font-family: var(--serif); font-size: 1.9rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 5px; letter-spacing: -0.03em; }
-    .hero-meta-label { font-family: var(--sans); font-size: 0.7rem; color: var(--ink-light); line-height: 1.5; }
+    .hero { max-width: 720px; margin: 0 auto; padding: 96px 40px 0; }
+    .hero-kicker { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-light); display: flex; align-items: center; gap: 14px; margin-bottom: 32px; }
+    .hero-kicker::before { content: ''; width: 24px; height: 1px; background: var(--ink-light); display: inline-block; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; line-height: 1.1; color: var(--ink); letter-spacing: -0.02em; }
+    .hero h1 em { font-style: italic; color: var(--accent-light); }
+    .hero h1 .aside { display: block; margin-top: 18px; font-family: var(--serif); font-size: 1rem; font-weight: 400; font-style: italic; color: var(--ink-light); letter-spacing: 0; line-height: 1.65; }
  
-    /* SECTIONS */
-    .section { max-width: 720px; margin: 0 auto; padding: 64px 24px; border-bottom: 1px solid var(--rule); }
-    .section-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 20px; letter-spacing: -0.01em; line-height: 1.25; }
+    /* FIELD NOTES */
+    .field-notes { max-width: 720px; margin: 64px auto 0; padding: 0 40px 80px; border-top: 1px solid var(--rule); }
+    .field-notes-header { display: flex; align-items: baseline; justify-content: space-between; padding: 24px 0; border-bottom: 1px solid var(--rule); margin-bottom: 0; }
+    .field-notes-label { font-family: var(--sans); font-size: 0.64rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-light); }
+    .field-notes-count { font-family: var(--mono); font-size: 0.58rem; color: var(--ink-light); letter-spacing: 0.08em; }
  
-    /* EVIDENCE STRIP */
-    .evidence { margin: 32px 0; display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-    .evidence-row { background: var(--paper); padding: 22px 24px; display: grid; grid-template-columns: 3px 1fr; gap: 20px; }
-    .evidence-bar { background: var(--accent); border-radius: 2px; }
-    .evidence-quote { font-family: var(--serif); font-size: 0.92rem; font-style: italic; color: var(--ink); line-height: 1.7; margin-bottom: 8px; }
-    .evidence-source { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); }
+    .note { padding: 44px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 120px 1fr; gap: 36px; align-items: start; }
+    .note:last-of-type { border-bottom: none; }
+    .note-index { position: sticky; top: 72px; padding-top: 3px; }
+    .note-num { font-family: var(--mono); font-size: 0.56rem; color: var(--ink-light); letter-spacing: 0.12em; margin-bottom: 8px; }
+    .note-tag { font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-light); line-height: 1.7; }
  
-    /* BRIEF LINK */
-    .brief-link-block { margin-top: 32px; padding: 24px 28px; background: var(--paper); border: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; gap: 20px; text-decoration: none; transition: border-color 0.2s; }
-    .brief-link-block:hover { border-color: var(--accent-light); }
-    .brief-link-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 6px; }
-    .brief-link-title { font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--ink); line-height: 1.3; }
-    .brief-link-sub { font-family: var(--sans); font-size: 0.76rem; color: var(--ink-light); margin-top: 4px; }
-    .brief-link-arrow { font-family: var(--sans); font-size: 1.2rem; color: var(--accent-light); flex-shrink: 0; transition: transform 0.2s; }
-    .brief-link-block:hover .brief-link-arrow { transform: translateX(4px); }
+    .note-h { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; color: var(--ink); line-height: 1.22; margin-bottom: 20px; letter-spacing: -0.01em; }
+    .note-p { font-family: var(--serif); font-size: 0.9rem; color: var(--ink-mid); line-height: 1.9; margin-bottom: 16px; }
+    .note-p:last-of-type { margin-bottom: 0; }
+    .note-p strong { color: var(--ink); font-weight: 600; }
  
-    /* SESSIONS */
-    .sessions-block { margin-top: 28px; padding: 28px; background: var(--paper); border: 1px solid var(--rule); border-left: 3px solid var(--accent); }
-    .sessions-title { font-family: var(--sans); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-    .sessions-desc { font-family: var(--serif); font-size: 0.92rem; color: var(--ink-mid); line-height: 1.75; margin-bottom: 18px; }
-    .sessions-form { display: flex; gap: 10px; max-width: 400px; }
-    .sessions-input { flex: 1; padding: 10px 14px; background: var(--bg); border: 1px solid var(--rule); border-radius: 5px; color: var(--ink); font-family: var(--sans); font-size: 0.8rem; outline: none; transition: border-color 0.2s; }
+    .note-callout { margin: 22px 0 0; padding: 18px 20px; background: var(--accent-pale); border-left: 2px solid var(--accent); font-family: var(--serif); font-size: 0.88rem; font-style: italic; color: var(--ink); line-height: 1.7; }
+ 
+    /* SESSIONS inline nudge */
+    .sessions-nudge { margin: 22px 0 0; padding: 14px 18px; background: var(--bg); border: 1px solid var(--rule); display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+    .sessions-nudge-label { font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-light); white-space: nowrap; }
+    .sessions-nudge-text { font-family: var(--sans); font-size: 0.78rem; color: var(--ink-mid); line-height: 1.55; }
+    .sessions-nudge-text a { color: var(--accent); text-decoration: none; font-weight: 500; border-bottom: 1px solid var(--accent-pale); transition: border-color 0.2s; }
+    .sessions-nudge-text a:hover { border-color: var(--accent); }
+ 
+    /* COUNTER */
+    .counter { max-width: 720px; margin: 0 auto; padding: 0 40px 64px; }
+    .counter-inner { background: var(--paper); border: 1px solid var(--rule); padding: 36px 40px; }
+    .counter-kicker { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 14px; }
+    .counter-h { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: 18px; }
+    .counter-p { font-family: var(--serif); font-size: 0.88rem; color: var(--ink-mid); line-height: 1.85; margin-bottom: 14px; }
+    .counter-p:last-child { margin-bottom: 0; }
+ 
+    /* BRIEF CTA */
+    .brief-cta { max-width: 720px; margin: 0 auto; padding: 0 40px 64px; }
+    .brief-cta-inner { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 24px; padding: 28px 32px; border: 1px solid var(--rule); text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+    .brief-cta-inner:hover { border-color: var(--accent-light); background: var(--accent-pale); }
+    .brief-cta-label { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 7px; }
+    .brief-cta-title { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: 5px; }
+    .brief-cta-sub { font-family: var(--sans); font-size: 0.74rem; color: var(--ink-light); line-height: 1.5; }
+    .brief-cta-arrow { font-family: var(--sans); font-size: 1.3rem; color: var(--accent-light); transition: transform 0.2s; }
+    .brief-cta-inner:hover .brief-cta-arrow { transform: translateX(4px); }
+ 
+    /* SESSIONS SIGNUP */
+    .sessions-section { max-width: 720px; margin: 0 auto; padding: 0 40px 96px; }
+    .sessions-inner { background: var(--paper); border: 1px solid var(--rule); border-left: 3px solid var(--accent); padding: 32px 36px; }
+    .sessions-label { font-family: var(--sans); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .sessions-h { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 10px; line-height: 1.3; }
+    .sessions-p { font-family: var(--serif); font-size: 0.88rem; color: var(--ink-mid); line-height: 1.75; margin-bottom: 20px; }
+    .sessions-form { display: flex; gap: 10px; max-width: 420px; }
+    .sessions-input { flex: 1; padding: 10px 14px; background: var(--bg); border: 1px solid var(--rule); border-radius: 4px; color: var(--ink); font-family: var(--sans); font-size: 0.8rem; outline: none; transition: border-color 0.2s; }
     .sessions-input:focus { border-color: var(--accent-light); }
-    .sessions-btn { padding: 10px 18px; background: var(--accent); color: white; border: none; border-radius: 5px; cursor: pointer; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; white-space: nowrap; transition: background 0.2s; }
+    .sessions-input::placeholder { color: var(--ink-light); }
+    .sessions-btn { padding: 10px 18px; background: var(--accent); color: white; border: none; border-radius: 4px; cursor: pointer; font-family: var(--sans); font-size: 0.78rem; font-weight: 600; white-space: nowrap; transition: background 0.2s; }
     .sessions-btn:hover { background: var(--accent-light); }
-    .sessions-note { font-family: var(--sans); font-size: 0.68rem; color: var(--ink-light); margin-top: 8px; }
+    .sessions-note { font-family: var(--sans); font-size: 0.64rem; color: var(--ink-light); margin-top: 8px; }
  
     /* FOOTER */
     footer { background: var(--paper); border-top: 1px solid var(--rule); padding: 32px 40px; }
     .footer-inner { max-width: 720px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
-    .footer-logo-name { font-family: var(--sans); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); }
+    .footer-name { font-family: var(--sans); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); }
     .footer-links { display: flex; gap: 24px; }
     .footer-links a { font-family: var(--sans); font-size: 0.72rem; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--ink); }
     .footer-copy { font-family: var(--mono); font-size: 0.6rem; color: var(--ink-light); letter-spacing: 0.06em; }
  
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-kicker { animation: fadeUp 0.5s ease both; }
+    .hero h1 { animation: fadeUp 0.6s ease 0.1s both; }
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+ 
     @media (max-width: 640px) {
       .topbar { padding: 16px 20px; }
       .topbar-nav { display: none; }
-      .hero, .section { padding-left: 20px; padding-right: 20px; }
-      .hero-meta { grid-template-columns: 1fr; }
+      .hero { padding: 72px 20px 0; }
+      .field-notes, .counter, .brief-cta, .sessions-section { padding-left: 20px; padding-right: 20px; }
+      .note { grid-template-columns: 1fr; gap: 10px; }
+      .note-index { position: static; }
+      .brief-cta-inner { grid-template-columns: 1fr; }
       .sessions-form { flex-direction: column; }
-      .brief-link-block { flex-direction: column; align-items: flex-start; }
       footer { padding: 28px 20px; }
     }
   </style>
@@ -121,130 +153,147 @@
 </header>
  
 <!-- HERO -->
-<div class="hero">
+<section class="hero">
   <div class="hero-kicker">Our Thinking</div>
-  <h1>The most sponsorable athletes are rarely<br><em>the most sponsored ones.</em></h1>
-  <hr class="hero-rule" />
-  <div class="hero-meta">
-    <div class="hero-meta-cell">
-      <div class="hero-meta-num">40+</div>
-      <div class="hero-meta-label">Athletes, agents, and brand managers interviewed</div>
+  <h1>
+    Sponsorship works when the right<br>athlete meets <em>the right brand.</em>
+    <span class="aside">The infrastructure for finding that match barely exists.<br>This is what we found when we looked.</span>
+  </h1>
+</section>
+ 
+<!-- FIELD NOTES -->
+<section class="field-notes">
+  <div class="field-notes-header">
+    <span class="field-notes-label">Field Notes</span>
+    <span class="field-notes-count">4 observations</span>
+  </div>
+ 
+  <!-- 01 -->
+  <div class="note reveal">
+    <div class="note-index">
+      <div class="note-num">01 —</div>
+      <div class="note-tag">On what<br>sponsorship is</div>
     </div>
-    <div class="hero-meta-cell">
-      <div class="hero-meta-num">10</div>
-      <div class="hero-meta-label">Long-form analyses published before the waitlist opened</div>
-    </div>
-    <div class="hero-meta-cell">
-      <div class="hero-meta-num">4</div>
-      <div class="hero-meta-label">Structural gaps appearing consistently across every sport</div>
+    <div class="note-body">
+      <div class="note-h">Sponsorship isn't advertising. The metric isn't views — it's borrowed trust.</div>
+      <p class="note-p">The rise of one-off influencer deals has pulled brand spend toward reach. That works for awareness. But sponsorship has always been something different: not a brand speaking loudly, but a brand being vouched for by someone an audience already believes in. The athlete isn't a channel. They're a character witness — and that distinction changes everything about what makes a partnership valuable.</p>
+      <p class="note-p">Long-term athlete partnerships drive over <strong>300% more engagement than one-off activations</strong>. The compounding effect of sustained association — an audience watching a relationship develop across seasons, results, and real moments — is something a single post cannot replicate. Sponsable is built around long-term relationships, because that's where the value actually lives.</p>
     </div>
   </div>
-</div>
  
-<!-- THE RESEARCH -->
-<div class="section">
-  <div class="kicker">The research</div>
-  <div class="section-title">Forty conversations. The patterns that came out of them.</div>
- 
-  <p class="prose">We spoke with World Champions, Olympians, professional agents, and brand managers across action and outdoor sport before any product work began. The brief was simple: describe how sponsorship actually works in your experience. What emerged was consistent enough to be instructive.</p>
- 
-  <div class="evidence">
-    <div class="evidence-row">
-      <div class="evidence-bar"></div>
-      <div class="evidence-body">
-        <div class="evidence-quote">A world-ranked climber with elite technical credentials and documented commercial experience had no structured way to present any of it. Her competitive record, her rigging qualifications, her coaching availability — none of it had a home that a brand could evaluate or share internally.</div>
-        <div class="evidence-source">On the profile question</div>
-      </div>
+  <!-- 02 -->
+  <div class="note reveal">
+    <div class="note-index">
+      <div class="note-num">02 —</div>
+      <div class="note-tag">On value,<br>fit &amp; being found</div>
     </div>
-    <div class="evidence-row">
-      <div class="evidence-bar"></div>
-      <div class="evidence-body">
-        <div class="evidence-quote">A professional BASE jumper had charged a fraction of what comparable athletes were receiving for equivalent campaigns. There was no reference available. He named a number that felt reasonable, the brand agreed immediately, and he found out the gap later by chance.</div>
-        <div class="evidence-source">On pricing</div>
-      </div>
-    </div>
-    <div class="evidence-row">
-      <div class="evidence-bar"></div>
-      <div class="evidence-body">
-        <div class="evidence-quote">A freeride skier and a professional agent, interviewed separately, described identical reporting processes: locate every post, compile screenshots, send manually. Neither had found a faster way. Neither had scaled beyond the number of partnerships that process could support.</div>
-        <div class="evidence-source">On reporting</div>
-      </div>
-    </div>
-    <div class="evidence-row">
-      <div class="evidence-bar"></div>
-      <div class="evidence-body">
-        <div class="evidence-quote">An Olympic-affiliated skier with a strong competitive record spent two years in seeding arrangements — not for want of results, but because the only available route to brands he hadn't already met was a cold email to a generic inbox.</div>
-        <div class="evidence-source">On discovery</div>
+    <div class="note-body">
+      <div class="note-h">An athlete's value isn't a fixed number. It shifts entirely depending on who's asking — and the most interesting deals often come from unexpected directions.</div>
+      <p class="note-p">Within a sport's home industry — the obvious brands that share the same culture as the athlete — pricing is navigable. Comparisons exist, peers talk, and both sides arrive at a reasonable range. But the moment a brand from a different world appears, everything changes. A drinks company, a lifestyle label, a technology brand: each has a completely different scale of business, different budget logic, and no established precedent for what a given athlete is worth to them specifically.</p>
+      <p class="note-p">That gap is where the opportunity is. A skateboarder with a car brand. A big wave surfer with a luxury watch company. A trail runner with a technology company. These deals often represent <strong>more value for both sides than another partnership within the same sport</strong> — precisely because the fit is specific enough to mean something to the audience it reaches. La Sportiva or Scarpa are the obvious first thought for a climber. A partnership with Beats or Vans might be the more interesting one.</p>
+      <p class="note-p">Which means the most commercially significant thing an athlete can do is be discoverable by the brands that would benefit most from them — not just the obvious ones. Fit and discovery are the same problem.</p>
+      <div class="note-callout">
+        Pricing in sponsorship isn't a single market. It's dozens of different ones, each with its own logic. The job isn't to set a universal rate — it's to help both sides understand which market they're actually in.
       </div>
     </div>
   </div>
  
-  <div class="pullquote">
-    <p>The same four gaps appeared across every sport, every career level, and both sides of the commercial relationship. That kind of consistency tends to point at structure rather than circumstance.</p>
+  <!-- 03 -->
+  <div class="note reveal">
+    <div class="note-index">
+      <div class="note-num">03 —</div>
+      <div class="note-tag">On pigeons<br>&amp; Napoleon</div>
+    </div>
+    <div class="note-body">
+      <div class="note-h">On pigeons and Napoleon.</div>
+      <p class="note-p">In the early nineteenth century, the Rothschild banking family maintained a network of carrier pigeons between their European offices. When Napoleon was defeated at Waterloo, they received the news in London hours before it reached the government through official channels. To any observer at the time, keeping a pigeon loft was an eccentric and faintly embarrassing thing for a serious financial institution to do. It was, in fact, a structural information advantage — the gap between what they knew and what everyone else knew, measured in hours, was the product.</p>
+      <p class="note-p">The sponsorship market in action sport runs on the equivalent of dispatches by horse. Athletes estimate their value against folklore. Brands evaluate candidates against whoever last crossed their desk. Both sides make decisions on information that is slow and unevenly distributed — not because anyone is incompetent, but because the infrastructure for better decisions hasn't existed.</p>
+      <div class="note-callout">
+        Sponsable is the pigeon loft. Not a marginal improvement on the current process — a different category of information, available to both sides, that changes what decisions are even possible.
+      </div>
+    </div>
   </div>
-</div>
+ 
+  <!-- 04 -->
+  <div class="note reveal">
+    <div class="note-index">
+      <div class="note-num">04 —</div>
+      <div class="note-tag">On knowing<br>enough</div>
+    </div>
+    <div class="note-body">
+      <div class="note-h">Most athletes enter their first sponsorship negotiation with no frame of reference for what's normal. That's not a personal failing — the knowledge simply isn't taught anywhere.</div>
+      <p class="note-p">A lot of athletes in action sport are in their teens or early twenties, building commercial careers alongside competitive ones, with no obvious place to learn what a brand manager actually evaluates, what makes a deal fair, or what a renewal conversation is supposed to look like.</p>
+      <div class="sessions-nudge">
+        <span class="sessions-nudge-label">Sessions —</span>
+        <span class="sessions-nudge-text">That's what <a href="/sessions">Sponsable Sessions</a> is for. A podcast, newsletter, and content library covering athlete valuation, contract basics, and negotiation. Free. Specific to action sport.</span>
+      </div>
+    </div>
+  </div>
+ 
+</section>
+ 
+<!-- COUNTER -->
+<section class="counter reveal">
+  <div class="counter-inner">
+    <div class="counter-kicker">An honest caveat</div>
+    <div class="counter-h">Not all of this market's friction is waste. Some of it is doing real work.</div>
+    <p class="counter-p">Opacity allows early-stage brands to build genuine athlete relationships they couldn't sustain in a fully transparent market. It rewards athletes who invest in community over those who invest in self-promotion — which produces a different kind of ambassador, and not obviously a worse one. A market running on relationships and judgment isn't automatically inferior to one running on data.</p>
+    <p class="counter-p">We don't entirely disagree with that. The goal was never to replace judgment with automation, or to turn something human into something that feels like procurement. Better information doesn't tell a brand who to work with. It tells them whether the decision they're making is informed or instinctive — and that leaves the interesting part exactly where it belongs.</p>
+    <p class="counter-p">The question we kept returning to: does the current market consistently fail the people who most deserve to succeed in it? The answer was yes. That felt like enough reason to build.</p>
+  </div>
+</section>
  
 <!-- THE BRIEF -->
-<div class="section">
-  <div class="kicker">The Brief</div>
-  <div class="section-title">Ten analyses. Published before the waitlist opened.</div>
- 
-  <p class="prose">We wrote at length about each of the areas the research surfaced — pricing, discovery, reporting, reputation, pitching, seeding. The intention was to think carefully in public before asking anyone to trust us with the commercial side of their career. The articles are available in full.</p>
- 
-  <a href="/brief" class="brief-link-block">
+<section class="brief-cta reveal">
+  <a href="/brief" class="brief-cta-inner">
     <div>
-      <div class="brief-link-label">The Brief</div>
-      <div class="brief-link-title">Ten analyses of the market we're building for</div>
-      <div class="brief-link-sub">Pricing, discovery, reporting, reputation, pitching — and the rest</div>
+      <div class="brief-cta-label">The Brief</div>
+      <div class="brief-cta-title">Ten long-form analyses. Published before we built anything.</div>
+      <div class="brief-cta-sub">Pricing, discovery, reporting, reputation, pitching, seeding — written before asking anyone to trust us with their career.</div>
     </div>
-    <div class="brief-link-arrow">→</div>
+    <div class="brief-cta-arrow">→</div>
   </a>
-</div>
+</section>
  
-<!-- SESSIONS -->
-<div class="section">
-  <div class="kicker">Sessions</div>
-  <div class="section-title">The platform and the education have to exist together.</div>
- 
-  <p class="prose">A pricing index is only useful to an athlete who understands how to read it. A pitch builder only works if the person using it knows what a brand manager is actually evaluating. Sessions is the educational layer — a podcast, newsletter, and content library covering athlete valuation, contract literacy, and negotiation strategy. Specific to action and outdoor sport. Free, with no account required.</p>
- 
-  <div class="sessions-block">
-    <div class="sessions-title">Notify me when Sessions launches</div>
-    <div class="sessions-desc">One email when the podcast, newsletter, and first guides are available. Nothing in the meantime.</div>
+<!-- SESSIONS SIGNUP -->
+<section class="sessions-section reveal">
+  <div class="sessions-inner">
+    <div class="sessions-label">Sessions</div>
+    <div class="sessions-h">The education layer. Free, no account required, specific to action sport.</div>
+    <p class="sessions-p">A podcast, newsletter, and content library covering athlete valuation, contract basics, and negotiation strategy.</p>
     <div class="sessions-form">
-      <input type="email" class="sessions-input" placeholder="your@email.com" id="sessionsEmail" />
-      <button class="sessions-btn" id="sessionsBtn">Notify me</button>
+      <input class="sessions-input" type="email" placeholder="your@email.com" />
+      <button class="sessions-btn">Notify me</button>
     </div>
-    <div class="sessions-note">No sequences. No content previews. Just the notification.</div>
+    <p class="sessions-note">One email on launch. Nothing before that.</p>
   </div>
-</div>
+</section>
  
 <footer>
   <div class="footer-inner">
-    <span class="footer-logo-name">Sponsable</span>
-    <div class="footer-links">
+    <span class="footer-name">Sponsable</span>
+    <nav class="footer-links">
       <a href="/athletes">For Athletes</a>
       <a href="/brands">For Brands</a>
       <a href="/thinking">Our Thinking</a>
-    </div>
-    <div class="footer-copy">© 2025 Sponsable</div>
+    </nav>
+    <span class="footer-copy">© 2025 Sponsable</span>
   </div>
 </footer>
  
 <script>
   window.addEventListener('scroll', () => {
-    const el = document.documentElement;
-    const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
-    document.getElementById('progress').style.width = pct + '%';
+    const s = document.documentElement.scrollTop || document.body.scrollTop;
+    const t = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    document.getElementById('progress').style.width = (s / t * 100) + '%';
   });
-  document.getElementById('sessionsBtn').addEventListener('click', () => {
-    const el = document.getElementById('sessionsEmail');
-    if (el.value.includes('@')) {
-      el.value = '';
-      el.placeholder = "You'll hear from us ✓";
-      document.getElementById('sessionsBtn').textContent = 'Done ✓';
-    }
-  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
+ 
 </body>
 </html>
