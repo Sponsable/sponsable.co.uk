@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>No Support Vehicle — Nika Potapova</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #09090C;
+      --surface:      #111116;
+      --surface-2:    #17171E;
+      --rule:         #1E1E27;
+      --rule-mid:     #2A2A36;
+      --ink:          #EDECE7;
+      --ink-mid:      #9897A6;
+      --ink-dim:      #505060;
+      --gold:         #C8A45A;
+      --gold-pale:    rgba(200,164,90,0.09);
+      --gold-border:  rgba(200,164,90,0.22);
+      --serif:        'Lora', Georgia, serif;
+      --sans:         'DM Sans', system-ui, sans-serif;
+      --mono:         'DM Mono', monospace;
+    }
+
+    html { font-size: 17px; scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #bar {
+      position: fixed; top: 0; left: 0; height: 2px;
+      background: var(--gold); width: 0%; z-index: 300;
+      transition: width 0.08s linear;
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(9,9,12,0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 52px;
+    }
+    .nav-name { font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mid); }
+    .nav-shark { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; color: var(--ink-dim); }
+
+    .hero {
+      min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 40px 64px;
+      position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-ambient {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(200,164,90,0.06) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(58,95,154,0.06) 0%, transparent 55%);
+    }
+    .hero-grain {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px;
+    }
+    .hero-bg-text {
+      position: absolute; bottom: -0.05em; left: -0.01em;
+      font-family: var(--serif); font-size: clamp(11rem, 26vw, 20rem);
+      font-weight: 700; font-style: italic; line-height: 1;
+      letter-spacing: -0.04em; color: transparent;
+      -webkit-text-stroke: 1px rgba(200,164,90,0.055);
+      pointer-events: none; user-select: none; white-space: nowrap;
+    }
+    .hero-content { position: relative; }
+
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 32px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
+
+    h1 {
+      font-family: var(--serif); font-size: clamp(3rem, 10vw, 8rem);
+      font-weight: 700; line-height: 0.93; letter-spacing: -0.035em;
+      color: var(--ink); margin-bottom: 36px; max-width: 860px;
+    }
+    h1 em { font-style: italic; color: var(--gold); }
+
+    .hero-sub {
+      font-family: var(--serif); font-size: clamp(1rem, 2vw, 1.12rem);
+      font-style: italic; color: var(--ink-mid); max-width: 540px;
+      line-height: 1.65; margin-bottom: 44px;
+    }
+
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 44px; }
+    .tag {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-dim);
+      border: 1px solid var(--rule-mid); border-radius: 2px; padding: 5px 10px;
+    }
+    .tag.hi { color: var(--gold); border-color: var(--gold-border); background: var(--gold-pale); }
+
+    .hero-rule { border: none; border-top: 1px solid var(--rule); margin-bottom: 32px; }
+
+    .hero-creds { display: flex; gap: 36px; flex-wrap: wrap; }
+    .cred { display: flex; flex-direction: column; gap: 5px; }
+    .cred-val { font-family: var(--mono); font-size: 0.88rem; color: var(--ink); }
+    .cred-label { font-family: var(--sans); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-dim); }
+    .cred-div { width: 1px; background: var(--rule-mid); align-self: stretch; }
+
+    .wrap { max-width: 820px; margin: 0 auto; padding: 0 40px; }
+
+    .block { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+    .block:last-of-type { border-bottom: none; }
+
+    .sec-label {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 32px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .sec-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+    h2 {
+      font-family: var(--serif); font-size: clamp(1.5rem, 4vw, 2.1rem);
+      font-weight: 700; line-height: 1.18; letter-spacing: -0.025em;
+      color: var(--ink); margin-bottom: 24px;
+    }
+
+    .prose p { font-family: var(--sans); font-size: 0.92rem; font-weight: 300; color: var(--ink-mid); line-height: 1.82; margin-bottom: 1.3rem; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong { color: var(--ink); font-weight: 500; }
+
+    .quote {
+      margin: 44px 0; padding: 32px 36px;
+      border-left: 3px solid var(--gold);
+      background: var(--gold-pale); border-radius: 0 4px 4px 0;
+    }
+    .quote p { font-family: var(--serif); font-size: 1.1rem; font-style: italic; color: var(--ink); line-height: 1.7; margin: 0 0 12px; }
+    .quote cite { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-style: normal; }
+
+    .ach-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: 44px 0; }
+    .ach-cell { background: var(--surface); border: 1px solid var(--rule); padding: 26px 22px; }
+    .ach-cell:first-child { border-radius: 4px 0 0 4px; }
+    .ach-cell:last-child  { border-radius: 0 4px 4px 0; }
+    .ach-val { font-family: var(--mono); font-size: 1rem; color: var(--gold); margin-bottom: 8px; line-height: 1.2; }
+    .ach-label { font-family: var(--sans); font-size: 0.7rem; font-weight: 300; color: var(--ink-dim); line-height: 1.5; }
+
+    .sponsors-note {
+      background: var(--surface); border: 1px solid var(--rule); border-radius: 4px;
+      padding: 22px 28px; margin: 44px 0;
+      display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
+    }
+    .sponsors-note-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-dim); white-space: nowrap; }
+    .sponsors-list { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+    .sponsor-name { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; color: var(--ink-mid); }
+    .sponsor-sep { color: var(--rule-mid); }
+
+    .episodes { margin: 44px 0; display: flex; flex-direction: column; gap: 2px; }
+    .ep {
+      background: var(--surface); border: 1px solid var(--rule); border-radius: 4px;
+      padding: 26px 28px; display: grid; grid-template-columns: 52px 1fr; gap: 20px;
+      align-items: start; transition: border-color 0.18s, background 0.18s;
+    }
+    .ep:hover { border-color: var(--gold-border); background: var(--surface-2); }
+    .ep-num { font-family: var(--mono); font-size: 1.3rem; color: rgba(200,164,90,0.2); line-height: 1; padding-top: 3px; }
+    .ep-title { font-family: var(--sans); font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+    .ep-desc { font-family: var(--sans); font-size: 0.8rem; font-weight: 300; color: var(--ink-dim); line-height: 1.65; }
+    .ep-badge {
+      display: inline-block; margin-top: 12px;
+      font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold);
+      border: 1px solid var(--gold-border); padding: 4px 8px; border-radius: 2px;
+    }
+
+    .cal { margin: 44px 0; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+    .cal-row { display: grid; grid-template-columns: 140px 1fr 100px; border-bottom: 1px solid var(--rule); }
+    .cal-row:last-child { border-bottom: none; }
+    .cal-date { padding: 18px 20px; border-right: 1px solid var(--rule); font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; background: var(--surface); }
+    .cal-event { padding: 18px 22px; }
+    .cal-event-title { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+    .cal-event-sub { font-family: var(--sans); font-size: 0.72rem; font-weight: 300; color: var(--ink-dim); }
+    .cal-badge { padding: 18px 16px; border-left: 1px solid var(--rule); display: flex; align-items: center; background: var(--surface); }
+    .cal-badge span { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-dim); }
+    .cal-badge span.live { color: var(--gold); }
+
+    .partner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 44px 0; }
+    .partner-card {
+      background: var(--surface); border: 1px solid var(--rule); padding: 28px 26px;
+      transition: border-color 0.18s, background 0.18s;
+    }
+    .partner-card:hover { border-color: var(--gold-border); background: var(--surface-2); }
+    .partner-card:nth-child(1) { border-radius: 4px 0 0 0; }
+    .partner-card:nth-child(2) { border-radius: 0 4px 0 0; }
+    .partner-card:nth-child(3) { border-radius: 0 0 0 4px; }
+    .partner-card:nth-child(4) { border-radius: 0 0 4px 0; }
+    .partner-name { font-family: var(--sans); font-size: 0.95rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .partner-cat { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .partner-hook { font-family: var(--serif); font-size: 0.84rem; font-style: italic; color: var(--ink-mid); margin-bottom: 10px; line-height: 1.5; }
+    .partner-why { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; color: var(--ink-dim); line-height: 1.65; }
+    .partner-why strong { color: var(--ink-mid); font-weight: 500; }
+
+    .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: 44px 0; }
+    .tier { background: var(--surface); border: 1px solid var(--rule); padding: 28px 24px; }
+    .tier:first-child { border-radius: 4px 0 0 4px; }
+    .tier:last-child  { border-radius: 0 4px 4px 0; }
+    .tier.featured { background: var(--surface-2); border-color: var(--gold-border); }
+    .tier-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 12px; }
+    .tier.featured .tier-label { color: var(--gold); }
+    .tier-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 14px; line-height: 1.2; }
+    .tier-items { list-style: none; }
+    .tier-items li { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; color: var(--ink-dim); line-height: 1.5; margin-bottom: 8px; padding-left: 14px; position: relative; }
+    .tier-items li::before { content: '—'; position: absolute; left: 0; color: var(--rule-mid); }
+    .tier.featured .tier-items li::before { color: var(--gold); }
+
+    .contact-block {
+      background: var(--ink); border-radius: 6px; padding: 48px 44px;
+      display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
+    }
+    .contact-block h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; color: var(--bg); letter-spacing: -0.02em; margin-bottom: 10px; }
+    .contact-block p { font-family: var(--sans); font-size: 0.82rem; font-weight: 300; color: #55555F; line-height: 1.7; }
+    .contact-details { display: flex; flex-direction: column; gap: 16px; align-items: flex-end; }
+    .contact-item { text-align: right; }
+    .contact-item-label { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: #888; margin-bottom: 4px; }
+    .contact-item-val { font-family: var(--mono); font-size: 0.78rem; color: var(--bg); text-decoration: none; display: block; }
+    a.contact-item-val:hover { color: var(--gold); }
+
+    footer {
+      border-top: 1px solid var(--rule); padding: 28px 40px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-name { font-family: var(--sans); font-size: 0.72rem; font-weight: 500; color: var(--ink-dim); letter-spacing: 0.08em; }
+    .footer-note { font-family: var(--mono); font-size: 0.6rem; color: var(--ink-dim); letter-spacing: 0.08em; }
+
+    @media (max-width: 680px) {
+      nav, .hero, footer { padding-left: 20px; padding-right: 20px; }
+      .wrap { padding: 0 20px; }
+      h1 { font-size: 3.2rem; }
+      .ach-row { grid-template-columns: 1fr 1fr; }
+      .ach-row .ach-cell:last-child { grid-column: 1/-1; border-radius: 0 0 4px 4px; }
+      .cal-row { grid-template-columns: 90px 1fr; }
+      .cal-badge { display: none; }
+      .partner-grid { grid-template-columns: 1fr; }
+      .partner-card:nth-child(n) { border-radius: 4px; }
+      .tiers { grid-template-columns: 1fr; }
+      .tier:nth-child(n) { border-radius: 4px; }
+      .contact-block { grid-template-columns: 1fr; gap: 28px; padding: 32px 24px; }
+      .contact-details { align-items: flex-start; }
+      .contact-item { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="bar"></div>
+
+<nav>
+  <span class="nav-name">Nika Potapova</span>
+  <span class="nav-shark">🦈 Lifestyle of Little Shark</span>
+</nav>
+
+<header class="hero">
+  <div class="hero-ambient"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-bg-text">Alone.</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Series Proposal — 2025/26</div>
+    <h1>No<br><em>Support</em><br>Vehicle.</h1>
+    <p class="hero-sub">A six-episode documentary series following a World Cup climber running her entire season without a coach, a manager, or a support structure. Shot from the inside, in real time.</p>
+    <div class="hero-tags">
+      <span class="tag hi">6-Episode Series</span>
+      <span class="tag hi">Long-form</span>
+      <span class="tag">World Cup Climbing</span>
+      <span class="tag">Self-Produced</span>
+      <span class="tag">Paris</span>
+      <span class="tag">🇺🇦 Ukrainian</span>
+    </div>
+    <hr class="hero-rule" />
+    <div class="hero-creds">
+      <div class="cred">
+        <span class="cred-val">9a</span>
+        <span class="cred-label">Hardest Grade</span>
+      </div>
+      <div class="cred-div"></div>
+      <div class="cred">
+        <span class="cred-val">World Champs Gold</span>
+        <span class="cred-label">IFSC Youth 2019</span>
+      </div>
+      <div class="cred-div"></div>
+      <div class="cred">
+        <span class="cred-val">39.8K</span>
+        <span class="cred-label">Instagram</span>
+      </div>
+      <div class="cred-div"></div>
+      <div class="cred">
+        <span class="cred-val">Natural Heights S1 E3</span>
+        <span class="cred-label">Red Bull</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="block">
+    <div class="sec-label">01 — The Athlete</div>
+    <h2>She manages everything herself. The training, the travel, the deals, the logistics. All of it.</h2>
+    <div class="prose">
+      <p>I'm Nika Potapova — a professional sport climber from Kyiv, currently based in Paris. I've competed on the World Cup circuit for several years, reached 9a, won a Youth World Championship gold, and been featured in Red Bull's <em>Natural Heights</em>. I've done all of it without a coach, a manager, or any federation funding.</p>
+      <p>I organise my own travel — often by calling friends to crash on sofas to make it to competitions. I write my own training plans. I make my own calls on nutrition, recovery, and race strategy. I moved to Paris alone this year, still recovering from surgery, with almost nothing in my pocket, because I decided that's where I needed to be. That's not a hardship story. That's just how I operate.</p>
+      <p><strong>No Support Vehicle is what that actually looks like, documented properly for the first time.</strong></p>
+    </div>
+    <div class="quote">
+      <p>"When I climb I'm just somewhere in another world. I don't hear anything. It's just my peaceful moment."</p>
+      <cite>— Nika Potapova, Red Bull Natural Heights</cite>
+    </div>
+    <div class="ach-row">
+      <div class="ach-cell">
+        <div class="ach-val">9a / 5.14d</div>
+        <div class="ach-label">"Fuck the System", Santa Linya — one of very few women at this grade worldwide</div>
+      </div>
+      <div class="ach-cell">
+        <div class="ach-val">World Champs Gold</div>
+        <div class="ach-label">IFSC Youth Lead, Arco 2019. Silver 2018. Consistent top results as a junior.</div>
+      </div>
+      <div class="ach-cell">
+        <div class="ach-val">Age 12</div>
+        <div class="ach-label">Set a Zlagboard fingerboard world record as a child. The stubbornness started early.</div>
+      </div>
+    </div>
+    <div class="sponsors-note">
+      <span class="sponsors-note-label">Current Partners</span>
+      <div class="sponsors-list">
+        <span class="sponsor-name">Black Diamond</span>
+        <span class="sponsor-sep">·</span>
+        <span class="sponsor-name">Tenaya</span>
+        <span class="sponsor-sep">·</span>
+        <span class="sponsor-name">Karaffu Coffee</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="sec-label">02 — The Series</div>
+    <h2>Six episodes. One season. No crew. No safety net.</h2>
+    <div class="prose">
+      <p>No Support Vehicle is a six-episode long-form documentary series running across the 2025/26 competitive season, culminating at European Championships in August 2026. It follows a single question: what does it actually take to run a World Cup campaign alone, from the inside?</p>
+      <p>The format is deliberately intimate. Mostly self-shot. Close to the real texture of the thing — the train to a competition she organised herself, the hostel room the night before, the isolation tent before finals, the call home after a bad result. The kind of footage that doesn't usually exist because athletes with teams around them don't have to think about it this way.</p>
+      <p>This is not a climbing film. It's not a brand film. It's the thing that happens between the competitions — which is almost always the more interesting story.</p>
+    </div>
+    <div class="episodes">
+      <div class="ep">
+        <div class="ep-num">01</div>
+        <div>
+          <div class="ep-title">The Move</div>
+          <div class="ep-desc">Paris, January 2026. Recovering from surgery, unpacking in a new city, restarting training with no coach, no schedule imposed from outside. How you structure a comeback when the only person you're accountable to is yourself.</div>
+          <span class="ep-badge">● Filming now</span>
+        </div>
+      </div>
+      <div class="ep">
+        <div class="ep-num">02</div>
+        <div>
+          <div class="ep-title">The Logistics</div>
+          <div class="ep-desc">Getting to a World Cup when you're funding it yourself. Train tickets, sofa calls, team car requests, borrowed crash pads. The operational reality that most athletes never show — because most athletes don't have to think about it this hard.</div>
+          <span class="ep-badge">Spring 2026</span>
+        </div>
+      </div>
+      <div class="ep">
+        <div class="ep-num">03</div>
+        <div>
+          <div class="ep-title">Isolation</div>
+          <div class="ep-desc">Inside the tent before a World Cup final. Headphones in, world gone. How she manages the internal state of competing at the highest level when there is no coach at the bottom of the wall — just the route and what she's already put into it.</div>
+          <span class="ep-badge">Spring 2026</span>
+        </div>
+      </div>
+      <div class="ep">
+        <div class="ep-num">04</div>
+        <div>
+          <div class="ep-title">The Argument for Staying</div>
+          <div class="ep-desc">The episode she almost didn't make. The moment she nearly quit climbing entirely — and what brought her back. Not the inspirational-quote version. The actual version, with the office job she nearly took instead.</div>
+          <span class="ep-badge">Summer 2026</span>
+        </div>
+      </div>
+      <div class="ep">
+        <div class="ep-num">05</div>
+        <div>
+          <div class="ep-title">Paris Works</div>
+          <div class="ep-desc">Three months in. What the move to Paris actually changed — for training, for commercial opportunities, for the shape of the season. And what it didn't change. A mid-season audit from someone who made a big bet on a new city.</div>
+          <span class="ep-badge">Summer 2026</span>
+        </div>
+      </div>
+      <div class="ep">
+        <div class="ep-num">06</div>
+        <div>
+          <div class="ep-title">European Championships</div>
+          <div class="ep-desc">August 2026. The season's anchor event. Everything the series has been building toward — the preparation, the travel, the competition week, the result. The end of one arc and the start of whatever comes next.</div>
+          <span class="ep-badge">August 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="sec-label">03 — Season Calendar</div>
+    <h2>A real competitive window. Documented as it happens.</h2>
+    <div class="prose">
+      <p>The series maps directly to the season. Every competition is a story beat. The calendar is the production timeline.</p>
+    </div>
+    <div class="cal">
+      <div class="cal-row">
+        <div class="cal-date">Now</div>
+        <div class="cal-event">
+          <div class="cal-event-title">Base Training — Paris</div>
+          <div class="cal-event-sub">Post-surgery return. Ep 01 filming window open.</div>
+        </div>
+        <div class="cal-badge"><span class="live">● Filming</span></div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-date">Spring '26</div>
+        <div class="cal-event">
+          <div class="cal-event-title">World Cup Circuit Opens</div>
+          <div class="cal-event-sub">First competition appearances of the season. Eps 02 + 03.</div>
+        </div>
+        <div class="cal-badge"><span>Upcoming</span></div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-date">Spring '26</div>
+        <div class="cal-event">
+          <div class="cal-event-title">European Cup Series</div>
+          <div class="cal-event-sub">Multiple events. Mid-season content arc builds.</div>
+        </div>
+        <div class="cal-badge"><span>Upcoming</span></div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-date">Summer '26</div>
+        <div class="cal-event">
+          <div class="cal-event-title">World Cups Continue</div>
+          <div class="cal-event-sub">Eps 04 + 05. Mid-season audit episode.</div>
+        </div>
+        <div class="cal-badge"><span>Upcoming</span></div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-date">Aug '26</div>
+        <div class="cal-event">
+          <div class="cal-event-title">European Championships</div>
+          <div class="cal-event-sub">Season anchor. Ep 06. Series finale and partner's main window.</div>
+        </div>
+        <div class="cal-badge"><span>Anchor</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="sec-label">04 — Distribution & Brand Partner</div>
+    <h2>Looking for a home for the series and one brand that belongs inside it.</h2>
+    <div class="prose">
+      <p>The series is looking for two things: a distribution platform and a single lead brand partner. The right platform and the right brand are likely to be in the same territory — both need to already understand athlete-led storytelling without needing it explained.</p>
+      <p>The brand integration is not cosmetic. The partner sits inside the series in the parts of the story where their product genuinely lives. <strong>There is one partner slot.</strong> The series only works if the fit is real.</p>
+    </div>
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="partner-name">Beats by Dre</div>
+        <div class="partner-cat">Audio — Lead Candidate</div>
+        <div class="partner-hook">"I put on my earphones. I don't hear anything. It's just my peaceful moment."</div>
+        <div class="partner-why">That line from Natural Heights is their brief written back to them. <strong>Episode 03 is a Beats film.</strong> They've never owned climbing. This is the first opportunity.</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-name">Red Bull</div>
+        <div class="partner-cat">Energy / Distribution</div>
+        <div class="partner-hook">They already put her in a series. The story got bigger.</div>
+        <div class="partner-why">Natural Heights was the introduction. No Support Vehicle is the deeper cut. <strong>Red Bull's content channels are the natural home.</strong> The relationship already exists — this is a next chapter, not a cold ask.</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-name">Satisfy</div>
+        <div class="partner-cat">Apparel — Paris</div>
+        <div class="partner-hook">Paris-based, just entered climbing. Built for this visual language.</div>
+        <div class="partner-why">Their campaigns already look like self-shot phone footage because that's what they want. <strong>Nika is in their city.</strong> This is a coffee, not a cold pitch. First-mover in climbing before the space fills up for them.</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-name">Oura Ring</div>
+        <div class="partner-cat">Health Tech</div>
+        <div class="partner-hook">Recovery tools for athletes managing their own health without a team.</div>
+        <div class="partner-why">No physio, no nutritionist, no coach monitoring load. <strong>She is their user and their proof of concept.</strong> The solo athlete recovery angle is almost their product brief verbatim.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="sec-label">05 — Partnership Structure</div>
+    <h2>One slot. Three ways to be in it.</h2>
+    <div class="prose">
+      <p>The series has a single lead partner position. The tiers below describe different levels of involvement. The right structure depends on what the partner is trying to get out of it — content ownership, product integration, or distribution rights.</p>
+    </div>
+    <div class="tiers">
+      <div class="tier">
+        <div class="tier-label">Tier 01</div>
+        <div class="tier-name">Product Partner</div>
+        <ul class="tier-items">
+          <li>Product visible and used authentically across episodes</li>
+          <li>Named in credits and episode copy</li>
+          <li>One dedicated story moment per episode</li>
+          <li>Right to use series content on own channels</li>
+        </ul>
+      </div>
+      <div class="tier featured">
+        <div class="tier-label">Tier 02 — Recommended</div>
+        <div class="tier-name">Series Partner</div>
+        <ul class="tier-items">
+          <li>Everything in Tier 01</li>
+          <li>Named lead partner across all series assets</li>
+          <li>Co-developed episode built around your product story</li>
+          <li>Monthly retainer contribution to production</li>
+          <li>Full European Championships window</li>
+          <li>Right of first refusal on Season 2</li>
+        </ul>
+      </div>
+      <div class="tier">
+        <div class="tier-label">Tier 03</div>
+        <div class="tier-name">Distribution Partner</div>
+        <ul class="tier-items">
+          <li>Full series hosted on your platform</li>
+          <li>Exclusive first-window rights</li>
+          <li>Co-branded series identity</li>
+          <li>Behind-the-scenes access for additional content</li>
+          <li>First look at future athlete projects</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="padding-bottom: 0; border-bottom: none;">
+    <div class="sec-label">06 — Contact</div>
+    <div class="contact-block">
+      <div>
+        <h3>The first conversation is 20 minutes.</h3>
+        <p>Not looking for a decision on that call — just a conversation about fit. If there's something here, we build it properly from there. I'm in Paris and available to meet if that's useful.</p>
+      </div>
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-item-label">WhatsApp</div>
+          <a href="https://wa.me/380663570462" class="contact-item-val">+380 66 357 0462</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-label">Instagram</div>
+          <a href="https://instagram.com/nika_____potapova" target="_blank" class="contact-item-val">@nika_____potapova</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-label">Athlete Profile</div>
+          <a href="https://sponsable.com" target="_blank" class="contact-item-val">sponsable.com/nika</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="footer-name">Nika Potapova</span>
+  <span class="footer-note">No Support Vehicle — 2025/26 · Confidential</span>
+</footer>
+
+<script>
+  const bar = document.getElementById('bar');
+  window.addEventListener('scroll', () => {
+    const h = document.body.scrollHeight - window.innerHeight;
+    bar.style.width = (window.scrollY / h * 100) + '%';
+  }, { passive: true });
+</script>
+</body>
+</html>
