@@ -70,17 +70,17 @@
 
     .hero-eyebrow {
       font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 32px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 32px;
       display: flex; align-items: center; gap: 14px;
     }
-    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
+    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--accent); }
 
     h1 {
       font-family: var(--serif); font-size: clamp(3rem, 10vw, 8rem);
       font-weight: 700; line-height: 0.93; letter-spacing: -0.035em;
       color: var(--ink); margin-bottom: 36px; max-width: 860px;
     }
-    h1 em { font-style: italic; color: var(--gold); }
+    h1 em { font-style: italic; color: var(--accent); }
 
     .hero-sub {
       font-family: var(--serif); font-size: clamp(1rem, 2vw, 1.12rem);
@@ -94,7 +94,7 @@
       text-transform: uppercase; color: var(--ink-dim);
       border: 1px solid var(--rule-mid); border-radius: 2px; padding: 5px 10px;
     }
-    .tag.hi { color: var(--gold); border-color: var(--gold-border); background: var(--gold-pale); }
+    .tag.hi { color: var(--accent); border-color: var(--accent-border); background: var(--accent-pale); }
 
     .hero-rule { border: none; border-top: 1px solid var(--rule); margin-bottom: 32px; }
 
@@ -111,7 +111,7 @@
 
     .sec-label {
       font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 32px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 32px;
       display: flex; align-items: center; gap: 14px;
     }
     .sec-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
@@ -128,17 +128,17 @@
 
     .quote {
       margin: 44px 0; padding: 32px 36px;
-      border-left: 3px solid var(--gold);
-      background: var(--gold-pale); border-radius: 0 4px 4px 0;
+      border-left: 3px solid var(--accent);
+      background: var(--accent-pale); border-radius: 0 4px 4px 0;
     }
     .quote p { font-family: var(--serif); font-size: 1.1rem; font-style: italic; color: var(--ink); line-height: 1.7; margin: 0 0 12px; }
-    .quote cite { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-style: normal; }
+    .quote cite { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-style: normal; }
 
     .ach-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: 44px 0; }
     .ach-cell { background: var(--surface); border: 1px solid var(--rule); padding: 26px 22px; }
     .ach-cell:first-child { border-radius: 4px 0 0 4px; }
     .ach-cell:last-child  { border-radius: 0 4px 4px 0; }
-    .ach-val { font-family: var(--mono); font-size: 1rem; color: var(--gold); margin-bottom: 8px; line-height: 1.2; }
+    .ach-val { font-family: var(--mono); font-size: 1rem; color: var(--accent); margin-bottom: 8px; line-height: 1.2; }
     .ach-label { font-family: var(--sans); font-size: 0.7rem; font-weight: 300; color: var(--ink-dim); line-height: 1.5; }
 
     .sponsors-note {
@@ -157,40 +157,40 @@
       padding: 26px 28px; display: grid; grid-template-columns: 52px 1fr; gap: 20px;
       align-items: start; transition: border-color 0.18s, background 0.18s;
     }
-    .ep:hover { border-color: var(--gold-border); background: var(--surface-2); }
+    .ep:hover { border-color: var(--accent-border); background: var(--surface-2); }
     .ep-num { font-family: var(--mono); font-size: 1.3rem; color: rgba(200,164,90,0.2); line-height: 1; padding-top: 3px; }
     .ep-title { font-family: var(--sans); font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
     .ep-desc { font-family: var(--sans); font-size: 0.8rem; font-weight: 300; color: var(--ink-dim); line-height: 1.65; }
     .ep-badge {
       display: inline-block; margin-top: 12px;
       font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--gold);
-      border: 1px solid var(--gold-border); padding: 4px 8px; border-radius: 2px;
+      text-transform: uppercase; color: var(--accent);
+      border: 1px solid var(--accent-border); padding: 4px 8px; border-radius: 2px;
     }
 
     .cal { margin: 44px 0; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
     .cal-row { display: grid; grid-template-columns: 140px 1fr 100px; border-bottom: 1px solid var(--rule); }
     .cal-row:last-child { border-bottom: none; }
-    .cal-date { padding: 18px 20px; border-right: 1px solid var(--rule); font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; background: var(--surface); }
+    .cal-date { padding: 18px 20px; border-right: 1px solid var(--rule); font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; background: var(--surface); }
     .cal-event { padding: 18px 22px; }
     .cal-event-title { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
     .cal-event-sub { font-family: var(--sans); font-size: 0.72rem; font-weight: 300; color: var(--ink-dim); }
     .cal-badge { padding: 18px 16px; border-left: 1px solid var(--rule); display: flex; align-items: center; background: var(--surface); }
     .cal-badge span { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-dim); }
-    .cal-badge span.live { color: var(--gold); }
+    .cal-badge span.live { color: var(--accent); }
 
     .partner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 44px 0; }
     .partner-card {
       background: var(--surface); border: 1px solid var(--rule); padding: 28px 26px;
       transition: border-color 0.18s, background 0.18s;
     }
-    .partner-card:hover { border-color: var(--gold-border); background: var(--surface-2); }
+    .partner-card:hover { border-color: var(--accent-border); background: var(--surface-2); }
     .partner-card:nth-child(1) { border-radius: 4px 0 0 0; }
     .partner-card:nth-child(2) { border-radius: 0 4px 0 0; }
     .partner-card:nth-child(3) { border-radius: 0 0 0 4px; }
     .partner-card:nth-child(4) { border-radius: 0 0 4px 0; }
     .partner-name { font-family: var(--sans); font-size: 0.95rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
-    .partner-cat { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .partner-cat { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
     .partner-hook { font-family: var(--serif); font-size: 0.84rem; font-style: italic; color: var(--ink-mid); margin-bottom: 10px; line-height: 1.5; }
     .partner-why { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; color: var(--ink-dim); line-height: 1.65; }
     .partner-why strong { color: var(--ink-mid); font-weight: 500; }
@@ -199,14 +199,14 @@
     .tier { background: var(--surface); border: 1px solid var(--rule); padding: 28px 24px; }
     .tier:first-child { border-radius: 4px 0 0 4px; }
     .tier:last-child  { border-radius: 0 4px 4px 0; }
-    .tier.featured { background: var(--surface-2); border-color: var(--gold-border); }
+    .tier.featured { background: var(--surface-2); border-color: var(--accent-border); }
     .tier-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 12px; }
-    .tier.featured .tier-label { color: var(--gold); }
+    .tier.featured .tier-label { color: var(--accent); }
     .tier-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 14px; line-height: 1.2; }
     .tier-items { list-style: none; }
     .tier-items li { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; color: var(--ink-dim); line-height: 1.5; margin-bottom: 8px; padding-left: 14px; position: relative; }
     .tier-items li::before { content: '—'; position: absolute; left: 0; color: var(--rule-mid); }
-    .tier.featured .tier-items li::before { color: var(--gold); }
+    .tier.featured .tier-items li::before { color: var(--accent); }
 
     .contact-block {
       background: var(--ink); border-radius: 6px; padding: 48px 44px;
@@ -218,7 +218,7 @@
     .contact-item { text-align: right; }
     .contact-item-label { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: #888; margin-bottom: 4px; }
     .contact-item-val { font-family: var(--mono); font-size: 0.78rem; color: var(--bg); text-decoration: none; display: block; }
-    a.contact-item-val:hover { color: var(--gold); }
+    a.contact-item-val:hover { color: var(--accent); }
 
     footer {
       border-top: 1px solid var(--rule); padding: 28px 40px;
@@ -258,7 +258,7 @@
       <a href="/athletes">For Athletes</a>
       <a href="/brands">For Brands</a>
       <a href="/thinking">Our Thinking</a>
-      <a href="/Athlete/Nika_Potapova/No_Support_Vehicle" class="nav-cta">Project Idea</a>
+      <a href="/Athlete/Nika_Potapova/About" class="nav-cta">Return</a>
     </nav>
   </header>
   
@@ -546,10 +546,6 @@
         <div class="contact-item">
           <div class="contact-item-label">Instagram</div>
           <a href="https://instagram.com/nika_____potapova" target="_blank" class="contact-item-val">@nika_____potapova</a>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-label">Athlete Profile</div>
-          <a href="https://sponsable.com" target="_blank" class="contact-item-val">sponsable.com/nika</a>
         </div>
       </div>
     </div>
