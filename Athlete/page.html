@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Athletes — Sponsable</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #1a1a1e; --ink-mid: #444450; --ink-light: #888898;
+      --rule: #e2e2e8; --accent: #2E4A7A; --accent-light: #4A6FA5;
+      --accent-pale: #EEF2FA; --bg: #FAFAF8; --paper: #FFFFFF;
+      --serif: 'Lora', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
+    html { font-size: 18px; scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--serif); line-height: 1.75; -webkit-font-smoothing: antialiased; }
+ 
+    /* TOPBAR */
+    .topbar { background: var(--paper); border-bottom: 1px solid var(--rule); padding: 18px 40px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .topbar-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .topbar-logo img { height: 56px; width: auto; }
+    .topbar-logo-name { font-family: var(--sans); font-weight: 700; font-size: 0.88rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+    .topbar-nav { display: flex; align-items: center; gap: 36px; }
+    .topbar-nav a { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; color: var(--ink-light); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .topbar-nav a:hover { color: var(--ink); }
+    .topbar-nav a.active { font-weight: 600; color: var(--accent); }
+    .topbar-nav .nav-cta { color: var(--accent); font-weight: 600; border: 1px solid var(--accent); padding: 7px 16px; border-radius: 5px; transition: background 0.2s, color 0.2s; }
+    .topbar-nav .nav-cta:hover { background: var(--accent); color: white; }
+ 
+    #progress {
+      position: fixed; top: 0; left: 0;
+      height: 3px; background: var(--accent);
+      width: 0%; z-index: 200; transition: width 0.1s linear;
+    }
+ 
+    /* MASTHEAD */
+    .masthead {
+      max-width: 720px; margin: 0 auto;
+      padding: 72px 24px 52px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .masthead-kicker {
+      font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent-light); margin-bottom: 18px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .masthead-kicker::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--accent-light); }
+    .masthead h1 {
+      font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700; color: var(--ink); letter-spacing: -0.02em;
+      line-height: 1.15; margin-bottom: 16px;
+    }
+    .masthead-sub {
+      font-family: var(--serif); font-size: 1rem; font-style: italic;
+      color: var(--ink-mid); line-height: 1.8; max-width: 560px;
+      margin-bottom: 32px;
+    }
+ 
+    /* SEARCH */
+    .search-wrap { margin-left: auto; }
+    .search-input {
+      font-family: var(--sans); font-size: 0.78rem; color: var(--ink);
+      border: 1px solid var(--rule); border-radius: 20px;
+      padding: 6px 14px 6px 32px; outline: none;
+      background: var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23888898' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") no-repeat 10px center;
+      transition: border-color 0.2s; width: 200px;
+    }
+    .search-input:focus { border-color: var(--accent-light); }
+    .search-input::placeholder { color: var(--ink-light); }
+ 
+    /* COUNT */
+    .roster-count {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink-light);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .roster-count-num {
+      font-family: var(--mono); font-size: 0.62rem;
+      color: var(--accent); font-weight: 500;
+    }
+ 
+    .masthead-actions {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+ 
+    /* ATHLETE GRID */
+    .athletes-wrap {
+      max-width: 720px; margin: 0 auto;
+      padding: 52px 24px 80px;
+    }
+ 
+    .athlete-list { display: flex; flex-direction: column; gap: 0; }
+ 
+    /* ATHLETE ROW CARD */
+    .athlete-card {
+      display: block; text-decoration: none;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--rule);
+      transition: opacity 0.15s;
+    }
+    .athlete-card:first-child { border-top: 1px solid var(--rule); }
+    .athlete-card:hover { opacity: 0.65; }
+ 
+    .athlete-card-inner { display: flex; gap: 24px; align-items: flex-start; }
+ 
+    .athlete-card-body { flex: 1; }
+ 
+    .athlete-sport {
+      font-family: var(--mono); font-size: 0.6rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-light); margin-bottom: 10px;
+    }
+ 
+    .athlete-name {
+      font-family: var(--serif); font-size: 1.25rem; font-weight: 700;
+      color: var(--ink); letter-spacing: -0.01em;
+      line-height: 1.2; margin-bottom: 10px;
+    }
+ 
+    .athlete-desc {
+      font-family: var(--serif); font-size: 0.88rem; font-style: italic;
+      color: var(--ink-mid); line-height: 1.7; max-width: 520px;
+    }
+ 
+    .athlete-card-links {
+      display: flex; gap: 16px; margin-top: 18px; flex-wrap: wrap;
+    }
+    .athlete-link {
+      font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
+      color: var(--accent); letter-spacing: 0.03em;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .athlete-link:hover { color: var(--accent-light); }
+    .athlete-link-divider {
+      width: 1px; height: 14px; background: var(--rule);
+      align-self: center;
+    }
+ 
+    /* Founding Member badge */
+    .badge-founding {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-family: var(--mono); font-size: 0.55rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 3px;
+      background: var(--accent-pale); color: var(--accent);
+      white-space: nowrap;
+    }
+    .badge-founding::before {
+      content: '';
+      display: inline-block; width: 5px; height: 5px;
+      border-radius: 50%; background: var(--accent);
+    }
+ 
+    /* NO RESULTS */
+    .no-results {
+      display: none; padding: 48px 0;
+      font-family: var(--serif); font-size: 0.95rem; font-style: italic;
+      color: var(--ink-light); text-align: center;
+    }
+ 
+    /* FOOTER */
+    footer { background: var(--paper); border-top: 1px solid var(--rule); padding: 32px 40px; }
+    .footer-inner { max-width: 720px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+    .footer-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .footer-logo img { height: 28px; opacity: 0.45; }
+    .footer-logo-name { font-family: var(--sans); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-family: var(--sans); font-size: 0.72rem; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-copy { font-family: var(--mono); font-size: 0.6rem; color: var(--ink-light); letter-spacing: 0.06em; }
+ 
+    @media (max-width: 640px) {
+      .topbar { padding: 16px 20px; }
+      .topbar-nav { display: none; }
+      .masthead, .athletes-wrap { padding-left: 20px; padding-right: 20px; }
+      .search-input { width: 100%; }
+      footer { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+<div id="progress"></div>
+<header class="topbar">
+  <a href="/" class="topbar-logo">
+    <span class="topbar-logo-name">Sponsable</span>
+  </a>
+  <nav class="topbar-nav">
+    <a href="/athletes" class="active">For Athletes</a>
+    <a href="/brands">For Brands</a>
+    <a href="/thinking">Our Thinking</a>
+    <a href="/waitlist" class="nav-cta">Join Waitlist</a>
+  </nav>
+</header>
+ 
+<div class="masthead">
+  <div class="masthead-kicker">Our Athletes</div>
+  <h1>The people we're<br>building this for.</h1>
+  <p class="masthead-sub">Most of our interview subjects became Founding Members. For those we're actively helping, we've built a profile and a project pitch. This is who we've worked with so far.</p>
+ 
+  <div class="masthead-actions">
+    <div class="roster-count">
+      Founding Members &nbsp;<span class="roster-count-num" id="visibleCount">1</span>
+    </div>
+    <div class="search-wrap">
+      <input type="text" class="search-input" placeholder="Search athletes…" id="searchInput" />
+    </div>
+  </div>
+</div>
+ 
+<div class="athletes-wrap">
+  <div class="athlete-list" id="athleteList"></div>
+  <div class="no-results" id="noResults">No athletes match that search.</div>
+</div>
+ 
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">
+      <span class="footer-logo-name">Sponsable</span>
+    </a>
+    <div class="footer-links">
+      <a href="/athletes">For Athletes</a>
+      <a href="/brands">For Brands</a>
+      <a href="/thinking">Our Thinking</a>
+    </div>
+    <div class="footer-copy">© 2025 Sponsable</div>
+  </div>
+</footer>
+ 
+<script>
+  // ─────────────────────────────────────────────────────────────────────────────
+  // ATHLETE DATA — add a new athlete by copying the object below and filling it in
+  // ─────────────────────────────────────────────────────────────────────────────
+  const athletes = [
+    {
+      sport: "Sport Climbing · Lead & Boulder",
+      name: "Nika Potapova",
+      desc: "Ukrainian. Based in Paris. Self-managed from the start. One of the strongest lead climbers in the field — and almost no one outside the sport knows her name yet.",
+      profileUrl: "/athletes/nika-potapova",       // link to her profile page
+      pitchUrl: "/athletes/nika-potapova/pitch",   // link to her project pitch
+      foundingMember: true,
+    },
+    // ── ADD NEXT ATHLETE HERE ──────────────────────────────────────────────────
+    // {
+    //   sport: "Mountain Biking · Enduro",
+    //   name: "First Last",
+    //   desc: "One sentence about where they're from and what makes them worth watching.",
+    //   profileUrl: "/athletes/first-last",
+    //   pitchUrl: "/athletes/first-last/pitch",
+    //   foundingMember: true,
+    // },
+    // ──────────────────────────────────────────────────────────────────────────
+  ];
+  // ─────────────────────────────────────────────────────────────────────────────
+ 
+  const list = document.getElementById('athleteList');
+  const noResults = document.getElementById('noResults');
+  const countEl = document.getElementById('visibleCount');
+ 
+  function render(query) {
+    const q = (query || '').toLowerCase().trim();
+    list.innerHTML = '';
+    let visible = 0;
+ 
+    athletes.forEach(a => {
+      const match = !q
+        || a.name.toLowerCase().includes(q)
+        || a.sport.toLowerCase().includes(q)
+        || a.desc.toLowerCase().includes(q);
+ 
+      if (!match) return;
+      visible++;
+ 
+      const card = document.createElement('a');
+      card.className = 'athlete-card';
+      card.href = a.profileUrl || '#';
+ 
+      card.innerHTML = `
+        <div class="athlete-card-inner">
+          <div class="athlete-card-body">
+            <div class="athlete-sport">${a.sport}</div>
+            <div class="athlete-name">${a.name}${a.foundingMember ? ' <span class="badge-founding">Founding Member</span>' : ''}</div>
+            <div class="athlete-desc">${a.desc}</div>
+            <div class="athlete-card-links">
+              ${a.profileUrl ? `<a class="athlete-link" href="${a.profileUrl}">View profile →</a>` : ''}
+              ${a.profileUrl && a.pitchUrl ? `<div class="athlete-link-divider"></div>` : ''}
+              ${a.pitchUrl ? `<a class="athlete-link" href="${a.pitchUrl}">See project pitch →</a>` : ''}
+            </div>
+          </div>
+        </div>
+      `;
+ 
+      // Prevent double-navigation on inner link clicks
+      card.querySelectorAll('.athlete-link').forEach(link => {
+        link.addEventListener('click', e => e.stopPropagation());
+      });
+ 
+      list.appendChild(card);
+    });
+ 
+    countEl.textContent = visible;
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  }
+ 
+  render();
+ 
+  document.getElementById('searchInput').addEventListener('input', e => render(e.target.value));
+ 
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const el = document.documentElement;
+    const scrolled = el.scrollTop || document.body.scrollTop;
+    const height = el.scrollHeight - el.clientHeight;
+    const pct = height > 0 ? (scrolled / height) * 100 : 0;
+    document.getElementById('progress').style.width = pct + '%';
+  });
+</script>
+</body>
+</html>
