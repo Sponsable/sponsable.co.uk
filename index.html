@@ -175,23 +175,13 @@
   max-width: 560px;
 }
 
-    /* WAITLIST */
-    .waitlist {
-      max-width: 720px; margin: 0 auto;
-      padding: 72px 24px 96px;
-    }
-    .wl-kicker {
-      font-family: var(--sans); font-size: 0.68rem; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--accent-light); margin-bottom: 10px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .wl-kicker::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--accent-light); }
-    .wl-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; }
-    .wl-sub { font-family: var(--serif); font-size: 0.95rem; font-style: italic; color: var(--ink-mid); line-height: 1.7; margin-bottom: 28px; max-width: 500px; }
-    .wl-form { display: flex; gap: 10px; max-width: 440px; }
-    .wl-btn { padding: 11px 20px; background: var(--accent); color: white; border: none; border-radius: 5px; cursor: pointer; font-family: var(--sans); font-size: 0.82rem; font-weight: 600; white-space: nowrap; transition: background 0.2s; }
-    .wl-btn:hover { background: var(--accent-light); }
+ /* ── ATHLETE CTA ── */
+.waitlist { max-width: 720px; margin: 0 auto; padding: 64px 24px 96px; }
+.section-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.01em; line-height: 1.25; }
+.wl-sub { font-family: var(--serif); font-size: 0.95rem; font-style: italic; color: var(--ink-mid); line-height: 1.7; margin-bottom: 28px; max-width: 500px; }
+.wl-btn { display: inline-block; padding: 11px 20px; background: var(--accent); color: white; border: none; border-radius: 5px; cursor: pointer; font-family: var(--sans); font-size: 0.82rem; font-weight: 600; white-space: nowrap; transition: background 0.2s; text-decoration: none; }
+.wl-btn:hover { background: var(--accent-light); }
+.wl-note { font-family: var(--sans); font-size: 0.7rem; color: var(--ink-light); margin-top: 10px; }
 
     /* FOOTER */
     footer { background: var(--paper); border-top: 1px solid var(--rule); padding: 32px 40px; }
@@ -207,8 +197,12 @@
     @media (max-width: 640px) {
       .topbar { padding: 16px 20px; }
       .topbar-nav { display: none; }
-      .hero, .quote-section, .audience-section, .waitlist { padding-left: 20px; padding-right: 20px; }
-      .aud-grid { grid-template-columns: 1fr; }
+      .problem-grid, .before-after, .sessions-formats { grid-template-columns: 1fr; }
+      .split { grid-template-columns: 1fr; }
+      .ob-visual { grid-template-columns: 1fr; }
+      .report-flow { flex-direction: column; }
+      .report-step:not(:last-child)::after { display: none; }
+      .hero, .problem, .gear-trap, .split-section, .openbooks, .pitch, .reporting, .trustpoint, .sessions, .feature-grid-section, .waitlist { padding-left: 20px; padding-right: 20px; }
       .wl-form { flex-direction: column; }
       footer { padding: 28px 20px; }
     }
@@ -298,13 +292,12 @@
   </div>
 </div>
 
-<!-- WAITLIST -->
-<div class="waitlist" id="waitlist">
-  <div class="wl-kicker">Early Access</div>
-  <div class="wl-title">The profile launches first. Be on it.</div>
+<!-- ATHLETE CTA -->
+<div class="waitlist" id="athletes">
+  <div class="kicker">EARLY ACCESS</div>
+  <div class="section-title">The profile launches first. Be on it.</div>
   <p class="wl-sub">Join the waitlist and be among the first athletes to have a professional front door that works.</p>
-  <div class="wl-form">
-  <a href="form.html" class="wl-btn">Join Waitlist</a>
+  <a href="/form" class="wl-btn">Join Waitlist</a>
 </div>
 
 <footer>
@@ -327,6 +320,14 @@
     const el = document.documentElement;
     const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
     document.getElementById('progress').style.width = pct + '%';
+  });
+  document.getElementById('wlBtn').addEventListener('click', () => {
+    const el = document.getElementById('wlEmail');
+    if (el.value.includes('@')) {
+      el.value = '';
+      el.placeholder = "You're on the list ✓";
+      document.getElementById('wlBtn').textContent = 'Done ✓';
+    }
   });
 </script>
 </body>
