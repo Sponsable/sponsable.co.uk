@@ -232,64 +232,107 @@
     <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
   </div>
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  var currentFlow = 'athlete';
-  var currentSteps = { a: 1, b: 1 };
-  var totalSteps = 4;
-  function startForm() {
-    document.getElementById('notePanel').style.display = 'none';
-    document.getElementById('formPanel').classList.add('active');
-    document.getElementById('topbarStep').style.visibility = 'visible';
-    syncDots('athlete');
+<script>
+var currentFlow = 'athlete';
+var currentSteps = { a: 1, b: 1 };
+var totalSteps = 4;
+
+function startForm() {
+  document.getElementById('notePanel').style.display = 'none';
+  document.getElementById('formPanel').classList.add('active');
+  document.getElementById('topbarStep').style.visibility = 'visible';
+  syncDots('athlete');
+}
+
+function switchFlow(flow) {
+  if (flow === currentFlow) return;
+  document.getElementById('flow' + cap(currentFlow)).classList.remove('active');
+  currentFlow = flow;
+  document.getElementById('flow' + cap(flow)).classList.add('active');
+  document.getElementById('btnAthlete').classList.toggle('active', flow === 'athlete');
+  document.getElementById('btnBrand').classList.toggle('active', flow === 'brand');
+  syncDots(flow);
+}
+
+function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+
+function selectOpt(el, flow, step){
+  el.closest('.options').querySelectorAll('.option')
+    .forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  var btn=document.getElementById(flow+'-next'+step);
+  if(btn) btn.disabled=false;
+}
+
+function goToStep(flow,n){
+  document.getElementById(flow+'-step'+currentSteps[flow]).classList.remove('active');
+  currentSteps[flow]=n;
+  document.getElementById(flow+'-step'+n).classList.add('active');
+  syncDots(flow);
+}
+
+function syncDots(flow){
+  var n=currentSteps[flow];
+  document.getElementById('stepLabel').textContent='Step '+n+' of '+totalSteps;
+  document.getElementById('progressFill').style.width=(n/totalSteps*100)+'%';
+
+  for(var i=1;i<=totalSteps;i++){
+    var dot=document.getElementById('dot'+i);
+    dot.className='step-dot'+(i<n?' done':i===n?' active':'');
   }
-  function switchFlow(flow) {
-    if (flow === currentFlow) return;
-    document.getElementById('flow' + cap(currentFlow)).classList.remove('active');
-    currentFlow = flow;
-    document.getElementById('flow' + cap(flow)).classList.add('active');
-    document.getElementById('btnAthlete').classList.toggle('active', flow === 'athlete');
-    document.getElementById('btnBrand').classList.toggle('active', flow === 'brand');
-    syncDots(flow);
+}
+
+function checkContact(flow){
+  var name=document.getElementById(flow+'-name').value.trim();
+  var email=document.getElementById(flow+'-email').value;
+  var btn=document.getElementById(flow+'-next4');
+  if(btn) btn.disabled=!(name && email.includes('@'));
+}
+
+/* ===========================
+   FORM + WAITLIST INTEGRATION
+   =========================== */
+
+async function doSubmit(){
+
+  const flow=currentFlow==='brand'?'b':'a';
+
+  const payload={
+    role: currentFlow,
+    step1: document.querySelector(`#${flow}-step1 .option.selected .option-label`)?.innerText || "",
+    step2: document.querySelector(`#${flow}-step2 .option.selected .option-label`)?.innerText || "",
+    notes: document.getElementById(flow+'-open')?.value || "",
+    name: document.getElementById(flow+'-name').value.trim(),
+    email: document.getElementById(flow+'-email').value.trim(),
+    company: currentFlow==='brand'
+      ? document.getElementById('b-company').value.trim()
+      : ""
+  };
+
+  try{
+
+    await fetch("https://formspree.io/f/mldpvjgy",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      },
+      body:JSON.stringify(payload)
+    });
+
+  }catch(e){
+    console.error(e);
   }
-  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
-  function selectOpt(el, flow, step) {
-    el.closest('.options').querySelectorAll('.option').forEach(function(o) { o.classList.remove('selected'); });
-    el.classList.add('selected');
-    var btn = document.getElementById(flow + '-next' + step);
-    if (btn) btn.disabled = false;
-  }
-  function goToStep(flow, n) {
-    document.getElementById(flow + '-step' + currentSteps[flow]).classList.remove('active');
-    currentSteps[flow] = n;
-    document.getElementById(flow + '-step' + n).classList.add('active');
-    syncDots(flow);
-  }
-  function syncDots(flow) {
-    var n = currentSteps[flow];
-    document.getElementById('stepLabel').textContent = 'Step ' + n + ' of ' + totalSteps;
-    document.getElementById('progressFill').style.width = (n / totalSteps * 100) + '%';
-    for (var i = 1; i <= totalSteps; i++) {
-      var dot = document.getElementById('dot' + i);
-      dot.className = 'step-dot' + (i < n ? ' done' : i === n ? ' active' : '');
-    }
-  }
-  function checkContact(flow) {
-    var name = document.getElementById(flow + '-name').value.trim();
-    var email = document.getElementById(flow + '-email').value;
-    var btn = document.getElementById(flow + '-next4');
-    if (btn) btn.disabled = !(name && email.indexOf('@') > -1);
-  }
-  function doSubmit() {
-    var isBrand = currentFlow === 'brand';
-    document.getElementById('formPanel').classList.remove('active');
-    document.getElementById('topbarStep').style.visibility = 'hidden';
-    document.getElementById('progressFill').style.width = '100%';
-    if (isBrand) {
-      document.getElementById('successTitle').textContent = "I'll be in touch.";
-      nt = "I've read what you told me. My email will come from ben@sponsable.co.uk — reply to it and I'll actually write back.";
-    }
-    document.getElementById('successPanel').style.display = 'block';
-  }
+
+  /* Redirect to waitlist with identity */
+  const params=new URLSearchParams({
+    email:payload.email,
+    name:payload.name,
+    role:payload.role
+  });
+
+  window.location.href="/waitlist.html?"+params.toString();
+}
 </script>
 </body>
 </html>
