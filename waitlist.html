@@ -353,6 +353,10 @@
   </div>
 
 <script>
+/* ======================
+   ROLE STATE
+====================== */
+
 let currentRole = 'athlete';
 
 const endpoints = {
@@ -360,6 +364,22 @@ const endpoints = {
   brand: "https://formspree.io/f/mqayonna",
   agent: "https://formspree.io/f/mqayonna"
 };
+
+
+/* ======================
+   PREFILL FROM FORM PAGE
+====================== */
+
+const params = new URLSearchParams(window.location.search);
+
+const prefillEmail = params.get("email");
+const prefillName = params.get("name");
+const prefillRole = params.get("role");
+
+
+/* ======================
+   ROLE SWITCHING
+====================== */
 
 function setRole(role) {
   currentRole = role;
@@ -380,19 +400,51 @@ function setRole(role) {
   document.getElementById('roleInput').value = role;
 }
 
-document.getElementById('roleAthlete').onclick = () => setRole('athlete');
-document.getElementById('roleBrand').onclick = () => setRole('brand');
-document.getElementById('roleAgent').onclick = () => setRole('agent');
 
-document.querySelectorAll('.sport-tag').forEach(tag => {
-  tag.onclick = () => tag.classList.toggle('selected');
+/* ======================
+   INITIALISE PAGE
+====================== */
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  // attach role buttons
+  document.getElementById('roleAthlete').onclick = () => setRole('athlete');
+  document.getElementById('roleBrand').onclick = () => setRole('brand');
+  document.getElementById('roleAgent').onclick = () => setRole('agent');
+
+  // sport tag toggles
+  document.querySelectorAll('.sport-tag').forEach(tag => {
+    tag.onclick = () => tag.classList.toggle('selected');
+  });
+
+  // PREFILL values if arriving from questionnaire
+  if (prefillEmail) {
+    const emailInput = document.querySelector('input[type="email"]');
+    if (emailInput) emailInput.value = prefillEmail;
+  }
+
+  if (prefillName) {
+    const nameInput =
+      document.querySelector('input[name="name"], input#name');
+    if (nameInput) nameInput.value = prefillName;
+  }
+
+  if (prefillRole) {
+    setRole(prefillRole);
+  }
 });
+
+
+/* ======================
+   FORM SUBMISSION
+====================== */
 
 document.getElementById('waitlistForm')
 .addEventListener('submit', async (e) => {
 
   e.preventDefault();
 
+  // collect selected sports
   const sports = [...document.querySelectorAll('.sport-tag.selected')]
     .map(t => t.innerText);
 
