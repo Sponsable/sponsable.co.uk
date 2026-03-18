@@ -267,10 +267,33 @@
     <div class="sessions-label">Sessions</div>
     <div class="sessions-h">The education layer. Free, no account required, specific to action sport.</div>
     <p class="sessions-p">A podcast, newsletter, and content library covering athlete valuation, contract basics, and negotiation strategy.</p>
-    <div class="sessions-form">
-      <input class="sessions-input" type="email" placeholder="your@email.com" />
-      <button class="sessions-btn">Notify me</button>
-    </div>
+
+    <form
+      class="sessions-form"
+      action="https://formspree.io/f/mrbydppk"
+      method="POST"
+    >
+      <input
+        class="sessions-input"
+        type="email"
+        name="email"
+        placeholder="your@email.com"
+        autocomplete="email"
+        required
+      />
+
+      <!-- spam protection -->
+      <input type="text" name="_gotcha" style="display:none">
+
+      <!-- optional metadata -->
+      <input type="hidden" name="_subject" value="New Sessions Signup">
+      <input type="hidden" name="source" value="sessions-section">
+
+      <button class="sessions-btn" type="submit">
+        Notify me
+      </button>
+    </form>
+
     <p class="sessions-note">One email on launch. Nothing before that.</p>
   </div>
 </section>
@@ -291,17 +314,57 @@
 </footer>
  
 <script>
-  window.addEventListener('scroll', () => {
-    const s = document.documentElement.scrollTop || document.body.scrollTop;
-    const t = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    document.getElementById('progress').style.width = (s / t * 100) + '%';
+/* progress bar — unchanged */
+window.addEventListener('scroll', () => {
+  const s = document.documentElement.scrollTop || document.body.scrollTop;
+  const t = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  document.getElementById('progress').style.width = (s / t * 100) + '%';
+});
+
+/* reveal animation — unchanged */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
   });
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+}, { threshold: 0.07 });
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+
+/* ✅ FORMSpree submission (NEW — invisible UX improvement) */
+const form = document.querySelector('.sessions-form');
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const data = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: data,
+      headers: { 'Accept': 'application/json' }
     });
-  }, { threshold: 0.07 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    if (response.ok) {
+      form.innerHTML =
+        "<p class='sessions-note'>You're on the list.</p>";
+    } else {
+      form.insertAdjacentHTML(
+        "afterend",
+        "<p class='sessions-note'>Submission failed. Try again.</p>"
+      );
+    }
+  } catch {
+    form.insertAdjacentHTML(
+      "afterend",
+      "<p class='sessions-note'>Network error. Try again.</p>"
+    );
+  }
+});
 </script>
  
 </body>
