@@ -76,16 +76,14 @@
     .fg-status { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); }
     .fg-body { padding: 20px; font-family: var(--sans); font-size: 0.78rem; color: var(--ink-mid); line-height: 1.65; display: flex; align-items: center; }
 
-    /* WAITLIST */
-    .waitlist { max-width: 720px; margin: 0 auto; padding: 72px 24px 96px; }
-    .wl-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; }
-    .wl-sub { font-family: var(--serif); font-size: 0.95rem; font-style: italic; color: var(--ink-mid); line-height: 1.7; margin-bottom: 32px; max-width: 480px; }
-    .wl-form { display: flex; gap: 10px; max-width: 440px; }
-    .wl-input { flex: 1; padding: 11px 14px; background: var(--paper); border: 1px solid var(--rule); border-radius: 5px; color: var(--ink); font-family: var(--sans); font-size: 0.82rem; outline: none; transition: border-color 0.2s; }
-    .wl-input:focus { border-color: var(--accent-light); }
-    .wl-btn { padding: 11px 20px; background: var(--accent); color: white; border: none; border-radius: 5px; cursor: pointer; font-family: var(--sans); font-size: 0.82rem; font-weight: 600; white-space: nowrap; transition: background 0.2s; }
-    .wl-btn:hover { background: var(--accent-light); }
-    .wl-note { font-family: var(--sans); font-size: 0.7rem; color: var(--ink-light); margin-top: 10px; }
+    /* ── ATHLETE CTA ── */
+.waitlist { max-width: 720px; margin: 0 auto; padding: 64px 24px 96px; }
+.section-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.01em; line-height: 1.25; }
+.wl-sub { font-family: var(--serif); font-size: 0.95rem; font-style: italic; color: var(--ink-mid); line-height: 1.7; margin-bottom: 28px; max-width: 500px; }
+.wl-btn { display: inline-block; padding: 11px 20px; background: var(--accent); color: white; border: none; border-radius: 5px; cursor: pointer; font-family: var(--sans); font-size: 0.82rem; font-weight: 600; white-space: nowrap; transition: background 0.2s; text-decoration: none; }
+.wl-btn:hover { background: var(--accent-light); }
+.wl-note { font-family: var(--sans); font-size: 0.7rem; color: var(--ink-light); margin-top: 10px; }
+
  
     /* FOOTER */
     footer { background: var(--paper); border-top: 1px solid var(--rule); padding: 32px 40px; }
@@ -219,16 +217,12 @@
 </div>
 
 
-<!-- WAITLIST -->
-<div class="waitlist" id="waitlist">
-  <div class="section-kicker">Early Access</div>
-  <div class="wl-title">Get early access for your brand or agency.</div>
+
+  <!-- ATHLETE CTA -->
+<div class="waitlist" id="athletes">
+  <div class="section-title">Get early access for your brand or agency.</div>
   <p class="wl-sub">The Brand Access Gate launches first — giving you verified commercial contact with athletes on Sponsable from day one. Leave your details and we'll be in touch.</p>
-  <div class="wl-form">
-    <input type="email" class="wl-input" placeholder="your@email.com" id="wlEmail" />
-    <button class="wl-btn" id="wlBtn">Get in touch</button>
-  </div>
-  <div class="wl-note">We'll reach out personally. No automated sequences.</div>
+  <a href="/waitlist" class="wl-btn">Contact</a>
 </div>
 
 <footer>
