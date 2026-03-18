@@ -97,14 +97,16 @@
     .footer-links a { font-family: var(--sans); font-size: 0.72rem; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--ink); }
     .footer-copy { font-family: var(--mono); font-size: 0.6rem; color: var(--ink-light); letter-spacing: 0.06em; }
-    
+
     @media (max-width: 640px) {
       .topbar { padding: 16px 20px; }
       .topbar-nav { display: none; }
-      .hero, .section, .waitlist { padding-left: 20px; padding-right: 20px; }
-      .failure-grid { grid-template-columns: 1fr; }
-      .fg-row { grid-template-columns: 1fr; }
-      .fg-label { border-right: none; border-bottom: 1px solid var(--rule); }
+      .problem-grid, .before-after, .sessions-formats { grid-template-columns: 1fr; }
+      .split { grid-template-columns: 1fr; }
+      .ob-visual { grid-template-columns: 1fr; }
+      .report-flow { flex-direction: column; }
+      .report-step:not(:last-child)::after { display: none; }
+      .hero, .problem, .gear-trap, .split-section, .openbooks, .pitch, .reporting, .trustpoint, .sessions, .feature-grid-section, .waitlist { padding-left: 20px; padding-right: 20px; }
       .wl-form { flex-direction: column; }
       footer { padding: 28px 20px; }
     }
