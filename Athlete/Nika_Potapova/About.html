@@ -54,28 +54,28 @@
     transition: width 0.05s linear;
   }
 
- /* ─── HERO ─── */
+  /* ─── HERO ─── */
   .hero {
     position: relative;
-    height: 70vh;
-    min-height: 500px;
+    height: 75vh;
+    min-height: 520px;
     background: url('Nika Hero.jpg') center 25% / cover no-repeat;
     overflow: hidden;
   }
 
   .hero-gradient {
     position: absolute;
-    bottom: -1px; left: 0; right: 0;
-    height: 100%;
+    inset: 0;
     background: linear-gradient(to top, 
-      rgba(0,0,0,0.8) 0%, 
-      rgba(0,0,0,0.4) 30%, 
-      transparent 70%);
+      rgba(0,0,0,0.95) 0%, 
+      rgba(0,0,0,0.6) 40%, 
+      rgba(0,0,0,0.2) 70%, 
+      transparent 100%);
   }
 
   .hero-content {
     position: absolute;
-    top: 15%; 
+    top: 12%; 
     left: 0; right: 0;
     padding: 0 1.25rem;
     z-index: 2;
@@ -84,9 +84,7 @@
     align-items: flex-start;
   }
 
-  .hero-text-stack {
-    flex: 1;
-  }
+  .hero-text-stack { flex: 1; }
 
   .hero-name {
     font-family: var(--serif);
@@ -103,7 +101,7 @@
     font-size: 3.4rem;
     font-weight: 400;
     font-style: italic;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255,255,255,0.7);
     line-height: 1.05;
     letter-spacing: -0.02em;
     margin-bottom: 0.5rem;
@@ -111,16 +109,16 @@
 
   .hero-tagline {
     font-family: var(--serif);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-style: italic;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.5);
   }
 
   .hero-socials {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
-    padding-top: 1rem;
+    gap: 0.75rem;
+    padding-top: 0.5rem;
   }
 
   .social-btn {
@@ -137,128 +135,58 @@
   }
 
   .social-btn:hover { background: rgba(255,255,255,0.2); }
-
-  .social-btn svg {
-    width: 15px;
-    height: 15px;
-    fill: rgba(255,255,255,0.75);
-  }
+  .social-btn svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.8); }
 
   /* ─── IDENTITY CARD ─── */
   .identity-card {
     background: var(--card-dark);
     border-bottom: 1px solid var(--card-border);
     padding: 1.25rem;
-    margin-top: -80px;
+    margin-top: -110px;
     position: relative;
     z-index: 5;
   }
 
-  .identity-top {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 0.3rem;
-  }
+  .identity-top { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.3rem; }
 
   .flag-circle {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    overflow: hidden;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgba(255,255,255,0.15);
+    width: 22px; height: 22px; border-radius: 50%; overflow: hidden;
+    flex-shrink: 0; display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.15);
   }
-
   .flag-circle-top { flex: 1; background: #005BBB; }
   .flag-circle-bottom { flex: 1; background: #FFD500; }
 
-  .identity-discipline {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: white;
-    letter-spacing: -0.01em;
-  }
+  .identity-discipline { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: white; }
 
   .identity-meta {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.9rem;
+    display: flex; align-items: center; gap: 0.75rem;
   }
 
   .meta-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.2); }
 
   .status-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    background: rgba(68,90,69,0.3);
-    border: 1px solid rgba(68,90,69,0.5);
-    padding: 3px 9px;
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #8ABF8B;
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    background: rgba(68,90,69,0.3); border: 1px solid rgba(68,90,69,0.5);
+    padding: 3px 9px; font-family: var(--mono); font-size: 8px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: #8ABF8B;
   }
-
   .status-dot { width: 5px; height: 5px; border-radius: 50%; background: #6ABF6B; }
 
   .identity-measurements {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    flex-wrap: wrap;
-    margin: 0.9rem 0;
-    padding: 0.75rem 0;
-    border-top: 1px solid var(--card-border);
-    border-bottom: 1px solid var(--card-border);
+    display: flex; align-items: center; gap: 0; flex-wrap: wrap; margin: 0.9rem 0;
+    padding: 0.75rem 0; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border);
   }
-
-  .meas {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--mono);
-    padding-right: 1rem;
-    margin-right: 1rem;
-    border-right: 1px solid var(--card-border);
-  }
-
+  .meas { display: flex; align-items: center; gap: 0.5rem; font-family: var(--mono); padding-right: 1rem; margin-right: 1rem; border-right: 1px solid var(--card-border); }
   .meas:last-child { border-right: none; }
   .meas-label { font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.25); }
   .meas-val { font-size: 11px; color: rgba(255,255,255,0.65); font-weight: 500; }
 
-  .identity-bio {
-    font-family: var(--serif);
-    font-size: 0.88rem;
-    font-style: italic;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.75;
-  }
-
-  .bio-expand-link {
-    color: rgba(255,255,255,0.55);
-    text-decoration: none;
-    font-style: normal;
-    font-weight: 500;
-    font-family: var(--sans);
-    font-size: 0.8rem;
-  }
-
+  .identity-bio { font-family: var(--serif); font-size: 0.88rem; font-style: italic; color: rgba(255,255,255,0.5); line-height: 1.75; }
+  .bio-expand-link { color: rgba(255,255,255,0.55); text-decoration: none; font-style: normal; font-weight: 500; font-family: var(--sans); font-size: 0.8rem; }
   .bio-expanded { margin-top: 0.9rem; }
   .bio-expanded p { font-family: var(--serif); font-size: 0.88rem; font-style: italic; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 0.85rem; }
-
   .bio-pull { border-left: 2px solid var(--red-accent); padding: 0.5rem 0 0.5rem 0.9rem; margin: 1rem 0; }
   .bio-pull p { font-family: var(--serif); font-size: 0.92rem; font-style: italic; color: rgba(255,255,255,0.75) !important; line-height: 1.6; margin-bottom: 0 !important; }
 
@@ -269,7 +197,6 @@
   .results-history { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none; }
   .result-row { display: flex; align-items: center; gap: 0.85rem; padding: 0.85rem 1rem; border-bottom: 1px solid var(--card-border); position: relative; overflow: hidden; }
   .result-row:last-child { border-bottom: none; }
-  .result-thumb { position: absolute; right: 0; top: 0; bottom: 0; width: 90px; opacity: 0.18; background: linear-gradient(90deg, transparent 0%, var(--forest) 100%); }
   .medal-icon { width: 28px; height: 28px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
   .medal-icon svg { width: 22px; height: 22px; }
   .result-body { flex: 1; z-index: 1; }
@@ -277,33 +204,50 @@
   .result-name { font-family: var(--sans); font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 0.1rem; }
   .result-detail { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
 
-  /* ─── MEDIA ─── */
-  .media-wrap { margin: 0.75rem; }
-  .media-card { border-radius: 5px; overflow: hidden; text-decoration: none; display: block; border: 1px solid var(--card-border); }
-  .media-thumb { aspect-ratio: 16/10; position: relative; display: flex; align-items: center; justify-content: center; }
-  .media-thumb.nb { background: url('Nika Natural Heights.avif') center 35% / cover no-repeat; }
-  .media-play { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; }
-  .media-play svg { width: 11px; height: 11px; fill: white; margin-left: 2px; }
-  .media-label-text { position: absolute; bottom: 0.5rem; left: 0.6rem; right: 0.6rem; }
-  .media-title { font-family: var(--sans); font-size: 0.75rem; font-weight: 600; color: white; margin-bottom: 0.1rem; }
-  .media-sub { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
-
-  /* ─── REMAINING STYLES ─── */
+  /* ─── IN DEVELOPMENT ─── */
   .dev-card { background: var(--card-mid); margin: 0.75rem; border-radius: 6px; padding: 1rem; border: 1px solid var(--card-border); }
   .dev-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
   .dev-badge { font-family: var(--mono); font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 2px; }
-  .dev-plan-link { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); text-decoration: none; }
+  .dev-plan-link { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); text-decoration: none; cursor: pointer; }
   .dev-title { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; color: white; letter-spacing: -0.01em; margin-bottom: 0.5rem; line-height: 1.2; }
   .dev-desc { font-family: var(--serif); font-size: 0.85rem; font-style: italic; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 1rem; }
   .dev-bottom { display: flex; align-items: center; border-top: 1px solid var(--card-border); margin: 0 -1rem -1rem; }
-  .dev-like-btn { display: flex; align-items: center; gap: 0.5rem; background: none; border: none; cursor: pointer; padding: 0.9rem 1rem; width: 100%; font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.35); border-radius: 0 0 6px 6px; }
+  .dev-like-btn { display: flex; align-items: center; gap: 0.5rem; background: none; border: none; cursor: pointer; padding: 0.9rem 1rem; width: 100%; font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.35); transition: color 0.2s, background 0.2s; border-radius: 0 0 6px 6px; }
+  .dev-like-btn:hover { color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.03); }
   .dev-like-btn.liked { color: #C25555; }
   .dev-like-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.5; }
   .dev-like-btn.liked svg { fill: #C25555; stroke: #C25555; }
 
-  footer { background: var(--card-dark); padding: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.4rem; border-top: 1px solid var(--card-border); }
+  /* ─── VOICE NOTE ─── */
+  .from-nika-card { background: var(--card-mid); margin: 0.75rem; border-radius: 6px; border: 1px solid var(--card-border); overflow: hidden; }
+  .from-nika-header { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem 0.7rem; border-bottom: 1px solid var(--card-border); }
+  .from-nika-label { font-family: var(--mono); font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  .from-nika-date { font-family: var(--mono); font-size: 8px; color: rgba(255,255,255,0.2); }
+  .voice-note { display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 20px; padding: 0.6rem; cursor: pointer; margin: 1rem; }
+  .voice-waveform { height: 28px; display: flex; align-items: center; flex: 1; gap: 2px; }
+  .voice-waveform span { flex: 1; height: 60%; background: rgba(255,255,255,0.2); border-radius: 2px; }
+  .voice-waveform.playing span { animation: voiceWave 0.6s infinite alternate; }
+  @keyframes voiceWave { from { height: 30%; } to { height: 90%; } }
+
+  /* ─── AVAILABILITY ─── */
+  .availability-card { background: var(--card-mid); margin: 0.75rem; border-radius: 6px; border: 1px solid var(--card-border); overflow: hidden; }
+  .avail-row { display: flex; gap: 0.85rem; padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .avail-dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 5px; }
+  .avail-detail { font-size: 0.82rem; color: rgba(255,255,255,0.65); line-height: 1.4; }
+
+  /* ─── Q&A ─── */
+  .qa-card { background: var(--card-mid); margin: 0.75rem; border-radius: 6px; border: 1px solid var(--card-border); overflow: hidden; }
+  .qa-header { padding: 0.85rem 1rem 0.7rem; border-bottom: 1px solid var(--card-border); display: flex; justify-content: space-between; }
+  .qa-item { padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .qa-question { font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-bottom: 0.5rem; }
+  .qa-answer { font-family: var(--serif); font-size: 0.88rem; font-style: italic; color: rgba(255,255,255,0.72); line-height: 1.7; border-left: 2px solid var(--red-accent); padding-left: 1rem; }
+  .qa-ask-area { padding: 1rem; }
+  .qa-submit { background: none; border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.4); font-family: var(--mono); font-size: 8px; padding: 0.5rem 0.85rem; cursor: pointer; text-transform: uppercase; }
+
+  /* ─── FOOTER ─── */
+  footer { background: var(--card-dark); padding: 2rem 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; border-top: 1px solid var(--card-border); }
+  .footer-logo { width: 60px; height: auto; opacity: 0.7; }
   .footer-text { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.22); }
-  .footer-text span { color: rgba(255,255,255,0.4); }
 
   .fade-up { opacity: 0; transform: translateY(14px); transition: opacity 0.55s ease, transform 0.55s ease; }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
@@ -341,41 +285,58 @@
     <div class="flag-circle"><div class="flag-circle-top"></div><div class="flag-circle-bottom"></div></div>
     <span class="identity-discipline">Ukrainian Lead Climber</span>
   </div>
+  <div class="identity-meta">
+    <span>Paris, France</span>
+    <span class="meta-dot"></span>
+    <span class="status-pill"><span class="status-dot"></span>Pre-season</span>
+  </div>
   <div class="identity-measurements">
     <div class="meas"><span class="meas-label">Height</span><span class="meas-val">163 cm</span></div>
     <div class="meas"><span class="meas-label">Reach</span><span class="meas-val">+3 cm</span></div>
     <div class="meas"><span class="meas-label">Shoe</span><span class="meas-val">EU 36</span></div>
   </div>
   <p class="identity-bio">
-    Before there were walls, there were trees. That's where Nika learned to climb. When a friend took her to a gym, she was asked after a single session if she wanted to move straight into the advanced group.
+    Before there were walls, there were trees. That's where Nika learned to climb.
     <a href="#" class="bio-expand-link" id="more-link" onclick="toggleBio(event)"> ... more</a>
   </p>
   <div class="bio-expanded" id="bio-expanded" style="display:none;">
-    <p>She said yes.</p>
-    <p>Within her first year she climbed 8a. By thirteen, 8c. At fourteen she broke the women's Zlagboard endurance record — and nearly the men's. At sixteen she climbed 9a, becoming the 23rd woman in history to do so.</p>
+    <p>Within her first year she climbed 8a. By thirteen, 8c. At sixteen she climbed 9a, becoming the 23rd woman in history to do so.</p>
     <div class="bio-pull"><p>"I know I can climb much better than I am right now. I'll come back. Just wait for my comeback."</p></div>
     <p><a href="#" class="bio-expand-link" onclick="toggleBio(event)">less</a></p>
   </div>
 </div>
 
-<div class="media-wrap fade-up">
-  <a href="https://www.redbull.com/int-en/episodes/natural-heights-s1-e3" target="_blank" class="media-card">
-    <div class="media-thumb nb">
-      <div class="media-play">
-        <svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5V1z" fill="white"/></svg>
-      </div>
-      <div class="media-label-text">
-        <div class="media-title">Natural Heights — Ep. 3</div>
-        <div class="media-sub">Red Bull · Series</div>
-      </div>
+<div class="results-card fade-up">
+  <div class="results-header">
+    <span class="results-label">Athletic record</span>
+    <a href="#" class="results-history">Full History →</a>
+  </div>
+  <div class="result-row">
+    <div class="medal-icon">
+      <svg viewBox="0 0 20 20" fill="none"><path d="M6 3h8v6a4 4 0 01-8 0V3z" stroke="#FFD700" stroke-width="1.2"/></svg>
     </div>
-  </a>
+    <div class="result-body">
+      <div class="result-place">1st · World</div>
+      <div class="result-name">Youth World Champion</div>
+      <div class="result-detail">Lead · 2019</div>
+    </div>
+  </div>
 </div>
 
 <div class="dev-card fade-up">
-  <div class="dev-top"><span class="dev-badge">In Development</span></div>
+  <div class="dev-top">
+    <span class="dev-badge">In Development</span>
+    <a class="dev-plan-link" onclick="toggleFilmNotify()">Get notified ↓</a>
+  </div>
   <div class="dev-title">I Just Go</div>
   <p class="dev-desc">A short film about Nika — her world, her story, her voice. Not a highlights reel.</p>
+  <div id="film-notify-ui" style="display:none; margin-top:1rem; border-top:1px solid var(--card-border); padding-top:1rem;">
+      <div style="font-family:var(--mono); font-size:8px; color:rgba(255,255,255,0.3); margin-bottom:0.5rem;">NOTIFY ME ON RELEASE</div>
+      <div style="display:flex; gap:0.5rem;">
+          <input type="email" placeholder="your@email.com" style="flex:1; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:0.5rem; font-size:0.8rem; border-radius:3px;">
+          <button style="background:var(--forest-mid); color:white; border:none; padding:0 1rem; font-family:var(--mono); font-size:8px; border-radius:3px;">DONE</button>
+      </div>
+  </div>
   <div class="dev-bottom">
     <button class="dev-like-btn" id="like-btn" onclick="toggleLike()">
       <svg id="like-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
@@ -384,51 +345,106 @@
   </div>
 </div>
 
+<div class="from-nika-card fade-up">
+  <div class="from-nika-header">
+    <span class="from-nika-label">Voice Note</span>
+    <span class="from-nika-date">March 2026</span>
+  </div>
+  <div class="voice-note" onclick="toggleVoice()">
+    <div class="voice-waveform" id="waveform">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div style="font-family:var(--mono); font-size:9px; color:rgba(255,255,255,0.4);">0:24</div>
+  </div>
+</div>
+
+<div class="availability-card fade-up">
+    <div class="from-nika-header"><span class="from-nika-label">Right Now</span></div>
+    <div class="avail-row">
+        <div class="avail-dot" style="background:#8ABF8B;"></div>
+        <div class="avail-detail">Paris. Training block, available for shoots and brand meetings.</div>
+    </div>
+</div>
+
+<div class="fade-up" style="margin:0.75rem;">
+    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/1SkmA5emGHKMJva7baN4lq?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+<div class="qa-card fade-up">
+  <div class="qa-header">
+    <span class="qa-label">Ask Nika</span>
+    <span style="font-family:var(--mono); font-size:8px; color:rgba(255,255,255,0.2);">Answered monthly</span>
+  </div>
+  <div class="qa-item">
+    <div class="qa-question">What does a normal training day look like for you right now?</div>
+    <div class="qa-answer">Morning session on the board, usually two hours. Afternoon I do something that isn't climbing — gym, run, just walk around Paris. I used to train until I couldn't move. I don't do that anymore.</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-question">Do you ever think about quitting?</div>
+    <div class="qa-answer">Yes. And then I get on the wall and I remember why I started. It's not complicated. It just feels that way sometimes.</div>
+  </div>
+  <div class="qa-ask-area">
+    <div style="font-family:var(--mono); font-size:8px; color:rgba(255,255,255,0.2); margin-bottom:0.5rem; text-transform:uppercase;">Send a question</div>
+    <textarea style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:0.75rem; color:white; font-family:var(--serif); font-size:0.85rem; margin-bottom:0.5rem; resize:none;" rows="2" placeholder="What's on your mind?"></textarea>
+    <button class="qa-submit">Submit question →</button>
+  </div>
+</div>
+
+<div class="results-card fade-up" style="padding-bottom:1rem;">
+    <div class="results-header"><span class="results-label">Partners</span></div>
+    <div style="display:flex; justify-content:space-around; align-items:center; padding-top:1rem; opacity:0.4;">
+        <span style="font-family:var(--mono); font-size:10px;">KARAFFU</span>
+        <span style="font-family:var(--mono); font-size:10px;">BLACK DIAMOND</span>
+        <span style="font-family:var(--mono); font-size:10px;">TENAYA</span>
+    </div>
+</div>
+
+<div class="access-section fade-up">
+  <div class="access-title">Partnership Profile</div>
+  <p class="access-sub">Authorised access for brands and agencies. View audience demographics, engagement data, and partnership terms.</p>
+  <button class="access-btn">
+    Brand Access
+  </button>
+</div>
+
 <footer>
+  <img src="Screenshot 2026-03-23 at 12.44.24.png" class="footer-logo" alt="Sponsable Logo">
   <div class="footer-text">Powered by <span>Sponsable</span></div>
 </footer>
 
 <script>
-  function toggleLike() {
-    const btn = document.getElementById('like-btn');
-    const count = document.getElementById('like-count');
-    const liked = btn.classList.contains('liked');
-    if (liked) {
-      btn.classList.remove('liked');
-      count.textContent = '1.2K';
-    } else {
-      btn.classList.add('liked');
-      count.textContent = '1.3K';
-    }
-  }
-
   function toggleBio(e) {
     e.preventDefault();
     const exp = document.getElementById('bio-expanded');
     const link = document.getElementById('more-link');
     if (exp.style.display === 'none') {
-      exp.style.display = 'block';
-      link.style.display = 'none';
+      exp.style.display = 'block'; link.style.display = 'none';
     } else {
-      exp.style.display = 'none';
-      link.style.display = 'inline';
+      exp.style.display = 'none'; link.style.display = 'inline';
     }
   }
 
-  const bar = document.getElementById('progress-bar');
-  window.addEventListener('scroll', () => {
-    const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-    bar.style.width = pct + '%';
-  });
+  function toggleLike() {
+    const btn = document.getElementById('like-btn');
+    btn.classList.toggle('liked');
+  }
+
+  function toggleFilmNotify() {
+      const ui = document.getElementById('film-notify-ui');
+      ui.style.display = ui.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function toggleVoice() {
+      document.getElementById('waveform').classList.toggle('playing');
+  }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), 60);
-        observer.unobserve(entry.target);
+        entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.08 });
+  }, { threshold: 0.1 });
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
