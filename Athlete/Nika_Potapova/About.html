@@ -6,1269 +6,860 @@
 <title>Nika Potapova — Sponsable</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --forest: #2D3D2E;
-    --forest-mid: #445A45;
-    --forest-light: #6A8A6B;
-    --chalk: #F0EDE6;
-    --red-accent: #8B2E2E;
-    --warm: #FAF8F4;
-    --rule: #2E2E2C;
-    --rule-light: #E2E0DC;
-    --paper: #F8F7F4;
-    --card-dark: #000000;
-    --card-mid: #111110;
-    --card-border: #2E2E2C;
-    --ink: #1E1E1C;
-    --ink-mid: #48463F;
-    --ink-light: #8A8780;
-    --text-muted: rgba(255,255,255,0.45);
-    --text-dim: rgba(255,255,255,0.28);
+    --bg:          #0A0A09;
+    --bg-1:        #111110;
+    --bg-2:        #191918;
+    --bg-3:        #222220;
+
+    --line:        rgba(255,255,255,0.07);
+    --line-strong: rgba(255,255,255,0.12);
+
+    --hi:   rgba(255,255,255,0.95);
+    --mid:  rgba(255,255,255,0.50);
+    --soft: rgba(255,255,255,0.28);
+    --dim:  rgba(255,255,255,0.14);
+    --ghost:rgba(255,255,255,0.05);
+
+    /* Single accent — cold steel, used sparingly */
+    --accent: #4A7B9D;
+    --accent-pale: #6A9BBD;
+
+    /* Red for pull quotes only */
+    --red: #7A2828;
+
+    /* Light section */
+    --paper:     #F4F1EA;
+    --paper-mid: #EAE7DF;
+    --ink:       #191816;
+    --ink-mid:   #4A4840;
+    --ink-soft:  #7A7870;
+    --ink-dim:   #A8A49A;
+
     --serif: 'Lora', Georgia, serif;
-    --sans: 'DM Sans', system-ui, sans-serif;
-    --mono: 'DM Mono', monospace;
+    --sans:  'DM Sans', system-ui, sans-serif;
+    --mono:  'DM Mono', 'Courier New', monospace;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--card-dark);
-    color: white;
+    background: var(--bg);
+    color: var(--hi);
     font-family: var(--sans);
     -webkit-font-smoothing: antialiased;
     max-width: 430px;
     margin: 0 auto;
+    overflow-x: hidden;
   }
 
-  #progress-bar {
-    position: fixed;
-    top: 0; left: 0;
-    height: 2px;
-    width: 0%;
-    background: var(--red-accent);
-    z-index: 999;
-    transition: width 0.05s linear;
-  }
-
- /* ─── HERO ─── */
+  /* ─── HERO ─── */
   .hero {
     position: relative;
-    height: 70vh; /* Slightly reduced height to fit the new compact look */
-    min-height: 500px;
-    background: url('Nika Hero.jpg') center 25% / cover no-repeat;
+    height: 78vh;
+    min-height: 540px;
     overflow: hidden;
   }
 
-  /* Made gradient less intense by starting the solid black much lower */
-  .hero-gradient {
+  .hero-img {
     position: absolute;
-    bottom: -1px; left: 0; right: 0;
-    height: 100%;
-    background: linear-gradient(to top, 
-      rgba(0,0,0,0.8) 0%, 
-      rgba(0,0,0,0.4) 30%, 
-      transparent 70%);
+    inset: 0;
+    background: url('Nika Hero.jpg') center 22% / cover no-repeat;
+    transform: scale(1.04);
+    transition: transform 9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  .hero-content {
+  .hero-img.loaded { transform: scale(1); }
+
+  .hero-vignette {
     position: absolute;
-    top: 15%; /* Moves text to the top quarter */
-    left: 0; right: 0;
-    padding: 0 1.25rem;
-    z-index: 2;
+    inset: 0;
+    background:
+      linear-gradient(180deg,
+        rgba(10,10,9,0.6)  0%,
+        rgba(10,10,9,0.08) 30%,
+        rgba(10,10,9,0.0)  48%,
+        rgba(10,10,9,0.45) 68%,
+        rgba(10,10,9,0.92) 88%,
+        #0A0A09            100%
+      ),
+      linear-gradient(90deg, rgba(10,10,9,0.28) 0%, transparent 55%);
+  }
+
+  .hero-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    padding: 1.25rem 1.5rem;
     display: flex;
-    justify-content: space-between; /* Pushes text left and socials right */
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 3;
   }
 
-  /* Container for the name and tagline */
-  .hero-text-stack {
-    flex: 1;
+  .sponsable-mark {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.38);
+  }
+
+  .hero-socials { display: flex; gap: 0.45rem; }
+
+  .social-btn {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: rgba(10,10,9,0.3);
+    border: 1px solid rgba(255,255,255,0.16);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .social-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); }
+  .social-btn svg { width: 13px; height: 13px; fill: rgba(255,255,255,0.75); }
+
+  .hero-identity {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 0 1.5rem 2.25rem;
+    z-index: 3;
+  }
+
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 0.55rem;
+    margin-bottom: 0.55rem;
+  }
+
+  .flag-circle {
+    width: 16px; height: 16px;
+    border-radius: 50%; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.18);
+    display: flex; flex-direction: column; flex-shrink: 0;
+  }
+  .flag-top    { flex: 1; background: #005BBB; }
+  .flag-bottom { flex: 1; background: #FFD500; }
+
+  .hero-discipline {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
   }
 
   .hero-name {
     font-family: var(--serif);
-    font-size: 3.4rem;
+    font-size: 4rem;
     font-weight: 700;
     color: white;
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.15rem;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
   }
 
-  .hero-name-italic {
+  .hero-name-second {
     font-family: var(--serif);
-    font-size: 3.4rem;
+    font-size: 4rem;
     font-weight: 400;
     font-style: italic;
-    color: rgba(255,255,255,0.8); /* Increased visibility against lighter gradient */
+    color: rgba(255,255,255,0.65);
     line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.5rem;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.85rem;
   }
 
   .hero-tagline {
     font-family: var(--serif);
-    font-size: 0.9rem;
+    font-size: 0.86rem;
     font-style: italic;
-    color: rgba(255,255,255,0.6); /* Increased visibility */
+    color: var(--soft);
   }
 
- .hero-socials {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    padding-top: 1rem;
-  }
+  /* ─── IDENTITY ─── */
+  .identity-section { padding: 2rem 1.5rem 0; }
 
-  .social-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.18);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-  }
-  .social-btn:hover { background: rgba(255,255,255,0.2); }
-  .social-btn svg { width: 16px; height: 16px; fill: white; }
-
-
-  .identity-top {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 0.3rem;
-  }
-
-  .flag-circle {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    overflow: hidden;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgba(255,255,255,0.15);
-  }
-
-  .flag-circle-top {
-    flex: 1;
-    background: #005BBB;
-  }
-
-  .flag-circle-bottom {
-    flex: 1;
-    background: #FFD500;
-  }
-
-  .identity-discipline {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: white;
-    letter-spacing: -0.01em;
-  }
-
-  .identity-meta {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .meta-dot {
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.2);
+  .status-row {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 1.5rem;
   }
 
   .status-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    background: rgba(68,90,69,0.3);
-    border: 1px solid rgba(68,90,69,0.5);
-    padding: 3px 9px;
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    border: 1px solid var(--line-strong);
+    padding: 3px 10px 3px 8px;
+    border-radius: 2px;
     font-family: var(--mono);
     font-size: 8px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #8ABF8B;
+    color: var(--mid);
   }
 
   .status-dot {
-    width: 5px;
-    height: 5px;
+    width: 5px; height: 5px;
     border-radius: 50%;
-    background: #6ABF6B;
+    background: #5A8A5C;
+    animation: pulse 2.8s ease-in-out infinite;
   }
 
-  .identity-measurements {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    flex-wrap: wrap;
-    margin: 0.9rem 0;
-    padding: 0.75rem 0;
-    border-top: 1px solid var(--card-border);
-    border-bottom: 1px solid var(--card-border);
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+
+  .location-text {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.1em;
+    color: var(--dim);
+  }
+
+  .measurements {
+    display: flex; align-items: center;
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 1.5rem;
   }
 
   .meas {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--mono);
-    padding-right: 1rem;
-    margin-right: 1rem;
-    border-right: 1px solid var(--card-border);
+    flex: 1;
+    display: flex; flex-direction: column; gap: 0.3rem;
+    padding-right: 1rem; margin-right: 1rem;
+    border-right: 1px solid var(--line);
   }
-
-  .meas:last-child {
-    border-right: none;
-    padding-right: 0;
-    margin-right: 0;
-  }
+  .meas:last-child { border-right: none; padding-right: 0; margin-right: 0; }
 
   .meas-label {
-    font-size: 8px;
-    letter-spacing: 0.14em;
+    font-family: var(--mono);
+    font-size: 7.5px;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.25);
+    color: var(--dim);
   }
 
   .meas-val {
-    font-size: 11px;
-    color: rgba(255,255,255,0.65);
-    font-weight: 500;
-  }
-
-  .identity-bio {
-    font-family: var(--serif);
-    font-size: 0.88rem;
-    font-style: italic;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.75;
-  }
-
-  .bio-expand-link {
-    color: rgba(255,255,255,0.55);
-    text-decoration: none;
-    font-style: normal;
-    font-weight: 500;
     font-family: var(--sans);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--mid);
   }
 
-  .bio-expanded {
-    margin-top: 0.9rem;
-  }
-
-  .bio-expanded p {
-    font-family: var(--serif);
-    font-size: 0.88rem;
-    font-style: italic;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.75;
-    margin-bottom: 0.85rem;
-  }
-
-  .bio-pull {
-    border-left: 2px solid var(--red-accent);
-    padding: 0.5rem 0 0.5rem 0.9rem;
-    margin: 1rem 0;
-  }
-
-  .bio-pull p {
+  .bio-text {
     font-family: var(--serif);
     font-size: 0.92rem;
     font-style: italic;
-    color: rgba(255,255,255,0.75) !important;
-    line-height: 1.6;
-    margin-bottom: 0 !important;
+    color: var(--soft);
+    line-height: 1.85;
   }
 
-  /* ─── RESULTS CARD ─── */
-  .results-card {
-    background: var(--card-mid);
-    margin: 0.75rem;
-    border-radius: 6px;
-    overflow: hidden;
-    border: 1px solid var(--card-border);
+  .bio-more {
+    background: none; border: none;
+    font-family: var(--sans);
+    font-size: 0.78rem; font-weight: 500;
+    color: var(--soft); cursor: pointer; padding: 0;
+    text-decoration: underline; text-underline-offset: 3px;
+    transition: color 0.15s;
+  }
+  .bio-more:hover { color: var(--mid); }
+
+  .bio-expanded { display: none; margin-top: 1.1rem; }
+  .bio-expanded.open { display: block; }
+
+  .bio-expanded p {
+    font-family: var(--serif);
+    font-size: 0.92rem; font-style: italic;
+    color: var(--soft); line-height: 1.85;
+    margin-bottom: 1rem;
   }
 
-  .results-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1rem 0.75rem;
-    border-bottom: 1px solid var(--card-border);
+  .bio-pull {
+    border-left: 2px solid var(--red);
+    padding: 0.35rem 0 0.35rem 1rem;
+    margin: 1.1rem 0;
   }
+  .bio-pull p { font-family: var(--serif); font-size: 0.95rem; font-style: italic; color: var(--hi) !important; line-height: 1.6; margin-bottom: 0 !important; }
 
-  .results-label {
+  /* ─── DIVIDERS & SPACING ─── */
+  .rule { height: 1px; background: var(--line); margin: 2rem 1.5rem 0; }
+
+  /* ─── RESULTS ─── */
+  .results-section { padding: 0 1.5rem 1.75rem; }
+
+  .section-label {
     font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.18em;
+    font-size: 8.5px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
+    color: var(--dim);
+    padding: 1.5rem 0 1.25rem;
+    display: flex; align-items: center; justify-content: space-between;
   }
 
-  .results-history {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    text-decoration: none;
-  }
+  .section-label a { color: var(--dim); text-decoration: none; transition: color 0.15s; }
+  .section-label a:hover { color: var(--soft); }
 
   .result-row {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    padding: 0.85rem 1rem;
-    border-bottom: 1px solid var(--card-border);
-    position: relative;
-    overflow: hidden;
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--line);
   }
-
   .result-row:last-child { border-bottom: none; }
 
-  .result-thumb {
-    position: absolute;
-    right: 0; top: 0; bottom: 0;
-    width: 90px;
-    opacity: 0.18;
-    background: linear-gradient(90deg, transparent 0%, var(--forest) 100%);
-  }
+  .result-medal { width: 24px; height: 24px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .result-medal svg { width: 20px; height: 20px; }
+  .result-body { flex: 1; }
 
-  .medal-icon {
-    width: 28px;
-    height: 28px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  .result-place { font-family: var(--mono); font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.18rem; }
+  .result-name  { font-family: var(--sans);  font-size: 0.88rem; font-weight: 600; color: var(--hi); margin-bottom: 0.12rem; }
+  .result-detail{ font-family: var(--mono); font-size: 8px; letter-spacing: 0.07em; color: var(--dim); }
 
-  .medal-icon svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  .result-body { flex: 1; z-index: 1; }
-
-  .result-place {
-    font-family: var(--sans);
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 0.1rem;
-  }
-
-  .result-name {
-    font-family: var(--sans);
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: rgba(255,255,255,0.85);
-    margin-bottom: 0.1rem;
-  }
-
-  .result-detail {
-    font-family: var(--mono);
-    font-size: 8.5px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-  }
-
-  /* ─── MEDIA ─── */
-  .media-wrap {
-    margin: 0.75rem;
-  }
-
-  .media-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-  }
-
-  .media-card {
-    border-radius: 5px;
-    overflow: hidden;
-    text-decoration: none;
-    display: block;
-    border: 1px solid var(--card-border);
-  }
+  /* ─── MEDIA — full bleed ─── */
+  .media-link { display: block; text-decoration: none; }
 
   .media-thumb {
-    aspect-ratio: 16/10;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    aspect-ratio: 16/9;
+    background: url('Nika Natural Heights.avif') center 35% / cover no-repeat;
+    display: flex; align-items: center; justify-content: center;
   }
 
-  .media-thumb.rb { background: url('Nika Natural Heights.avif') center 35% / cover no-repeat; }
-  .media-thumb.film { background: linear-gradient(140deg, #1A1A18, #2A2926); }
+  .media-thumb::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(10,10,9,0.8) 100%);
+    transition: opacity 0.3s;
+  }
+
+  .media-link:hover .media-thumb::after { opacity: 0.6; }
 
   .media-play {
-    width: 32px;
-    height: 32px;
+    width: 44px; height: 44px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.15);
+    background: rgba(10,10,9,0.45);
     border: 1px solid rgba(255,255,255,0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1;
+    transition: background 0.2s, transform 0.2s;
   }
 
-  .media-play svg {
-    width: 11px;
-    height: 11px;
-    fill: white;
-    margin-left: 2px;
-  }
+  .media-link:hover .media-play { background: rgba(255,255,255,0.12); transform: scale(1.06); }
+  .media-play svg { width: 13px; height: 13px; fill: white; margin-left: 2px; }
 
-  .media-label-text {
+  .media-info {
     position: absolute;
-    bottom: 0.5rem;
-    left: 0.6rem;
-    right: 0.6rem;
+    bottom: 0; left: 0; right: 0;
+    padding: 0 1.5rem 1.25rem;
+    z-index: 1;
+    display: flex; align-items: flex-end; justify-content: space-between;
   }
 
-  .media-title {
-    font-family: var(--sans);
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: white;
-    margin-bottom: 0.1rem;
+  .media-title { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: white; margin-bottom: 0.1rem; }
+  .media-sub   { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.42); }
+
+  .media-badge {
+    font-family: var(--mono); font-size: 7.5px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(255,255,255,0.38);
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 2px 8px; border-radius: 2px;
   }
 
-  .media-sub {
-    font-family: var(--mono);
-    font-size: 7.5px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
+  /* ─── FILM ─── */
+  .film-section { padding: 2rem 1.5rem 0; border-top: 1px solid var(--line); }
+
+  .film-badge {
+    display: inline-block;
+    font-family: var(--mono); font-size: 8px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 0.9rem;
   }
 
-  /* ─── IN DEVELOPMENT ─── */
-  .dev-card {
-    background: var(--card-mid);
-    margin: 0.75rem;
-    border-radius: 6px;
-    padding: 1rem;
-    border: 1px solid var(--card-border);
-  }
-
-  .dev-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.75rem;
-  }
-
-  .dev-badge {
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 3px 8px;
-    border-radius: 2px;
-  }
-
-  .dev-plan-link {
-    font-family: var(--mono);
-    font-size: 8.5px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    text-decoration: none;
-  }
-
-  .dev-title {
+  .film-title {
     font-family: var(--serif);
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: white;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
+    font-size: 2rem; font-weight: 700;
+    color: var(--hi);
+    letter-spacing: -0.025em; line-height: 1.1;
+    margin-bottom: 0.55rem;
   }
 
-  .dev-desc {
+  .film-desc {
     font-family: var(--serif);
-    font-size: 0.85rem;
-    font-style: italic;
-    color: rgba(255,255,255,0.45);
-    line-height: 1.7;
-    margin-bottom: 1rem;
+    font-size: 0.88rem; font-style: italic;
+    color: var(--soft); line-height: 1.8;
+    margin-bottom: 1.5rem;
   }
 
-  .dev-bottom {
-    display: flex;
-    align-items: center;
-    border-top: 1px solid var(--card-border);
-    margin: 0 -1rem -1rem;
+  /* notify panel — sits above actions */
+  .film-notify { display: none; margin-bottom: 1.25rem; }
+  .film-notify.open { display: block; }
+
+  .notify-label {
+    font-family: var(--mono); font-size: 8px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 0.6rem;
   }
 
-  .dev-likes {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: var(--mono);
-    font-size: 9px;
-    color: rgba(255,255,255,0.3);
-  }
-
-  .dev-likes svg {
-    width: 13px;
-    height: 13px;
-    fill: none;
-    stroke: rgba(255,255,255,0.3);
-    stroke-width: 1.5;
-  }
-
-  .dev-like-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.9rem 1rem;
-    width: 100%;
-    font-family: var(--mono);
-    font-size: 10px;
-    color: rgba(255,255,255,0.35);
-    transition: color 0.2s, background 0.2s;
-    border-radius: 0 0 6px 6px;
-  }
-
-  .dev-like-btn:hover {
-    color: rgba(255,255,255,0.6);
-    background: rgba(255,255,255,0.03);
-  }
-
-  .dev-like-btn.liked { color: #C25555; }
-
-  .dev-like-btn svg {
-    width: 15px;
-    height: 15px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.5;
-    transition: fill 0.2s, stroke 0.2s, transform 0.15s;
-  }
-
-  .dev-like-btn.liked svg {
-    fill: #C25555;
-    stroke: #C25555;
-  }
-
-  .dev-like-btn.pop svg {
-    transform: scale(1.35);
-  }
-
-  /* ─── SPONSORS ─── */
-  .sponsors-section {
-    background: var(--paper);
-    padding: 1.5rem 1.25rem;
-  }
-
-  .sponsor-tabs {
-    display: flex;
-    gap: 0;
-    margin-bottom: 1.25rem;
-    border-bottom: 1px solid var(--rule-light);
-  }
-
-  .sponsor-tab {
-    font-family: var(--sans);
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--ink-light);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding: 0.5rem 1rem 0.65rem;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
-    transition: color 0.15s, border-color 0.15s;
-    background: none;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-  }
-
-  .sponsor-tab:first-child { padding-left: 0; }
-
-  .sponsor-tab.active {
-    color: var(--ink);
-    border-bottom-color: var(--ink);
-  }
-
-  .sponsor-quote-block { display: none; }
-  .sponsor-quote-block.active { display: block; }
-
-  .sponsor-quote-text {
-    font-family: var(--serif);
-    font-size: 1.0rem;
-    font-style: italic;
-    color: var(--ink);
-    line-height: 1.65;
-    margin-bottom: 0.5rem;
-    text-align: center;
-  }
-
-  .sponsor-quote-attr {
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-    text-align: center;
-    display: block;
-  }
-
-  /* ─── BRAND ACCESS ─── */
-  .access-section {
-    background: var(--card-dark);
-    padding: 2.5rem 1.25rem;
-    text-align: center;
-    border-top: 1px solid var(--card-border);
-  }
-
-  .access-title {
-    font-family: var(--serif);
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.01em;
-  }
-
-  .access-sub {
-    font-family: var(--sans);
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.4);
-    line-height: 1.65;
-    margin-bottom: 1.75rem;
-    max-width: 260px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .access-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    background: transparent;
-    color: white;
-    padding: 0.8rem 2rem;
-    font-family: var(--sans);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.3);
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
-  }
-
-  .access-btn:hover {
-    border-color: rgba(255,255,255,0.6);
-    background: rgba(255,255,255,0.05);
-  }
-
-  .access-btn svg {
-    width: 12px;
-    height: 12px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-  }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--card-dark);
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4rem;
-    border-top: 1px solid var(--card-border);
-  }
-
-  .footer-bird {
-    opacity: 0.2;
-    margin-bottom: 0.2rem;
-  }
-
-  .footer-text {
-    font-family: var(--mono);
-    font-size: 8.5px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.22);
-  }
-
-  .footer-text span { color: rgba(255,255,255,0.4); }
-
-  /* ─── MODAL ─── */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.75);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-  }
-
-  .modal-overlay.open { display: flex; }
-
-  .modal {
-    background: var(--paper);
-    width: 100%;
-    max-width: 380px;
-    padding: 1.75rem;
-    position: relative;
-    border-radius: 4px;
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 1rem; right: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.1rem;
-    color: var(--ink-light);
-    cursor: pointer;
-  }
-
-  .modal-eyebrow {
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--forest-mid);
-    margin-bottom: 0.5rem;
-  }
-
-  .modal-title {
-    font-family: var(--serif);
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 0.35rem;
-    letter-spacing: -0.01em;
-  }
-
-  .modal-sub {
-    font-family: var(--sans);
-    font-size: 0.8rem;
-    color: var(--ink-light);
-    margin-bottom: 1.25rem;
-    line-height: 1.6;
-  }
-
-  .modal-field { margin-bottom: 0.65rem; }
-
-  .modal-field label {
-    display: block;
-    font-family: var(--sans);
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: var(--ink-mid);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: 0.35rem;
-  }
-
-  .modal-field input {
-    width: 100%;
-    padding: 0.65rem 0.85rem;
-    background: white;
-    border: 1px solid var(--rule-light);
-    color: var(--ink);
-    font-family: var(--sans);
-    font-size: 0.85rem;
-    outline: none;
-    transition: border-color 0.2s;
-    border-radius: 2px;
-  }
-
-  .modal-field input:focus { border-color: var(--forest-mid); }
-
-  .modal-submit {
-    width: 100%;
-    padding: 0.8rem;
-    background: var(--forest);
-    color: white;
-    border: none;
-    font-family: var(--sans);
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    margin-top: 0.4rem;
-    border-radius: 2px;
-    transition: background 0.2s;
-  }
-
-  .modal-submit:hover { background: var(--forest-mid); }
-
-  .modal-note {
-    font-family: var(--sans);
-    font-size: 0.7rem;
-    color: var(--ink-light);
-    text-align: center;
-    margin-top: 0.65rem;
-    line-height: 1.5;
-  }
-
-  /* ─── UTILS ─── */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 0.55s ease, transform 0.55s ease;
-  }
-  .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-   /* ─── VOICE NOTE ─── */
-  .voice-note-ui {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 40px;
-    padding: 0.75rem 1.25rem;
-    cursor: pointer;
-  }
-
-  .waveform {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    height: 20px;
-    flex: 1;
-  }
-
-  .waveform span {
-    width: 3px;
-    height: 50%;
-    background: rgba(255,255,255,0.3);
-    border-radius: 2px;
-  }
-
-  .playing span {
-    animation: wave 0.5s ease-in-out infinite alternate;
-  }
-
-  @keyframes wave {
-    from { height: 20%; }
-    to { height: 100%; }
-  }
-
-
-  /* ─── AVAILABILITY ─── */
-  .availability-card {
-    background: var(--card-mid);
-    margin: 0.75rem;
-    border-radius: 6px;
-    border: 1px solid var(--card-border);
-    overflow: hidden;
-  }
-
-  .availability-header {
-    padding: 0.85rem 1rem 0.7rem;
-    border-bottom: 1px solid var(--card-border);
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-  }
-
-  .avail-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.85rem;
-    padding: 0.8rem 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-  }
-
-  .avail-row:last-child { border-bottom: none; }
-
-  .avail-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    margin-top: 5px;
-    flex-shrink: 0;
-  }
-
-  .avail-dot.comp { background: #5B8FD4; }
-  .avail-dot.travel { background: #8ABF8B; }
-  .avail-dot.shoot { background: #D4A85B; }
-  .avail-dot.open { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); }
-
-  .avail-period {
-    font-family: var(--mono);
-    font-size: 8.5px;
-    letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 0.2rem;
-  }
-
-  .avail-detail {
-    font-family: var(--sans);
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.4;
-  }
-
-  .avail-legend {
-    display: flex;
-    gap: 1rem;
-    padding: 0.75rem 1rem;
-    border-top: 1px solid var(--card-border);
-    flex-wrap: wrap;
-  }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-family: var(--mono);
-    font-size: 7.5px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.22);
-  }
-
-  .legend-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-  }
-
-  /* ─── FILM NOTIFY ─── */
-  .notify-section {
-    margin: 0.75rem;
-    border-radius: 6px;
-    border: 1px solid var(--card-border);
-    background: var(--card-mid);
-    overflow: hidden;
-  }
-
-  .notify-inner {
-    padding: 1.1rem 1rem;
-  }
-
-  .notify-eyebrow {
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.25);
-    margin-bottom: 0.5rem;
-  }
-
-  .notify-title {
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 0.3rem;
-    letter-spacing: -0.01em;
-  }
-
-  .notify-sub {
-    font-family: var(--serif);
-    font-size: 0.82rem;
-    font-style: italic;
-    color: rgba(255,255,255,0.35);
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-
-  .notify-form {
-    display: flex;
-    gap: 0.5rem;
-  }
+  .notify-row { display: flex; gap: 0.5rem; }
 
   .notify-input {
     flex: 1;
     padding: 0.65rem 0.75rem;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: white;
-    font-family: var(--sans);
-    font-size: 0.82rem;
-    outline: none;
-    border-radius: 3px;
+    background: var(--ghost);
+    border: 1px solid var(--line);
+    color: var(--hi);
+    font-family: var(--sans); font-size: 0.82rem;
+    outline: none; border-radius: 2px;
     transition: border-color 0.2s;
   }
-
-  .notify-input::placeholder { color: rgba(255,255,255,0.25); }
-  .notify-input:focus { border-color: rgba(255,255,255,0.25); }
+  .notify-input::placeholder { color: var(--dim); }
+  .notify-input:focus { border-color: var(--line-strong); }
 
   .notify-btn {
     padding: 0.65rem 1rem;
-    background: var(--forest-mid);
-    color: white;
-    border: none;
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 3px;
-    white-space: nowrap;
-    transition: background 0.2s;
+    background: var(--bg-3); color: var(--mid);
+    border: 1px solid var(--line-strong);
+    font-family: var(--mono); font-size: 8px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    cursor: pointer; border-radius: 2px; white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
   }
-
-  .notify-btn:hover { background: var(--forest); }
+  .notify-btn:hover { background: var(--bg-2); color: var(--hi); }
 
   .notify-count {
-    margin-top: 0.65rem;
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.2);
+    margin-top: 0.5rem;
+    font-family: var(--mono); font-size: 7.5px;
+    letter-spacing: 0.08em; color: rgba(255,255,255,0.18);
   }
+
+  .film-actions {
+    display: flex; align-items: center; gap: 1.5rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .like-btn {
+    display: flex; align-items: center; gap: 0.45rem;
+    background: none; border: none; cursor: pointer; padding: 0;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em;
+    color: var(--dim); transition: color 0.2s;
+  }
+  .like-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; transition: fill 0.2s, stroke 0.2s, transform 0.15s; }
+  .like-btn:hover { color: var(--soft); }
+  .like-btn.liked { color: var(--red); }
+  .like-btn.liked svg { fill: var(--red); stroke: var(--red); }
+  .like-btn.pop svg { transform: scale(1.4); }
+
+  .notify-toggle {
+    background: none; border: none;
+    font-family: var(--mono); font-size: 8.5px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--dim); cursor: pointer;
+    transition: color 0.15s; padding: 0;
+  }
+  .notify-toggle:hover { color: var(--soft); }
+
+  /* ─── VOICE NOTE ─── */
+  .voice-section { padding: 2rem 1.5rem; border-top: 1px solid var(--line); }
+
+  .section-micro {
+    font-family: var(--mono); font-size: 8.5px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 1rem;
+  }
+
+  .voice-ui {
+    display: flex; align-items: center; gap: 1rem;
+    cursor: pointer;
+    padding: 0.85rem 1.1rem;
+    border: 1px solid var(--line); border-radius: 2px;
+    background: var(--ghost);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .voice-ui:hover { border-color: var(--line-strong); background: rgba(255,255,255,0.04); }
+
+  .voice-play {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--bg-3);
+    border: 1px solid var(--line-strong);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: background 0.2s, border-color 0.2s;
+  }
+  .voice-ui.playing .voice-play { background: var(--accent); border-color: var(--accent); }
+  .voice-play svg { width: 11px; height: 11px; fill: var(--mid); }
+  .voice-ui.playing .voice-play svg { fill: white; }
+
+  .waveform {
+    display: flex; align-items: center; gap: 2.5px;
+    height: 20px; flex: 1;
+  }
+
+  .waveform span {
+    width: 2px; border-radius: 2px;
+    background: var(--line-strong);
+    transform-origin: center;
+  }
+
+  .voice-ui.playing .waveform span {
+    background: var(--accent-pale);
+    animation: wavebar 0.55s ease-in-out infinite alternate;
+  }
+
+  .voice-ui.playing .waveform span:nth-child(2)  { animation-delay:0.06s }
+  .voice-ui.playing .waveform span:nth-child(3)  { animation-delay:0.12s }
+  .voice-ui.playing .waveform span:nth-child(4)  { animation-delay:0.18s }
+  .voice-ui.playing .waveform span:nth-child(5)  { animation-delay:0.24s }
+  .voice-ui.playing .waveform span:nth-child(6)  { animation-delay:0.30s }
+  .voice-ui.playing .waveform span:nth-child(7)  { animation-delay:0.36s }
+  .voice-ui.playing .waveform span:nth-child(8)  { animation-delay:0.42s }
+  .voice-ui.playing .waveform span:nth-child(9)  { animation-delay:0.48s }
+  .voice-ui.playing .waveform span:nth-child(10) { animation-delay:0.54s }
+
+  @keyframes wavebar { from{transform:scaleY(0.18)} to{transform:scaleY(1)} }
+
+  .voice-time { font-family: var(--mono); font-size: 10px; color: var(--soft); letter-spacing: 0.05em; flex-shrink: 0; }
+
+  /* ─── AVAILABILITY ─── */
+  .availability-wrap { padding: 0 1.5rem; }
+
+  .availability-card {
+    background: var(--bg-1);
+    border: 1px solid var(--line);
+    border-radius: 2px; overflow: hidden;
+  }
+
+  .avail-header {
+    padding: 0.85rem 1.25rem;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono); font-size: 8.5px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--dim);
+  }
+
+  .avail-row {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 0.9rem 1.25rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .avail-row:last-of-type { border-bottom: none; }
+
+  .avail-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+  .avail-dot.comp   { background: #4A7AB0; }
+  .avail-dot.travel { background: #6B8F6D; }
+  .avail-dot.shoot  { background: #9E8A4A; }
+  .avail-dot.open   { border: 1px solid var(--line-strong); }
+
+  .avail-period { font-family: var(--mono); font-size: 8px; letter-spacing: 0.1em; color: var(--dim); margin-bottom: 0.22rem; }
+  .avail-detail { font-family: var(--sans); font-size: 0.83rem; color: var(--mid); line-height: 1.5; }
+
+  .avail-legend {
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--line);
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 0.38rem; font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dim); }
+  .legend-dot  { width: 5px; height: 5px; border-radius: 50%; }
+
+  /* ─── SPOTIFY ─── */
+  .spotify-wrap { padding: 2rem 1.5rem 0; }
+  .spotify-wrap iframe { border-radius: 2px; display: block; }
 
   /* ─── Q&A ─── */
-  .qa-card {
-    background: var(--card-mid);
-    margin: 0.75rem;
-    border-radius: 6px;
-    border: 1px solid var(--card-border);
-    overflow: hidden;
+  .qa-section { padding: 2rem 1.5rem 0; }
+
+  .qa-head {
+    font-family: var(--mono); font-size: 8.5px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--dim);
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between;
   }
 
-  .qa-header {
-    padding: 0.85rem 1rem 0.7rem;
-    border-bottom: 1px solid var(--card-border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .qa-item { padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
+  .qa-item:last-of-type { border-bottom: none; }
+
+  .qa-q {
+    font-family: var(--sans); font-size: 0.8rem;
+    color: var(--soft); margin-bottom: 0.55rem; line-height: 1.55;
+  }
+  .qa-q::before { content: "Q  "; font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.12em; color: var(--dim); }
+
+  .qa-a {
+    font-family: var(--serif); font-size: 0.9rem; font-style: italic;
+    color: var(--mid); line-height: 1.8;
+    padding-left: 1rem; border-left: 2px solid var(--red);
   }
 
-  .qa-label {
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-  }
+  .qa-ask { padding: 1.25rem 0; border-top: 1px solid var(--line); }
 
-  .qa-count-badge {
-    font-family: var(--mono);
-    font-size: 8px;
-    color: rgba(255,255,255,0.2);
-    letter-spacing: 0.08em;
-  }
+  .qa-ask-label { font-family: var(--mono); font-size: 8px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.55rem; }
 
-  .qa-answered {
-    border-bottom: 1px solid var(--card-border);
-  }
-
-  .qa-item {
-    padding: 0.9rem 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-  }
-
-  .qa-item:last-child { border-bottom: none; }
-
-  .qa-question {
-    font-family: var(--sans);
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.45);
-    margin-bottom: 0.45rem;
-    line-height: 1.5;
-  }
-
-  .qa-question::before {
-    content: "Q  ";
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.2);
-  }
-
-  .qa-answer {
-    font-family: var(--serif);
-    font-size: 0.88rem;
-    font-style: italic;
-    color: rgba(255,255,255,0.72);
-    line-height: 1.7;
-    padding-left: 1.1rem;
-    border-left: 2px solid var(--red-accent);
-  }
-
-  .qa-ask-area {
-    padding: 0.9rem 1rem 1rem;
-  }
-
-  .qa-ask-label {
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.2);
-    margin-bottom: 0.5rem;
-  }
-
-  .qa-ask-input {
+  .qa-textarea {
     width: 100%;
-    padding: 0.7rem 0.75rem;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    color: white;
-    font-family: var(--serif);
-    font-size: 0.82rem;
-    font-style: italic;
-    outline: none;
-    border-radius: 3px;
-    resize: none;
-    margin-bottom: 0.5rem;
+    padding: 0.65rem 0.75rem;
+    background: var(--ghost); border: 1px solid var(--line);
+    color: var(--hi);
+    font-family: var(--serif); font-size: 0.86rem; font-style: italic;
+    outline: none; border-radius: 2px; resize: none;
+    margin-bottom: 0.55rem; display: block;
     transition: border-color 0.2s;
-    display: block;
   }
-
-  .qa-ask-input::placeholder { color: rgba(255,255,255,0.2); font-style: italic; }
-  .qa-ask-input:focus { border-color: rgba(255,255,255,0.18); }
+  .qa-textarea::placeholder { color: var(--dim); font-style: italic; }
+  .qa-textarea:focus { border-color: var(--line-strong); }
 
   .qa-submit {
-    background: none;
-    border: 1px solid rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.4);
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    padding: 0.5rem 0.85rem;
-    cursor: pointer;
-    border-radius: 2px;
+    background: none; border: 1px solid var(--line);
+    color: var(--dim);
+    font-family: var(--mono); font-size: 8px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 0.5rem 0.9rem; cursor: pointer; border-radius: 2px;
     transition: all 0.2s;
   }
+  .qa-submit:hover { border-color: var(--line-strong); color: var(--soft); }
 
-  .qa-submit:hover { border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.6); }
+  /* ─── PARTNER TICKER ─── */
+  .ticker-section {
+    margin-top: 2.5rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+    position: relative;
+  }
 
+  .ticker-label {
+    font-family: var(--mono); font-size: 8.5px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--dim); text-align: center;
+    margin-bottom: 1.1rem;
+  }
+
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker 18s linear infinite;
+  }
+  .ticker-track:hover { animation-play-state: paused; }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .ticker-item {
+    display: flex; align-items: center;
+    padding: 0 2.5rem;
+    white-space: nowrap;
+    border-right: 1px solid var(--line);
+  }
+  .ticker-item:last-child { border-right: none; }
+
+  .ticker-name {
+    font-family: var(--serif); font-size: 0.92rem; font-weight: 600;
+    color: var(--soft); letter-spacing: -0.01em;
+  }
+
+  /* Fade edges */
+  .ticker-section::before,
+  .ticker-section::after {
+    content: ''; position: absolute; top: 0; bottom: 0;
+    width: 3rem; z-index: 2; pointer-events: none;
+  }
+  .ticker-section::before { left: 0; background: linear-gradient(90deg, var(--bg) 0%, transparent 100%); }
+  .ticker-section::after  { right: 0; background: linear-gradient(270deg, var(--bg) 0%, transparent 100%); }
+
+  /* ─── BRAND ACCESS ─── */
+  .access-section {
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+
+  .access-title {
+    font-family: var(--serif); font-size: 1.35rem; font-weight: 700;
+    letter-spacing: -0.015em; color: var(--hi); margin-bottom: 0.55rem;
+  }
+
+  .access-sub {
+    font-family: var(--sans); font-size: 0.78rem;
+    color: var(--soft); line-height: 1.75;
+    margin: 0 auto 2rem; max-width: 275px;
+  }
+
+  .access-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: transparent; color: var(--hi);
+    padding: 0.85rem 2rem;
+    font-family: var(--sans); font-size: 0.73rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--line-strong);
+    cursor: pointer; border-radius: 2px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .access-btn:hover { border-color: rgba(255,255,255,0.3); background: var(--ghost); }
+  .access-btn svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+  /* ─── FOOTER CTA ─── */
+  .footer-cta {
+    border-top: 1px solid var(--line);
+    padding: 2.5rem 1.5rem 2rem;
+    text-align: center;
+    background: var(--bg-1);
+  }
+
+  .footer-cta-eyebrow {
+    font-family: var(--mono); font-size: 8px;
+    letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 0.5rem;
+  }
+
+  .footer-cta-title {
+    font-family: var(--serif); font-size: 1.2rem; font-weight: 700;
+    letter-spacing: -0.01em; color: var(--mid);
+    margin-bottom: 0.4rem; line-height: 1.3;
+  }
+
+  .footer-cta-sub {
+    font-family: var(--sans); font-size: 0.76rem;
+    color: var(--dim); line-height: 1.65;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-cta-link {
+    display: inline-block;
+    font-family: var(--mono); font-size: 8.5px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--soft); text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .footer-cta-link:hover { color: var(--mid); border-color: var(--soft); }
+
+  .footer-mark {
+    margin-top: 2rem;
+    font-family: var(--mono); font-size: 8px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--dim); opacity: 0.5;
+  }
+
+  /* ─── MODAL ─── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.7); z-index: 200;
+    align-items: center; justify-content: center;
+    padding: 1.5rem;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: #F4F1EA; width: 100%; max-width: 380px;
+    padding: 2rem; position: relative; border-radius: 2px;
+  }
+
+  .modal-close { position: absolute; top: 1.1rem; right: 1.1rem; background: none; border: none; font-size: 1rem; color: var(--ink-dim); cursor: pointer; transition: color 0.15s; }
+  .modal-close:hover { color: var(--ink); }
+
+  .modal-eyebrow { font-family: var(--mono); font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.4rem; }
+  .modal-title   { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: 0.3rem; letter-spacing: -0.015em; }
+  .modal-sub     { font-family: var(--sans); font-size: 0.8rem; color: var(--ink-soft); margin-bottom: 1.5rem; line-height: 1.6; }
+
+  .modal-field { margin-bottom: 0.7rem; }
+  .modal-field label { display: block; font-family: var(--sans); font-size: 0.7rem; font-weight: 600; color: var(--ink-mid); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.35rem; }
+  .modal-field input { width: 100%; padding: 0.65rem 0.9rem; background: white; border: 1px solid var(--paper-mid); color: var(--ink); font-family: var(--sans); font-size: 0.85rem; outline: none; border-radius: 2px; transition: border-color 0.2s; }
+  .modal-field input:focus { border-color: var(--ink-soft); }
+
+  .modal-submit { width: 100%; padding: 0.85rem; background: var(--ink); color: white; border: none; font-family: var(--sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; margin-top: 0.5rem; border-radius: 2px; transition: background 0.2s; }
+  .modal-submit:hover { background: var(--ink-mid); }
+
+  .modal-note { font-family: var(--sans); font-size: 0.7rem; color: var(--ink-dim); text-align: center; margin-top: 0.75rem; line-height: 1.5; }
+
+  /* ─── FADE IN ─── */
+  .fade-in { opacity: 0; transform: translateY(8px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
-<div id="progress-bar"></div>
-
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-gradient"></div>
-  <div class="hero-content">
-    <div class="hero-text-stack">
-      <div class="hero-name">Nika</div>
-      <div class="hero-name-italic">Potapova</div>
-      <div class="hero-tagline">Just wait for my comeback</div>
-    </div>
-    
+  <div class="hero-img" id="hero-img"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-top">
+    <span class="sponsable-mark">Sponsable</span>
     <div class="hero-socials">
-      <a href="https://www.instagram.com/nika_____potapova/" class="social-btn" target="_blank">
+      <a href="https://www.instagram.com/nika_____potapova/" class="social-btn" target="_blank" aria-label="Instagram">
         <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       </a>
-      <a href="https://www.tiktok.com/@nika_shark21" class="social-btn" target="_blank">
+      <a href="https://www.tiktok.com/@nika_shark21" class="social-btn" target="_blank" aria-label="TikTok">
         <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.14a8.16 8.16 0 004.77 1.52V7.21a4.85 4.85 0 01-1-.52z"/></svg>
       </a>
-      <a href="https://www.youtube.com/@nikapotapova" class="social-btn" target="_blank">
+      <a href="https://www.youtube.com/@nikapotapova" class="social-btn" target="_blank" aria-label="YouTube">
         <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
       </a>
     </div>
   </div>
+  <div class="hero-identity">
+    <div class="hero-eyebrow">
+      <div class="flag-circle"><div class="flag-top"></div><div class="flag-bottom"></div></div>
+      <span class="hero-discipline">Ukrainian Lead Climber</span>
+    </div>
+    <div class="hero-name">Nika</div>
+    <div class="hero-name-second">Potapova</div>
+    <div class="hero-tagline">Just wait for my comeback</div>
+  </div>
 </div>
 
 <!-- IDENTITY -->
-<div class="identity-card fade-up">
-  <div class="identity-top">
-    <div class="flag-circle"><div class="flag-circle-top"></div><div class="flag-circle-bottom"></div></div>
-    <span class="identity-discipline">Ukrainian Lead Climber</span>
+<div class="identity-section fade-in">
+  <div class="status-row">
+    <div class="status-pill"><div class="status-dot"></div>Pre-season</div>
+    <span class="location-text">Paris, France</span>
   </div>
-  <div class="identity-meta">
-    <span>Paris, France</span>
-    <span class="meta-dot"></span>
-    <span class="status-pill"><span class="status-dot"></span>Pre-season</span>
+  <div class="measurements">
+    <div class="meas"><span class="meas-label">Height</span><span class="meas-val">163 cm</span></div>
+    <div class="meas"><span class="meas-label">Reach</span><span class="meas-val">+3 cm</span></div>
+    <div class="meas"><span class="meas-label">Shoe</span><span class="meas-val">EU 36</span></div>
+    <div class="meas"><span class="meas-label">Size</span><span class="meas-val">XS</span></div>
   </div>
-  <div class="identity-measurements">
-    <div class="meas">
-      <span class="meas-label">Height</span>
-      <span class="meas-val">163 cm</span>
-    </div>
-    <div class="meas">
-      <span class="meas-label">Reach</span>
-      <span class="meas-val">+3 cm</span>
-    </div>
-    <div class="meas">
-      <span class="meas-label">Shoe</span>
-      <span class="meas-val">EU 36</span>
-    </div>
-    <div class="meas">
-      <span class="meas-label">Size</span>
-      <span class="meas-val">XS</span>
-    </div>
-  </div>
-  <p class="identity-bio">
+  <p class="bio-text">
     Before there were walls, there were trees. That's where Nika learned to climb. When a friend took her to a gym, she was asked after a single session if she wanted to move straight into the advanced group.
-    <a href="#" class="bio-expand-link" id="more-link" onclick="toggleBio(event)"> ... more</a>
+    <button class="bio-more" id="bio-more-btn" onclick="toggleBio()"> … more</button>
   </p>
-  <div class="bio-expanded" id="bio-expanded" style="display:none;">
+  <div class="bio-expanded" id="bio-expanded">
     <p>She said yes.</p>
     <p>Within her first year she climbed 8a. By thirteen, 8c. At fourteen she broke the women's Zlagboard endurance record — and nearly the men's. Not officially, but there's a video. At sixteen she climbed 9a, becoming the 23rd woman in history to do so. That same year she became European Youth Champion; a year later, Youth World Champion.</p>
     <p>Her coach controlled everything — who travelled, where they slept, who they spoke to. Athletes were turned against one another, competition engineered into isolation and justified by results. He later became the subject of a court case concerning allegations of pedophilia. Nika, seventeen, was a witness.</p>
     <div class="bio-pull"><p>"I was winning. But somebody was taking pieces from me."</p></div>
     <p>She moved to Innsbruck in 2021, one of climbing's main training bases, hitching rides to World Cups, sleeping wherever she could. Now she's in Paris, with a room of her own, rediscovering that her best climbing happens when she stops thinking about it at all.</p>
     <div class="bio-pull"><p>"I know I can climb much better than I am right now. I'll come back. Just wait for my comeback."</p></div>
-    <p><a href="#" class="bio-expand-link" onclick="toggleBio(event)">less</a></p>
+    <button class="bio-more" onclick="toggleBio()">less</button>
   </div>
 </div>
 
-<!-- RESULTS -->
-<div class="results-card fade-up">
-  <div class="results-header">
-    <span class="results-label">Athletic record</span>
-    <a href="#" class="results-history">Full History →</a>
-  </div>
+<!-- RULE — breathing room before results -->
+<div class="rule fade-in"></div>
 
+<!-- RESULTS — flush, same padding as identity -->
+<div class="results-section fade-in">
+  <div class="section-label">Athletic Record <a href="#">Full history →</a></div>
   <div class="result-row">
-    <div class="medal-icon">
+    <div class="result-medal">
       <svg viewBox="0 0 20 20" fill="none">
-        <path d="M6 3h8v6a4 4 0 01-8 0V3z" stroke="rgba(255,200,50,0.7)" stroke-width="1.2" stroke-linejoin="round"/>
-        <path d="M4 3h2M14 3h2" stroke="rgba(255,200,50,0.7)" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M4 3c0 2 0 4-2 5" stroke="rgba(255,200,50,0.7)" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M16 3c0 2 0 4 2 5" stroke="rgba(255,200,50,0.7)" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M10 13v3M7 16h6" stroke="rgba(255,200,50,0.7)" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M6 3h8v6a4 4 0 01-8 0V3z" stroke="rgba(210,175,70,0.75)" stroke-width="1.2" stroke-linejoin="round"/>
+        <path d="M4 3h2M14 3h2" stroke="rgba(210,175,70,0.75)" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M4 3c0 2 0 4-2 5M16 3c0 2 0 4 2 5" stroke="rgba(210,175,70,0.75)" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M10 13v3M7 16h6" stroke="rgba(210,175,70,0.75)" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
     </div>
     <div class="result-body">
@@ -1277,15 +868,13 @@
       <div class="result-detail">Lead · Arco, Italy · 2019</div>
     </div>
   </div>
-
   <div class="result-row">
-    <div class="medal-icon">
+    <div class="result-medal">
       <svg viewBox="0 0 20 20" fill="none">
-        <path d="M6 3h8v6a4 4 0 01-8 0V3z" stroke="rgba(255,200,50,0.7)" stroke-width="1.2" stroke-linejoin="round"/>
-        <path d="M4 3h2M14 3h2" stroke="rgba(255,200,50,0.7)" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M4 3c0 2 0 4-2 5" stroke="rgba(255,200,50,0.7)" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M16 3c0 2 0 4 2 5" stroke="rgba(255,200,50,0.7)" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M10 13v3M7 16h6" stroke="rgba(255,200,50,0.7)" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M6 3h8v6a4 4 0 01-8 0V3z" stroke="rgba(210,175,70,0.75)" stroke-width="1.2" stroke-linejoin="round"/>
+        <path d="M4 3h2M14 3h2" stroke="rgba(210,175,70,0.75)" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M4 3c0 2 0 4-2 5M16 3c0 2 0 4 2 5" stroke="rgba(210,175,70,0.75)" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M10 13v3M7 16h6" stroke="rgba(210,175,70,0.75)" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
     </div>
     <div class="result-body">
@@ -1294,12 +883,11 @@
       <div class="result-detail">Lead · Imst, Austria · 2018</div>
     </div>
   </div>
-
   <div class="result-row">
-    <div class="medal-icon">
+    <div class="result-medal">
       <svg viewBox="0 0 20 20" fill="none">
-        <circle cx="10" cy="10" r="6" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
-        <path d="M10 7v6M7 10h6" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="10" cy="10" r="6" stroke="var(--line-strong)" stroke-width="1.2"/>
+        <path d="M10 7v6M7 10h6" stroke="var(--dim)" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
     </div>
     <div class="result-body">
@@ -1310,165 +898,153 @@
   </div>
 </div>
 
-  <div class="media-wrap fade-up">
-    <a href="https://www.redbull.com/int-en/episodes/natural-heights-s1-e3" target="_blank" class="media-card" style="border-radius:5px; overflow:hidden; text-decoration:none; display:block; border:1px solid var(--card-border); margin:0 0.75rem 0.75rem;">
-      <div class="media-thumb rb" style="aspect-ratio:16/9;">
-        <div class="media-play">
-          <svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5V1z" fill="white"/></svg>
-        </div>
-        <div class="media-label-text">
-          <div class="media-title">Natural Heights — Ep. 3</div>
-          <div class="media-sub">Red Bull · Series</div>
-        </div>
+<!-- MEDIA — full bleed -->
+<a href="https://www.redbull.com/int-en/episodes/natural-heights-s1-e3" target="_blank" class="media-link fade-in">
+  <div class="media-thumb">
+    <div class="media-play">
+      <svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5V1z"/></svg>
+    </div>
+    <div class="media-info">
+      <div>
+        <div class="media-title">Natural Heights — Episode 3</div>
+        <div class="media-sub">Red Bull · Series</div>
       </div>
-    </a>
+      <div class="media-badge">Watch</div>
+    </div>
+  </div>
+</a>
+
+<!-- FILM -->
+<div class="film-section fade-in">
+  <div class="film-badge">In Development</div>
+  <div class="film-title">I Just Go</div>
+  <p class="film-desc">A short film about Nika — her world, her story, her voice. Not a highlights reel. The version most people haven't seen yet. A brand-funded shoot, one to two days.</p>
+
+  <div class="film-notify" id="film-notify">
+    <div class="notify-label">Get notified when it drops</div>
+    <div class="notify-row">
+      <input class="notify-input" id="film-email" type="email" placeholder="your@email.com">
+      <button class="notify-btn" onclick="submitFilmNotify()">Notify me</button>
+    </div>
+    <div class="notify-count" id="film-count">247 people waiting</div>
   </div>
 
-<!-- IN DEVELOPMENT -->
-<div class="dev-card fade-up">
-  <div class="dev-top">
-    <span class="dev-badge">In Development</span>
-    <a href="#" class="dev-plan-link" onclick="toggleFilmNotify(event)">Get notified ↓</a>
-  </div>
-  <div class="dev-title">I Just Go</div>
-  <p class="dev-desc">A short film about Nika — her world, her story, her voice. Not a highlights reel. The version most people haven't seen yet. A brand-funded shoot, one to two days.</p>
-  <div id="film-notify-inline" style="display:none; padding: 0 0 0.85rem; border-top: 1px solid var(--card-border); margin-top: 0.25rem; padding-top: 0.85rem;">
-    <div style="font-family:var(--mono); font-size:8px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:0.5rem;">Notify me when it drops</div>
-    <div style="display:flex; gap:0.5rem;">
-      <input id="film-notify-email" type="email" placeholder="your@email.com" style="flex:1; padding:0.6rem 0.75rem; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; font-family:var(--sans); font-size:0.8rem; outline:none; border-radius:3px;" />
-      <button onclick="submitFilmNotify()" style="padding:0.6rem 0.9rem; background:var(--forest-mid); color:white; border:none; font-family:var(--mono); font-size:8px; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; border-radius:3px;">Done</button>
-    </div>
-    <div id="film-notify-count" style="margin-top:0.5rem; font-family:var(--mono); font-size:8px; letter-spacing:0.08em; color:rgba(255,255,255,0.18);">247 people waiting</div>
-  </div>
-  <div class="dev-bottom">
-    <button class="dev-like-btn" id="like-btn" onclick="toggleLike()">
-      <svg id="like-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+  <div class="film-actions">
+    <button class="like-btn" id="like-btn" onclick="toggleLike()">
+      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
       <span id="like-count">1.2K</span>
     </button>
+    <button class="notify-toggle" id="notify-toggle" onclick="toggleFilmNotify()">Get notified ↓</button>
   </div>
 </div>
 
-<!-- FROM NIKA — VOICE NOTE -->
-<div class="card-base fade-up">
-  <span class="section-label">Voice Note — March 2026</span>
-  <div class="voice-note-ui" onclick="handleVoiceClick()">
-    <div id="play-btn-circle" style="width:32px; height:32px; background:var(--forest-mid); border-radius:50%; display:flex; align-items:center; justify-content:center;">
-        <svg id="play-svg" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+<!-- VOICE NOTE -->
+<div class="voice-section fade-in">
+  <div class="section-micro">Voice Note — March 2026</div>
+  <div class="voice-ui" id="voice-ui" onclick="handleVoiceClick()">
+    <div class="voice-play" id="voice-play">
+      <svg id="voice-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
     </div>
-    <div class="waveform" id="voice-waves">
-      <span style="height:40%"></span><span style="height:70%"></span><span style="height:50%"></span><span style="height:90%"></span><span style="height:60%"></span><span style="height:80%"></span><span style="height:40%"></span><span style="height:60%"></span>
+    <div class="waveform">
+      <span style="height:32%"></span><span style="height:62%"></span><span style="height:44%"></span>
+      <span style="height:88%"></span><span style="height:52%"></span><span style="height:72%"></span>
+      <span style="height:38%"></span><span style="height:58%"></span><span style="height:82%"></span>
+      <span style="height:48%"></span>
     </div>
-    <span style="font-family:var(--mono); font-size:10px; color:rgba(255,255,255,0.4);">0:24</span>
+    <span class="voice-time" id="voice-time">0:24</span>
   </div>
-  <audio id="nika-audio" src="Nika voice note.m4a"></audio>
+  <audio id="nika-audio" src="Nika voice note.m4a" preload="metadata"></audio>
 </div>
 
 <!-- AVAILABILITY -->
-<div class="availability-card fade-up">
-  <div class="availability-header">Right Now</div>
-  <div class="avail-row">
-    <div class="avail-dot travel"></div>
-    <div>
-      <div class="avail-period">Now — April 2026</div>
-      <div class="avail-detail">Paris. Training block, available for shoots and brand meetings.</div>
+<div class="availability-wrap fade-in">
+  <div class="availability-card">
+    <div class="avail-header">Right Now</div>
+    <div class="avail-row">
+      <div class="avail-dot travel"></div>
+      <div><div class="avail-period">Now — April 2026</div><div class="avail-detail">Paris. Training block, available for shoots and brand meetings.</div></div>
     </div>
-  </div>
-  <div class="avail-row">
-    <div class="avail-dot comp"></div>
-    <div>
-      <div class="avail-period">May 2026</div>
-      <div class="avail-detail">European Cup season opens. Competition travel begins.</div>
+    <div class="avail-row">
+      <div class="avail-dot comp"></div>
+      <div><div class="avail-period">May 2026</div><div class="avail-detail">European Cup season opens. Competition travel begins.</div></div>
     </div>
-  </div>
-  <div class="avail-row">
-    <div class="avail-dot shoot"></div>
-    <div>
-      <div class="avail-period">Summer 2026</div>
-      <div class="avail-detail">Spain trip planned — Santa Linya, Siurana. Open to brand integration on location.</div>
+    <div class="avail-row">
+      <div class="avail-dot shoot"></div>
+      <div><div class="avail-period">Summer 2026</div><div class="avail-detail">Spain trip planned — Santa Linya, Siurana. Open to brand integration on location.</div></div>
     </div>
-  </div>
-  <div class="avail-row">
-    <div class="avail-dot open"></div>
-    <div>
-      <div class="avail-period">Ongoing</div>
-      <div class="avail-detail">Content days, product testing, digital campaigns. Enquire via brand access below.</div>
+    <div class="avail-row">
+      <div class="avail-dot open"></div>
+      <div><div class="avail-period">Ongoing</div><div class="avail-detail">Content days, product testing, digital campaigns. Enquire via brand access below.</div></div>
     </div>
-  </div>
-  <div class="avail-legend">
-    <div class="legend-item"><div class="legend-dot" style="background:#5B8FD4;"></div>Competition</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#8ABF8B;"></div>Location / Travel</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#D4A85B;"></div>Shoot window</div>
-    <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.2);"></div>Open</div>
+    <div class="avail-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#4A7AB0"></div>Competition</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#6B8F6D"></div>Location</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#9E8A4A"></div>Shoot</div>
+      <div class="legend-item" style="display:flex;align-items:center;gap:0.38rem;">
+        <div style="width:5px;height:5px;border-radius:50%;border:1px solid var(--line-strong);"></div>
+        <span style="font-family:var(--mono);font-size:7.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);">Open</span>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- SPOTIFY -->
-<div class="fade-up" style="margin:0.75rem;">
-  <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/1SkmA5emGHKMJva7baN4lq?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<div class="spotify-wrap fade-in">
+  <iframe src="https://open.spotify.com/embed/album/1SkmA5emGHKMJva7baN4lq?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
 <!-- Q&A -->
-<div class="qa-card fade-up">
-  <div class="qa-header">
-    <span class="qa-label">Ask Nika</span>
-    <span class="qa-count-badge">Answered monthly</span>
+<div class="qa-section fade-in">
+  <div class="qa-head">
+    Ask Nika
+    <span style="font-size:8px;color:var(--dim);letter-spacing:0.1em;">Answered monthly</span>
   </div>
-  <div class="qa-answered">
-    <div class="qa-item">
-      <div class="qa-question">What does a normal training day look like for you right now?</div>
-      <div class="qa-answer">Morning session on the board, usually two hours. Afternoon I do something that isn't climbing — gym, run, just walk around Paris. I used to train until I couldn't move. I don't do that anymore.</div>
-    </div>
-    <div class="qa-item">
-      <div class="qa-question">Do you ever think about quitting?</div>
-      <div class="qa-answer">Yes. And then I get on the wall and I remember why I started. It's not complicated. It just feels that way sometimes.</div>
-    </div>
+  <div class="qa-item">
+    <div class="qa-q">What does a normal training day look like for you right now?</div>
+    <div class="qa-a">Morning session on the board, usually two hours. Afternoon I do something that isn't climbing — gym, run, just walk around Paris. I used to train until I couldn't move. I don't do that anymore.</div>
   </div>
-  <div class="qa-ask-area">
+  <div class="qa-item">
+    <div class="qa-q">Do you ever think about quitting?</div>
+    <div class="qa-a">Yes. And then I get on the wall and I remember why I started. It's not complicated. It just feels that way sometimes.</div>
+  </div>
+  <div class="qa-ask">
     <div class="qa-ask-label">Send a question</div>
-    <textarea class="qa-ask-input" id="qa-input" rows="2" placeholder="Ask something real…"></textarea>
+    <textarea class="qa-textarea" id="qa-input" rows="2" placeholder="Ask something real…"></textarea>
     <button class="qa-submit" onclick="submitQuestion()">Submit question →</button>
   </div>
 </div>
 
-<!-- SPONSORS -->
-<div class="sponsors-section fade-up">
-  <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem;">Partners</div>
-  <div class="sponsor-tabs">
-    <button class="sponsor-tab active" onclick="showSponsor('karaffu', this)">Karaffu</button>
-    <button class="sponsor-tab" onclick="showSponsor('bd', this)">Black Diamond</button>
-    <button class="sponsor-tab" onclick="showSponsor('tenaya', this)">Tenaya</button>
-  </div>
-
-  <div class="sponsor-quote-block active" id="sponsor-karaffu">
-    <p class="sponsor-quote-text">"[Placeholder — Nika's quote about Karaffu Coffee and what the partnership means to her.]"</p>
-    <span class="sponsor-quote-attr">— Nika on Karaffu Coffee</span>
-  </div>
-
-  <div class="sponsor-quote-block" id="sponsor-bd">
-    <p class="sponsor-quote-text">"[Placeholder — Nika's quote about Black Diamond and what the gear means to her climbing.]"</p>
-    <span class="sponsor-quote-attr">— Nika on Black Diamond</span>
-  </div>
-
-  <div class="sponsor-quote-block" id="sponsor-tenaya">
-    <p class="sponsor-quote-text">"[Placeholder — Nika's quote about Tenaya and what their shoes bring to her performance.]"</p>
-    <span class="sponsor-quote-attr">— Nika on Tenaya</span>
+<!-- PARTNER TICKER -->
+<div class="ticker-section fade-in">
+  <div class="ticker-label">Partners</div>
+  <div class="ticker-track">
+    <div class="ticker-item"><span class="ticker-name">Karaffu Coffee</span></div>
+    <div class="ticker-item"><span class="ticker-name">Black Diamond</span></div>
+    <div class="ticker-item"><span class="ticker-name">Tenaya</span></div>
+    <div class="ticker-item"><span class="ticker-name">Karaffu Coffee</span></div>
+    <div class="ticker-item"><span class="ticker-name">Black Diamond</span></div>
+    <div class="ticker-item"><span class="ticker-name">Tenaya</span></div>
   </div>
 </div>
 
 <!-- BRAND ACCESS -->
-<div class="access-section fade-up">
+<div class="access-section fade-in">
   <div class="access-title">Partnership Profile</div>
-  <p class="access-sub">Authorised access for brands and agencies. View audience demographics, engagement data, and partnership terms.</p>
+  <p class="access-sub">Authorised access for brands and agencies. View audience data, engagement metrics, and partnership terms.</p>
   <button class="access-btn" onclick="document.getElementById('modal').classList.add('open')">
     <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
     Brand Access
   </button>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-text">Powered by <span>Sponsable</span></div>
-</footer>
+<!-- FOOTER CTA -->
+<div class="footer-cta fade-in">
+  <div class="footer-cta-eyebrow">Sponsable</div>
+  <div class="footer-cta-title">Your profile.<br>Your terms.</div>
+  <p class="footer-cta-sub">Build the profile that does the work for you. Professional athlete infrastructure, built for action sports.</p>
+  <a href="https://sponsable.co.uk" class="footer-cta-link" target="_blank">Create your profile at sponsable.co.uk →</a>
+  <div class="footer-mark">© 2026 Sponsable Ltd</div>
+</div>
 
 <!-- MODAL -->
 <div class="modal-overlay" id="modal">
@@ -1477,178 +1053,124 @@
     <div class="modal-eyebrow">Brand Access</div>
     <div class="modal-title">Request Profile Access</div>
     <p class="modal-sub">Verified brands and agencies only. We'll confirm your details within 24 hours.</p>
-    <div class="modal-field">
-      <label>Brand / Agency name</label>
-      <input type="text" placeholder="e.g. Edelrid, Red Chili">
-    </div>
-    <div class="modal-field">
-      <label>Your name</label>
-      <input type="text" placeholder="Full name">
-    </div>
-    <div class="modal-field">
-      <label>Work email</label>
-      <input type="email" placeholder="you@brand.com">
-    </div>
+    <div class="modal-field"><label>Brand / Agency name</label><input type="text" placeholder="e.g. Edelrid, Red Chili"></div>
+    <div class="modal-field"><label>Your name</label><input type="text" placeholder="Full name"></div>
+    <div class="modal-field"><label>Work email</label><input type="email" placeholder="you@brand.com"></div>
     <button class="modal-submit">Request Access</button>
     <p class="modal-note">Access is reviewed manually. You'll receive a confirmation within one business day.</p>
   </div>
 </div>
 
 <script>
-  function showSponsor(id, tab) {
-    document.querySelectorAll('.sponsor-quote-block').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.sponsor-tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('sponsor-' + id).classList.add('active');
-    tab.classList.add('active');
+  window.addEventListener('load', () => document.getElementById('hero-img').classList.add('loaded'));
+
+  function toggleBio() {
+    const exp = document.getElementById('bio-expanded');
+    const btn = document.getElementById('bio-more-btn');
+    const open = exp.classList.contains('open');
+    exp.classList.toggle('open');
+    btn.style.display = open ? 'inline' : 'none';
+  }
+
+  function toggleFilmNotify() {
+    const panel  = document.getElementById('film-notify');
+    const toggle = document.getElementById('notify-toggle');
+    const open   = panel.classList.contains('open');
+    panel.classList.toggle('open');
+    toggle.textContent = open ? 'Get notified ↓' : 'Hide ↑';
+  }
+
+  function submitFilmNotify() {
+    const input = document.getElementById('film-email');
+    const count = document.getElementById('film-count');
+    if (!input.value || !input.value.includes('@')) {
+      input.style.borderColor = 'rgba(122,40,40,0.5)';
+      setTimeout(() => input.style.borderColor = '', 1200);
+      return;
+    }
+    input.value = ''; input.placeholder = "You're on the list."; input.disabled = true;
+    document.querySelector('.notify-btn').textContent = '✓';
+    document.querySelector('.notify-btn').disabled = true;
+    const n = parseInt(count.textContent);
+    if (!isNaN(n)) count.textContent = (n+1)+' people waiting';
   }
 
   function toggleLike() {
     const btn = document.getElementById('like-btn');
-    const count = document.getElementById('like-count');
+    const el  = document.getElementById('like-count');
     const liked = btn.classList.contains('liked');
-    const base = 1200;
-
-    if (liked) {
-      btn.classList.remove('liked');
-      count.textContent = base + 'K' === count.textContent ? '1.2K' : formatLikes(parseLikes(count.textContent) - 1);
-    } else {
-      btn.classList.add('liked');
-      btn.classList.add('pop');
-      setTimeout(() => btn.classList.remove('pop'), 200);
-      count.textContent = formatLikes(parseLikes(count.textContent) + 1);
-    }
+    btn.classList.toggle('liked');
+    if (!liked) { btn.classList.add('pop'); setTimeout(()=>btn.classList.remove('pop'),200); el.textContent = formatLikes(parseLikes(el.textContent)+1); }
+    else { el.textContent = formatLikes(parseLikes(el.textContent)-1); }
   }
 
-  function parseLikes(str) {
-    if (str.includes('K')) return Math.round(parseFloat(str) * 1000);
-    return parseInt(str);
+  function parseLikes(s)  { return s.includes('K') ? Math.round(parseFloat(s)*1000) : (parseInt(s)||0); }
+  function formatLikes(n) { return n>=1000 ? (n/1000).toFixed(1).replace(/\.0$/,'')+'K' : ''+n; }
+
+  // Voice note
+  const audio    = document.getElementById('nika-audio');
+  const voiceUI  = document.getElementById('voice-ui');
+  const timEl    = document.getElementById('voice-time');
+  const iconEl   = document.getElementById('voice-icon');
+  let   playing  = false;
+  let   demoTimer = null;
+  let   demoSecs  = 24;
+
+  function handleVoiceClick() { playing ? pauseVoice() : playVoice(); }
+
+  function playVoice() {
+    playing = true;
+    voiceUI.classList.add('playing');
+    iconEl.innerHTML = '<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>';
+    const p = audio.play();
+    if (p !== undefined) {
+      p.then(() => {
+        audio.addEventListener('timeupdate', onTU);
+        audio.addEventListener('ended', () => { demoSecs=24; stopVoice(); }, { once:true });
+      }).catch(() => startDemo());
+    } else { startDemo(); }
   }
 
-  function formatLikes(n) {
-    if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
-    return n.toString();
+  function onTU() {
+    const r = Math.max(0, audio.duration - audio.currentTime);
+    timEl.textContent = '0:'+String(Math.floor(r)).padStart(2,'0');
   }
 
-  function toggleBio(e) {
-    e.preventDefault();
-    const exp = document.getElementById('bio-expanded');
-    const link = document.getElementById('more-link');
-    if (exp.style.display === 'none') {
-      exp.style.display = 'block';
-      link.style.display = 'none';
-    } else {
-      exp.style.display = 'none';
-      link.style.display = 'inline';
-    }
+  function startDemo() {
+    demoTimer = setInterval(() => {
+      demoSecs--;
+      timEl.textContent = '0:'+String(demoSecs).padStart(2,'0');
+      if (demoSecs <= 0) { demoSecs=24; clearInterval(demoTimer); stopVoice(); setTimeout(()=>{ timEl.textContent='0:24'; }, 300); }
+    }, 1000);
   }
 
-  const bar = document.getElementById('progress-bar');
-  window.addEventListener('scroll', () => {
-    const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-    bar.style.width = pct + '%';
-  });
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), 60);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  document.getElementById('modal').addEventListener('click', function(e) {
-    if (e.target === this) this.classList.remove('open');
-  });
-
-  function toggleFilmNotify(e) {
-    e.preventDefault();
-    const panel = document.getElementById('film-notify-inline');
-    const link = e.target;
-    if (panel.style.display === 'none') {
-      panel.style.display = 'block';
-      link.textContent = 'Hide ↑';
-    } else {
-      panel.style.display = 'none';
-      link.textContent = 'Get notified ↓';
-    }
+  function pauseVoice() {
+    audio.pause(); audio.removeEventListener('timeupdate', onTU);
+    clearInterval(demoTimer); stopVoice();
   }
 
-  function submitFilmNotify() {
-    const input = document.getElementById('film-notify-email');
-    const countEl = document.getElementById('film-notify-count');
-    if (!input.value || !input.value.includes('@')) {
-      input.style.borderColor = 'rgba(139,46,46,0.6)';
-      setTimeout(() => input.style.borderColor = '', 1200);
-      return;
-    }
-    input.value = '';
-    input.placeholder = "You're on the list.";
-    input.disabled = true;
-    document.querySelector('#film-notify-inline button').textContent = '✓';
-    document.querySelector('#film-notify-inline button').disabled = true;
-    const current = parseInt(countEl.textContent);
-    countEl.textContent = (current + 1) + ' people waiting';
-  }
-
-  let voicePlaying = false;
-  let voiceTimer = null;
-  let voiceSeconds = 24;
-
-  function toggleVoice() {
-    voicePlaying = !voicePlaying;
-    const bars = document.getElementById('voice-bars');
-    const icon = document.getElementById('voice-play-icon');
-    const dur = document.getElementById('voice-duration');
-
-    if (voicePlaying) {
-      bars.classList.add('playing');
-      icon.innerHTML = '<rect x="2" y="1" width="3" height="10" rx="1" fill="white"/><rect x="7" y="1" width="3" height="10" rx="1" fill="white"/>';
-      voiceTimer = setInterval(() => {
-        voiceSeconds--;
-        if (voiceSeconds <= 0) {
-          voiceSeconds = 0;
-          clearInterval(voiceTimer);
-          voicePlaying = false;
-          bars.classList.remove('playing');
-          icon.innerHTML = '<path d="M1 1l8 5-8 5V1z" fill="white"/>';
-          setTimeout(() => { voiceSeconds = 24; dur.textContent = '0:24'; }, 600);
-          return;
-        }
-        dur.textContent = '0:' + String(voiceSeconds).padStart(2, '0');
-      }, 1000);
-    } else {
-      clearInterval(voiceTimer);
-      bars.classList.remove('playing');
-      icon.innerHTML = '<path d="M1 1l8 5-8 5V1z" fill="white"/>';
-    }
-  }
-
-  function toggleTranscript() {
-    const t = document.getElementById('voice-transcript');
-    const btn = document.querySelector('.voice-transcript-toggle');
-    if (t.style.display === 'none') {
-      t.style.display = 'block';
-      btn.textContent = 'Hide transcript';
-    } else {
-      t.style.display = 'none';
-      btn.textContent = 'Show transcript';
-    }
+  function stopVoice() {
+    playing = false;
+    voiceUI.classList.remove('playing');
+    iconEl.innerHTML = '<path d="M8 5v14l11-7z"/>';
+    clearInterval(demoTimer); audio.removeEventListener('timeupdate', onTU);
   }
 
   function submitQuestion() {
     const input = document.getElementById('qa-input');
-    const btn = document.querySelector('.qa-submit');
+    const btn   = document.querySelector('.qa-submit');
     if (!input.value.trim()) return;
-    input.value = '';
-    input.placeholder = 'Question sent. Nika reads these.';
-    input.disabled = true;
-    btn.textContent = 'Sent →';
-    btn.disabled = true;
+    input.value=''; input.placeholder='Question sent. Nika reads these.'; input.disabled=true;
+    btn.textContent='Sent →'; btn.disabled=true;
   }
-</script>
 
+  document.getElementById('modal').addEventListener('click', function(e) { if(e.target===this) this.classList.remove('open'); });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),40); obs.unobserve(e.target); }});
+  }, { threshold: 0.05 });
+
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
