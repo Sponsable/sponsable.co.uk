@@ -44,15 +44,6 @@
     margin: 0 auto;
   }
 
-  #progress-bar {
-    position: fixed;
-    top: 0; left: 0;
-    height: 2px;
-    width: 0%;
-    background: var(--red-accent);
-    z-index: 999;
-  }
-
   /* ─── HERO ─── */
   .hero {
     position: relative;
@@ -64,13 +55,9 @@
 
   .hero-gradient {
     position: absolute;
-    inset: 0;
-    /* Stronger gradient to mimic the "Old Look" while keeping text readable */
-    background: linear-gradient(to top, 
-      rgba(0,0,0,1) 0%, 
-      rgba(0,0,0,0.8) 25%, 
-      rgba(0,0,0,0.4) 50%, 
-      transparent 100%);
+    bottom: -1px; left: 0; right: 0;
+    height: 100%;
+    background: linear-gradient(to top, #000000 0%, #000000 15%, rgba(0,0,0,0.9) 35%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.15) 80%, transparent 100%);
   }
 
   .hero-content {
@@ -134,34 +121,268 @@
   .social-btn:hover { background: rgba(255,255,255,0.2); }
   .social-btn svg { width: 16px; height: 16px; fill: white; }
 
-  /* ─── IDENTITY & CARDS ─── */
+  /* ─── IDENTITY CARD ─── */
   .identity-card {
     background: var(--card-dark);
     border-bottom: 1px solid var(--card-border);
     padding: 1.25rem;
-    margin-top: -80px; /* Pull content up as requested */
-    position: relative;
-    z-index: 5;
   }
 
-  .section-label {
+  .identity-top {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .flag-circle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .flag-circle-top {
+    flex: 1;
+    background: #005BBB;
+  }
+
+  .flag-circle-bottom {
+    flex: 1;
+    background: #FFD500;
+  }
+
+  .identity-discipline {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.01em;
+  }
+
+  .identity-meta {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .meta-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+  }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(68,90,69,0.3);
+    border: 1px solid rgba(68,90,69,0.5);
+    padding: 3px 9px;
     font-family: var(--mono);
     font-size: 8px;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    margin-bottom: 1rem;
-    display: block;
+    color: #8ABF8B;
   }
 
-  .card-base {
+  .status-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #6ABF6B;
+  }
+
+  .identity-measurements {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin: 0.9rem 0;
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .meas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    padding-right: 1rem;
+    margin-right: 1rem;
+    border-right: 1px solid var(--card-border);
+  }
+
+  .meas:last-child {
+    border-right: none;
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  .meas-label {
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .meas-val {
+    font-size: 11px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 500;
+  }
+
+  .identity-bio {
+    font-family: var(--serif);
+    font-size: 0.88rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.75;
+  }
+
+  .bio-expand-link {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 500;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+  }
+
+  .bio-expanded {
+    margin-top: 0.9rem;
+  }
+
+  .bio-expanded p {
+    font-family: var(--serif);
+    font-size: 0.88rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.75;
+    margin-bottom: 0.85rem;
+  }
+
+  .bio-pull {
+    border-left: 2px solid var(--red-accent);
+    padding: 0.5rem 0 0.5rem 0.9rem;
+    margin: 1rem 0;
+  }
+
+  .bio-pull p {
+    font-family: var(--serif);
+    font-size: 0.92rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.75) !important;
+    line-height: 1.6;
+    margin-bottom: 0 !important;
+  }
+
+  /* ─── RESULTS CARD ─── */
+  .results-card {
     background: var(--card-mid);
     margin: 0.75rem;
     border-radius: 6px;
+    overflow: hidden;
     border: 1px solid var(--card-border);
-    padding: 1.25rem;
   }
 
+  .results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem 0.75rem;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .results-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .results-history {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+  }
+
+  .result-row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--card-border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .result-row:last-child { border-bottom: none; }
+
+  .result-thumb {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 90px;
+    opacity: 0.18;
+    background: linear-gradient(90deg, transparent 0%, var(--forest) 100%);
+  }
+
+  .medal-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .medal-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .result-body { flex: 1; z-index: 1; }
+
+  .result-place {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.1rem;
+  }
+
+  .result-name {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 0.1rem;
+  }
+
+  .result-detail {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
   /* ─── VOICE NOTE ─── */
   .voice-note-ui {
     display: flex;
