@@ -19,14 +19,14 @@
     --line-strong: rgba(255,255,255,0.12);
 
     --hi:   rgba(255,255,255,0.95);
-    --mid:  rgba(255,255,255,0.50);
-    --soft: rgba(255,255,255,0.28);
-    --dim:  rgba(255,255,255,0.14);
+    --mid:  rgba(255,255,255,0.60);
+    --soft: rgba(255,255,255,0.40);
+    --dim:  rgba(255,255,255,0.28);
     --ghost:rgba(255,255,255,0.05);
 
-    /* Single accent — cold steel, used sparingly */
-    --accent: #4A7B9D;
-    --accent-pale: #6A9BBD;
+    /* No accent — fully monochrome */
+    --accent: rgba(255,255,255,0.85);
+    --accent-pale: rgba(255,255,255,0.45);
 
     /* Pull quote left border — monochrome */
     --pull: rgba(255,255,255,0.22);
@@ -438,10 +438,21 @@
   }
 
   .film-actions {
-    display: flex; align-items: center; gap: 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
     padding: 1rem 0;
     border-top: 1px solid var(--line);
   }
+
+  .film-plan-link {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dim);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .film-plan-link:hover { color: var(--soft); }
 
   .like-btn {
     display: flex; align-items: center; gap: 0.45rem;
@@ -550,9 +561,9 @@
   .avail-row:last-of-type { border-bottom: none; }
 
   .avail-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
-  .avail-dot.comp   { background: #4A7AB0; }
-  .avail-dot.travel { background: #6B8F6D; }
-  .avail-dot.shoot  { background: #9E8A4A; }
+  .avail-dot.comp   { background: rgba(255,255,255,0.55); }
+  .avail-dot.travel { background: rgba(255,255,255,0.75); }
+  .avail-dot.shoot  { background: rgba(255,255,255,0.40); }
   .avail-dot.open   { border: 1px solid var(--line-strong); }
 
   .avail-period { font-family: var(--mono); font-size: 8px; letter-spacing: 0.1em; color: var(--dim); margin-bottom: 0.22rem; }
@@ -569,6 +580,17 @@
 
   /* ─── SPOTIFY ─── */
   .spotify-wrap { padding: 2rem 1.5rem 0; }
+  .spotify-wrap .spotify-label {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   .spotify-wrap iframe { border-radius: 2px; display: block; }
 
   /* ─── Q&A ─── */
@@ -678,7 +700,7 @@
 
   /* ─── BRAND ACCESS ─── */
   .access-section {
-    padding: 3rem 1.5rem;
+    padding: 2rem 1.5rem;
     text-align: center;
   }
 
@@ -898,7 +920,7 @@
     padding: 0;
     display: flex;
     align-items: center;
-    opacity: 0.8;
+    opacity: 0.5;
     transition: opacity 0.2s;
   }
   .hero-bird-btn:hover { opacity: 0.8; }
@@ -949,7 +971,7 @@
   <div class="hero-vignette"></div>
   <div class="hero-top">
     <button class="hero-bird-btn" onclick="openSpPopup()" aria-label="About Sponsable">
-      <img src="Sponsable Bird Logo White.png" alt="Sponsable" width="72" height="72" style="object-fit:contain;">
+      <img src="Sponsable Bird Logo White.png" alt="Sponsable" width="48" height="48" style="object-fit:contain;">
     </button>
     <div class="hero-socials">
       <a href="https://www.instagram.com/nika_____potapova/" class="social-btn" target="_blank" aria-label="Instagram">
@@ -1084,11 +1106,8 @@
   </div>
 
   <div class="film-actions">
-    <button class="like-btn" id="like-btn" onclick="toggleLike()">
-      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-      <span id="like-count">1.2K</span>
-    </button>
     <button class="notify-toggle" id="notify-toggle" onclick="toggleFilmNotify()">Get notified ↓</button>
+    <a href="#" class="film-plan-link">See the full plan →</a>
   </div>
 </div>
 
@@ -1131,9 +1150,9 @@
       <div><div class="avail-period">Ongoing</div><div class="avail-detail">Content days, product testing, digital campaigns. Enquire via brand access below.</div></div>
     </div>
     <div class="avail-legend">
-      <div class="legend-item"><div class="legend-dot" style="background:#4A7AB0"></div>Competition</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#6B8F6D"></div>Location</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#9E8A4A"></div>Shoot</div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.75)"></div>Location</div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.55)"></div>Competition</div>
+      <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.40)"></div>Shoot</div>
       <div class="legend-item" style="display:flex;align-items:center;gap:0.38rem;">
         <div style="width:5px;height:5px;border-radius:50%;border:1px solid var(--line-strong);"></div>
         <span style="font-family:var(--mono);font-size:7.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);">Open</span>
@@ -1144,7 +1163,10 @@
 
 <!-- SPOTIFY -->
 <div class="spotify-wrap fade-in">
-  <iframe src="https://open.spotify.com/embed/album/1SkmA5emGHKMJva7baN4lq?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  <div class="spotify-label">
+    <span>Listening to</span>
+  </div>
+  <iframe src="https://open.spotify.com/embed/album/1SkmA5emGHKMJva7baN4lq?utm_source=generator&theme=0" width="100%" height="232" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
 <!-- Q&A -->
@@ -1183,8 +1205,6 @@
 
 <!-- BRAND ACCESS -->
 <div class="access-section fade-in">
-  <div class="access-title">Partnership Profile</div>
-  <p class="access-sub">Authorised access for brands and agencies. View audience data, engagement metrics, and partnership terms.</p>
   <button class="access-btn" onclick="document.getElementById('modal').classList.add('open')">
     <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
     Brand Access
