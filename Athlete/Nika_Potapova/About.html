@@ -274,14 +274,14 @@
   /* ─── RESULTS — with subtle winning image behind ─── */
   .results-section {
     position: relative;
-    padding: 0 1.5rem 1.75rem;
+    padding: 2rem 1.5rem 1.75rem;
     overflow: hidden;
   }
 
   .results-bg {
     position: absolute; inset: 0;
     background: url('Nika_Winning.jpg') center 20% / cover no-repeat;
-    opacity: 0.07;
+    opacity: 0.12;
   }
 
   .section-label {
@@ -642,21 +642,24 @@
   .answers-section { padding: 2rem 1.5rem 0; }
 
   .answers-head {
-    display: flex; align-items: baseline; justify-content: space-between;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 0;
+    margin-bottom: 1.5rem;
   }
 
   .answers-title {
-    font-family: var(--mono);
-    font-size: 8.5px; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--dim);
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--hi);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.3rem;
   }
 
   .answers-cadence {
     font-family: var(--mono);
-    font-size: 8px; letter-spacing: 0.1em;
+    font-size: 8px; letter-spacing: 0.16em;
+    text-transform: uppercase;
     color: var(--dim);
   }
 
@@ -738,16 +741,9 @@
     padding: 1.25rem 0 0;
   }
 
-  .answers-ask-label {
-    font-family: var(--mono);
-    font-size: 8px; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--dim);
-    margin-bottom: 0.65rem;
-  }
-
   .answers-ask textarea {
     width: 100%;
-    padding: 0.75rem 0.85rem;
+    padding: 0.85rem 1rem;
     background: var(--ghost);
     border: 1px solid var(--line);
     color: var(--hi);
@@ -773,9 +769,8 @@
 
   .answers-ask-row {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 0.65rem;
+    justify-content: flex-end;
+    margin-top: 0.55rem;
   }
 
   .answers-submit {
@@ -790,7 +785,6 @@
     cursor: pointer;
     border-radius: 2px;
     transition: border-color 0.2s, color 0.2s;
-    flex-shrink: 0;
   }
 
   .answers-submit:hover {
@@ -798,18 +792,9 @@
     color: var(--soft);
   }
 
-  .answers-note {
-    font-family: var(--serif);
-    font-size: 0.78rem;
-    font-style: italic;
-    color: var(--dim);
-    line-height: 1.6;
-  }
-
   /* ─── PARTNERS — logo style ─── */
   .partners-section {
     padding: 2rem 1.5rem;
-    border-top: 1px solid var(--line);
   }
 
   .partners-head {
@@ -1191,25 +1176,6 @@
   </div>
 </a>
 
-<!-- VOICE NOTE — moved between Natural Heights and I Just Go -->
-<!-- FILM -->
-<div class="film-section fade-in">
-  <div class="film-bg"></div>
-  <div class="film-inner">
-    <div class="film-badge">In Development</div>
-    <div class="film-title">I Just Go</div>
-    <p class="film-desc">A short film about Nika — her world, her story, her voice. Not a highlights reel. The version most people haven't seen yet. A brand-funded shoot, one to two days.</p>
-    <div class="notify-row" style="margin-bottom:0.5rem;">
-      <input class="notify-input" id="film-email" type="email" placeholder="Notify me when it drops">
-      <button class="notify-btn" onclick="submitFilmNotify()">→</button>
-    </div>
-    <div class="film-actions">
-      <span id="film-notify-confirm" style="font-family:var(--mono);font-size:8px;letter-spacing:0.1em;color:var(--dim);display:none;">You're on the list.</span>
-      <a href="plan.html" class="film-plan-link" style="margin-left:auto;">See the full plan →</a>
-    </div>
-  </div>
-</div>
-
 <!-- AVAILABILITY -->
 <div class="availability-wrap fade-in">
   <div class="avail-timeline">
@@ -1298,10 +1264,31 @@
     <audio id="nika-audio" src="Nika voice note.m4a" preload="metadata"></audio>
   </div>
 
-  <!-- Text answers -->
+  <!-- Text answer -->
   <div class="answer-item">
     <div class="answer-q">Do you ever think about quitting?</div>
     <div class="answer-a">Yes. And then I get on the wall and I remember why I started. It's not complicated. It just feels that way sometimes.</div>
+  </div>
+
+  <!-- Film answer — with photo -->
+  <div class="answer-item" style="padding-bottom:0; border-bottom:none;">
+    <div class="answer-q">Do you have any projects in mind?</div>
+  </div>
+  <div class="film-section fade-in" style="margin-top:0.75rem;">
+    <div class="film-bg"></div>
+    <div class="film-inner">
+      <div class="film-badge">In Development</div>
+      <div class="film-title">I Just Go</div>
+      <p class="film-desc">A short film about Nika — her world, her story, her voice. Not a highlights reel. The version most people haven't seen yet. A brand-funded shoot, one to two days.</p>
+      <div class="notify-row" style="margin-bottom:0.5rem;">
+        <input class="notify-input" id="film-email" type="email" placeholder="Notify me when it drops">
+        <button class="notify-btn" onclick="submitFilmNotify()">→</button>
+      </div>
+      <div class="film-actions">
+        <span id="film-notify-confirm" style="font-family:var(--mono);font-size:8px;letter-spacing:0.1em;color:var(--dim);display:none;">You're on the list.</span>
+        <a href="plan.html" class="film-plan-link" style="margin-left:auto;">See the full plan →</a>
+      </div>
+    </div>
   </div>
 
   <!-- Spotify answer -->
@@ -1312,10 +1299,8 @@
 
   <!-- Ask input -->
   <div class="answers-ask">
-    <div class="answers-ask-label">Ask Nika something</div>
-    <textarea id="qa-input" rows="2" placeholder="Ask Nika something"></textarea>
+    <textarea id="qa-input" rows="3" placeholder="Nika answers your questions each month."></textarea>
     <div class="answers-ask-row">
-      <p class="answers-note">Nika answers your questions each month.</p>
       <button class="answers-submit" onclick="submitQuestion()">Submit →</button>
     </div>
   </div>
@@ -1697,6 +1682,14 @@
     });
 
     dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+
+    // Click right half of track = next, left half = prev
+    outer.addEventListener('click', e => {
+      if (Math.abs(dragOffset) > 5) return; // was a drag not a click
+      const rect = outer.getBoundingClientRect();
+      const mid  = rect.left + rect.width / 2;
+      e.clientX > mid ? goTo(current + 1) : goTo(current - 1);
+    });
   })();
 </script>
 </body>
