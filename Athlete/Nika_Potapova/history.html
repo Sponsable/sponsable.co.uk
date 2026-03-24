@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nika Potapova — Athletic Record</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:          #0A0A09;
+    --bg-1:        #111110;
+    --bg-2:        #191918;
+    --line:        rgba(255,255,255,0.07);
+    --line-strong: rgba(255,255,255,0.12);
+    --hi:   rgba(255,255,255,0.95);
+    --mid:  rgba(255,255,255,0.60);
+    --soft: rgba(255,255,255,0.40);
+    --dim:  rgba(255,255,255,0.28);
+    --ghost:rgba(255,255,255,0.05);
+    --gold: rgba(210,175,70,0.9);
+    --gold-dim: rgba(210,175,70,0.55);
+    --serif: 'Lora', Georgia, serif;
+    --sans:  'DM Sans', system-ui, sans-serif;
+    --mono:  'DM Mono', 'Courier New', monospace;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--hi);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    max-width: 430px;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
+
+  /* ─── HEADER ─── */
+  .page-header {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .back-link {
+    display: flex; align-items: center; gap: 0.5rem;
+    text-decoration: none;
+    font-family: var(--mono); font-size: 8.5px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--dim); transition: color 0.15s;
+  }
+  .back-link:hover { color: var(--soft); }
+  .back-link svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+  .header-bird { width: 26px; height: 26px; mix-blend-mode: screen; opacity: 0.45; object-fit: contain; }
+
+  /* ─── HERO STRIP ─── */
+  .hero-strip {
+    position: relative;
+    height: 38vw;
+    max-height: 165px;
+    overflow: hidden;
+  }
+
+  .hero-strip-img {
+    position: absolute; inset: 0;
+    background: url('Nika_Winning.jpg') center 20% / cover no-repeat;
+  }
+
+  .hero-strip-vignette {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg,
+      rgba(10,10,9,0.3) 0%,
+      transparent 40%,
+      rgba(10,10,9,0.7) 80%,
+      #0A0A09 100%
+    );
+  }
+
+  .hero-strip-text {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 0 1.5rem 1.25rem;
+    z-index: 2;
+  }
+
+  .hero-strip-name {
+    font-family: var(--serif);
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--hi); letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .hero-strip-sub {
+    font-family: var(--mono); font-size: 8px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--mid); margin-top: 0.2rem;
+  }
+
+  /* ─── INTRO STAT ROW ─── */
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .stat-cell {
+    padding: 1.1rem 1.25rem;
+    border-right: 1px solid var(--line);
+  }
+  .stat-cell:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: var(--serif); font-size: 1.6rem; font-weight: 700;
+    color: var(--hi); letter-spacing: -0.03em; line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-num.gold { color: var(--gold); }
+
+  .stat-lbl {
+    font-family: var(--mono); font-size: 7.5px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--dim); line-height: 1.4;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .category-head {
+    padding: 1.5rem 1.5rem 0.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .category-label {
+    font-family: var(--mono); font-size: 8.5px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--dim);
+  }
+
+  /* ─── RESULT ROW ─── */
+  .result-row {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.15s;
+  }
+  .result-row:last-child { border-bottom: none; }
+  .result-row:hover { background: var(--ghost); }
+
+  .medal {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .medal.gold   { background: rgba(210,175,70,0.12); border: 1px solid rgba(210,175,70,0.3); }
+  .medal.silver { background: rgba(180,180,180,0.08); border: 1px solid rgba(180,180,180,0.2); }
+  .medal.bronze { background: rgba(180,120,70,0.08); border: 1px solid rgba(180,120,70,0.2); }
+  .medal.other  { background: var(--ghost); border: 1px solid var(--line); }
+
+  .medal-num {
+    font-family: var(--mono); font-size: 9px; font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .medal.gold   .medal-num { color: var(--gold); }
+  .medal.silver .medal-num { color: rgba(200,200,200,0.8); }
+  .medal.bronze .medal-num { color: rgba(200,140,90,0.8); }
+  .medal.other  .medal-num { color: var(--dim); }
+
+  .result-body { flex: 1; min-width: 0; }
+
+  .result-name {
+    font-family: var(--sans); font-size: 0.88rem; font-weight: 600;
+    color: var(--hi); margin-bottom: 0.15rem;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  .result-meta {
+    font-family: var(--mono); font-size: 7.5px;
+    letter-spacing: 0.07em; color: var(--dim);
+    line-height: 1.4;
+  }
+
+  .result-year {
+    font-family: var(--mono); font-size: 9px;
+    color: var(--dim); flex-shrink: 0;
+  }
+
+  /* ─── OUTDOOR SECTION ─── */
+  .outdoor-row {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .outdoor-row:last-child { border-bottom: none; }
+
+  .grade-badge {
+    font-family: var(--mono); font-size: 10px; font-weight: 500;
+    color: var(--hi);
+    background: var(--bg-2); border: 1px solid var(--line-strong);
+    padding: 3px 8px; border-radius: 2px;
+    flex-shrink: 0; margin-top: 2px;
+    letter-spacing: 0.04em;
+  }
+
+  .outdoor-body { flex: 1; }
+  .outdoor-name { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--hi); margin-bottom: 0.15rem; }
+  .outdoor-meta { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.07em; color: var(--dim); line-height: 1.4; }
+  .outdoor-note { font-family: var(--serif); font-size: 0.8rem; font-style: italic; color: var(--soft); margin-top: 0.2rem; }
+
+  /* ─── FOOTER ─── */
+  .site-footer { border-top: 1px solid var(--line); padding: 1.5rem; text-align: center; margin-top: 2.5rem; }
+  .site-footer-link { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; }
+  .site-footer-link:hover { color: var(--soft); }
+
+  /* ─── FADE IN ─── */
+  .fade-in { opacity: 0; transform: translateY(8px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="page-header">
+  <a href="nika.html" class="back-link">
+    <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Nika Potapova
+  </a>
+  <img src="Sponsable Bird Logo White.png" alt="Sponsable" class="header-bird">
+</div>
+
+<!-- HERO STRIP -->
+<div class="hero-strip">
+  <div class="hero-strip-img"></div>
+  <div class="hero-strip-vignette"></div>
+  <div class="hero-strip-text">
+    <div class="hero-strip-name">Athletic Record</div>
+    <div class="hero-strip-sub">Full History</div>
+  </div>
+</div>
+
+<!-- SUMMARY STATS -->
+<div class="stat-strip fade-in">
+  <div class="stat-cell">
+    <div class="stat-num gold">2</div>
+    <div class="stat-lbl">World<br>Titles</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-num">9a</div>
+    <div class="stat-lbl">Highest<br>outdoor grade</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-num">23rd</div>
+    <div class="stat-lbl">Woman to<br>climb 9a ever</div>
+  </div>
+</div>
+
+<!-- WORLD CHAMPIONSHIP -->
+<div class="fade-in">
+  <div class="category-head">
+    <span class="category-label">World Championships</span>
+  </div>
+
+  <div class="result-row">
+    <div class="medal gold"><span class="medal-num">1st</span></div>
+    <div class="result-body">
+      <div class="result-name">Youth World Champion</div>
+      <div class="result-meta">Lead · Arco, Italy</div>
+    </div>
+    <span class="result-year">2019</span>
+  </div>
+
+  <div class="result-row">
+    <div class="medal silver"><span class="medal-num">2nd</span></div>
+    <div class="result-body">
+      <div class="result-name">Vice Youth World Champion</div>
+      <div class="result-meta">Lead</div>
+    </div>
+    <span class="result-year">2018</span>
+  </div>
+</div>
+
+<!-- EUROPEAN CHAMPIONSHIPS -->
+<div class="fade-in">
+  <div class="category-head">
+    <span class="category-label">European Championships</span>
+  </div>
+
+  <div class="result-row">
+    <div class="medal gold"><span class="medal-num">1st</span></div>
+    <div class="result-body">
+      <div class="result-name">Senior European Champion</div>
+      <div class="result-meta">Combined · Edinburgh, Scotland</div>
+    </div>
+    <span class="result-year">2019</span>
+  </div>
+
+  <div class="result-row">
+    <div class="medal other"><span class="medal-num">7th</span></div>
+    <div class="result-body">
+      <div class="result-name">Senior European Championships</div>
+      <div class="result-meta">Lead · Moscow, Russia</div>
+    </div>
+    <span class="result-year">2020</span>
+  </div>
+</div>
+
+<!-- WORLD CUP -->
+<div class="fade-in">
+  <div class="category-head">
+    <span class="category-label">IFSC World Cup</span>
+  </div>
+
+  <div class="result-row">
+    <div class="medal other"><span class="medal-num">SF</span></div>
+    <div class="result-body">
+      <div class="result-name">World Cup Semifinalist</div>
+      <div class="result-meta">Lead · ×4 appearances</div>
+    </div>
+    <span class="result-year">—</span>
+  </div>
+</div>
+
+<!-- OUTDOOR ASCENTS -->
+<div class="fade-in">
+  <div class="category-head">
+    <span class="category-label">Notable Outdoor Ascents</span>
+  </div>
+
+  <div class="outdoor-row">
+    <span class="grade-badge">9a</span>
+    <div class="outdoor-body">
+      <div class="outdoor-name">Fuck the System</div>
+      <div class="outdoor-meta">Santa Linya, Spain · 2019</div>
+      <div class="outdoor-note">23rd woman in history to climb 9a.</div>
+    </div>
+  </div>
+
+  <div class="outdoor-row">
+    <span class="grade-badge">8c</span>
+    <div class="outdoor-body">
+      <div class="outdoor-name">Strelovod</div>
+      <div class="outdoor-meta">Misja Peč, Slovenia · Age 13</div>
+      <div class="outdoor-note">Climbed 8c at thirteen years old.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MEDIA -->
+<div class="fade-in">
+  <div class="category-head">
+    <span class="category-label">Media & Brand Work</span>
+  </div>
+
+  <div class="result-row">
+    <div class="medal other"><span class="medal-num" style="font-size:7px;">RB</span></div>
+    <div class="result-body">
+      <div class="result-name">Red Bull Natural Heights — Ep. 3</div>
+      <div class="result-meta">Filmed 2024 · Released December 2025</div>
+    </div>
+    <span class="result-year">2025</span>
+  </div>
+
+  <div class="result-row">
+    <div class="medal other"><span class="medal-num" style="font-size:7px;">RB</span></div>
+    <div class="result-body">
+      <div class="result-name">Red Bull Dual Ascent</div>
+      <div class="result-meta">Media face · with Jacob Schubert</div>
+    </div>
+    <span class="result-year">23–24</span>
+  </div>
+</div>
+
+<!-- RECORDS -->
+<div class="fade-in">
+  <div class="category-head">
+    <span class="category-label">Records</span>
+  </div>
+
+  <div class="result-row">
+    <div class="medal gold"><span class="medal-num" style="font-size:7px;">REC</span></div>
+    <div class="result-body">
+      <div class="result-name">Zlagboard Endurance Record</div>
+      <div class="result-meta">Women's record broken · Age 14. Near men's record.</div>
+    </div>
+    <span class="result-year">—</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="site-footer fade-in">
+  <a href="https://sponsable.co.uk" class="site-footer-link" target="_blank">Create your profile at sponsable.co.uk →</a>
+</div>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), 40); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
