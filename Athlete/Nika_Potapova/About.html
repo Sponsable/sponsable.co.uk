@@ -971,7 +971,7 @@
   <div class="hero-vignette"></div>
   <div class="hero-top">
     <button class="hero-bird-btn" onclick="openSpPopup()" aria-label="About Sponsable">
-      <img src="Sponsable Bird Logo White.png" alt="Sponsable" width="72" height="72" style="object-fit:contain;">
+      <img src="Sponsable Bird Logo White.png" alt="Sponsable" width="48" height="48" style="object-fit:contain;">
     </button>
     <div class="hero-socials">
       <a href="https://www.instagram.com/nika_____potapova/" class="social-btn" target="_blank" aria-label="Instagram">
@@ -1097,12 +1097,10 @@
   <p class="film-desc">A short film about Nika — her world, her story, her voice. Not a highlights reel. The version most people haven't seen yet. A brand-funded shoot, one to two days.</p>
 
   <div class="film-notify" id="film-notify">
-    <div class="notify-label">Get notified when it drops</div>
     <div class="notify-row">
       <input class="notify-input" id="film-email" type="email" placeholder="your@email.com">
       <button class="notify-btn" onclick="submitFilmNotify()">Notify me</button>
     </div>
-    <div class="notify-count" id="film-count">247 people waiting</div>
   </div>
 
   <div class="film-actions">
@@ -1276,7 +1274,6 @@
 
   function submitFilmNotify() {
     const input = document.getElementById('film-email');
-    const count = document.getElementById('film-count');
     if (!input.value || !input.value.includes('@')) {
       input.style.borderColor = 'rgba(255,255,255,0.2)';
       setTimeout(() => input.style.borderColor = '', 1200);
@@ -1285,8 +1282,6 @@
     input.value = ''; input.placeholder = "You're on the list."; input.disabled = true;
     document.querySelector('.notify-btn').textContent = '✓';
     document.querySelector('.notify-btn').disabled = true;
-    const n = parseInt(count.textContent);
-    if (!isNaN(n)) count.textContent = (n+1)+' people waiting';
   }
 
   function toggleLike() {
