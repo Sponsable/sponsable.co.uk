@@ -254,7 +254,7 @@
     font-family: var(--sans);
     font-size: 0.78rem; font-weight: 500;
     color: var(--soft); cursor: pointer; padding: 0;
-    text-decoration: underline; text-underline-offset: 3px;
+    text-decoration: none;
     transition: color 0.15s;
   }
   .bio-more:hover { color: var(--mid); }
@@ -312,12 +312,12 @@
   .result-medal svg { width: 24px; height: 24px; }
   .result-medal.gold svg { filter: drop-shadow(0 0 5px rgba(210,175,70,0.5)); }
   .result-body { flex: 1; }
-  .result-place  { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.15rem; }
+  .result-place  { display: none; }
   .result-name   { font-family: var(--sans); font-size: 0.9rem; font-weight: 600; color: var(--hi); }
   .result-detail { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.07em; color: var(--dim); margin-top: 0.1rem; }
 
   /* ─── MEDIA ─── */
-  .media-link { display: block; text-decoration: none; }
+  .media-link { display: block; text-decoration: none; margin-bottom: 0; }
 
   .media-thumb {
     position: relative;
@@ -392,7 +392,7 @@
 
   .film-actions {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1rem 0; border-top: 1px solid var(--line);
+    padding: 0.75rem 0 0;
   }
 
   .film-plan-link { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.15s; }
@@ -438,12 +438,11 @@
     position: relative;
     z-index: 1;
     padding: 2rem 1.5rem 0;
-    border-top: 1px solid var(--line);
   }
 
   /* ─── ELEVATED VOICE NOTE ─── */
   .voice-section {
-    border-top: 1px solid var(--line);
+    border-top: none;
   }
 
   .voice-inner {
@@ -524,7 +523,6 @@
   .availability-wrap { padding: 0 1.5rem; }
 
   .avail-timeline {
-    border-top: 1px solid var(--line);
     padding-top: 1.5rem;
   }
 
@@ -867,8 +865,6 @@
 </div><!-- end identity-inner -->
 </div><!-- end identity-section -->
 
-<div class="rule fade-in"></div>
-
 <!-- RESULTS -->
 <div class="results-section fade-in">
   <div class="results-bg"></div>
@@ -915,9 +911,8 @@
       </svg>
     </div>
     <div class="result-body">
-      <div class="result-place">9a Outdoor</div>
       <div class="result-name">Fuck the System</div>
-      <div class="result-detail">Santa Linya · 2019 · 23rd woman ever</div>
+      <div class="result-detail">Santa Linya · 2019 · 9a Outdoor · 23rd woman ever</div>
     </div>
   </div>
   </div><!-- end z-index wrapper -->
@@ -961,7 +956,7 @@
       </div>
       <span class="voice-time" id="voice-time">0:24</span>
     </div>
-    <p class="voice-sub">A voice note recorded in Paris. Unscripted.</p>
+    <p class="voice-sub">"What's the worst advice anyone has ever given you about climbing?"</p>
   </div>
   <audio id="nika-audio" src="Nika voice note.m4a" preload="metadata"></audio>
 </div>
