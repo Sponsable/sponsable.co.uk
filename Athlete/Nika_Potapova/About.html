@@ -170,24 +170,10 @@
 
   /* ─── IDENTITY ─── */
   .identity-section {
-    position: relative;
     padding: 0;
-    overflow: hidden;
-  }
-
-  /* Blurred continuation of hero — same image, same world */
-  .identity-bg {
-    position: absolute;
-    inset: 0;
-    background: url('Nika_Wall.jpg') center 20% / cover no-repeat;
-    filter: blur(22px);
-    transform: scale(1.12);
-    opacity: 0.25;
   }
 
   .identity-inner {
-    position: relative;
-    z-index: 1;
     padding: 2rem 1.5rem 0;
   }
 
@@ -318,19 +304,17 @@
   .section-label a:hover { color: var(--soft); }
 
   .result-row {
-    display: flex; align-items: center; gap: 1rem;
-    padding: 0.9rem 0;
-    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; gap: 1.1rem;
+    padding: 0.85rem 0;
   }
-  .result-row:last-child { border-bottom: none; }
 
-  .result-medal { width: 24px; height: 24px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-  .result-medal svg { width: 22px; height: 22px; }
-  .result-medal.gold svg { filter: drop-shadow(0 0 4px rgba(210,175,70,0.4)); }
+  .result-medal { width: 28px; height: 28px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .result-medal svg { width: 24px; height: 24px; }
+  .result-medal.gold svg { filter: drop-shadow(0 0 5px rgba(210,175,70,0.5)); }
   .result-body { flex: 1; }
-  .result-place  { font-family: var(--mono); font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.18rem; }
-  .result-name   { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--hi); margin-bottom: 0.12rem; }
-  .result-detail { font-family: var(--mono); font-size: 8px; letter-spacing: 0.07em; color: var(--dim); }
+  .result-place  { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.15rem; }
+  .result-name   { font-family: var(--sans); font-size: 0.9rem; font-weight: 600; color: var(--hi); }
+  .result-detail { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.07em; color: var(--dim); margin-top: 0.1rem; }
 
   /* ─── MEDIA ─── */
   .media-link { display: block; text-decoration: none; }
@@ -536,28 +520,51 @@
 
   .voice-time { font-family: var(--mono); font-size: 10px; color: var(--soft); letter-spacing: 0.05em; flex-shrink: 0; }
 
-  /* ─── AVAILABILITY ─── */
+  /* ─── AVAILABILITY — timeline ─── */
   .availability-wrap { padding: 0 1.5rem; }
 
-  .availability-card { background: var(--bg-1); border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
+  .avail-timeline {
+    border-top: 1px solid var(--line);
+    padding-top: 1.5rem;
+  }
 
-  .avail-header { padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); }
+  .avail-timeline-head {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 1.25rem;
+  }
 
-  .avail-row { display: flex; align-items: flex-start; gap: 1rem; padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--line); }
-  .avail-row:last-of-type { border-bottom: none; }
+  .avail-item {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 0.75rem;
+    padding: 0.55rem 0;
+    align-items: baseline;
+  }
 
-  .avail-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
-  .avail-dot.comp   { background: rgba(255,255,255,0.55); }
-  .avail-dot.travel { background: rgba(255,255,255,0.75); }
-  .avail-dot.shoot  { background: rgba(255,255,255,0.40); }
-  .avail-dot.open   { border: 1px solid var(--line-strong); }
+  .avail-when {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    color: var(--dim);
+    line-height: 1.5;
+    padding-top: 0.1rem;
+  }
 
-  .avail-period { font-family: var(--mono); font-size: 8px; letter-spacing: 0.1em; color: var(--dim); margin-bottom: 0.22rem; }
-  .avail-detail { font-family: var(--sans); font-size: 0.83rem; color: var(--mid); line-height: 1.5; }
+  .avail-what {
+    font-family: var(--sans);
+    font-size: 0.83rem;
+    color: var(--mid);
+    line-height: 1.5;
+  }
 
-  .avail-legend { padding: 0.75rem 1.25rem; border-top: 1px solid var(--line); display: flex; gap: 1rem; flex-wrap: wrap; }
-  .legend-item { display: flex; align-items: center; gap: 0.38rem; font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dim); }
-  .legend-dot  { width: 5px; height: 5px; border-radius: 50%; }
+  .avail-what strong {
+    color: var(--hi);
+    font-weight: 600;
+  }
 
   /* ─── SPOTIFY ─── */
   .spotify-wrap { padding: 2rem 1.5rem 0; }
@@ -830,7 +837,6 @@
 
 <!-- IDENTITY -->
 <div class="identity-section fade-in">
-  <div class="identity-bg"></div>
   <div class="identity-inner">
   <div class="status-row">
     <div class="status-pill"><div class="status-dot"></div>Pre-season</div>
@@ -918,6 +924,9 @@
 </div>
 
 <!-- MEDIA -->
+<div class="fade-in" style="padding: 2rem 1.5rem 0.75rem;">
+  <div style="font-family:var(--mono);font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--dim);">On Red Bull TV</div>
+</div>
 <a href="https://www.redbull.com/int-en/episodes/natural-heights-s1-e3" target="_blank" class="media-link fade-in">
   <div class="media-thumb">
     <div class="media-play">
@@ -961,52 +970,39 @@
 <div class="film-section fade-in">
   <div class="film-bg"></div>
   <div class="film-inner">
-  <div class="film-badge">In Development</div>
-  <div class="film-title">I Just Go</div>
-  <p class="film-desc">A short film about Nika — her world, her story, her voice. Not a highlights reel. The version most people haven't seen yet. A brand-funded shoot, one to two days.</p>
-
-  <div class="film-notify" id="film-notify">
-    <div class="notify-row">
-      <input class="notify-input" id="film-email" type="email" placeholder="your@email.com">
-      <button class="notify-btn" onclick="submitFilmNotify()">Notify me</button>
+    <div class="film-badge">In Development</div>
+    <div class="film-title">I Just Go</div>
+    <p class="film-desc">A short film about Nika — her world, her story, her voice. Not a highlights reel. The version most people haven't seen yet. A brand-funded shoot, one to two days.</p>
+    <div class="notify-row" style="margin-bottom:0.5rem;">
+      <input class="notify-input" id="film-email" type="email" placeholder="Notify me when it drops">
+      <button class="notify-btn" onclick="submitFilmNotify()">→</button>
+    </div>
+    <div class="film-actions">
+      <span id="film-notify-confirm" style="font-family:var(--mono);font-size:8px;letter-spacing:0.1em;color:var(--dim);display:none;">You're on the list.</span>
+      <a href="plan.html" class="film-plan-link" style="margin-left:auto;">See the full plan →</a>
     </div>
   </div>
-
-  <div class="film-actions">
-    <button class="notify-toggle" id="notify-toggle" onclick="toggleFilmNotify()">Get notified ↓</button>
-    <a href="plan.html" class="film-plan-link">See the full plan →</a>
-  </div><!-- end film-actions -->
-  </div><!-- end film-inner -->
 </div>
 
 <!-- AVAILABILITY -->
 <div class="availability-wrap fade-in">
-  <div class="availability-card">
-    <div class="avail-header">Right Now</div>
-    <div class="avail-row">
-      <div class="avail-dot travel"></div>
-      <div><div class="avail-period">Now — April 2026</div><div class="avail-detail">Paris. Training block, available for shoots and brand meetings.</div></div>
+  <div class="avail-timeline">
+    <div class="avail-timeline-head">Right Now</div>
+    <div class="avail-item">
+      <span class="avail-when">Now — Apr</span>
+      <span class="avail-what"><strong>Paris.</strong> Training block. Available for shoots and brand meetings.</span>
     </div>
-    <div class="avail-row">
-      <div class="avail-dot comp"></div>
-      <div><div class="avail-period">May 2026</div><div class="avail-detail">European Cup season opens. Competition travel begins.</div></div>
+    <div class="avail-item">
+      <span class="avail-when">May 2026</span>
+      <span class="avail-what"><strong>Competition season opens.</strong> European Cup circuit begins.</span>
     </div>
-    <div class="avail-row">
-      <div class="avail-dot shoot"></div>
-      <div><div class="avail-period">Summer 2026</div><div class="avail-detail">Spain trip planned — Santa Linya, Siurana. Open to brand integration on location.</div></div>
+    <div class="avail-item">
+      <span class="avail-when">Summer</span>
+      <span class="avail-what"><strong>Spain.</strong> Santa Linya and Siurana. Open to brand integration on location.</span>
     </div>
-    <div class="avail-row">
-      <div class="avail-dot open"></div>
-      <div><div class="avail-period">Ongoing</div><div class="avail-detail">Content days, product testing, digital campaigns. Enquire via brand access below.</div></div>
-    </div>
-    <div class="avail-legend">
-      <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.75)"></div>Location</div>
-      <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.55)"></div>Competition</div>
-      <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.40)"></div>Shoot</div>
-      <div class="legend-item" style="display:flex;align-items:center;gap:0.38rem;">
-        <div style="width:5px;height:5px;border-radius:50%;border:1px solid var(--line-strong);"></div>
-        <span style="font-family:var(--mono);font-size:7.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);">Open</span>
-      </div>
+    <div class="avail-item">
+      <span class="avail-when">Ongoing</span>
+      <span class="avail-what">Product testing, shoots, digital. Enquire via brand access below.</span>
     </div>
   </div>
 </div>
@@ -1217,24 +1213,17 @@
   }
 
   // Film notify
-  function toggleFilmNotify() {
-    const panel  = document.getElementById('film-notify');
-    const toggle = document.getElementById('notify-toggle');
-    const open   = panel.classList.contains('open');
-    panel.classList.toggle('open');
-    toggle.textContent = open ? 'Get notified ↓' : 'Hide ↑';
-  }
-
   function submitFilmNotify() {
     const input = document.getElementById('film-email');
+    const confirm = document.getElementById('film-notify-confirm');
     if (!input.value || !input.value.includes('@')) {
       input.style.borderColor = 'rgba(255,255,255,0.2)';
       setTimeout(() => input.style.borderColor = '', 1200);
       return;
     }
-    input.value = ''; input.placeholder = "You're on the list."; input.disabled = true;
-    document.querySelector('.notify-btn').textContent = '✓';
-    document.querySelector('.notify-btn').disabled = true;
+    input.style.display = 'none';
+    document.querySelector('.notify-btn').style.display = 'none';
+    confirm.style.display = 'inline';
   }
 
   // Voice note
