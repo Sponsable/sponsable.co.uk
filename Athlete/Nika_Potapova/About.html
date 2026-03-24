@@ -274,7 +274,7 @@
   /* ─── RESULTS — with subtle winning image behind ─── */
   .results-section {
     position: relative;
-    padding: 2rem 1.5rem 1.75rem;
+    padding: 0 1.5rem 0.5rem;
     overflow: hidden;
   }
 
@@ -298,7 +298,7 @@
 
   .result-row {
     display: flex; align-items: center; gap: 1.1rem;
-    padding: 0.85rem 0;
+    padding: 1.1rem 0;
   }
 
   .result-medal { width: 28px; height: 28px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
@@ -520,29 +520,30 @@
   }
 
   .avail-timeline-head {
-    font-family: var(--mono);
-    font-size: 8.5px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--dim);
-    margin-bottom: 1.25rem;
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--hi);
+    letter-spacing: -0.01em;
+    margin-bottom: 1.1rem;
   }
 
   .avail-item {
     display: grid;
     grid-template-columns: 90px 1fr;
     gap: 0.75rem;
-    padding: 0.55rem 0;
+    padding: 0.45rem 0;
     align-items: baseline;
   }
 
   .avail-when {
     font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.1em;
+    font-size: 7.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     color: var(--dim);
     line-height: 1.5;
-    padding-top: 0.1rem;
+    padding-top: 0.15rem;
   }
 
   .avail-what {
@@ -1105,10 +1106,12 @@
 </div><!-- end identity-section -->
 
 <!-- RESULTS -->
+<div class="fade-in" style="padding: 2rem 1.5rem 0.75rem;">
+  <div style="font-family:var(--mono);font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--dim);">Athletic Record</div>
+</div>
 <div class="results-section fade-in">
   <div class="results-bg"></div>
   <div style="position:relative;z-index:1;">
-  <div class="section-label">Athletic Record <a href="history.html">Full history →</a></div>
   <div class="result-row">
     <div class="result-medal gold">
       <!-- Filled gold trophy -->
@@ -1153,6 +1156,10 @@
       <div class="result-name">Fuck the System</div>
       <div class="result-detail">Santa Linya · 2019 · 9a Outdoor · 23rd woman ever</div>
     </div>
+  </div>
+  <!-- More badge — bottom right, like Watch on Natural Heights -->
+  <div style="display:flex;justify-content:flex-end;padding:0.5rem 0 0.25rem;">
+    <a href="history.html" style="font-family:var(--mono);font-size:7.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim);border:1px solid rgba(255,255,255,0.12);padding:2px 8px;border-radius:2px;text-decoration:none;">More</a>
   </div>
   </div><!-- end z-index wrapper -->
 </div>
@@ -1273,6 +1280,7 @@
   <!-- Film answer — with photo -->
   <div class="answer-item" style="padding-bottom:0; border-bottom:none;">
     <div class="answer-q">Do you have any projects in mind?</div>
+    <div class="answer-a">Yes — I have an idea for a short film. I want it to be honest, not polished. Not about winning. I don't want it to feel like a brand video — I want it to feel like something I'd actually watch. The only thing I've asked is that whoever funds it trusts me enough to let it be real.</div>
   </div>
   <div class="film-section fade-in" style="margin-top:0.75rem;">
     <div class="film-bg"></div>
