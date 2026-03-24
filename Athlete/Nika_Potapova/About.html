@@ -271,18 +271,7 @@
 
   .rule { height: 1px; background: var(--line); margin: 2rem 1.5rem 0; }
 
-  /* ─── RESULTS — with subtle winning image behind ─── */
-  .results-section {
-    position: relative;
-    padding: 0 1.5rem 1.25rem;
-    overflow: hidden;
-  }
-
-  .results-bg {
-    position: absolute; inset: 0;
-    background: url('Nika_Winning.jpg') center 20% / cover no-repeat;
-    opacity: 0.30;
-  }
+  /* ─── RESULTS ─── */
 
   .section-label {
     font-family: var(--mono);
@@ -309,45 +298,88 @@
   .result-name   { font-family: var(--sans); font-size: 0.9rem; font-weight: 600; color: var(--hi); }
   .result-detail { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.07em; color: var(--soft); margin-top: 0.12rem; }
 
-  /* ─── MEDIA ─── */
-  .media-link { display: block; text-decoration: none; margin-bottom: 0; }
-
-  .media-thumb {
+  /* ─── SHARED CARD OVERLAY — used by both Athletic Record and Natural Heights ─── */
+  .card-img {
     position: relative;
+    overflow: hidden;
+  }
+
+  /* Athletic Record card */
+  .card-img.results-card {
+    aspect-ratio: 16/9;
+    background: url('Nika_Winning.jpg') center 20% / cover no-repeat;
+  }
+
+  /* Natural Heights card */
+  .card-img.media-card {
     aspect-ratio: 16/9;
     background: url('Nika Natural Heights.avif') center 35% / cover no-repeat;
-    display: flex; align-items: center; justify-content: center;
   }
 
-  .media-thumb::after {
-    content: '';
+  .card-img-vignette {
     position: absolute; inset: 0;
-    background: linear-gradient(180deg, transparent 40%, rgba(10,10,9,0.8) 100%);
-    transition: opacity 0.3s;
+    background: linear-gradient(180deg, transparent 30%, rgba(10,10,9,0.85) 100%);
+    pointer-events: none;
   }
 
-  .media-link:hover .media-thumb::after { opacity: 0.6; }
+  /* The overlay that holds ALL content — flex column, pushes to bottom */
+  .card-overlay {
+    position: absolute; inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 1.5rem 1.25rem;
+    z-index: 1;
+  }
 
-  .media-play {
+  /* Bottom row: content left, badge right */
+  .card-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .card-content { flex: 1; min-width: 0; }
+
+  .card-play {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
     width: 44px; height: 44px;
     border-radius: 50%;
     background: rgba(10,10,9,0.45);
     border: 1px solid rgba(255,255,255,0.25);
     display: flex; align-items: center; justify-content: center;
     backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-    z-index: 1;
+    z-index: 2;
     transition: background 0.2s, transform 0.2s;
   }
-  .media-link:hover .media-play { background: rgba(255,255,255,0.12); transform: scale(1.06); }
-  .media-play svg { width: 13px; height: 13px; fill: white; margin-left: 2px; }
+  .card-play:hover { background: rgba(255,255,255,0.12); transform: translate(-50%, -50%) scale(1.06); }
+  .card-play svg { width: 13px; height: 13px; fill: white; margin-left: 2px; }
 
-  .media-info {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 0 1.5rem 1.25rem;
-    z-index: 1;
-    display: flex; align-items: flex-end; justify-content: space-between;
+  .card-title { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: white; margin-bottom: 0.1rem; }
+  .card-sub   { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.42); }
+
+  .card-badge {
+    font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: rgba(255,255,255,0.55);
+    border: 1px solid rgba(255,255,255,0.22);
+    padding: 3px 9px; border-radius: 2px;
+    text-decoration: none; white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 0.15s, border-color 0.15s;
   }
+  a.card-badge:hover { color: white; border-color: rgba(255,255,255,0.5); }
+
+  /* Results rows inside card */
+  .card-result-row {
+    display: flex; align-items: center; gap: 0.9rem;
+    padding: 0.65rem 0;
+  }
+
+  /* ─── MEDIA (legacy, keep for fallback) ─── */
+  .media-link { display: block; text-decoration: none; }
   .media-title { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: white; margin-bottom: 0.1rem; }
   .media-sub   { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.42); }
   .media-badge { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.38); border: 1px solid rgba(255,255,255,0.18); padding: 2px 8px; border-radius: 2px; }
@@ -373,14 +405,21 @@
   .notify-input::placeholder { color: rgba(255,255,255,0.45); }
   .notify-input:focus { border-color: rgba(255,255,255,0.6); }
 
+  .film-overlay {
+    display: none; /* removed — photo should be visible */
+  }
+
   .notify-btn {
     padding: 0.65rem 1.1rem;
-    background: white; color: var(--bg);
-    border: none; font-family: var(--mono); font-size: 13px;
-    font-weight: 700; cursor: pointer; border-radius: 2px;
-    white-space: nowrap; transition: background 0.2s;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.4);
+    font-family: var(--mono); font-size: 13px;
+    font-weight: 600; cursor: pointer; border-radius: 2px;
+    white-space: nowrap; transition: background 0.2s, border-color 0.2s;
   }
-  .notify-btn:hover { background: rgba(255,255,255,0.88); }
+  .notify-btn:hover { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.6); }
 
   .film-actions {
     display: flex; align-items: center; justify-content: flex-end;
@@ -1179,76 +1218,75 @@
 <div class="fade-in" style="padding: 2rem 1.5rem 0.75rem;">
   <div style="font-family:var(--mono);font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--dim);">Athletic Record</div>
 </div>
-<div class="results-section fade-in">
-  <div class="results-bg"></div>
-  <div style="position:relative;z-index:1;">
-  <div class="result-row">
-    <div class="result-medal gold">
-      <!-- Filled gold trophy -->
-      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        <path d="M6 2h8v7a4 4 0 01-8 0V2z" fill="rgba(210,175,70,0.9)"/>
-        <path d="M4 2h2v3c0 1.5-1 2.5-2 3V2z" fill="rgba(210,175,70,0.7)"/>
-        <path d="M14 2h2v6c-1-.5-2-1.5-2-3V2z" fill="rgba(210,175,70,0.7)"/>
-        <rect x="9" y="13" width="2" height="3" fill="rgba(210,175,70,0.8)"/>
-        <rect x="7" y="15.5" width="6" height="1.5" rx="0.5" fill="rgba(210,175,70,0.8)"/>
-      </svg>
-    </div>
-    <div class="result-body">
-      <div class="result-place">1st · World</div>
-      <div class="result-name">Youth World Champion</div>
-      <div class="result-detail">Lead · Arco, Italy · 2019</div>
+<div class="card-img results-card fade-in">
+  <div class="card-img-vignette"></div>
+  <div class="card-overlay">
+    <div class="card-bottom">
+      <div class="card-content">
+        <div class="card-result-row">
+          <div class="result-medal gold">
+            <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 2h8v7a4 4 0 01-8 0V2z" fill="rgba(210,175,70,0.9)"/>
+              <path d="M4 2h2v3c0 1.5-1 2.5-2 3V2z" fill="rgba(210,175,70,0.7)"/>
+              <path d="M14 2h2v6c-1-.5-2-1.5-2-3V2z" fill="rgba(210,175,70,0.7)"/>
+              <rect x="9" y="13" width="2" height="3" fill="rgba(210,175,70,0.8)"/>
+              <rect x="7" y="15.5" width="6" height="1.5" rx="0.5" fill="rgba(210,175,70,0.8)"/>
+            </svg>
+          </div>
+          <div class="result-body">
+            <div class="result-name">Youth World Champion</div>
+            <div class="result-detail">Lead · Arco, Italy · 2019</div>
+          </div>
+        </div>
+        <div class="card-result-row">
+          <div class="result-medal gold">
+            <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 2h8v7a4 4 0 01-8 0V2z" fill="rgba(210,175,70,0.9)"/>
+              <path d="M4 2h2v3c0 1.5-1 2.5-2 3V2z" fill="rgba(210,175,70,0.7)"/>
+              <path d="M14 2h2v6c-1-.5-2-1.5-2-3V2z" fill="rgba(210,175,70,0.7)"/>
+              <rect x="9" y="13" width="2" height="3" fill="rgba(210,175,70,0.8)"/>
+              <rect x="7" y="15.5" width="6" height="1.5" rx="0.5" fill="rgba(210,175,70,0.8)"/>
+            </svg>
+          </div>
+          <div class="result-body">
+            <div class="result-name">European Youth Champion</div>
+            <div class="result-detail">Lead · Imst, Austria · 2018</div>
+          </div>
+        </div>
+        <div class="card-result-row">
+          <div class="result-medal">
+            <svg viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="6" stroke="var(--line-strong)" stroke-width="1.2"/>
+              <path d="M10 7v6M7 10h6" stroke="var(--dim)" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="result-body">
+            <div class="result-name">Fuck the System</div>
+            <div class="result-detail">Santa Linya · 2019 · 9a Outdoor</div>
+          </div>
+        </div>
+      </div>
+      <a href="history.html" class="card-badge">More</a>
     </div>
   </div>
-  <div class="result-row">
-    <div class="result-medal gold">
-      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        <path d="M6 2h8v7a4 4 0 01-8 0V2z" fill="rgba(210,175,70,0.9)"/>
-        <path d="M4 2h2v3c0 1.5-1 2.5-2 3V2z" fill="rgba(210,175,70,0.7)"/>
-        <path d="M14 2h2v6c-1-.5-2-1.5-2-3V2z" fill="rgba(210,175,70,0.7)"/>
-        <rect x="9" y="13" width="2" height="3" fill="rgba(210,175,70,0.8)"/>
-        <rect x="7" y="15.5" width="6" height="1.5" rx="0.5" fill="rgba(210,175,70,0.8)"/>
-      </svg>
-    </div>
-    <div class="result-body">
-      <div class="result-place">1st · Continental</div>
-      <div class="result-name">European Youth Champion</div>
-      <div class="result-detail">Lead · Imst, Austria · 2018</div>
-    </div>
-  </div>
-  <div class="result-row">
-    <div class="result-medal">
-      <svg viewBox="0 0 20 20" fill="none">
-        <circle cx="10" cy="10" r="6" stroke="var(--line-strong)" stroke-width="1.2"/>
-        <path d="M10 7v6M7 10h6" stroke="var(--dim)" stroke-width="1.2" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div class="result-body">
-      <div class="result-name">Fuck the System</div>
-      <div class="result-detail">Santa Linya · 2019 · 9a Outdoor</div>
-    </div>
-  </div>
-  <!-- More — absolute bottom right, matching Watch on Natural Heights -->
-  <div style="position:absolute;bottom:1.25rem;right:1.5rem;z-index:2;">
-    <a href="history.html" style="font-family:var(--mono);font-size:7.5px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.18);padding:4px 10px;border-radius:2px;text-decoration:none;">More</a>
-  </div>
-  </div><!-- end z-index wrapper -->
 </div>
 
 <!-- MEDIA -->
 <div class="fade-in" style="padding: 2rem 1.5rem 0.75rem;">
   <div style="font-family:var(--mono);font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--dim);">On Red Bull TV</div>
 </div>
-<a href="https://www.redbull.com/int-en/episodes/natural-heights-s1-e3" target="_blank" class="media-link fade-in">
-  <div class="media-thumb">
-    <div class="media-play">
-      <svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5V1z"/></svg>
-    </div>
-    <div class="media-info">
-      <div>
-        <div class="media-title">Natural Heights — Episode 3</div>
-        <div class="media-sub">Red Bull · Series</div>
+<a href="https://www.redbull.com/int-en/episodes/natural-heights-s1-e3" target="_blank" class="media-link card-img media-card fade-in">
+  <div class="card-play">
+    <svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5V1z"/></svg>
+  </div>
+  <div class="card-img-vignette"></div>
+  <div class="card-overlay">
+    <div class="card-bottom">
+      <div class="card-content">
+        <div class="card-title">Natural Heights — Episode 3</div>
+        <div class="card-sub">Red Bull · Series</div>
       </div>
-      <div class="media-badge">Watch</div>
+      <span class="card-badge">Watch</span>
     </div>
   </div>
 </a>
