@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nika Potapova — For Brands · Sponsable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg:          #0A0A09;
+    --bg-1:        #111110;
+    --bg-2:        #191918;
+    --bg-3:        #222220;
+
+    --line:        rgba(255,255,255,0.07);
+    --line-strong: rgba(255,255,255,0.12);
+
+    --hi:   rgba(255,255,255,0.95);
+    --mid:  rgba(255,255,255,0.60);
+    --soft: rgba(255,255,255,0.40);
+    --dim:  rgba(255,255,255,0.28);
+    --ghost:rgba(255,255,255,0.05);
+    --pull: rgba(255,255,255,0.22);
+
+    --serif: 'Lora', Georgia, serif;
+    --sans:  'DM Sans', system-ui, sans-serif;
+    --mono:  'DM Mono', 'Courier New', monospace;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--hi);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    max-width: 430px;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
+
+  /* ─── PAGE HEADER ─── */
+  .page-header {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .back-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--dim);
+    transition: color 0.15s;
+  }
+  .back-link:hover { color: var(--soft); }
+  .back-link svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+  .header-bird {
+    width: 26px; height: 26px;
+    mix-blend-mode: screen;
+    opacity: 0.45;
+    object-fit: contain;
+  }
+
+  /* ─── TRANSITION HEADER ─── */
+  /* This replaces the repeated hero — brand already knows who she is */
+  .transition-header {
+    padding: 2rem 1.5rem 0;
+  }
+
+  .transition-eyebrow {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 1rem;
+  }
+
+  .transition-headline {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--hi);
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .transition-body {
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--soft);
+    line-height: 1.85;
+  }
+
+  /* ─── NIKA QUOTE ─── */
+  .nika-quote {
+    padding: 2rem 1.5rem;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-top: 2rem;
+  }
+
+  .quote-label {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 1rem;
+  }
+
+  .quote-text {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--hi);
+    line-height: 1.7;
+    padding-left: 1.1rem;
+    border-left: 2px solid var(--pull);
+  }
+
+  .quote-attr {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.12em;
+    color: var(--dim);
+    margin-top: 0.75rem;
+    padding-left: 1.1rem;
+    display: block;
+  }
+
+  /* ─── CLIMBING PHOTO ─── */
+  .climbing-photo {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+  }
+
+  .climbing-img {
+    position: absolute;
+    inset: 0;
+    background: url('Nika_Climbing.jpg') center 30% / cover no-repeat;
+  }
+
+  .climbing-vignette {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      transparent 55%,
+      rgba(10,10,9,0.55) 78%,
+      #0A0A09 100%
+    );
+  }
+
+  .climbing-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 0 1.5rem 1.5rem;
+    z-index: 2;
+  }
+
+  .climbing-caption-text {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--soft);
+  }
+
+  /* ─── SHARED SECTION ─── */
+  .section { padding: 2rem 1.5rem 0; }
+
+  .section-head {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 1.25rem;
+  }
+
+  .rule { height: 1px; background: var(--line); margin: 2rem 1.5rem 0; }
+
+  /* ─── WHAT SHE BRINGS ─── */
+  .brings-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .brings-row:first-child { padding-top: 0; }
+  .brings-row:last-child { border-bottom: none; }
+
+  .brings-icon {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .brings-icon svg { width: 13px; height: 13px; fill: none; stroke: var(--soft); stroke-width: 1.5; }
+
+  .brings-title { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: var(--hi); margin-bottom: 0.2rem; }
+  .brings-detail { font-family: var(--sans); font-size: 0.8rem; color: var(--soft); line-height: 1.6; }
+
+  /* ─── CATEGORY SLOTS ─── */
+  .category-card {
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 0.65rem;
+  }
+  .category-card:last-child { margin-bottom: 0; }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.1rem;
+    background: var(--bg-1);
+  }
+
+  .category-name {
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--hi);
+  }
+
+  .category-status {
+    font-family: var(--mono);
+    font-size: 7.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2px 9px;
+    border-radius: 2px;
+  }
+
+  .category-status.open {
+    color: var(--mid);
+    border: 1px solid var(--line-strong);
+  }
+
+  .category-status.taken {
+    color: var(--dim);
+    border: 1px solid var(--line);
+  }
+
+  .category-body {
+    padding: 0.85rem 1.1rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .category-body-taken {
+    padding: 0.7rem 1.1rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .category-partner {
+    font-family: var(--serif);
+    font-size: 0.82rem;
+    font-style: italic;
+    color: var(--dim);
+  }
+
+  .category-desc {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--soft);
+    line-height: 1.75;
+    margin-bottom: 0.75rem;
+  }
+
+  .category-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .pill {
+    font-family: var(--mono);
+    font-size: 7.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dim);
+    background: var(--ghost);
+    border: 1px solid var(--line);
+    padding: 3px 9px;
+    border-radius: 2px;
+  }
+
+  /* ─── WHAT SHE COMMITS TO ─── */
+  /* The accountability section — directly answers brand fears from interviews */
+  .commits-wrap {
+    background: var(--bg-1);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 0 1.5rem;
+  }
+
+  .commits-top {
+    padding: 1.4rem 1.5rem 1.2rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .commits-label {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 0.65rem;
+  }
+
+  .commits-headline {
+    font-family: var(--serif);
+    font-size: 1.0rem;
+    font-weight: 700;
+    color: var(--hi);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+  }
+
+  .commit-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.95rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .commit-row:last-child { border-bottom: none; }
+
+  .commit-icon {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--bg-3);
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .commit-icon svg { width: 11px; height: 11px; fill: none; stroke: var(--soft); stroke-width: 1.5; }
+
+  .commit-title { font-family: var(--sans); font-size: 0.83rem; font-weight: 600; color: var(--hi); margin-bottom: 0.18rem; }
+  .commit-detail { font-family: var(--sans); font-size: 0.78rem; color: var(--soft); line-height: 1.55; }
+
+  /* ─── WHAT SHE NEEDS FROM YOU ─── */
+  .needs-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .needs-row:first-child { padding-top: 0; }
+  .needs-row:last-child { border-bottom: none; }
+
+  .needs-num {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    color: var(--dim);
+    flex-shrink: 0;
+    padding-top: 2px;
+    width: 18px;
+  }
+
+  .needs-text { font-family: var(--sans); font-size: 0.83rem; color: var(--mid); line-height: 1.6; }
+  .needs-text strong { color: var(--hi); font-weight: 600; }
+
+  /* ─── CANDID PHOTO BREAK ─── */
+  .candid-break {
+    position: relative;
+    height: 55vw;
+    max-height: 240px;
+    overflow: hidden;
+    margin-top: 2.5rem;
+  }
+
+  .candid-img {
+    position: absolute;
+    inset: 0;
+    background: url('Nika_Candid.jpg') center 35% / cover no-repeat;
+  }
+
+  .candid-vignette {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(10,10,9,0.5) 0%, transparent 60%),
+      linear-gradient(180deg, transparent 40%, rgba(10,10,9,0.6) 100%);
+  }
+
+  /* ─── REACH ─── */
+  .reach-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .reach-row:first-child { padding-top: 0; }
+  .reach-row:last-child { border-bottom: none; }
+
+  .reach-icon {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .reach-icon svg { width: 13px; height: 13px; fill: var(--mid); }
+  .reach-name   { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: var(--hi); margin-bottom: 0.1rem; }
+  .reach-handle { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.07em; color: var(--dim); }
+  .reach-stat   { text-align: right; flex-shrink: 0; }
+  .reach-num    { font-family: var(--sans); font-size: 0.9rem; font-weight: 600; color: var(--hi); }
+  .reach-label  { font-family: var(--mono); font-size: 7px; letter-spacing: 0.08em; color: var(--dim); }
+
+  .reach-note {
+    font-family: var(--serif);
+    font-size: 0.83rem;
+    font-style: italic;
+    color: var(--soft);
+    line-height: 1.75;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    margin-top: 0.25rem;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-wrap {
+    margin: 2rem 1.5rem 0;
+    background: var(--bg-1);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .contact-head {
+    padding: 1.4rem 1.5rem 1.2rem;
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+  }
+
+  .contact-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: var(--hi); letter-spacing: -0.015em; margin-bottom: 0.3rem; }
+  .contact-sub   { font-family: var(--serif); font-size: 0.82rem; font-style: italic; color: var(--soft); line-height: 1.6; }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.9rem 1.5rem;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.15s;
+  }
+  .contact-item:last-child { border-bottom: none; }
+  .contact-item:hover { background: var(--ghost); }
+
+  .contact-item-icon {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--bg-3);
+    border: 1px solid var(--line-strong);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-item-icon svg { width: 13px; height: 13px; fill: none; stroke: var(--mid); stroke-width: 1.5; }
+  .contact-item-label { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.15rem; }
+  .contact-item-value { font-family: var(--sans); font-size: 0.84rem; font-weight: 500; color: var(--hi); }
+  .contact-arrow { font-family: var(--mono); font-size: 10px; color: var(--dim); margin-left: auto; }
+
+  /* ─── FOOTER ─── */
+  .site-footer { border-top: 1px solid var(--line); padding: 1.5rem; text-align: center; margin-top: 2.5rem; }
+  .site-footer-link { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; }
+  .site-footer-link:hover { color: var(--soft); }
+
+  /* ─── FADE IN ─── */
+  .fade-in { opacity: 0; transform: translateY(8px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<div class="page-header fade-in">
+  <a href="nika.html" class="back-link">
+    <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to Nika's profile
+  </a>
+  <img src="Sponsable Bird Logo White.png" alt="Sponsable" class="header-bird">
+</div>
+
+<!-- TRANSITION HEADER — picks up directly from the profile -->
+<div class="transition-header fade-in">
+  <div class="transition-eyebrow">Brand information</div>
+  <div class="transition-headline">Now you know who she is. Here's what working with her looks like.</div>
+  <p class="transition-body">This page is for brands considering a partnership. It covers what Nika offers, what she's looking for, and what she commits to. It's designed to answer the questions brands actually ask — not the ones that look good on a pitch deck.</p>
+</div>
+
+<!-- NIKA QUOTE -->
+<div class="nika-quote fade-in">
+  <div class="quote-label">In her own words</div>
+  <p class="quote-text">"I want to work with a brand that knows what it stands for. Tell me what you need, and I'll be honest about whether I can give it. I'll show up, I'll report back, I'll tell you if something isn't working. I just want it to feel like something real — not me wearing a logo and disappearing."</p>
+  <span class="quote-attr">— Nika Potapova</span>
+</div>
+
+<!-- CLIMBING PHOTO — full bleed, no caption needed, the image says it -->
+<div class="climbing-photo fade-in">
+  <div class="climbing-img"></div>
+  <div class="climbing-vignette"></div>
+  <div class="climbing-caption">
+    <span class="climbing-caption-text">Outdoor lead · Sport climbing</span>
+  </div>
+</div>
+
+<!-- WHAT SHE BRINGS -->
+<div class="section fade-in">
+  <div class="section-head">What she brings</div>
+
+  <div class="brings-row">
+    <div class="brings-icon">
+      <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+    </div>
+    <div>
+      <div class="brings-title">Creative involvement</div>
+      <div class="brings-detail">Nika has an eye for photography and wants a say in how she's represented visually. For the right brand this isn't a complication — it's an asset. She'll contribute to shoot concepts, location choices, and creative direction. The work comes out better for it.</div>
+    </div>
+  </div>
+
+  <div class="brings-row">
+    <div class="brings-icon">
+      <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+    </div>
+    <div>
+      <div class="brings-title">Product testing and feedback</div>
+      <div class="brings-detail">Finishing a degree in coaching and sports management. She tests gear with the context to understand it — and the honesty to tell you what she actually thinks. Private feedback before anything goes public.</div>
+    </div>
+  </div>
+
+  <div class="brings-row">
+    <div class="brings-icon">
+      <svg viewBox="0 0 24 24"><path d="M15 10l4.553-2.07A1 1 0 0121 8.87V17a1 1 0 01-1.447.894L15 16M3 8h12v9a1 1 0 01-1 1H4a1 1 0 01-1-1V8z"/></svg>
+    </div>
+    <div>
+      <div class="brings-title">Existing media track record</div>
+      <div class="brings-detail">Red Bull Natural Heights (Dec 2025). Red Bull Dual Ascent 2023–24 with Jacob Schubert. She is not a prospect for media work — she has done it at a high level and knows how it works.</div>
+    </div>
+  </div>
+
+  <div class="brings-row">
+    <div class="brings-icon">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+    </div>
+    <div>
+      <div class="brings-title">A comeback season in progress</div>
+      <div class="brings-detail">Competition season opens May 2026. Spain trip planned for summer — Santa Linya and Siurana. A brand that commits now gets the whole arc, not a retrospective highlight reel.</div>
+    </div>
+  </div>
+
+  <div class="brings-row">
+    <div class="brings-icon">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+    </div>
+    <div>
+      <div class="brings-title">A story that works beyond climbing</div>
+      <div class="brings-detail">Ukrainian. Refugee card. Competing through displacement, finishing a degree, making a comeback. There is a human narrative here that reaches audiences well outside the climbing community.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RULE -->
+<div class="rule fade-in"></div>
+
+<!-- CATEGORY SLOTS -->
+<div class="section fade-in">
+  <div class="section-head">Partnership categories</div>
+  <p style="font-family:var(--serif);font-size:0.85rem;font-style:italic;color:var(--soft);line-height:1.8;margin-bottom:1.25rem;">Nika operates one partner per category. This protects the credibility of each partnership and ensures no brand is competing for the same space. Current status below.</p>
+
+  <!-- OPEN -->
+  <div class="category-card">
+    <div class="category-header">
+      <span class="category-name">Apparel</span>
+      <span class="category-status open">Open</span>
+    </div>
+    <div class="category-body">
+      <p class="category-desc">The most visible category — on the wall, in competition, on location. Nika wants creative input on what she wears and how it's shot. A brand that welcomes that will get more from it.</p>
+      <div class="category-pills">
+        <span class="pill">Competition kit</span>
+        <span class="pill">Training wear</span>
+        <span class="pill">Creative input</span>
+        <span class="pill">Full season</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">
+      <span class="category-name">Travel & Outdoor</span>
+      <span class="category-status open">Open</span>
+    </div>
+    <div class="category-body">
+      <p class="category-desc">Spain in summer 2026, European Cup circuit from May. Regular travel with documented locations. Natural integration, not forced content.</p>
+      <div class="category-pills">
+        <span class="pill">Santa Linya</span>
+        <span class="pill">Siurana</span>
+        <span class="pill">EU Cup circuit</span>
+        <span class="pill">Location content</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">
+      <span class="category-name">Technology</span>
+      <span class="category-status open">Open</span>
+    </div>
+    <div class="category-body">
+      <p class="category-desc">Training tools, apps, wearables, recovery tech. She'll test it properly and give you a real verdict. The coaching degree means she can articulate why something works — or doesn't.</p>
+      <div class="category-pills">
+        <span class="pill">Training tech</span>
+        <span class="pill">Product testing</span>
+        <span class="pill">Detailed feedback</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">
+      <span class="category-name">Film — "I Just Go"</span>
+      <span class="category-status open">Available</span>
+    </div>
+    <div class="category-body">
+      <p class="category-desc">A brand-funded short film. One to two shoot days, professionally produced. Not a gear ad — a film about a person, with a brand that understood the difference. Co-ownership and full distribution rights.</p>
+      <div class="category-pills">
+        <span class="pill">1–2 shoot days</span>
+        <span class="pill">Co-ownership</span>
+        <span class="pill">Distribution rights</span>
+        <span class="pill"><a href="plan.html" style="color:inherit;text-decoration:none;">Full plan →</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAKEN -->
+  <div class="category-card">
+    <div class="category-header">
+      <span class="category-name">Climbing Equipment</span>
+      <span class="category-status taken">Taken</span>
+    </div>
+    <div class="category-body-taken">
+      <span class="category-partner">Black Diamond · Tenaya</span>
+    </div>
+  </div>
+
+  <div class="category-card">
+    <div class="category-header">
+      <span class="category-name">Nutrition & Coffee</span>
+      <span class="category-status taken">Taken</span>
+    </div>
+    <div class="category-body-taken">
+      <span class="category-partner">Karaffu Coffee</span>
+    </div>
+  </div>
+</div>
+
+<!-- CANDID PHOTO BREAK -->
+<div class="candid-break fade-in">
+  <div class="candid-img"></div>
+  <div class="candid-vignette"></div>
+</div>
+
+<!-- WHAT SHE COMMITS TO — the accountability section -->
+<div style="padding: 2.5rem 0 0;">
+  <div class="commits-wrap fade-in">
+    <div class="commits-top">
+      <div class="commits-label">Her commitment to you</div>
+      <div class="commits-headline">The things brands lose sleep over. Here's how she handles them.</div>
+    </div>
+
+    <div class="commit-row">
+      <div class="commit-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div>
+        <div class="commit-title">Monthly reporting</div>
+        <div class="commit-detail">A written update every month — what she posted, what performed, what's coming. Includes her five best brand-integrated posts with context on why she chose them. No chasing required.</div>
+      </div>
+    </div>
+
+    <div class="commit-row">
+      <div class="commit-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      </div>
+      <div>
+        <div class="commit-title">Responsive and reachable</div>
+        <div class="commit-detail">Replies to emails. Shows up to calls. If something changes in her schedule that affects a deliverable, she tells you before it becomes a problem — not after.</div>
+      </div>
+    </div>
+
+    <div class="commit-row">
+      <div class="commit-icon">
+        <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      </div>
+      <div>
+        <div class="commit-title">Deliverables on time</div>
+        <div class="commit-detail">Agreed outputs get delivered on the agreed schedule. If a deadline needs to move, she asks — she doesn't just miss it and go quiet.</div>
+      </div>
+    </div>
+
+    <div class="commit-row">
+      <div class="commit-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <div>
+        <div class="commit-title">Honest feedback, privately first</div>
+        <div class="commit-detail">If something isn't working — a product, a brief, a direction — she'll say so to you before it surfaces anywhere else. That's not a liability. It's the feedback loop most brands pay to suppress.</div>
+      </div>
+    </div>
+
+    <div class="commit-row">
+      <div class="commit-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div>
+        <div class="commit-title">Will come to you</div>
+        <div class="commit-detail">Open to visiting brand headquarters, attending product launches, and getting properly acquainted with what a brand makes and why. She wants to understand the product, not just wear it.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT SHE NEEDS FROM YOU -->
+<div class="section fade-in">
+  <div class="section-head">What she needs from you</div>
+  <p style="font-family:var(--serif);font-size:0.85rem;font-style:italic;color:var(--soft);line-height:1.8;margin-bottom:1.25rem;">The best partnerships are two-way. This is what makes them work from her side.</p>
+
+  <div class="needs-row">
+    <div class="needs-num">01</div>
+    <div class="needs-text"><strong>A clear brief.</strong> What the brand stands for, what success looks like, what you actually want from the partnership. She'll do more with direction than without it.</div>
+  </div>
+  <div class="needs-row">
+    <div class="needs-num">02</div>
+    <div class="needs-text"><strong>Genuine product fit.</strong> If the product doesn't belong in her world she won't take the partnership. If it does, she'll be one of the most credible advocates you have.</div>
+  </div>
+  <div class="needs-row">
+    <div class="needs-num">03</div>
+    <div class="needs-text"><strong>Creative respect.</strong> She has an eye for how things should look and she'll want a say in shoots and visual direction. The output is better for it. Brands that treat this as a collaboration get more than brands that hand her a brief and a product.</div>
+  </div>
+  <div class="needs-row">
+    <div class="needs-num">04</div>
+    <div class="needs-text"><strong>Long-term thinking.</strong> She is not looking for a one-season arrangement. The value compounds over time — she wants a brand that understands that.</div>
+  </div>
+</div>
+
+<!-- RULE -->
+<div class="rule fade-in"></div>
+
+<!-- REACH — brief, not the focus -->
+<div class="section fade-in">
+  <div class="section-head">Reach</div>
+
+  <div class="reach-row">
+    <div class="reach-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </div>
+    <div style="flex:1">
+      <div class="reach-name">Instagram</div>
+      <div class="reach-handle">@nika_____potapova · 467 posts</div>
+    </div>
+    <div class="reach-stat">
+      <div class="reach-num">39.4K</div>
+      <div class="reach-label">Followers</div>
+    </div>
+  </div>
+
+  <div class="reach-row">
+    <div class="reach-icon">
+      <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.14a8.16 8.16 0 004.77 1.52V7.21a4.85 4.85 0 01-1-.52z"/></svg>
+    </div>
+    <div style="flex:1">
+      <div class="reach-name">TikTok</div>
+      <div class="reach-handle">@nika_shark21</div>
+    </div>
+    <div class="reach-stat">
+      <div class="reach-num">1K</div>
+      <div class="reach-label">Early stage</div>
+    </div>
+  </div>
+
+  <div class="reach-row">
+    <div class="reach-icon">
+      <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    </div>
+    <div style="flex:1">
+      <div class="reach-name">YouTube</div>
+      <div class="reach-handle">@nikapotapova · 14.8K views</div>
+    </div>
+    <div class="reach-stat">
+      <div class="reach-num">95</div>
+      <div class="reach-label">Not active</div>
+    </div>
+  </div>
+
+  <p class="reach-note">Instagram is where she operates. The following is real and built over years. Detailed analytics — engagement rate, reach per post, audience demographics — available directly from Nika on request.</p>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-wrap fade-in">
+  <div class="contact-head">
+    <div class="contact-title">Start a conversation</div>
+    <p class="contact-sub">All enquiries go directly to Nika, managed through Sponsable.</p>
+  </div>
+  <a href="mailto:nika@sponsable.co.uk" class="contact-item">
+    <div class="contact-item-icon">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </div>
+    <div>
+      <div class="contact-item-label">Email</div>
+      <div class="contact-item-value">nika@sponsable.co.uk</div>
+    </div>
+    <span class="contact-arrow">→</span>
+  </a>
+  <a href="https://www.instagram.com/nika_____potapova/" target="_blank" class="contact-item">
+    <div class="contact-item-icon">
+      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </div>
+    <div>
+      <div class="contact-item-label">Instagram</div>
+      <div class="contact-item-value">@nika_____potapova</div>
+    </div>
+    <span class="contact-arrow">→</span>
+  </a>
+  <a href="nika.html" class="contact-item">
+    <div class="contact-item-icon">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </div>
+    <div>
+      <div class="contact-item-label">Athlete profile</div>
+      <div class="contact-item-value">sponsable.co.uk/nika</div>
+    </div>
+    <span class="contact-arrow">→</span>
+  </a>
+</div>
+
+<!-- FOOTER -->
+<div class="site-footer fade-in">
+  <a href="https://sponsable.co.uk" class="site-footer-link" target="_blank">Create your profile at sponsable.co.uk →</a>
+</div>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), 40); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.05 });
+
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
