@@ -274,14 +274,14 @@
   /* ─── RESULTS — with subtle winning image behind ─── */
   .results-section {
     position: relative;
-    padding: 0 1.5rem 0.5rem;
+    padding: 0 1.5rem 1.25rem;
     overflow: hidden;
   }
 
   .results-bg {
     position: absolute; inset: 0;
     background: url('Nika_Winning.jpg') center 20% / cover no-repeat;
-    opacity: 0.18;
+    opacity: 0.30;
   }
 
   .section-label {
@@ -352,14 +352,11 @@
   .media-sub   { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.42); }
   .media-badge { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.38); border: 1px solid rgba(255,255,255,0.18); padding: 2px 8px; border-radius: 2px; }
 
-  /* ─── FILM ─── */
-  .film-section { padding: 2rem 1.5rem 0; border-top: 1px solid var(--line); }
+  .film-badge { display: inline-block; font-family: var(--mono); font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 0.9rem; }
 
-  .film-badge { display: inline-block; font-family: var(--mono); font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.9rem; }
+  .film-title { font-family: var(--serif); font-size: 2rem; font-weight: 700; color: white; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0.55rem; text-shadow: 0 2px 12px rgba(0,0,0,0.8); }
 
-  .film-title { font-family: var(--serif); font-size: 2rem; font-weight: 700; color: var(--hi); letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0.55rem; }
-
-  .film-desc { font-family: var(--serif); font-size: 0.88rem; font-style: italic; color: var(--soft); line-height: 1.8; margin-bottom: 1.5rem; }
+  .film-desc { font-family: var(--serif); font-size: 0.88rem; font-style: italic; color: rgba(255,255,255,0.88); line-height: 1.8; margin-bottom: 1.5rem; text-shadow: 0 1px 6px rgba(0,0,0,0.9); }
 
   .film-notify { display: none; margin-bottom: 1.25rem; }
   .film-notify.open { display: block; }
@@ -368,33 +365,67 @@
 
   .notify-input {
     flex: 1; padding: 0.65rem 0.75rem;
-    background: var(--ghost); border: 1px solid var(--line);
-    color: var(--hi); font-family: var(--sans); font-size: 0.82rem;
+    background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.3);
+    color: white; font-family: var(--sans); font-size: 0.82rem;
     outline: none; border-radius: 2px; transition: border-color 0.2s;
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
   }
-  .notify-input::placeholder { color: var(--dim); }
-  .notify-input:focus { border-color: var(--line-strong); }
+  .notify-input::placeholder { color: rgba(255,255,255,0.45); }
+  .notify-input:focus { border-color: rgba(255,255,255,0.6); }
 
   .notify-btn {
-    padding: 0.65rem 1rem; background: var(--bg-3); color: var(--mid);
-    border: 1px solid var(--line-strong); font-family: var(--mono); font-size: 8px;
-    letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; border-radius: 2px;
-    white-space: nowrap; transition: background 0.2s, color 0.2s;
+    padding: 0.65rem 1.1rem;
+    background: white; color: var(--bg);
+    border: none; font-family: var(--mono); font-size: 13px;
+    font-weight: 700; cursor: pointer; border-radius: 2px;
+    white-space: nowrap; transition: background 0.2s;
   }
-  .notify-btn:hover { background: var(--bg-2); color: var(--hi); }
+  .notify-btn:hover { background: rgba(255,255,255,0.88); }
 
   .film-actions {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0.75rem 0 0;
+    display: flex; align-items: center; justify-content: flex-end;
+    padding: 0.65rem 0 1.5rem;
   }
 
-  .film-plan-link { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.15s; }
-  .film-plan-link:hover { color: var(--soft); }
+  .film-plan-link {
+    font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: rgba(255,255,255,0.75);
+    text-decoration: none; transition: color 0.15s, border-color 0.15s;
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 3px 10px; border-radius: 2px;
+  }
+  .film-plan-link:hover { color: white; border-color: rgba(255,255,255,0.65); }
 
-  .notify-toggle { background: none; border: none; font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); cursor: pointer; transition: color 0.15s; padding: 0; }
-  .notify-toggle:hover { color: var(--soft); }
+  /* ─── FILM CARD WITH BACKGROUND IMAGE ─── */
+  .film-section {
+    position: relative;
+    overflow: hidden;
+    border-top: none;
+  }
 
-  /* ─── WINNING PHOTO BREAK ─── */
+  .film-bg {
+    position: absolute; inset: 0;
+    background: url('Nika_Bleeding.jpg') center 25% / cover no-repeat;
+    opacity: 0.5;
+  }
+
+  /* Dark overlay so text reads cleanly */
+  .film-section::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg,
+      rgba(10,10,9,0.55) 0%,
+      rgba(10,10,9,0.45) 50%,
+      rgba(10,10,9,0.65) 100%
+    );
+    pointer-events: none;
+  }
+
+  .film-inner {
+    position: relative;
+    z-index: 2;
+    padding: 2rem 1.5rem 0;
+  }
   .winning-break {
     position: relative;
     height: 52vw;
@@ -425,6 +456,12 @@
     position: absolute; inset: 0;
     background: url('Nika_Bleeding.jpg') center 25% / cover no-repeat;
     opacity: 0.38;
+  }
+
+  .film-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,10,9,0.55) 0%, rgba(10,10,9,0.45) 100%);
+    z-index: 1;
   }
 
   .film-inner {
@@ -1189,7 +1226,10 @@
       <div class="result-name">Fuck the System</div>
       <div class="result-detail">Santa Linya · 2019 · 9a Outdoor</div>
     </div>
-    <a href="history.html" style="font-family:var(--mono);font-size:7.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim);border:1px solid rgba(255,255,255,0.12);padding:2px 8px;border-radius:2px;text-decoration:none;flex-shrink:0;">More</a>
+  </div>
+  <!-- More — absolute bottom right, matching Watch on Natural Heights -->
+  <div style="position:absolute;bottom:1.25rem;right:1.5rem;z-index:2;">
+    <a href="history.html" style="font-family:var(--mono);font-size:7.5px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.18);padding:4px 10px;border-radius:2px;text-decoration:none;">More</a>
   </div>
   </div><!-- end z-index wrapper -->
 </div>
@@ -1325,10 +1365,11 @@
   </div>
   <div class="film-section fade-in" style="margin-top:0.75rem;">
     <div class="film-bg"></div>
+    <div class="film-overlay"></div>
     <div class="film-inner">
       <div class="film-badge">In Development · Short Film</div>
       <div class="film-title">Nika, Unscripted</div>
-      <p class="film-desc">No narration. No highlights reel. Just Nika — talking, climbing, existing. The story most people don't know: Ukraine, a refugee card, a coach who took more than he gave, and a comeback that's still in progress.</p>
+      <p class="film-desc">Interview with Nika and some climbing shots, recorded over a couple of days. The story most people don't know, and a comeback that's still in progress.</p>
       <div class="notify-row" style="margin-bottom:0.5rem;">
         <input class="notify-input" id="film-email" type="email" placeholder="Notify me when it drops">
         <button class="notify-btn" onclick="submitFilmNotify()">→</button>
