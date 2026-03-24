@@ -169,7 +169,27 @@
   }
 
   /* ─── IDENTITY ─── */
-  .identity-section { padding: 2rem 1.5rem 0; }
+  .identity-section {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Blurred photo background for story section */
+  .identity-bg {
+    position: absolute;
+    inset: 0;
+    background: url('Nika_Wall.jpg') center 30% / cover no-repeat;
+    filter: blur(18px);
+    transform: scale(1.1); /* prevent blur edge artifacts */
+    opacity: 0.35;
+  }
+
+  .identity-inner {
+    position: relative;
+    z-index: 1;
+    padding: 2rem 1.5rem 0;
+  }
 
   .status-row {
     display: flex; align-items: center; gap: 0.75rem;
@@ -295,7 +315,8 @@
   .result-row:last-child { border-bottom: none; }
 
   .result-medal { width: 24px; height: 24px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-  .result-medal svg { width: 20px; height: 20px; }
+  .result-medal svg { width: 22px; height: 22px; }
+  .result-medal.gold svg { filter: drop-shadow(0 0 4px rgba(210,175,70,0.4)); }
   .result-body { flex: 1; }
   .result-place  { font-family: var(--mono); font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.18rem; }
   .result-name   { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--hi); margin-bottom: 0.12rem; }
@@ -386,8 +407,98 @@
   .notify-toggle { background: none; border: none; font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); cursor: pointer; transition: color 0.15s; padding: 0; }
   .notify-toggle:hover { color: var(--soft); }
 
-  /* ─── VOICE NOTE ─── */
-  .voice-section { padding: 2rem 1.5rem; border-top: 1px solid var(--line); }
+  /* ─── WINNING PHOTO BREAK ─── */
+  .winning-break {
+    position: relative;
+    height: 52vw;
+    max-height: 230px;
+    overflow: hidden;
+  }
+
+  .winning-img {
+    position: absolute; inset: 0;
+    background: url('Nika_Winning.jpg') center 25% / cover no-repeat;
+  }
+
+  .winning-vignette {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,10,9,0.5) 0%, transparent 30%, transparent 65%, rgba(10,10,9,0.7) 100%),
+      linear-gradient(90deg, rgba(10,10,9,0.3) 0%, transparent 50%);
+  }
+
+  /* ─── FILM CARD WITH BACKGROUND IMAGE ─── */
+  .film-section {
+    position: relative;
+    overflow: hidden;
+    border-top: none;
+  }
+
+  .film-bg {
+    position: absolute; inset: 0;
+    background: url('Nika_BW.jpg') center 40% / cover no-repeat;
+    opacity: 0.22;
+  }
+
+  .film-inner {
+    position: relative;
+    z-index: 1;
+    padding: 2rem 1.5rem 0;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ─── ELEVATED VOICE NOTE ─── */
+  .voice-section {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+  }
+
+  .voice-bg {
+    position: absolute; inset: 0;
+    background: url('Nika_Candid.jpg') center 30% / cover no-repeat;
+    filter: blur(12px);
+    transform: scale(1.08);
+    opacity: 0.18;
+  }
+
+  .voice-inner {
+    position: relative;
+    z-index: 1;
+    padding: 2rem 1.5rem;
+  }
+
+  .voice-label-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .voice-feature-label {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--hi);
+    letter-spacing: -0.01em;
+  }
+
+  .voice-date-label {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+
+  .voice-sub {
+    font-family: var(--serif);
+    font-size: 0.82rem;
+    font-style: italic;
+    color: var(--soft);
+    line-height: 1.65;
+    margin-top: 0.75rem;
+  }
 
   .section-micro { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 1rem; }
 
@@ -525,6 +636,13 @@
   .hero-bird-btn img { mix-blend-mode: screen; display: block; }
 
   .sp-bird { width: 90px; height: 90px; margin: -0.5rem auto -1rem; mix-blend-mode: screen; display: block; }
+
+  .modal-bird-img {
+    width: 70px; height: 70px;
+    mix-blend-mode: screen;
+    display: block;
+    margin: 0 auto 0.25rem;
+  }
 
   .sp-tagline-cycling { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; color: var(--hi); line-height: 1.2; margin-bottom: 0.35rem; min-height: 2.1rem; }
   .sp-tagline-cycling .cycling-word { color: var(--mid); font-style: italic; font-weight: 400; }
@@ -714,6 +832,8 @@
 
 <!-- IDENTITY -->
 <div class="identity-section fade-in">
+  <div class="identity-bg"></div>
+  <div class="identity-inner">
   <div class="status-row">
     <div class="status-pill"><div class="status-dot"></div>Pre-season</div>
     <span class="location-text">Paris, France</span>
@@ -740,7 +860,8 @@
     <div class="bio-pull"><p>"I know I can climb much better than I am right now. I'll come back. Just wait for my comeback."</p></div>
     <button class="bio-more" onclick="toggleBio()">less</button>
   </div>
-</div>
+</div><!-- end identity-inner -->
+</div><!-- end identity-section -->
 
 <div class="rule fade-in"></div>
 
@@ -748,12 +869,14 @@
 <div class="results-section fade-in">
   <div class="section-label">Athletic Record <a href="#">Full history →</a></div>
   <div class="result-row">
-    <div class="result-medal">
-      <svg viewBox="0 0 20 20" fill="none">
-        <path d="M6 3h8v6a4 4 0 01-8 0V3z" stroke="rgba(210,175,70,0.75)" stroke-width="1.2" stroke-linejoin="round"/>
-        <path d="M4 3h2M14 3h2" stroke="rgba(210,175,70,0.75)" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M4 3c0 2 0 4-2 5M16 3c0 2 0 4 2 5" stroke="rgba(210,175,70,0.75)" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M10 13v3M7 16h6" stroke="rgba(210,175,70,0.75)" stroke-width="1.2" stroke-linecap="round"/>
+    <div class="result-medal gold">
+      <!-- Filled gold trophy -->
+      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 2h8v7a4 4 0 01-8 0V2z" fill="rgba(210,175,70,0.9)"/>
+        <path d="M4 2h2v3c0 1.5-1 2.5-2 3V2z" fill="rgba(210,175,70,0.7)"/>
+        <path d="M14 2h2v6c-1-.5-2-1.5-2-3V2z" fill="rgba(210,175,70,0.7)"/>
+        <rect x="9" y="13" width="2" height="3" fill="rgba(210,175,70,0.8)"/>
+        <rect x="7" y="15.5" width="6" height="1.5" rx="0.5" fill="rgba(210,175,70,0.8)"/>
       </svg>
     </div>
     <div class="result-body">
@@ -763,12 +886,13 @@
     </div>
   </div>
   <div class="result-row">
-    <div class="result-medal">
-      <svg viewBox="0 0 20 20" fill="none">
-        <path d="M6 3h8v6a4 4 0 01-8 0V3z" stroke="rgba(210,175,70,0.75)" stroke-width="1.2" stroke-linejoin="round"/>
-        <path d="M4 3h2M14 3h2" stroke="rgba(210,175,70,0.75)" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M4 3c0 2 0 4-2 5M16 3c0 2 0 4 2 5" stroke="rgba(210,175,70,0.75)" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M10 13v3M7 16h6" stroke="rgba(210,175,70,0.75)" stroke-width="1.2" stroke-linecap="round"/>
+    <div class="result-medal gold">
+      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 2h8v7a4 4 0 01-8 0V2z" fill="rgba(210,175,70,0.9)"/>
+        <path d="M4 2h2v3c0 1.5-1 2.5-2 3V2z" fill="rgba(210,175,70,0.7)"/>
+        <path d="M14 2h2v6c-1-.5-2-1.5-2-3V2z" fill="rgba(210,175,70,0.7)"/>
+        <rect x="9" y="13" width="2" height="3" fill="rgba(210,175,70,0.8)"/>
+        <rect x="7" y="15.5" width="6" height="1.5" rx="0.5" fill="rgba(210,175,70,0.8)"/>
       </svg>
     </div>
     <div class="result-body">
@@ -792,6 +916,12 @@
   </div>
 </div>
 
+<!-- WINNING PHOTO BREAK -->
+<div class="winning-break fade-in">
+  <div class="winning-img"></div>
+  <div class="winning-vignette"></div>
+</div>
+
 <!-- MEDIA -->
 <a href="https://www.redbull.com/int-en/episodes/natural-heights-s1-e3" target="_blank" class="media-link fade-in">
   <div class="media-thumb">
@@ -810,6 +940,8 @@
 
 <!-- FILM -->
 <div class="film-section fade-in">
+  <div class="film-bg"></div>
+  <div class="film-inner">
   <div class="film-badge">In Development</div>
   <div class="film-title">I Just Go</div>
   <p class="film-desc">A short film about Nika — her world, her story, her voice. Not a highlights reel. The version most people haven't seen yet. A brand-funded shoot, one to two days.</p>
@@ -824,23 +956,31 @@
   <div class="film-actions">
     <button class="notify-toggle" id="notify-toggle" onclick="toggleFilmNotify()">Get notified ↓</button>
     <a href="#" class="film-plan-link">See the full plan →</a>
-  </div>
+  </div><!-- end film-actions -->
+  </div><!-- end film-inner -->
 </div>
 
 <!-- VOICE NOTE -->
 <div class="voice-section fade-in">
-  <div class="section-micro">Voice Note — March 2026</div>
-  <div class="voice-ui" id="voice-ui" onclick="handleVoiceClick()">
-    <div class="voice-play" id="voice-play">
-      <svg id="voice-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+  <div class="voice-bg"></div>
+  <div class="voice-inner">
+    <div class="voice-label-row">
+      <span class="voice-feature-label">Hear from Nika</span>
+      <span class="voice-date-label">March 2026</span>
     </div>
-    <div class="waveform">
-      <span style="height:32%"></span><span style="height:62%"></span><span style="height:44%"></span>
-      <span style="height:88%"></span><span style="height:52%"></span><span style="height:72%"></span>
-      <span style="height:38%"></span><span style="height:58%"></span><span style="height:82%"></span>
-      <span style="height:48%"></span>
+    <div class="voice-ui" id="voice-ui" onclick="handleVoiceClick()">
+      <div class="voice-play" id="voice-play">
+        <svg id="voice-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <div class="waveform">
+        <span style="height:32%"></span><span style="height:62%"></span><span style="height:44%"></span>
+        <span style="height:88%"></span><span style="height:52%"></span><span style="height:72%"></span>
+        <span style="height:38%"></span><span style="height:58%"></span><span style="height:82%"></span>
+        <span style="height:48%"></span>
+      </div>
+      <span class="voice-time" id="voice-time">0:24</span>
     </div>
-    <span class="voice-time" id="voice-time">0:24</span>
+    <p class="voice-sub">A voice note recorded in Paris. Unscripted.</p>
   </div>
   <audio id="nika-audio" src="Nika voice note.m4a" preload="metadata"></audio>
 </div>
@@ -951,7 +1091,7 @@
   <div class="modal">
     <div id="modal-form-content">
       <div class="modal-top">
-        <img src="Sponsable Bird Logo White.png" alt="Sponsable" class="modal-bird" style="object-fit:contain;">
+        <img src="Sponsable Bird Logo White.png" alt="Sponsable" class="modal-bird-img" style="object-fit:contain;">
         <div class="modal-title">Get Nika's contact details</div>
         <p class="modal-sub">For brands and agencies looking to explore a partnership. We'll send through everything you need.</p>
       </div>
