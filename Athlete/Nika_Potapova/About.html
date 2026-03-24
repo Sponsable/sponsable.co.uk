@@ -64,7 +64,7 @@
   .hero-img {
     position: absolute;
     inset: 0;
-    background: url('Nika Hero.jpg') center 22% / cover no-repeat;
+    background: url('Nika_Wall.jpg') center 20% / cover no-repeat;
     transform: scale(1.04);
     transition: transform 9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
@@ -170,24 +170,10 @@
 
   /* ─── IDENTITY ─── */
   .identity-section {
-    position: relative;
     padding: 0;
-    overflow: hidden;
-  }
-
-  /* Blurred photo background for story section */
-  .identity-bg {
-    position: absolute;
-    inset: 0;
-    background: url('Nika_Wall.jpg') center 30% / cover no-repeat;
-    filter: blur(18px);
-    transform: scale(1.1); /* prevent blur edge artifacts */
-    opacity: 0.35;
   }
 
   .identity-inner {
-    position: relative;
-    z-index: 1;
     padding: 2rem 1.5rem 0;
   }
 
@@ -437,7 +423,7 @@
   .film-bg {
     position: absolute; inset: 0;
     background: url('Nika_BW.jpg') center 40% / cover no-repeat;
-    opacity: 0.22;
+    opacity: 0.08;
   }
 
   .film-inner {
@@ -449,22 +435,10 @@
 
   /* ─── ELEVATED VOICE NOTE ─── */
   .voice-section {
-    position: relative;
-    overflow: hidden;
     border-top: 1px solid var(--line);
   }
 
-  .voice-bg {
-    position: absolute; inset: 0;
-    background: url('Nika_Candid.jpg') center 30% / cover no-repeat;
-    filter: blur(12px);
-    transform: scale(1.08);
-    opacity: 0.18;
-  }
-
   .voice-inner {
-    position: relative;
-    z-index: 1;
     padding: 2rem 1.5rem;
   }
 
@@ -832,7 +806,6 @@
 
 <!-- IDENTITY -->
 <div class="identity-section fade-in">
-  <div class="identity-bg"></div>
   <div class="identity-inner">
   <div class="status-row">
     <div class="status-pill"><div class="status-dot"></div>Pre-season</div>
@@ -867,7 +840,7 @@
 
 <!-- RESULTS -->
 <div class="results-section fade-in">
-  <div class="section-label">Athletic Record <a href="#">Full history →</a></div>
+  <div class="section-label">Athletic Record <a href="history.html">Full history →</a></div>
   <div class="result-row">
     <div class="result-medal gold">
       <!-- Filled gold trophy -->
@@ -955,14 +928,13 @@
 
   <div class="film-actions">
     <button class="notify-toggle" id="notify-toggle" onclick="toggleFilmNotify()">Get notified ↓</button>
-    <a href="#" class="film-plan-link">See the full plan →</a>
+    <a href="plan.html" class="film-plan-link">See the full plan →</a>
   </div><!-- end film-actions -->
   </div><!-- end film-inner -->
 </div>
 
 <!-- VOICE NOTE -->
 <div class="voice-section fade-in">
-  <div class="voice-bg"></div>
   <div class="voice-inner">
     <div class="voice-label-row">
       <span class="voice-feature-label">Hear from Nika</span>
