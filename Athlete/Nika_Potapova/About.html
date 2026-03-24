@@ -647,56 +647,31 @@
   }
   .qa-submit:hover { border-color: var(--line-strong); color: var(--soft); }
 
-  /* ─── PARTNER TICKER ─── */
-  .ticker-section {
-    margin-top: 2.5rem;
-    padding: 1.5rem 0;
+  /* ─── PARTNERS ─── */
+  .partners-section {
+    padding: 1.75rem 1.5rem;
     border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    overflow: hidden;
-    position: relative;
-  }
-
-  .ticker-label {
-    font-family: var(--mono); font-size: 8.5px;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--dim); text-align: center;
-    margin-bottom: 1.1rem;
-  }
-
-  .ticker-track {
     display: flex;
-    width: max-content;
-    animation: ticker 18s linear infinite;
-  }
-  .ticker-track:hover { animation-play-state: paused; }
-
-  @keyframes ticker {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+    align-items: baseline;
+    gap: 1.25rem;
   }
 
-  .ticker-item {
-    display: flex; align-items: center;
-    padding: 0 2.5rem;
-    white-space: nowrap;
-    border-right: 1px solid var(--line);
-  }
-  .ticker-item:last-child { border-right: none; }
-
-  .ticker-name {
-    font-family: var(--serif); font-size: 0.92rem; font-weight: 600;
-    color: var(--soft); letter-spacing: -0.01em;
+  .partners-label {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dim);
+    flex-shrink: 0;
   }
 
-  /* Fade edges */
-  .ticker-section::before,
-  .ticker-section::after {
-    content: ''; position: absolute; top: 0; bottom: 0;
-    width: 3rem; z-index: 2; pointer-events: none;
+  .partners-names {
+    font-family: var(--serif);
+    font-size: 0.88rem;
+    font-style: italic;
+    color: var(--soft);
+    letter-spacing: 0.01em;
   }
-  .ticker-section::before { left: 0; background: linear-gradient(90deg, var(--bg) 0%, transparent 100%); }
-  .ticker-section::after  { right: 0; background: linear-gradient(270deg, var(--bg) 0%, transparent 100%); }
 
   /* ─── BRAND ACCESS ─── */
   .access-section {
@@ -971,7 +946,7 @@
   <div class="hero-vignette"></div>
   <div class="hero-top">
     <button class="hero-bird-btn" onclick="openSpPopup()" aria-label="About Sponsable">
-      <img src="Sponsable Bird Logo White.png" alt="Sponsable" width="48" height="48" style="object-fit:contain;">
+      <img src="Sponsable Bird Logo White.png" alt="Sponsable" width="72" height="72" style="object-fit:contain;">
     </button>
     <div class="hero-socials">
       <a href="https://www.instagram.com/nika_____potapova/" class="social-btn" target="_blank" aria-label="Instagram">
@@ -1188,17 +1163,10 @@
   </div>
 </div>
 
-<!-- PARTNER TICKER -->
-<div class="ticker-section fade-in">
-  <div class="ticker-label">Partners</div>
-  <div class="ticker-track">
-    <div class="ticker-item"><span class="ticker-name">Karaffu Coffee</span></div>
-    <div class="ticker-item"><span class="ticker-name">Black Diamond</span></div>
-    <div class="ticker-item"><span class="ticker-name">Tenaya</span></div>
-    <div class="ticker-item"><span class="ticker-name">Karaffu Coffee</span></div>
-    <div class="ticker-item"><span class="ticker-name">Black Diamond</span></div>
-    <div class="ticker-item"><span class="ticker-name">Tenaya</span></div>
-  </div>
+<!-- PARTNERS -->
+<div class="partners-section fade-in">
+  <span class="partners-label">Partners</span>
+  <span class="partners-names">Karaffu Coffee · Black Diamond · Tenaya</span>
 </div>
 
 <!-- BRAND ACCESS -->
