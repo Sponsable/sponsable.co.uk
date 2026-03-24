@@ -143,29 +143,22 @@
 
   .hero-name {
     font-family: var(--serif);
-    font-size: 4rem;
+    font-size: 5.2rem;
     font-weight: 700;
     color: white;
-    line-height: 0.9;
-    letter-spacing: -0.03em;
+    line-height: 0.88;
+    letter-spacing: -0.035em;
   }
 
   .hero-name-second {
     font-family: var(--serif);
-    font-size: 4rem;
+    font-size: 5.2rem;
     font-weight: 400;
     font-style: italic;
     color: rgba(255,255,255,0.65);
-    line-height: 1.05;
-    letter-spacing: -0.025em;
-    margin-bottom: 0.85rem;
-  }
-
-  .hero-tagline {
-    font-family: var(--serif);
-    font-size: 0.86rem;
-    font-style: italic;
-    color: var(--soft);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 0;
   }
 
   /* ─── IDENTITY ─── */
@@ -564,38 +557,300 @@
     font-weight: 600;
   }
 
-  /* ─── SPOTIFY ─── */
-  .spotify-wrap { padding: 2rem 1.5rem 0; }
-  .spotify-wrap .spotify-label { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between; }
-  .spotify-wrap iframe { border-radius: 2px; display: block; }
+  /* ─── GALLERY CAROUSEL ─── */
+  .gallery-wrap {
+    padding: 2rem 0 0;
+    overflow: hidden;
+  }
 
-  /* ─── Q&A ─── */
-  .qa-section { padding: 2rem 1.5rem 0; }
+  .gallery-label {
+    font-family: var(--mono);
+    font-size: 8.5px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--dim);
+    padding: 0 1.5rem; margin-bottom: 1rem;
+  }
 
-  .qa-head { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); padding-bottom: 1.1rem; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
+  .gallery-track-outer {
+    overflow: hidden;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+  }
 
-  .qa-item { padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
-  .qa-item:last-of-type { border-bottom: none; }
+  .gallery-track-outer:active { cursor: grabbing; }
 
-  .qa-q { font-family: var(--sans); font-size: 0.8rem; color: var(--soft); margin-bottom: 0.55rem; line-height: 1.55; }
-  .qa-q::before { content: "Q  "; font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.12em; color: var(--dim); }
+  .gallery-track {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0 1.5rem 0 1.5rem;
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
 
-  .qa-a { font-family: var(--serif); font-size: 0.9rem; font-style: italic; color: var(--mid); line-height: 1.8; padding-left: 1rem; border-left: 2px solid var(--pull); }
+  .gallery-slide {
+    flex-shrink: 0;
+    width: 72vw;
+    max-width: 310px;
+    aspect-ratio: 3/4;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
 
-  .qa-ask { padding: 1.25rem 0; border-top: 1px solid var(--line); }
-  .qa-ask-label { font-family: var(--mono); font-size: 8px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.55rem; }
+  .gallery-slide img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    pointer-events: none;
+    display: block;
+  }
 
-  .qa-textarea { width: 100%; padding: 0.65rem 0.75rem; background: var(--ghost); border: 1px solid var(--line); color: var(--hi); font-family: var(--serif); font-size: 0.86rem; font-style: italic; outline: none; border-radius: 2px; resize: none; margin-bottom: 0.55rem; display: block; transition: border-color 0.2s; }
-  .qa-textarea::placeholder { color: var(--dim); font-style: italic; }
-  .qa-textarea:focus { border-color: var(--line-strong); }
+  /* Individual focal points */
+  .gallery-slide:nth-child(2) img { object-position: center 20%; }
+  .gallery-slide:nth-child(3) img { object-position: center 35%; }
+  .gallery-slide:nth-child(4) img { object-position: center 30%; }
+  .gallery-slide:nth-child(5) img { object-position: center 40%; }
+  .gallery-slide:nth-child(6) img { object-position: center 30%; }
 
-  .qa-submit { background: none; border: 1px solid var(--line); color: var(--dim); font-family: var(--mono); font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.5rem 0.9rem; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
-  .qa-submit:hover { border-color: var(--line-strong); color: var(--soft); }
+  .gallery-slide-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 2rem 1rem 0.85rem;
+    background: linear-gradient(transparent, rgba(10,10,9,0.7));
+    font-family: var(--mono);
+    font-size: 7.5px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--soft);
+  }
 
-  /* ─── PARTNERS ─── */
-  .partners-section { padding: 1.75rem 1.5rem; border-top: 1px solid var(--line); display: flex; align-items: baseline; gap: 1.25rem; }
-  .partners-label { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); flex-shrink: 0; }
-  .partners-names { font-family: var(--serif); font-size: 0.88rem; font-style: italic; color: var(--soft); letter-spacing: 0.01em; }
+  .gallery-dots {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.4rem; padding: 0.85rem 0 0;
+  }
+
+  .gallery-dot {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--line-strong);
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .gallery-dot.active {
+    background: var(--soft);
+    transform: scale(1.3);
+  }
+
+  /* ─── NIKA ANSWERS — unified interactive section ─── */
+  .answers-section { padding: 2rem 1.5rem 0; }
+
+  .answers-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 0;
+  }
+
+  .answers-title {
+    font-family: var(--mono);
+    font-size: 8.5px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--dim);
+  }
+
+  .answers-cadence {
+    font-family: var(--mono);
+    font-size: 8px; letter-spacing: 0.1em;
+    color: var(--dim);
+  }
+
+  /* Each answer item — question on top, response below */
+  .answer-item {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .answer-q {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    color: var(--soft);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+
+  .answer-q::before {
+    content: "Q  ";
+    font-family: var(--mono);
+    font-size: 7.5px;
+    letter-spacing: 0.12em;
+    color: var(--dim);
+  }
+
+  .answer-a {
+    font-family: var(--serif);
+    font-size: 0.9rem; font-style: italic;
+    color: var(--mid); line-height: 1.8;
+    padding-left: 1rem;
+    border-left: 2px solid var(--pull);
+  }
+
+  /* Voice note answer */
+  .answer-voice {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .answer-voice-q {
+    font-family: var(--sans);
+    font-size: 0.8rem; color: var(--soft);
+    line-height: 1.5; margin-bottom: 0.85rem;
+  }
+
+  .answer-voice-q::before {
+    content: "Q  ";
+    font-family: var(--mono);
+    font-size: 7.5px; letter-spacing: 0.12em; color: var(--dim);
+  }
+
+  .answer-voice-label {
+    font-family: var(--mono);
+    font-size: 8px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--dim);
+    margin-bottom: 0.6rem;
+  }
+
+  /* Spotify answer */
+  .answer-spotify {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .answer-spotify-q {
+    font-family: var(--sans);
+    font-size: 0.8rem; color: var(--soft);
+    line-height: 1.5; margin-bottom: 0.85rem;
+  }
+
+  .answer-spotify-q::before {
+    content: "Q  ";
+    font-family: var(--mono);
+    font-size: 7.5px; letter-spacing: 0.12em; color: var(--dim);
+  }
+
+  /* Ask input */
+  .answers-ask {
+    padding: 1.25rem 0 0;
+  }
+
+  .answers-ask-label {
+    font-family: var(--mono);
+    font-size: 8px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--dim);
+    margin-bottom: 0.65rem;
+  }
+
+  .answers-ask textarea {
+    width: 100%;
+    padding: 0.75rem 0.85rem;
+    background: var(--ghost);
+    border: 1px solid var(--line);
+    color: var(--hi);
+    font-family: var(--serif);
+    font-size: 0.88rem;
+    font-style: italic;
+    outline: none;
+    border-radius: 2px;
+    resize: none;
+    display: block;
+    line-height: 1.6;
+    transition: border-color 0.2s;
+  }
+
+  .answers-ask textarea::placeholder {
+    color: var(--dim);
+    font-style: italic;
+  }
+
+  .answers-ask textarea:focus {
+    border-color: var(--line-strong);
+  }
+
+  .answers-ask-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.65rem;
+  }
+
+  .answers-submit {
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--dim);
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.9rem;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s;
+    flex-shrink: 0;
+  }
+
+  .answers-submit:hover {
+    border-color: var(--line-strong);
+    color: var(--soft);
+  }
+
+  .answers-note {
+    font-family: var(--serif);
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--dim);
+    line-height: 1.6;
+  }
+
+  /* ─── PARTNERS — logo style ─── */
+  .partners-section {
+    padding: 2rem 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .partners-head {
+    font-family: var(--mono);
+    font-size: 8.5px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--dim);
+    margin-bottom: 1.5rem;
+  }
+
+  .partners-logos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .partner-item {
+    flex: 1;
+    text-align: center;
+    padding: 1rem 0.5rem;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+  }
+
+  .partner-name {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--soft);
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+  }
+
+  .partner-cat {
+    font-family: var(--mono);
+    font-size: 7px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-top: 0.25rem;
+  }
 
   /* ─── BRAND ACCESS ─── */
   .access-section { padding: 2rem 1.5rem; text-align: center; }
@@ -829,7 +1084,6 @@
     </div>
     <div class="hero-name">Nika</div>
     <div class="hero-name-second">Potapova</div>
-    <div class="hero-tagline">Just wait for my comeback</div>
   </div>
 </div>
 
@@ -938,29 +1192,6 @@
 </a>
 
 <!-- VOICE NOTE — moved between Natural Heights and I Just Go -->
-<div class="voice-section fade-in">
-  <div class="voice-inner">
-    <div class="voice-label-row">
-      <span class="voice-feature-label">Hear from Nika</span>
-      <span class="voice-date-label">March 2026</span>
-    </div>
-    <div class="voice-ui" id="voice-ui" onclick="handleVoiceClick()">
-      <div class="voice-play" id="voice-play">
-        <svg id="voice-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="waveform">
-        <span style="height:32%"></span><span style="height:62%"></span><span style="height:44%"></span>
-        <span style="height:88%"></span><span style="height:52%"></span><span style="height:72%"></span>
-        <span style="height:38%"></span><span style="height:58%"></span><span style="height:82%"></span>
-        <span style="height:48%"></span>
-      </div>
-      <span class="voice-time" id="voice-time">0:24</span>
-    </div>
-    <p class="voice-sub">"What's the worst advice anyone has ever given you about climbing?"</p>
-  </div>
-  <audio id="nika-audio" src="Nika voice note.m4a" preload="metadata"></audio>
-</div>
-
 <!-- FILM -->
 <div class="film-section fade-in">
   <div class="film-bg"></div>
@@ -1002,37 +1233,111 @@
   </div>
 </div>
 
-<!-- SPOTIFY -->
-<div class="spotify-wrap fade-in">
-  <div class="spotify-label"><span>Listening to</span></div>
-  <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/6UEnWtk3BxIxw4tJYFwm4P?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<!-- GALLERY CAROUSEL -->
+<div class="gallery-wrap fade-in">
+  <div class="gallery-label">Gallery</div>
+  <div class="gallery-track-outer" id="gallery-outer">
+    <div class="gallery-track" id="gallery-track">
+      <div class="gallery-slide">
+        <img src="Nika_Climbing.jpg" alt="Outdoor sport climbing">
+        <div class="gallery-slide-caption">Outdoor lead</div>
+      </div>
+      <div class="gallery-slide">
+        <img src="Nika_Winning.jpg" alt="Competition">
+        <div class="gallery-slide-caption">Competition</div>
+      </div>
+      <div class="gallery-slide">
+        <img src="Nika_Candid.jpg" alt="">
+      </div>
+      <div class="gallery-slide">
+        <img src="Nika_Lighting.jpg" alt="Indoor climbing">
+        <div class="gallery-slide-caption">Indoor comp</div>
+      </div>
+      <div class="gallery-slide">
+        <img src="Nika_Working.jpg" alt="At the crag">
+        <div class="gallery-slide-caption">Santa Linya</div>
+      </div>
+      <div class="gallery-slide">
+        <img src="Nika_BW.jpg" alt="Bouldering">
+      </div>
+    </div>
+  </div>
+  <div class="gallery-dots" id="gallery-dots">
+    <div class="gallery-dot active"></div>
+    <div class="gallery-dot"></div>
+    <div class="gallery-dot"></div>
+    <div class="gallery-dot"></div>
+    <div class="gallery-dot"></div>
+    <div class="gallery-dot"></div>
+  </div>
 </div>
 
-<!-- Q&A -->
-<div class="qa-section fade-in">
-  <div class="qa-head">
-    Ask Nika
-    <span style="font-size:8px;color:var(--dim);letter-spacing:0.1em;">Answered monthly</span>
+<!-- NIKA ANSWERS — voice note, spotify, Q&A unified -->
+<div class="answers-section fade-in">
+  <div class="answers-head">
+    <span class="answers-title">Nika Answers</span>
+    <span class="answers-cadence">Updated monthly</span>
   </div>
-  <div class="qa-item">
-    <div class="qa-q">What does a normal training day look like for you right now?</div>
-    <div class="qa-a">Morning session on the board, usually two hours. Afternoon I do something that isn't climbing — gym, run, just walk around Paris. I used to train until I couldn't move. I don't do that anymore.</div>
+
+  <!-- Voice note answer -->
+  <div class="answer-voice">
+    <div class="answer-voice-q">What's the worst advice anyone has ever given you about climbing?</div>
+    <div class="answer-voice-label">Voice note — March 2026</div>
+    <div class="voice-ui" id="voice-ui" onclick="handleVoiceClick()">
+      <div class="voice-play" id="voice-play">
+        <svg id="voice-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <div class="waveform">
+        <span style="height:32%"></span><span style="height:62%"></span><span style="height:44%"></span>
+        <span style="height:88%"></span><span style="height:52%"></span><span style="height:72%"></span>
+        <span style="height:38%"></span><span style="height:58%"></span><span style="height:82%"></span>
+        <span style="height:48%"></span>
+      </div>
+      <span class="voice-time" id="voice-time">0:24</span>
+    </div>
+    <audio id="nika-audio" src="Nika voice note.m4a" preload="metadata"></audio>
   </div>
-  <div class="qa-item">
-    <div class="qa-q">Do you ever think about quitting?</div>
-    <div class="qa-a">Yes. And then I get on the wall and I remember why I started. It's not complicated. It just feels that way sometimes.</div>
+
+  <!-- Text answers -->
+  <div class="answer-item">
+    <div class="answer-q">Do you ever think about quitting?</div>
+    <div class="answer-a">Yes. And then I get on the wall and I remember why I started. It's not complicated. It just feels that way sometimes.</div>
   </div>
-  <div class="qa-ask">
-    <div class="qa-ask-label">Send a question</div>
-    <textarea class="qa-textarea" id="qa-input" rows="2" placeholder="Ask something real…"></textarea>
-    <button class="qa-submit" onclick="submitQuestion()">Submit question →</button>
+
+  <!-- Spotify answer -->
+  <div class="answer-spotify">
+    <div class="answer-spotify-q">What are you listening to right now?</div>
+    <iframe style="border-radius:4px;display:block;" src="https://open.spotify.com/embed/album/6UEnWtk3BxIxw4tJYFwm4P?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+
+  <!-- Ask input -->
+  <div class="answers-ask">
+    <div class="answers-ask-label">Ask Nika something</div>
+    <textarea id="qa-input" rows="2" placeholder="Ask Nika something"></textarea>
+    <div class="answers-ask-row">
+      <p class="answers-note">Nika answers your questions each month.</p>
+      <button class="answers-submit" onclick="submitQuestion()">Submit →</button>
+    </div>
   </div>
 </div>
 
 <!-- PARTNERS -->
 <div class="partners-section fade-in">
-  <span class="partners-label">Partners</span>
-  <span class="partners-names">Karaffu Coffee · Black Diamond · Tenaya</span>
+  <div class="partners-head">Partners</div>
+  <div class="partners-logos">
+    <div class="partner-item">
+      <div class="partner-name">Karaffu</div>
+      <div class="partner-cat">Coffee</div>
+    </div>
+    <div class="partner-item">
+      <div class="partner-name">Black Diamond</div>
+      <div class="partner-cat">Equipment</div>
+    </div>
+    <div class="partner-item">
+      <div class="partner-name">Tenaya</div>
+      <div class="partner-cat">Footwear</div>
+    </div>
+  </div>
 </div>
 
 <!-- BRAND ACCESS -->
@@ -1273,7 +1578,7 @@
   // Q&A
   function submitQuestion() {
     const input = document.getElementById('qa-input');
-    const btn   = document.querySelector('.qa-submit');
+    const btn   = document.querySelector('.answers-submit');
     if (!input.value.trim()) return;
     input.value=''; input.placeholder='Question sent. Nika reads these.'; input.disabled=true;
     btn.textContent='Sent →'; btn.disabled=true;
@@ -1319,6 +1624,80 @@
   }, { threshold: 0.05 });
 
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // Gallery carousel
+  (function() {
+    const outer  = document.getElementById('gallery-outer');
+    const track  = document.getElementById('gallery-track');
+    const dots   = document.querySelectorAll('.gallery-dot');
+    const slides = document.querySelectorAll('.gallery-slide');
+    let current  = 0;
+    let startX   = 0;
+    let isDragging = false;
+    let dragOffset = 0;
+
+    function slideWidth() {
+      return slides[0].getBoundingClientRect().width + 8; // 8 = gap
+    }
+
+    function goTo(index) {
+      current = Math.max(0, Math.min(slides.length - 1, index));
+      const offset = current * slideWidth();
+      track.style.transform = `translateX(-${offset}px)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    outer.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+      track.style.transition = 'none';
+    }, { passive: true });
+
+    outer.addEventListener('touchmove', e => {
+      if (!isDragging) return;
+      dragOffset = e.touches[0].clientX - startX;
+      const base = current * slideWidth();
+      track.style.transform = `translateX(${-base + dragOffset}px)`;
+    }, { passive: true });
+
+    outer.addEventListener('touchend', () => {
+      isDragging = false;
+      track.style.transition = 'transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94)';
+      if (dragOffset < -40) goTo(current + 1);
+      else if (dragOffset > 40) goTo(current - 1);
+      else goTo(current);
+      dragOffset = 0;
+    });
+
+    // Mouse drag
+    outer.addEventListener('mousedown', e => {
+      startX = e.clientX; isDragging = true;
+      track.style.transition = 'none';
+    });
+    outer.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      dragOffset = e.clientX - startX;
+      const base = current * slideWidth();
+      track.style.transform = `translateX(${-base + dragOffset}px)`;
+    });
+    outer.addEventListener('mouseup', () => {
+      isDragging = false;
+      track.style.transition = 'transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94)';
+      if (dragOffset < -40) goTo(current + 1);
+      else if (dragOffset > 40) goTo(current - 1);
+      else goTo(current);
+      dragOffset = 0;
+    });
+    outer.addEventListener('mouseleave', () => {
+      if (isDragging) {
+        isDragging = false;
+        track.style.transition = 'transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94)';
+        goTo(current); dragOffset = 0;
+      }
+    });
+
+    dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+  })();
 </script>
 </body>
 </html>
