@@ -295,8 +295,8 @@
   .result-medal.gold svg { filter: drop-shadow(0 0 5px rgba(210,175,70,0.5)); }
   .result-body { flex: 1; }
   .result-place  { display: none; }
-  .result-name   { font-family: var(--sans); font-size: 0.9rem; font-weight: 600; color: var(--hi); }
-  .result-detail { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.07em; color: var(--soft); margin-top: 0.12rem; }
+  .result-name   { font-family: var(--sans); font-size: 0.9rem; font-weight: 600; color: white; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
+  .result-detail { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.07em; color: rgba(255,255,255,0.65); margin-top: 0.12rem; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
 
   /* ─── SHARED CARD OVERLAY — used by both Athletic Record and Natural Heights ─── */
   .card-img {
@@ -393,33 +393,30 @@
   .film-notify { display: none; margin-bottom: 1.25rem; }
   .film-notify.open { display: block; }
 
-  .notify-row { display: flex; gap: 0.5rem; }
+  .notify-row { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
 
   .notify-input {
-    flex: 1; padding: 0.65rem 0.75rem;
-    background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.3);
-    color: white; font-family: var(--sans); font-size: 0.82rem;
-    outline: none; border-radius: 2px; transition: border-color 0.2s;
-    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    flex: 1; padding: 0.7rem 0.85rem;
+    background: var(--ghost);
+    border: 1px solid var(--line);
+    color: var(--hi);
+    font-family: var(--serif); font-size: 0.86rem; font-style: italic;
+    outline: none; border-radius: 2px;
+    transition: border-color 0.2s;
   }
-  .notify-input::placeholder { color: rgba(255,255,255,0.45); }
-  .notify-input:focus { border-color: rgba(255,255,255,0.6); }
-
-  .film-overlay {
-    display: none; /* removed — photo should be visible */
-  }
+  .notify-input::placeholder { color: var(--dim); font-style: italic; }
+  .notify-input:focus { border-color: var(--line-strong); }
 
   .notify-btn {
-    padding: 0.65rem 1.1rem;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-    color: white;
-    border: 1px solid rgba(255,255,255,0.4);
-    font-family: var(--mono); font-size: 13px;
-    font-weight: 600; cursor: pointer; border-radius: 2px;
-    white-space: nowrap; transition: background 0.2s, border-color 0.2s;
+    padding: 0.7rem 1rem;
+    background: none;
+    color: var(--dim);
+    border: 1px solid var(--line);
+    font-family: var(--mono); font-size: 11px;
+    font-weight: 500; cursor: pointer; border-radius: 2px;
+    white-space: nowrap; transition: border-color 0.2s, color 0.2s;
   }
-  .notify-btn:hover { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.6); }
+  .notify-btn:hover { border-color: var(--line-strong); color: var(--soft); }
 
   .film-actions {
     display: flex; align-items: center; justify-content: flex-end;
