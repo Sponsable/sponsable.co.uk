@@ -170,10 +170,24 @@
 
   /* ─── IDENTITY ─── */
   .identity-section {
+    position: relative;
     padding: 0;
+    overflow: hidden;
+  }
+
+  /* Blurred continuation of hero — same image, same world */
+  .identity-bg {
+    position: absolute;
+    inset: 0;
+    background: url('Nika_Wall.jpg') center 20% / cover no-repeat;
+    filter: blur(22px);
+    transform: scale(1.12);
+    opacity: 0.25;
   }
 
   .identity-inner {
+    position: relative;
+    z-index: 1;
     padding: 2rem 1.5rem 0;
   }
 
@@ -278,8 +292,18 @@
 
   .rule { height: 1px; background: var(--line); margin: 2rem 1.5rem 0; }
 
-  /* ─── RESULTS ─── */
-  .results-section { padding: 0 1.5rem 1.75rem; }
+  /* ─── RESULTS — with subtle winning image behind ─── */
+  .results-section {
+    position: relative;
+    padding: 0 1.5rem 1.75rem;
+    overflow: hidden;
+  }
+
+  .results-bg {
+    position: absolute; inset: 0;
+    background: url('Nika_Winning.jpg') center 20% / cover no-repeat;
+    opacity: 0.07;
+  }
 
   .section-label {
     font-family: var(--mono);
@@ -423,7 +447,7 @@
   .film-bg {
     position: absolute; inset: 0;
     background: url('Nika_BW.jpg') center 40% / cover no-repeat;
-    opacity: 0.08;
+    opacity: 0.28;
   }
 
   .film-inner {
@@ -806,6 +830,7 @@
 
 <!-- IDENTITY -->
 <div class="identity-section fade-in">
+  <div class="identity-bg"></div>
   <div class="identity-inner">
   <div class="status-row">
     <div class="status-pill"><div class="status-dot"></div>Pre-season</div>
@@ -840,6 +865,8 @@
 
 <!-- RESULTS -->
 <div class="results-section fade-in">
+  <div class="results-bg"></div>
+  <div style="position:relative;z-index:1;">
   <div class="section-label">Athletic Record <a href="history.html">Full history →</a></div>
   <div class="result-row">
     <div class="result-medal gold">
@@ -887,12 +914,7 @@
       <div class="result-detail">Santa Linya · 2019 · 23rd woman ever</div>
     </div>
   </div>
-</div>
-
-<!-- WINNING PHOTO BREAK -->
-<div class="winning-break fade-in">
-  <div class="winning-img"></div>
-  <div class="winning-vignette"></div>
+  </div><!-- end z-index wrapper -->
 </div>
 
 <!-- MEDIA -->
@@ -911,29 +933,7 @@
   </div>
 </a>
 
-<!-- FILM -->
-<div class="film-section fade-in">
-  <div class="film-bg"></div>
-  <div class="film-inner">
-  <div class="film-badge">In Development</div>
-  <div class="film-title">I Just Go</div>
-  <p class="film-desc">A short film about Nika — her world, her story, her voice. Not a highlights reel. The version most people haven't seen yet. A brand-funded shoot, one to two days.</p>
-
-  <div class="film-notify" id="film-notify">
-    <div class="notify-row">
-      <input class="notify-input" id="film-email" type="email" placeholder="your@email.com">
-      <button class="notify-btn" onclick="submitFilmNotify()">Notify me</button>
-    </div>
-  </div>
-
-  <div class="film-actions">
-    <button class="notify-toggle" id="notify-toggle" onclick="toggleFilmNotify()">Get notified ↓</button>
-    <a href="plan.html" class="film-plan-link">See the full plan →</a>
-  </div><!-- end film-actions -->
-  </div><!-- end film-inner -->
-</div>
-
-<!-- VOICE NOTE -->
+<!-- VOICE NOTE — moved between Natural Heights and I Just Go -->
 <div class="voice-section fade-in">
   <div class="voice-inner">
     <div class="voice-label-row">
@@ -955,6 +955,28 @@
     <p class="voice-sub">A voice note recorded in Paris. Unscripted.</p>
   </div>
   <audio id="nika-audio" src="Nika voice note.m4a" preload="metadata"></audio>
+</div>
+
+<!-- FILM -->
+<div class="film-section fade-in">
+  <div class="film-bg"></div>
+  <div class="film-inner">
+  <div class="film-badge">In Development</div>
+  <div class="film-title">I Just Go</div>
+  <p class="film-desc">A short film about Nika — her world, her story, her voice. Not a highlights reel. The version most people haven't seen yet. A brand-funded shoot, one to two days.</p>
+
+  <div class="film-notify" id="film-notify">
+    <div class="notify-row">
+      <input class="notify-input" id="film-email" type="email" placeholder="your@email.com">
+      <button class="notify-btn" onclick="submitFilmNotify()">Notify me</button>
+    </div>
+  </div>
+
+  <div class="film-actions">
+    <button class="notify-toggle" id="notify-toggle" onclick="toggleFilmNotify()">Get notified ↓</button>
+    <a href="plan.html" class="film-plan-link">See the full plan →</a>
+  </div><!-- end film-actions -->
+  </div><!-- end film-inner -->
 </div>
 
 <!-- AVAILABILITY -->
