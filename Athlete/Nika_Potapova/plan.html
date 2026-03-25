@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nika, Unscripted — Film Project</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0A0A09;
+    --line: rgba(255,255,255,0.07);
+    --hi: rgba(255,255,255,0.95);
+    --mid: rgba(255,255,255,0.60);
+    --soft: rgba(255,255,255,0.40);
+    --dim: rgba(255,255,255,0.35);
+    --accent: #B44E4E; /* Subtle 'bleeding' red accent */
+    
+    --serif: 'Lora', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--hi);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    max-width: 430px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ─── HEADER ─── */
+  .nav {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .back-link {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--soft);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* ─── HERO ─── */
+  .film-hero {
+    position: relative;
+    padding: 2rem 1.5rem 4rem;
+    text-align: center;
+  }
+  .film-status {
+    font-family: var(--mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .film-title {
+    font-family: var(--serif);
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  .film-meta {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--mid);
+  }
+
+  /* ─── VISUAL BREAK ─── */
+  .stills-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+  }
+  .still-img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    background: var(--line);
+    border-radius: 2px;
+  }
+  .still-img.wide {
+    grid-column: span 2;
+    aspect-ratio: 16/10;
+  }
+
+  /* ─── THE CORE STORY ─── */
+  .content-section {
+    padding: 4rem 1.5rem;
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+    margin-bottom: 2rem;
+    display: block;
+  }
+  .copy-p {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--mid);
+    margin-bottom: 1.5rem;
+  }
+  .copy-p b { color: var(--hi); font-weight: 600; }
+
+  .quote-block {
+    margin: 3rem 0;
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--accent);
+  }
+  .quote-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: var(--hi);
+  }
+
+  /* ─── LOGISTICS / CALL TO ACTION ─── */
+  .logistics-box {
+    background: #111110;
+    padding: 2rem 1.5rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+  .log-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .log-label { font-family: var(--mono); font-size: 10px; color: var(--dim); text-transform: uppercase; }
+  .log-val { font-family: var(--sans); font-size: 0.85rem; color: var(--mid); }
+
+  .cta-section {
+    padding: 4rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid var(--line);
+  }
+  .cta-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--hi);
+    color: var(--bg);
+    text-transform: uppercase;
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    border-radius: 2px;
+  }
+
+  .fade-in { opacity: 0; transform: translateY(15px); transition: all 0.7s ease-out; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="nika.html" class="back-link">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Profile
+    </a>
+  </nav>
+
+  <header class="film-hero fade-in">
+    <span class="film-status">Treatment · In Development</span>
+    <h1 class="film-title">Nika,<br>Unscripted</h1>
+    <p class="film-meta">A portrait of a comeback that hasn't happened yet.</p>
+  </header>
+
+  <section class="stills-grid fade-in">
+    <img src="Nika_Bleeding.jpg" class="still-img wide" alt="Stills from development">
+    <img src="Nika_Lighting.jpg" class="still-img" alt="Stills from development">
+    <img src="Nika_Candid.jpg" class="still-img" alt="Stills from development">
+  </section>
+
+  <main class="content-section">
+    <span class="section-label">The Concept</span>
+    <p class="copy-p">
+      Most climbing films are about the <b>send</b>. This isn't one of them. 
+    </p>
+    <p class="copy-p">
+      <i>Nika, Unscripted</i> is a short-form documentary exploring the space between being a child prodigy and being an independent athlete in a foreign city. It’s about the noise of the past—the records, the war, the court cases—and the silence required to actually climb well again.
+    </p>
+
+    <div class="quote-block fade-in">
+      <p class="quote-text">"People see the 9a on a scorecard and they think the story is finished. For me, that's where the weight started."</p>
+    </div>
+
+    <span class="section-label">Visual Style</span>
+    <p class="copy-p">
+      High-contrast 16mm textures mixed with raw digital 4K. We trade the sweeping drone shots of typical climbing media for tight, claustrophobic close-ups of chalk, skin, and breathing. It is intimate, percussive, and honest.
+    </p>
+
+    <div class="logistics-box fade-in">
+      <div class="log-row"><span class="log-label">Format</span><span class="log-val">Short Film (8–12 min)</span></div>
+      <div class="log-row"><span class="log-label">Location</span><span class="log-val">Paris · Santa Linya</span></div>
+      <div class="log-row"><span class="log-label">Director</span><span class="log-val">TBC</span></div>
+      <div class="log-row"><span class="log-label">Current Stage</span><span class="log-val">Pre-production / Funding</span></div>
+    </div>
+  </main>
+
+  <section class="cta-section fade-in">
+    <p class="copy-p" style="margin-bottom: 2rem; font-size: 0.9rem;">We are currently looking for a lead production partner or brand sponsor to finalize the project.</p>
+    <a href="nika.html" class="cta-btn">Enquire via Brand Access</a>
+  </section>
+
+  <footer style="padding: 2rem; text-align: center; opacity: 0.3; font-family: var(--mono); font-size: 8px; letter-spacing: 0.2em;">
+    © 2026 SPONSABLE · NIKA POTAPOVA
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
