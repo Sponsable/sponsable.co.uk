@@ -41,24 +41,18 @@
   /* ─── HEADER ─── */
   .page-header {
     padding: 1.25rem 1.5rem;
-    display: flex; align-items: center; justify-content: space-between;
-    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: flex-end;
     position: relative; z-index: 10;
   }
-  .back-link {
-    display: flex; align-items: center; gap: 0.5rem;
-    text-decoration: none; font-family: var(--mono); font-size: 10px;
-    letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--dim); transition: color 0.15s;
+  .header-bird-btn {
+    background: none; border: none; cursor: pointer; padding: 0;
+    display: flex; align-items: center; opacity: 0.5; transition: opacity 0.2s;
   }
-  .back-link:hover { color: var(--soft); }
-  .back-link svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; }
-  .header-bird { width: 26px; height: 26px; mix-blend-mode: screen; opacity: 0.45; object-fit: contain; }
+  .header-bird-btn:hover { opacity: 0.8; }
+  .header-bird-btn img { mix-blend-mode: screen; display: block; width: 72px; height: 72px; object-fit: contain; }
 
-  /* ─── OPENING — pure typography ─── */
-  .opening {
-    padding: 3.5rem 1.5rem 3rem;
-  }
+  /* ─── OPENING — title is the back link ─── */
+  .opening { padding: 0.5rem 1.5rem 3rem; }
 
   .opening-label {
     font-family: var(--mono); font-size: 10px;
@@ -66,18 +60,32 @@
     color: var(--dim); margin-bottom: 1.25rem;
   }
 
+  .opening-back { text-decoration: none; display: block; }
+  .opening-back:hover .opening-name { opacity: 0.75; }
+  .opening-back:hover .opening-name-second { opacity: 0.4; }
+  .opening-back:hover .opening-hint { opacity: 1; }
+
   .opening-name {
     font-family: var(--serif); font-size: 5rem; font-weight: 700;
     color: white; line-height: 0.85; letter-spacing: -0.04em;
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.1rem; transition: opacity 0.15s;
   }
 
   .opening-name-second {
     font-family: var(--serif); font-size: 5rem; font-weight: 400;
     font-style: italic; color: rgba(255,255,255,0.5);
     line-height: 1.0; letter-spacing: -0.035em;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem; transition: opacity 0.15s;
   }
+
+  .opening-hint {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--dim); opacity: 0; transition: opacity 0.2s;
+    display: flex; align-items: center; gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+  .opening-hint svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 2; }
 
   .opening-title {
     font-family: var(--serif); font-size: 1.1rem; font-style: italic;
@@ -291,6 +299,26 @@
   .rt-meta  { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.12rem; }
   .rt-year  { font-family: var(--mono); font-size: 9px; color: var(--dim); text-align: right; width: 36px; white-space: nowrap; }
 
+  /* ─── SPONSABLE POPUP ─── */
+  .sp-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 300; align-items: flex-start; justify-content: center; padding: 4.5rem 1.25rem 1.25rem; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+  .sp-overlay.open { display: flex; }
+  .sp-card { background: #0E0F0D; border: 1px solid rgba(255,255,255,0.12); border-radius: 3px; width: 100%; max-width: 360px; overflow: hidden; animation: slideDown 0.25s cubic-bezier(0.16,1,0.3,1); }
+  @keyframes slideDown { from{transform:translateY(-12px);opacity:0} to{transform:translateY(0);opacity:1} }
+  .sp-hero { background: linear-gradient(135deg, #141413 0%, #1A1B18 100%); padding: 2rem 1.75rem 1.5rem; border-bottom: 1px solid var(--line); text-align: center; }
+  .sp-bird { width: 90px; height: 90px; margin: -0.5rem auto -1rem; mix-blend-mode: screen; display: block; }
+  .sp-tagline-cycling { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; color: var(--hi); line-height: 1.2; margin-bottom: 0.35rem; min-height: 2.1rem; }
+  .sp-tagline-cycling .cycling-word { color: var(--mid); font-style: italic; font-weight: 400; }
+  .sp-sub { font-family: var(--serif); font-size: 0.85rem; font-style: italic; color: var(--soft); line-height: 1.6; }
+  .sp-body { padding: 1.25rem 1.75rem 1.5rem; }
+  .sp-url { display: flex; align-items: center; gap: 0.6rem; background: var(--ghost); border: 1px solid var(--line); border-radius: 2px; padding: 0.65rem 0.85rem; margin-bottom: 1rem; }
+  .sp-url-text { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; color: var(--soft); flex: 1; }
+  .sp-url-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--line-strong); }
+  .sp-cta-primary { display: block; width: 100%; padding: 0.85rem; background: var(--hi); color: var(--bg); border: none; font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-align: center; text-decoration: none; cursor: pointer; border-radius: 2px; margin-bottom: 0.5rem; transition: opacity 0.2s; }
+  .sp-cta-primary:hover { opacity: 0.88; }
+  .sp-cta-secondary { display: block; width: 100%; padding: 0.75rem; background: transparent; color: var(--soft); border: 1px solid var(--line); font-family: var(--sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em; text-align: center; text-decoration: none; cursor: pointer; border-radius: 2px; margin-bottom: 0.45rem; transition: border-color 0.2s, color 0.2s; }
+  .sp-cta-secondary:hover { border-color: var(--line-strong); color: var(--mid); }
+  .sp-note { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.1em; color: var(--dim); text-align: center; margin-top: 0.75rem; }
+
   /* ─── FOOTER ─── */
   .site-footer { border-top: 1px solid var(--line); padding: 1.5rem; text-align: center; margin-top: 3rem; }
   .site-footer-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; }
@@ -305,18 +333,22 @@
 
 <!-- HEADER -->
 <div class="page-header">
-  <a href="nika.html" class="back-link">
-    <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-    Nika Potapova
-  </a>
-  <img src="Sponsable Bird Logo White.png" alt="Sponsable" class="header-bird">
+  <button class="header-bird-btn" onclick="openSpPopup()" aria-label="About Sponsable">
+    <img src="Sponsable Bird Logo White.png" alt="Sponsable" style="object-fit:contain;">
+  </button>
 </div>
 
-<!-- OPENING — typography only -->
+<!-- OPENING — typography only, name is the back link -->
 <div class="opening fade-in">
   <div class="opening-label">Athletic Record</div>
-  <div class="opening-name">Nika</div>
-  <div class="opening-name-second">Potapova</div>
+  <a href="nika.html" class="opening-back">
+    <div class="opening-name">Nika</div>
+    <div class="opening-name-second">Potapova</div>
+    <div class="opening-hint">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to profile
+    </div>
+  </a>
   <div class="opening-title">Youth World Champion.<br>Senior European Champion.<br>9a.</div>
 </div>
 
@@ -461,7 +493,7 @@
   </div>
   <div class="comeback-row">
     <span class="cb-year">2026</span>
-    <span class="cb-result" style="color:var(--dim);font-style:normal;">Season opens May ↗</span>
+    <span class="cb-result" style="color:var(--dim);font-style:normal;">Season opens in May</span>
     <span class="cb-place"></span>
   </div>
 </div>
@@ -513,9 +545,27 @@
   </table>
 </div>
 
-<!-- FOOTER -->
-<div class="site-footer fade-in">
-  <a href="nika.html" class="site-footer-link">← Back to Nika's profile</a>
+<!-- SPONSABLE POPUP -->
+<div class="sp-overlay" id="sp-overlay" onclick="handleSpOverlayClick(event)">
+  <div class="sp-card">
+    <div class="sp-hero">
+      <img src="Sponsable Bird Logo White.png" alt="Sponsable" class="sp-bird" style="object-fit:contain;">
+      <div class="sp-tagline-cycling">
+        The profile trusted by<br><span class="cycling-word" id="cycling-word">climbers.</span>
+      </div>
+      <p class="sp-sub">One profile for everything you've earned, everything you are, and every brand you want to talk to.</p>
+    </div>
+    <div class="sp-body">
+      <div class="sp-url">
+        <div class="sp-url-dot"></div>
+        <span class="sp-url-text">sponsable.co.uk / your-name</span>
+      </div>
+      <a href="https://sponsable.co.uk" target="_blank" class="sp-cta-primary">Claim your Sponsable profile</a>
+      <a href="https://sponsable.co.uk" target="_blank" class="sp-cta-secondary">Explore athlete profiles</a>
+      <a href="https://sponsable.co.uk" target="_blank" class="sp-cta-secondary">Learn how it works</a>
+      <div class="sp-note">Built for action & outdoor sports · Free to get started</div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -536,6 +586,38 @@
       else if (type === 'world') { row.classList.toggle('hidden', row.dataset.type !== 'world'); }
       else if (type === 'euro') { row.classList.toggle('hidden', row.dataset.type !== 'euro'); }
     });
+  }
+
+  const spWords = ['climbers.','skiers.','surfers.','cyclists.','trail runners.','alpinists.','athletes.'];
+  let spWordIdx = 0, spInterval = null;
+
+  function openSpPopup() {
+    document.getElementById('sp-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    spWordIdx = 0;
+    document.getElementById('cycling-word').textContent = spWords[0];
+    spInterval = setInterval(() => {
+      spWordIdx = (spWordIdx + 1) % spWords.length;
+      const el = document.getElementById('cycling-word');
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(-4px)';
+      el.style.transition = 'opacity 0.2s, transform 0.2s';
+      setTimeout(() => {
+        el.textContent = spWords[spWordIdx];
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, 200);
+    }, 1800);
+  }
+
+  function closeSpPopup() {
+    document.getElementById('sp-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+    clearInterval(spInterval);
+  }
+
+  function handleSpOverlayClick(e) {
+    if (e.target === document.getElementById('sp-overlay')) closeSpPopup();
   }
 </script>
 </body>
