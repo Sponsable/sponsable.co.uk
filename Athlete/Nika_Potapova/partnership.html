@@ -3,182 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Working with Nika — Partnership Detail · Sponsable</title>
+<title>Working with Nika · Sponsable</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0A0A09; --bg-1: #111110; --bg-2: #191918;
-    --line: rgba(255,255,255,0.07); --line-strong: rgba(255,255,255,0.14);
-    --hi: rgba(255,255,255,0.95); --mid: rgba(255,255,255,0.60);
-    --soft: rgba(255,255,255,0.40); --dim: rgba(255,255,255,0.42);
-    --ghost: rgba(255,255,255,0.05); --pull: rgba(255,255,255,0.22);
-    --gold: rgba(210,175,70,0.9);
-    --serif: 'Lora', Georgia, serif;
-    --sans:  'DM Sans', system-ui, sans-serif;
-    --mono:  'DM Mono', 'Courier New', monospace;
+    --bg:#0A0A09;--bg-1:#111110;--bg-2:#191918;
+    --line:rgba(255,255,255,0.07);--line-strong:rgba(255,255,255,0.14);
+    --hi:rgba(255,255,255,0.95);--mid:rgba(255,255,255,0.60);
+    --soft:rgba(255,255,255,0.40);--dim:rgba(255,255,255,0.42);
+    --ghost:rgba(255,255,255,0.05);--pull:rgba(255,255,255,0.22);
+    --serif:'Lora',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--mono:'DM Mono','Courier New',monospace;
   }
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--hi); font-family: var(--sans); -webkit-font-smoothing: antialiased; max-width: 430px; margin: 0 auto; overflow-x: hidden; }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--hi);font-family:var(--sans);-webkit-font-smoothing:antialiased;max-width:430px;margin:0 auto;overflow-x:hidden;}
 
-  /* HEADER */
-  .page-header { padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
-  .back-link { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); transition: color 0.15s; }
-  .back-link:hover { color: var(--soft); }
-  .back-link svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; }
-  .header-bird { width: 26px; height: 26px; mix-blend-mode: screen; opacity: 0.45; object-fit: contain; }
+  .back-link{display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim);transition:color 0.15s;}
+  .back-link:hover{color:var(--soft);}
+  .back-link svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;}
 
-  /* OPENING */
-  .opening { padding: 2.5rem 1.5rem 0; }
-  .opening-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.75rem; }
-  .opening-title { font-family: var(--serif); font-size: 2rem; font-weight: 700; color: var(--hi); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.85rem; }
-  .opening-body { font-family: var(--serif); font-size: 0.92rem; font-style: italic; color: var(--soft); line-height: 1.85; }
+  .section{padding:2.5rem 1.5rem 0;}
+  .section-title{font-family:var(--serif);font-size:1.6rem;font-weight:700;color:var(--hi);letter-spacing:-0.02em;line-height:1.1;margin-bottom:0.85rem;}
+  .body-text{font-family:var(--serif);font-size:0.92rem;font-style:italic;color:var(--soft);line-height:1.85;}
 
   .photo-raw-wrap{overflow:hidden;line-height:0;}
   .photo-raw{width:100%;display:block;object-fit:cover;}
   .photo-inset{overflow:hidden;line-height:0;margin:2.5rem 1.5rem 0;border-radius:2px;}
   .photo-inset img{width:100%;display:block;object-fit:cover;}
 
-  /* SHARED */
-  .section { padding: 2.5rem 1.5rem 0; }
-  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.85rem; }
-  .section-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--hi); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.85rem; }
-  .body-text { font-family: var(--serif); font-size: 0.92rem; font-style: italic; color: var(--soft); line-height: 1.85; }
+  .calendar-block{margin-top:1.25rem;background:var(--bg-1);border:1px solid var(--line);border-radius:2px;overflow:hidden;}
+  .calendar-head{padding:1rem 1.25rem;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--dim);}
+  .cal-row{display:grid;grid-template-columns:52px 1fr;border-bottom:1px solid var(--line);align-items:stretch;}
+  .cal-row:last-child{border-bottom:none;}
+  .cal-month{font-family:var(--mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);padding:0.85rem 0.75rem;border-right:1px solid var(--line);display:flex;align-items:flex-start;}
+  .cal-events{padding:0.75rem 1rem;display:flex;flex-direction:column;gap:0.35rem;}
+  .cal-event{font-family:var(--sans);font-size:0.82rem;font-weight:500;color:var(--hi);line-height:1.3;}
+  .cal-event-sub{font-family:var(--mono);font-size:8.5px;letter-spacing:0.06em;color:var(--dim);}
+  .cal-row.open .cal-month{color:var(--soft);}
 
-  /* FORMAT CARDS */
-  .format-card { margin-top: 0.6rem; border: 1px solid var(--line); border-radius: 2px; background: var(--bg-1); overflow: hidden; }
-  .format-head { padding: 1rem 1.25rem 0.75rem; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; justify-content: space-between; }
-  .format-name { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--hi); }
-  .format-type { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); }
-  .format-body { padding: 0.85rem 1.25rem; }
-  .format-item { font-family: var(--serif); font-size: 0.83rem; font-style: italic; color: var(--soft); line-height: 1.7; padding: 0.35rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.6rem; }
-  .format-item:last-child { border-bottom: none; }
-  .format-item::before { content: '—'; font-family: var(--mono); font-size: 8px; color: var(--dim); flex-shrink: 0; font-style: normal; }
+  .commit-row{display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 0;border-top:1px solid var(--line);}
+  .commit-icon{width:32px;height:32px;border-radius:2px;background:var(--bg-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:0.1rem;}
+  .commit-icon svg{width:13px;height:13px;fill:none;stroke:var(--soft);stroke-width:1.5;}
+  .commit-title{font-family:var(--sans);font-size:0.88rem;font-weight:600;color:var(--hi);margin-bottom:0.35rem;}
+  .commit-detail{font-family:var(--serif);font-size:0.85rem;font-style:italic;color:var(--soft);line-height:1.75;}
 
-  /* CALENDAR */
-  .calendar-block { margin-top: 1.25rem; background: var(--bg-1); border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
-  .calendar-head { padding: 1rem 1.25rem; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); }
-  .cal-row { display: grid; grid-template-columns: 52px 1fr; border-bottom: 1px solid var(--line); align-items: stretch; }
-  .cal-row:last-child { border-bottom: none; }
-  .cal-month { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); padding: 0.85rem 0.75rem; border-right: 1px solid var(--line); display: flex; align-items: flex-start; }
-  .cal-events { padding: 0.75rem 1rem; display: flex; flex-direction: column; gap: 0.35rem; }
-  .cal-event { font-family: var(--sans); font-size: 0.82rem; font-weight: 500; color: var(--hi); line-height: 1.3; }
-  .cal-event-sub { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.06em; color: var(--dim); }
-  .cal-row.open .cal-month { color: var(--soft); }
+  .needs-row{display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 0;border-top:1px solid var(--line);}
+  .needs-num{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;color:var(--dim);flex-shrink:0;width:24px;padding-top:0.1rem;}
+  .needs-text{font-family:var(--serif);font-size:0.88rem;font-style:italic;color:var(--soft);line-height:1.75;}
+  .needs-text strong{font-style:normal;color:var(--hi);font-weight:600;}
 
-  /* ACCOUNTABILITY — all 5 */
-  .commit-row { display: flex; align-items: flex-start; gap: 1rem; padding: 1.1rem 0; border-top: 1px solid var(--line); }
-  .commit-icon { width: 32px; height: 32px; border-radius: 2px; background: var(--bg-2); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem; }
-  .commit-icon svg { width: 13px; height: 13px; fill: none; stroke: var(--soft); stroke-width: 1.5; }
-  .commit-title { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--hi); margin-bottom: 0.35rem; }
-  .commit-detail { font-family: var(--serif); font-size: 0.85rem; font-style: italic; color: var(--soft); line-height: 1.75; }
+  .contact-wrap{padding:2.5rem 1.5rem 0;}
+  .contact-title{font-family:var(--serif);font-size:1.6rem;font-weight:700;color:var(--hi);letter-spacing:-0.02em;margin-bottom:1.25rem;}
+  .contact-cta{display:block;width:100%;padding:1.1rem 1.5rem;background:var(--hi);color:var(--bg);font-family:var(--sans);font-size:0.88rem;font-weight:600;letter-spacing:0.04em;text-align:center;text-decoration:none;border-radius:2px;transition:opacity 0.2s;margin-bottom:0.75rem;}
+  .contact-cta:hover{opacity:0.88;}
+  .contact-secondary{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-decoration:none;transition:background 0.1s;}
+  .contact-secondary:hover{background:var(--ghost);margin:0 -1.5rem;padding-left:1.5rem;padding-right:1.5rem;}
+  .contact-secondary-title{font-family:var(--sans);font-size:0.85rem;font-weight:600;color:var(--hi);}
+  .contact-arrow{font-family:var(--mono);font-size:10px;color:var(--dim);margin-left:auto;}
 
-  /* NEEDS */
-  .needs-row { display: flex; align-items: flex-start; gap: 1rem; padding: 1.1rem 0; border-top: 1px solid var(--line); }
-  .needs-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--dim); flex-shrink: 0; width: 24px; padding-top: 0.1rem; }
-  .needs-text { font-family: var(--serif); font-size: 0.88rem; font-style: italic; color: var(--soft); line-height: 1.75; }
-  .needs-text strong { font-style: normal; color: var(--hi); font-weight: 600; }
+  .site-footer{border-top:1px solid var(--line);padding:1.5rem;text-align:center;margin-top:3rem;}
+  .site-footer-link{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color 0.2s;}
+  .site-footer-link:hover{color:var(--soft);}
 
-  /* CONTACT */
-  .contact-wrap { padding: 2.5rem 1.5rem 0; }
-  .contact-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--hi); letter-spacing: -0.02em; margin-bottom: 0.4rem; }
-  .contact-sub { font-family: var(--serif); font-size: 0.88rem; font-style: italic; color: var(--soft); line-height: 1.6; margin-bottom: 1.5rem; }
-  .contact-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--line); text-decoration: none; transition: background 0.1s; }
-  .contact-item:hover { background: var(--ghost); margin: 0 -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; }
-  .contact-item:last-child { border-bottom: 1px solid var(--line); }
-  .contact-icon { width: 32px; height: 32px; border-radius: 2px; background: var(--bg-2); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .contact-icon svg { width: 13px; height: 13px; fill: none; stroke: var(--soft); stroke-width: 1.5; }
-  .contact-label { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.15rem; }
-  .contact-value { font-family: var(--sans); font-size: 0.85rem; font-weight: 500; color: var(--hi); }
-  .contact-arrow { font-family: var(--mono); font-size: 10px; color: var(--dim); margin-left: auto; }
-
-  .site-footer { border-top: 1px solid var(--line); padding: 1.5rem; text-align: center; margin-top: 3rem; }
-  .site-footer-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; }
-  .site-footer-link:hover { color: var(--soft); }
-
-  .fade-in { opacity: 0; transform: translateY(10px); transition: opacity 0.55s ease, transform 0.55s ease; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .fade-in{opacity:0;transform:translateY(10px);transition:opacity 0.55s ease,transform 0.55s ease;}
+  .fade-in.visible{opacity:1;transform:translateY(0);}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<div class="page-header">
-  <a href="info.html" class="back-link">
+<div class="section fade-in" style="padding-top:2.5rem;">
+  <a href="info.html" class="back-link" style="margin-bottom:1.75rem;">
     <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
     Back to overview
   </a>
-  <img src="Sponsable Bird Logo White.png" alt="Sponsable" class="header-bird">
+  <div class="section-title" style="font-size:2rem;letter-spacing:-0.03em;">What a partnership<br>looks like.</div>
+  <p class="body-text">Nika is looking for paid partnerships with brands whose products genuinely belong in her world. In exchange she'll integrate your product into her content, show up at competitions wearing it, report on what's performing, and treat the relationship as a collaboration rather than a transaction.</p>
+  <p class="body-text" style="margin-top:0.9rem;">Shoot days, film associations, exclusivity, and long-term arrangements are all open to discussion. The starting point is a conversation.</p>
 </div>
 
-<!-- OPENING -->
-<div class="opening fade-in">
-  <div class="opening-label">Working with Nika</div>
-  <div class="opening-title">How it works and what she needs from you.</div>
-  <p class="opening-body">This page is for brands that have read the overview and want to understand the specifics — what a partnership actually looks like, where she'll be in 2026, and what makes one work.</p>
-</div>
-
-<!-- PARTNERSHIP FORMATS -->
-<div class="section fade-in">
-  <div class="section-label">Partnership formats</div>
-  <div class="section-title">What you actually get.</div>
-  <p class="body-text" style="margin-bottom:0;">These aren't fixed tiers — they're examples of how partnerships tend to work. Most brands start with one format and build from there.</p>
-
-  <div class="format-card">
-    <div class="format-head">
-      <span class="format-name">Kit & Content</span>
-      <span class="format-type">Entry level</span>
-    </div>
-    <div class="format-body">
-      <div class="format-item">Product integration across competition and training content</div>
-      <div class="format-item">Monthly posts featuring the product in genuine use</div>
-      <div class="format-item">Monthly performance report with top integrated posts</div>
-      <div class="format-item">Brand tagged at every competition appearance</div>
-    </div>
-  </div>
-
-  <div class="format-card">
-    <div class="format-head">
-      <span class="format-name">Shoot Partner</span>
-      <span class="format-type">Mid-tier</span>
-    </div>
-    <div class="format-body">
-      <div class="format-item">Everything in Kit & Content</div>
-      <div class="format-item">1–2 dedicated shoot days per year — outdoor crag or comp setting</div>
-      <div class="format-item">Co-created content with brand creative involvement welcome</div>
-      <div class="format-item">Usage rights to all content produced</div>
-      <div class="format-item">Association with Natural Heights / Unscripted film if applicable</div>
-    </div>
-  </div>
-
-  <div class="format-card">
-    <div class="format-head">
-      <span class="format-name">Full Partnership</span>
-      <span class="format-type">Long-term</span>
-    </div>
-    <div class="format-body">
-      <div class="format-item">Everything in Shoot Partner</div>
-      <div class="format-item">Category exclusivity — no competing brands in that space</div>
-      <div class="format-item">HQ visit and product testing involvement</div>
-      <div class="format-item">Co-branded film or campaign as a standalone asset</div>
-      <div class="format-item">First right of renewal as her profile grows</div>
-    </div>
-  </div>
-</div>
-
-<!-- PHOTO -->
 <div class="photo-raw-wrap fade-in" style="margin-top:2.5rem;">
-  <img class="photo-raw" src="Nika_BW.jpg" alt="" style="object-position:center 30%;max-height:360px;">
+  <img class="photo-raw" src="Nika_BW.jpg" alt="" style="object-position:center 30%;max-height:380px;">
 </div>
 
-<!-- CALENDAR -->
 <div class="section fade-in">
-  <div class="section-label">2026 season</div>
   <div class="section-title">Where she'll be.</div>
   <div class="calendar-block">
-    <div class="calendar-head">Competition calendar</div>
+    <div class="calendar-head">2026 competition calendar</div>
     <div class="cal-row">
       <div class="cal-month">May</div>
       <div class="cal-events"><div class="cal-event">Season opens<div class="cal-event-sub">European Cup circuit begins</div></div></div>
@@ -189,7 +101,7 @@
     </div>
     <div class="cal-row">
       <div class="cal-month">Jun–Jul</div>
-      <div class="cal-events"><div class="cal-event">IFSC World Cups<div class="cal-event-sub">Chamonix, France · Briançon, France</div></div></div>
+      <div class="cal-events"><div class="cal-event">IFSC World Cups<div class="cal-event-sub">Chamonix · Briançon, France</div></div></div>
     </div>
     <div class="cal-row">
       <div class="cal-month">Jul</div>
@@ -210,80 +122,67 @@
   </div>
 </div>
 
-<!-- PHOTO -->
 <div class="photo-inset fade-in">
-  <img src="Nika_belay.jpg" alt="" style="object-position:center 20%;max-height:340px;">
+  <img src="Nika_belay.jpg" alt="" style="object-position:center 20%;max-height:320px;">
 </div>
 
-<!-- FULL ACCOUNTABILITY -->
 <div class="section fade-in">
-  <div class="section-label">Her commitment to you</div>
-  <div class="section-title">All of it.</div>
+  <div class="section-title">Her commitment<br>to you.</div>
 
   <div class="commit-row">
     <div class="commit-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-    <div><div class="commit-title">Monthly reporting</div><div class="commit-detail">A written update every month — what she posted, what performed, what's coming. Includes her five best brand-integrated posts with context. No chasing required.</div></div>
+    <div><div class="commit-title">Monthly reporting</div><div class="commit-detail">What she posted, what performed, what's coming. Includes her best brand-integrated posts with context.</div></div>
   </div>
   <div class="commit-row">
     <div class="commit-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-    <div><div class="commit-title">Responsive and reachable</div><div class="commit-detail">Replies to emails. Shows up to calls. If something changes that affects a deliverable, she tells you before it becomes a problem — not after.</div></div>
+    <div><div class="commit-title">Responsive and reachable</div><div class="commit-detail">Replies to emails. Shows up to calls. If something changes, she tells you before it becomes a problem.</div></div>
   </div>
   <div class="commit-row">
     <div class="commit-icon"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-    <div><div class="commit-title">Deliverables on time</div><div class="commit-detail">Agreed outputs get delivered on the agreed schedule. If a deadline needs to move, she asks — she doesn't just miss it.</div></div>
+    <div><div class="commit-title">Deliverables on time</div><div class="commit-detail">Agreed outputs on the agreed schedule. If anything changes, she says so in advance.</div></div>
   </div>
   <div class="commit-row">
     <div class="commit-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-    <div><div class="commit-title">Honest feedback, privately first</div><div class="commit-detail">If something isn't working — a product, a brief, a direction — she'll say so to you before it surfaces anywhere else. That's not a liability, it's the feedback loop most brands pay to suppress.</div></div>
+    <div><div class="commit-title">Honest feedback</div><div class="commit-detail">If something isn't working — a product, a brief, a direction — she'll say so directly.</div></div>
   </div>
   <div class="commit-row">
     <div class="commit-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-    <div><div class="commit-title">Will come to you</div><div class="commit-detail">Open to visiting brand headquarters, attending product launches, and getting properly acquainted with what a brand makes and why. She wants to understand the product, not just wear it.</div></div>
+    <div><div class="commit-title">Will come to you</div><div class="commit-detail">Open to visiting brand headquarters and attending product launches. She wants to understand the product, not just wear it.</div></div>
   </div>
 </div>
 
-<!-- WHAT SHE NEEDS -->
 <div class="section fade-in">
-  <div class="section-label">What she needs from you</div>
-  <div class="section-title">How to make<br>it work.</div>
+  <div class="section-title">What she needs<br>from you.</div>
 
   <div class="needs-row">
     <div class="needs-num">01</div>
-    <div class="needs-text"><strong>A clear brief.</strong> What the brand stands for, what success looks like, what you actually want from the partnership. She'll do more with direction than without it.</div>
+    <div class="needs-text"><strong>A clear brief.</strong> What the brand stands for, what success looks like, what you actually want. She'll do more with direction than without it.</div>
   </div>
   <div class="needs-row">
     <div class="needs-num">02</div>
-    <div class="needs-text"><strong>Genuine product fit.</strong> If the product doesn't belong in her world she won't take the partnership. If it does, she'll be one of the most credible advocates you have.</div>
+    <div class="needs-text"><strong>Genuine product fit.</strong> If it doesn't belong in her world she won't take it. If it does, she'll be one of the most credible advocates you have.</div>
   </div>
   <div class="needs-row">
     <div class="needs-num">03</div>
-    <div class="needs-text"><strong>Creative respect.</strong> She has an eye for how things should look and she'll want a say in shoots and visual direction. Brands that treat this as a collaboration get more than brands that hand her a brief and a product.</div>
+    <div class="needs-text"><strong>Creative respect.</strong> She'll want a say in shoots and visual direction. Brands that treat this as a collaboration get more than brands that hand her a brief and a product.</div>
   </div>
   <div class="needs-row">
     <div class="needs-num">04</div>
-    <div class="needs-text"><strong>Long-term thinking.</strong> She is not looking for a one-season arrangement. The value compounds over time — she wants a brand that understands that.</div>
+    <div class="needs-text"><strong>Long-term thinking.</strong> She is not looking for a one-season arrangement. The value compounds over time.</div>
   </div>
 </div>
 
-<!-- CONTACT -->
 <div class="contact-wrap fade-in">
-  <div class="contact-title">Ready to talk.</div>
-  <p class="contact-sub">All enquiries go to Ben at Sponsable. We'll respond within 24 hours and can have Nika on a call within the week.</p>
-  <a href="mailto:ben@sponsable.co.uk" class="contact-item">
-    <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-    <div><div class="contact-label">Email</div><div class="contact-value">ben@sponsable.co.uk</div></div>
-    <span class="contact-arrow">→</span>
-  </a>
-  <a href="info.html" class="contact-item">
-    <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-    <div><div class="contact-label">Brand overview</div><div class="contact-value">Back to the main page</div></div>
+  <div class="contact-title">Work with Nika.</div>
+  <a href="mailto:nika@sponsable.co.uk" class="contact-cta">nika@sponsable.co.uk</a>
+  <a href="info.html" class="contact-secondary">
+    <div class="contact-secondary-title">Back to overview</div>
     <span class="contact-arrow">→</span>
   </a>
 </div>
 
-<!-- FOOTER -->
 <div class="site-footer fade-in">
-  <a href="https://sponsable.co.uk" class="site-footer-link" target="_blank">Create your profile at sponsable.co.uk →</a>
+  <a href="https://sponsable.co.uk" class="site-footer-link" target="_blank">Find more athletes at sponsable.co.uk →</a>
 </div>
 
 <script>
