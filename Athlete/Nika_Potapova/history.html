@@ -38,59 +38,28 @@
     overflow-x: hidden;
   }
 
-  /* ─── HEADER ─── */
-  .page-header {
-    padding: 1.25rem 1.5rem;
-    display: flex; align-items: center; justify-content: flex-end;
-    position: relative; z-index: 10;
-  }
-  .header-bird-btn {
+  /* ─── HERO — flush to very top, no header ─── */
+  .hero-bird {
+    position: absolute; top: 1.25rem; right: 1.5rem; z-index: 5;
     background: none; border: none; cursor: pointer; padding: 0;
-    display: flex; align-items: center; opacity: 0.5; transition: opacity 0.2s;
+    opacity: 0.5; transition: opacity 0.2s;
   }
-  .header-bird-btn:hover { opacity: 0.8; }
-  .header-bird-btn img { mix-blend-mode: screen; display: block; width: 72px; height: 72px; object-fit: contain; }
+  .hero-bird:hover { opacity: 0.8; }
+  .hero-bird img { width: 72px; height: 72px; mix-blend-mode: screen; display: block; object-fit: contain; }
 
-  /* ─── OPENING — title is the back link ─── */
-  .opening { padding: 0.5rem 1.5rem 3rem; }
-
-  .opening-label {
-    font-family: var(--mono); font-size: 10px;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--dim); margin-bottom: 1.25rem;
-  }
-
-  .opening-back { text-decoration: none; display: block; }
-  .opening-back:hover .opening-name { opacity: 0.75; }
-  .opening-back:hover .opening-name-second { opacity: 0.4; }
-  .opening-back:hover .opening-hint { opacity: 1; }
-
-  .opening-name {
-    font-family: var(--serif); font-size: 5rem; font-weight: 700;
-    color: white; line-height: 0.85; letter-spacing: -0.04em;
-    margin-bottom: 0.1rem; transition: opacity 0.15s;
-  }
-
-  .opening-name-second {
-    font-family: var(--serif); font-size: 5rem; font-weight: 400;
-    font-style: italic; color: rgba(255,255,255,0.5);
-    line-height: 1.0; letter-spacing: -0.035em;
-    margin-bottom: 0.5rem; transition: opacity 0.15s;
-  }
-
-  .opening-hint {
+  .hero-back {
+    display: flex; align-items: center; gap: 0.45rem;
+    text-decoration: none;
     font-family: var(--mono); font-size: 9px;
     letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--dim); opacity: 0; transition: opacity 0.2s;
-    display: flex; align-items: center; gap: 0.4rem;
-    margin-bottom: 1.5rem;
+    color: rgba(255,255,255,0.45);
+    opacity: 0; transform: translateY(4px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    margin-bottom: 0.75rem;
   }
-  .opening-hint svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 2; }
-
-  .opening-title {
-    font-family: var(--serif); font-size: 1.1rem; font-style: italic;
-    color: var(--mid); line-height: 1.6;
-  }
+  .hero-back.visible { opacity: 1; transform: translateY(0); }
+  .hero-back:hover { color: rgba(255,255,255,0.7); }
+  .hero-back svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 2; }
 
   /* ─── FULL-BLEED PHOTO — no caption, no vignette, just image ─── */
   .photo-raw {
@@ -319,30 +288,6 @@
   .sp-cta-secondary:hover { border-color: var(--line-strong); color: var(--mid); }
   .sp-note { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.1em; color: var(--dim); text-align: center; margin-top: 0.75rem; }
 
-  /* ─── SCROLL BACK BAR ─── */
-  .back-bar {
-    position: fixed;
-    top: 0; left: 50%; transform: translateX(-50%);
-    width: 100%; max-width: 430px;
-    padding: 0.7rem 1.5rem;
-    background: rgba(10,10,9,0.85);
-    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
-    display: flex; align-items: center; gap: 0.5rem;
-    z-index: 200;
-    opacity: 0; pointer-events: none;
-    transition: opacity 0.25s ease;
-  }
-  .back-bar.visible { opacity: 1; pointer-events: all; }
-  .back-bar a {
-    display: flex; align-items: center; gap: 0.5rem;
-    text-decoration: none; font-family: var(--mono); font-size: 9px;
-    letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim);
-    transition: color 0.15s;
-  }
-  .back-bar a:hover { color: var(--soft); }
-  .back-bar svg { width: 11px; height: 11px; fill: none; stroke: currentColor; stroke-width: 2; }
-
   /* ─── HERO ─── */
   .hero {
     position: relative;
@@ -351,7 +296,7 @@
   }
   .hero-img {
     position: absolute; inset: 0;
-    background: url('Nika_Winning.jpg') center 22% / cover no-repeat;
+    background: url('Nika_Lead.jpg') center 25% / cover no-repeat;
     transform: scale(1.04);
     transition: transform 10s cubic-bezier(0.25,0.46,0.45,0.94);
   }
@@ -359,7 +304,7 @@
   .hero-vignette {
     position: absolute; inset: 0;
     background:
-      linear-gradient(180deg, rgba(10,10,9,0.5) 0%, transparent 35%, transparent 50%, rgba(10,10,9,0.8) 80%, #0A0A09 100%),
+      linear-gradient(180deg, rgba(10,10,9,0.25) 0%, transparent 30%, transparent 50%, rgba(10,10,9,0.8) 80%, #0A0A09 100%),
       linear-gradient(90deg, rgba(10,10,9,0.35) 0%, transparent 55%);
   }
   .hero-content {
@@ -378,11 +323,12 @@
   .hero-name-second {
     font-family: var(--serif); font-size: 4.8rem; font-weight: 400; font-style: italic;
     color: rgba(255,255,255,0.55); line-height: 1.0; letter-spacing: -0.035em;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.6rem;
   }
   .hero-descriptor {
     font-family: var(--serif); font-size: 1rem; font-style: italic;
     color: rgba(255,255,255,0.55); line-height: 1.6;
+    margin-bottom: 0.75rem;
   }
   .site-footer { border-top: 1px solid var(--line); padding: 1.5rem; text-align: center; margin-top: 3rem; }
   .site-footer-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; }
@@ -395,40 +341,24 @@
 </head>
 <body>
 
-<!-- SCROLL-TRIGGERED BACK BAR -->
-<div class="back-bar" id="back-bar">
-  <a href="nika.html">
-    <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-    Nika Potapova
-  </a>
-</div>
-
-<!-- HEADER — bird only -->
-<div class="page-header">
-  <button class="header-bird-btn" onclick="openSpPopup()" aria-label="About Sponsable">
-    <img src="Sponsable Bird Logo White.png" alt="Sponsable" style="object-fit:contain;">
-  </button>
-</div>
-
-<!-- HERO — Nika_Winning.jpg, same as the card on nika.html -->
+<!-- HERO — flush to top, no header -->
 <div class="hero">
   <div class="hero-img" id="hero-img"></div>
   <div class="hero-vignette"></div>
+  <button class="hero-bird" onclick="openSpPopup()" aria-label="About Sponsable">
+    <img src="Sponsable Bird Logo White.png" alt="Sponsable">
+  </button>
   <div class="hero-content">
     <div class="hero-eyebrow">Athletic Record</div>
-    <a href="nika.html" class="opening-back">
-      <div class="hero-name">Nika</div>
-      <div class="hero-name-second">Potapova</div>
-      <div class="opening-hint" style="margin-bottom:1.25rem;">
-        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-        Back to profile
-      </div>
+    <div class="hero-name">Nika</div>
+    <div class="hero-name-second">Potapova</div>
+    <a href="nika.html" class="hero-back" id="hero-back">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to profile
     </a>
     <div class="hero-descriptor">Youth World Champion · Senior European Champion · 9a.</div>
   </div>
 </div>
-
-<!-- FIRST PHOTO — Nika_Lead.jpg moves to after 2019 section -->
 
 <!-- 2017 YEAR RUN -->
 <div class="year-run fade-in">
@@ -506,11 +436,6 @@
   <div class="grade-num">9a</div>
   <div class="grade-route">Fuck the System</div>
   <div class="grade-meta">Santa Linya, Spain · 2019 · 23rd woman ever</div>
-</div>
-
-<!-- LEAD PHOTO — after 9a, peak of the page -->
-<div class="photo-raw-wrap fade-in">
-  <img class="photo-raw" src="Nika_Lead.jpg" alt="" style="object-position: center 25%; max-height: 520px;">
 </div>
 
 <!-- CLIMBING PHOTO -->
@@ -652,10 +577,10 @@
     if (heroImg) heroImg.classList.add('loaded');
   });
 
-  // Show back bar on scroll
-  const backBar = document.getElementById('back-bar');
+  // Back link appears on first scroll
+  const heroBack = document.getElementById('hero-back');
   window.addEventListener('scroll', () => {
-    backBar.classList.toggle('visible', window.scrollY > 60);
+    if (window.scrollY > 40) heroBack.classList.add('visible');
   }, { passive: true });
 
   const obs = new IntersectionObserver(entries => {
