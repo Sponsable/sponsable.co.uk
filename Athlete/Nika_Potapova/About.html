@@ -765,68 +765,89 @@
   }
 
   /* ─── PARTNERS — interactive ticker ─── */
+  /* ─── PARTNERS — scrolling marquee ─── */
   .partners-section {
-    padding: 2rem 1.5rem;
+    padding: 2rem 0;
   }
 
   .partners-head {
     font-family: var(--mono);
     font-size: 8.5px; letter-spacing: 0.22em;
     text-transform: uppercase; color: var(--dim);
-    margin-bottom: 1.1rem;
+    margin-bottom: 1rem;
+    padding: 0 1.5rem;
   }
 
-  .partners-ticker {
-    display: flex;
-    gap: 0.6rem;
-    align-items: stretch;
+  .partners-marquee-outer {
+    overflow: hidden;
+    position: relative;
+    cursor: default;
   }
 
-  .partner-chip {
-    flex: 1;
+  /* Fade edges */
+  .partners-marquee-outer::before,
+  .partners-marquee-outer::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 3rem;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .partners-marquee-outer::before { left: 0;  background: linear-gradient(90deg, var(--bg), transparent); }
+  .partners-marquee-outer::after  { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+
+  .partners-marquee-track {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 0.75rem 0.5rem;
-    border: 1px solid var(--line);
-    border-radius: 2px;
-    background: var(--ghost);
+    gap: 0;
+    animation: marquee-scroll 18s linear infinite;
+    width: max-content;
+  }
+
+  .partners-marquee-outer:hover .partners-marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .partner-name-item {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--soft);
+    white-space: nowrap;
+    padding: 0.6rem 2rem;
     cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
+    transition: color 0.2s;
     position: relative;
   }
 
-  .partner-chip:hover,
-  .partner-chip.active {
-    border-color: var(--line-strong);
-    background: rgba(255,255,255,0.04);
+  .partner-name-item::after {
+    content: '·';
+    position: absolute;
+    right: 0;
+    transform: translateX(50%);
+    color: var(--line-strong);
+    font-weight: 400;
   }
 
-  .partner-chip-name {
-    font-family: var(--sans);
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--soft);
-    text-align: center;
-    line-height: 1.2;
-    transition: color 0.2s;
-  }
-
-  .partner-chip:hover .partner-chip-name,
-  .partner-chip.active .partner-chip-name {
+  .partner-name-item:hover,
+  .partner-name-item.active {
     color: var(--hi);
   }
 
   .partner-quote-box {
-    margin-top: 0.85rem;
-    padding: 1rem 1.1rem;
+    margin: 0.75rem 1.5rem 0;
+    padding: 0.9rem 1rem;
     border-left: 2px solid var(--pull);
-    min-height: 3.5rem;
-    display: flex;
-    align-items: center;
     opacity: 0;
     transform: translateY(4px);
     transition: opacity 0.25s ease, transform 0.25s ease;
+    min-height: 0;
   }
 
   .partner-quote-box.visible {
@@ -1314,15 +1335,16 @@
 <!-- PARTNERS -->
 <div class="partners-section fade-in">
   <div class="partners-head">Partners</div>
-  <div class="partners-ticker">
-    <div class="partner-chip" onclick="togglePartner(this, 0)">
-      <span class="partner-chip-name">Karaffu</span>
-    </div>
-    <div class="partner-chip" onclick="togglePartner(this, 1)">
-      <span class="partner-chip-name">Black Diamond</span>
-    </div>
-    <div class="partner-chip" onclick="togglePartner(this, 2)">
-      <span class="partner-chip-name">Tenaya</span>
+  <div class="partners-marquee-outer" id="partners-outer">
+    <div class="partners-marquee-track" id="partners-track">
+      <!-- Real items -->
+      <span class="partner-name-item" data-index="0">Karaffu</span>
+      <span class="partner-name-item" data-index="1">Black Diamond</span>
+      <span class="partner-name-item" data-index="2">Tenaya</span>
+      <!-- Duplicates for seamless loop -->
+      <span class="partner-name-item" data-index="0">Karaffu</span>
+      <span class="partner-name-item" data-index="1">Black Diamond</span>
+      <span class="partner-name-item" data-index="2">Tenaya</span>
     </div>
   </div>
   <div class="partner-quote-box" id="partner-quote">
@@ -1332,6 +1354,7 @@
 
 <!-- BRAND ACCESS -->
 <div class="access-section fade-in">
+  <p style="font-family:var(--serif);font-size:0.88rem;font-style:italic;color:var(--soft);line-height:1.7;margin-bottom:1.25rem;">If you're a brand or agency and you want to explore working with Nika, this is the right place to start.</p>
   <button class="access-btn" onclick="document.getElementById('modal').classList.add('open')">
     <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
     Brand Access
@@ -1616,37 +1639,67 @@
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
   // Partner quotes
-  const partnerQuotes = [
-    "I was hunting for the best coffee in Paris. Then I found Karaffu — that was it.",
-    "I've used Black Diamond since I was a kid. I can't imagine climbing on anything else.",
-    "My feet are weird. Tenaya actually fit. That's the whole reason."
-  ];
+  // Partners marquee — hover to pause and reveal quote
+  (function() {
+    const quotes = [
+      "I was hunting for the best coffee in Paris. Then I found Karaffu — that was it.",
+      "I've used Black Diamond since I was a kid. I can't imagine climbing on anything else.",
+      "My feet are weird. Tenaya actually fit. That's the whole reason."
+    ];
 
-  let activePartner = -1;
+    const box  = document.getElementById('partner-quote');
+    const text = document.getElementById('partner-quote-text');
+    let activeIndex = -1;
+    let hideTimer = null;
 
-  function togglePartner(el, index) {
-    const box   = document.getElementById('partner-quote');
-    const text  = document.getElementById('partner-quote-text');
-    const chips = document.querySelectorAll('.partner-chip');
+    document.querySelectorAll('.partner-name-item').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        clearTimeout(hideTimer);
+        const index = parseInt(el.dataset.index);
 
-    if (activePartner === index) {
-      // Deselect
-      el.classList.remove('active');
-      box.classList.remove('visible');
-      activePartner = -1;
-      return;
-    }
+        // Highlight all items with this index
+        document.querySelectorAll('.partner-name-item').forEach(e => {
+          e.classList.toggle('active', parseInt(e.dataset.index) === index);
+        });
 
-    chips.forEach(c => c.classList.remove('active'));
-    el.classList.add('active');
-    activePartner = index;
+        if (activeIndex === index) return;
+        activeIndex = index;
 
-    box.classList.remove('visible');
-    setTimeout(() => {
-      text.textContent = partnerQuotes[index];
-      box.classList.add('visible');
-    }, 120);
-  }
+        box.classList.remove('visible');
+        setTimeout(() => {
+          text.textContent = quotes[index];
+          box.classList.add('visible');
+        }, 100);
+      });
+
+      el.addEventListener('mouseleave', () => {
+        hideTimer = setTimeout(() => {
+          document.querySelectorAll('.partner-name-item').forEach(e => e.classList.remove('active'));
+          box.classList.remove('visible');
+          activeIndex = -1;
+        }, 300);
+      });
+    });
+
+    // Touch support — tap to show quote
+    document.querySelectorAll('.partner-name-item').forEach(el => {
+      el.addEventListener('click', () => {
+        const index = parseInt(el.dataset.index);
+        if (activeIndex === index) {
+          document.querySelectorAll('.partner-name-item').forEach(e => e.classList.remove('active'));
+          box.classList.remove('visible');
+          activeIndex = -1;
+          return;
+        }
+        document.querySelectorAll('.partner-name-item').forEach(e => {
+          e.classList.toggle('active', parseInt(e.dataset.index) === index);
+        });
+        activeIndex = index;
+        text.textContent = quotes[index];
+        box.classList.add('visible');
+      });
+    });
+  })();
 
   // Gallery carousel — infinite loop
   (function() {
