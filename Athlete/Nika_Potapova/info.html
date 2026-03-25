@@ -9,271 +9,70 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:    #0A0A09;
-    --bg-1:  #111110;
-    --bg-2:  #191918;
-    --line:        rgba(255,255,255,0.07);
-    --line-strong: rgba(255,255,255,0.14);
-    --hi:   rgba(255,255,255,0.95);
-    --mid:  rgba(255,255,255,0.60);
-    --soft: rgba(255,255,255,0.40);
-    --dim:  rgba(255,255,255,0.42);
-    --ghost:rgba(255,255,255,0.05);
-    --pull: rgba(255,255,255,0.22);
+    --bg:    #0A0A09; --bg-1:  #111110; --bg-2:  #191918;
+    --line: rgba(255,255,255,0.07); --line-strong: rgba(255,255,255,0.14);
+    --hi: rgba(255,255,255,0.95); --mid: rgba(255,255,255,0.60);
+    --soft: rgba(255,255,255,0.40); --dim: rgba(255,255,255,0.42);
+    --ghost: rgba(255,255,255,0.05); --pull: rgba(255,255,255,0.22);
     --gold: rgba(210,175,70,0.9);
     --serif: 'Lora', Georgia, serif;
     --sans:  'DM Sans', system-ui, sans-serif;
     --mono:  'DM Mono', 'Courier New', monospace;
   }
-
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--hi); font-family: var(--sans); -webkit-font-smoothing: antialiased; max-width: 430px; margin: 0 auto; overflow-x: hidden; }
 
-  body {
-    background: var(--bg);
-    color: var(--hi);
-    font-family: var(--sans);
-    -webkit-font-smoothing: antialiased;
-    max-width: 430px;
-    margin: 0 auto;
-    overflow-x: hidden;
-  }
-
-  /* ─── HERO ─── */
-  .hero {
-    position: relative;
-    height: 78vh; min-height: 540px;
-    overflow: hidden;
-  }
-  .hero-img {
-    position: absolute; inset: 0;
-    background: url('Nika_Wall.jpg') center 20% / cover no-repeat;
-    transform: scale(1.04);
-    transition: transform 10s cubic-bezier(0.25,0.46,0.45,0.94);
-  }
+  /* HERO */
+  .hero { position: relative; height: 78vh; min-height: 540px; overflow: hidden; }
+  .hero-img { position: absolute; inset: 0; background: url('Nika_Wall.jpg') center 20% / cover no-repeat; transform: scale(1.04); transition: transform 10s cubic-bezier(0.25,0.46,0.45,0.94); }
   .hero-img.loaded { transform: scale(1); }
-  .hero-vignette {
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(180deg, rgba(10,10,9,0.45) 0%, transparent 35%, transparent 45%, rgba(10,10,9,0.85) 80%, #0A0A09 100%),
-      linear-gradient(90deg, rgba(10,10,9,0.35) 0%, transparent 55%);
-  }
-  .hero-bird {
-    position: absolute; top: 1.25rem; left: 1.5rem; z-index: 5;
-    background: none; border: none; cursor: pointer; padding: 0;
-    opacity: 0.5; transition: opacity 0.2s;
-  }
+  .hero-vignette { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,9,0.45) 0%, transparent 35%, transparent 45%, rgba(10,10,9,0.85) 80%, #0A0A09 100%), linear-gradient(90deg, rgba(10,10,9,0.35) 0%, transparent 55%); }
+  .hero-bird { position: absolute; top: 1.25rem; left: 1.5rem; z-index: 5; background: none; border: none; cursor: pointer; padding: 0; opacity: 0.5; transition: opacity 0.2s; }
   .hero-bird:hover { opacity: 0.8; }
   .hero-bird img { width: 72px; height: 72px; mix-blend-mode: screen; display: block; object-fit: contain; }
-  .hero-content {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 0 1.5rem 2.5rem; z-index: 2;
-  }
-  .hero-eyebrow {
-    font-family: var(--mono); font-size: 10px;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--dim); margin-bottom: 0.6rem;
-  }
-  .hero-name {
-    font-family: var(--serif); font-size: 3.8rem; font-weight: 700;
-    color: white; line-height: 0.88; letter-spacing: -0.035em;
-  }
-  .hero-name-second {
-    font-family: var(--serif); font-size: 3.8rem; font-weight: 400; font-style: italic;
-    color: rgba(255,255,255,0.55); line-height: 1.0; letter-spacing: -0.03em;
-    margin-bottom: 1rem;
-  }
-  .hero-credentials {
-    display: flex; flex-direction: column; gap: 0.25rem;
-  }
-  .hero-cred {
-    font-family: var(--mono); font-size: 9px;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .hero-cred::before {
-    content: '';
-    display: inline-block; width: 3px; height: 3px;
-    border-radius: 50%; background: var(--gold); flex-shrink: 0;
-  }
+  .hero-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 0 1.5rem 2.5rem; z-index: 2; }
+  .hero-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.6rem; }
+  .hero-name { font-family: var(--serif); font-size: 3.8rem; font-weight: 700; color: white; line-height: 0.88; letter-spacing: -0.035em; }
+  .hero-name-second { font-family: var(--serif); font-size: 3.8rem; font-weight: 400; font-style: italic; color: rgba(255,255,255,0.55); line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 1rem; }
+  .hero-credentials { display: flex; flex-direction: column; gap: 0.25rem; }
+  .hero-cred { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 0.5rem; }
+  .hero-cred::before { content: ''; display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
 
-  /* ─── BODY ─── */
+  /* SHARED */
   .section { padding: 2.5rem 1.5rem 0; }
-
-  .section-label {
-    font-family: var(--mono); font-size: 10px;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--dim); margin-bottom: 0.85rem;
-  }
-
-  .section-title {
-    font-family: var(--serif); font-size: 1.6rem; font-weight: 700;
-    color: var(--hi); letter-spacing: -0.02em; line-height: 1.1;
-    margin-bottom: 0.85rem;
-  }
-
-  .body-text {
-    font-family: var(--serif); font-size: 0.92rem; font-style: italic;
-    color: var(--soft); line-height: 1.85;
-  }
-  .body-text + .body-text { margin-top: 0.9rem; }
-
-  .pull {
-    border-left: 2px solid var(--pull); padding: 0.4rem 0 0.4rem 1rem;
-    margin: 1.25rem 0;
-  }
-  .pull p {
-    font-family: var(--serif); font-size: 1rem; font-style: italic;
-    color: var(--hi); line-height: 1.55;
-  }
-
-  /* ─── PHOTO ─── */
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.85rem; }
+  .section-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--hi); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.85rem; }
+  .body-text { font-family: var(--serif); font-size: 0.92rem; font-style: italic; color: var(--soft); line-height: 1.85; }
+  .pull { border-left: 2px solid var(--pull); padding: 0.4rem 0 0.4rem 1rem; margin: 1.25rem 0; }
+  .pull p { font-family: var(--serif); font-size: 1rem; font-style: italic; color: var(--hi); line-height: 1.55; }
   .photo-raw-wrap { overflow: hidden; line-height: 0; }
   .photo-raw { width: 100%; display: block; object-fit: cover; }
 
-  /* ─── CREDENTIALS STRIP ─── */
-  .creds-strip {
-    display: grid; grid-template-columns: repeat(3,1fr);
-    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-    margin-top: 2.5rem;
-  }
-  .cred-cell {
-    padding: 1.1rem 1rem;
-    border-right: 1px solid var(--line);
-  }
+  /* CREDENTIALS STRIP */
+  .creds-strip { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 2.5rem; }
+  .cred-cell { padding: 1.1rem 1rem; border-right: 1px solid var(--line); }
   .cred-cell:last-child { border-right: none; }
-  .cred-num {
-    font-family: var(--serif); font-size: 1.8rem; font-weight: 700;
-    color: var(--gold); letter-spacing: -0.04em; line-height: 1;
-    margin-bottom: 0.25rem;
-  }
-  .cred-lbl {
-    font-family: var(--mono); font-size: 9px;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--dim); line-height: 1.4;
-  }
+  .cred-num { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; color: var(--gold); letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.25rem; }
+  .cred-lbl { font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); line-height: 1.4; }
 
-  /* ─── WHAT SHE BRINGS ─── */
-  .brings-item {
-    padding: 1.1rem 0;
-    border-top: 1px solid var(--line);
-  }
-  .brings-title {
-    font-family: var(--sans); font-size: 0.88rem; font-weight: 600;
-    color: var(--hi); margin-bottom: 0.4rem;
-  }
-  .brings-body {
-    font-family: var(--serif); font-size: 0.85rem; font-style: italic;
-    color: var(--soft); line-height: 1.75;
-  }
+  /* WHAT SHE BRINGS */
+  .brings-item { padding: 1.1rem 0; border-top: 1px solid var(--line); }
+  .brings-title { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--hi); margin-bottom: 0.4rem; }
+  .brings-body { font-family: var(--serif); font-size: 0.85rem; font-style: italic; color: var(--soft); line-height: 1.75; }
 
-  /* ─── SEASON CALENDAR ─── */
-  .calendar-block {
-    margin-top: 2.5rem;
-    background: var(--bg-1); border: 1px solid var(--line); border-radius: 2px;
-    overflow: hidden;
-  }
-  .calendar-head {
-    padding: 1rem 1.25rem;
-    border-bottom: 1px solid var(--line);
-    font-family: var(--mono); font-size: 10px;
-    letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim);
-  }
-  .cal-row {
-    display: grid; grid-template-columns: 52px 1fr;
-    border-bottom: 1px solid var(--line);
-    align-items: stretch;
-  }
-  .cal-row:last-child { border-bottom: none; }
-  .cal-month {
-    font-family: var(--mono); font-size: 9px;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--dim); padding: 0.85rem 0.75rem;
-    border-right: 1px solid var(--line);
-    display: flex; align-items: flex-start;
-  }
-  .cal-events { padding: 0.75rem 1rem; display: flex; flex-direction: column; gap: 0.35rem; }
-  .cal-event {
-    font-family: var(--sans); font-size: 0.82rem; font-weight: 500;
-    color: var(--hi); line-height: 1.3;
-  }
-  .cal-event-sub {
-    font-family: var(--mono); font-size: 8.5px;
-    letter-spacing: 0.06em; color: var(--dim);
-  }
-  .cal-row.open .cal-month { color: var(--soft); }
+  /* CATEGORY SLOTS */
+  .category-card { border: 1px solid var(--line); border-radius: 2px; margin-top: 0.6rem; overflow: hidden; background: var(--bg-1); }
+  .category-header { padding: 0.85rem 1.1rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+  .category-name { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: var(--hi); }
+  .category-status { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.14em; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; }
+  .category-status.open  { color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.2); }
+  .category-status.taken { color: rgba(210,175,70,0.7); border: 1px solid rgba(210,175,70,0.25); }
+  .category-body { padding: 0.65rem 1.1rem; font-family: var(--serif); font-size: 0.82rem; font-style: italic; color: var(--soft); line-height: 1.65; }
+  .category-partner { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.1em; color: var(--dim); padding: 0.5rem 1.1rem; display: block; }
 
-  /* ─── PARTNERSHIP FORMATS ─── */
-  .format-card {
-    margin-top: 0.6rem;
-    border: 1px solid var(--line); border-radius: 2px;
-    background: var(--bg-1); overflow: hidden;
-  }
-  .format-head {
-    padding: 1rem 1.25rem 0.75rem;
-    border-bottom: 1px solid var(--line);
-    display: flex; align-items: baseline; justify-content: space-between;
-  }
-  .format-name {
-    font-family: var(--sans); font-size: 0.88rem; font-weight: 600;
-    color: var(--hi);
-  }
-  .format-type {
-    font-family: var(--mono); font-size: 8.5px;
-    letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim);
-  }
-  .format-body { padding: 0.85rem 1.25rem; }
-  .format-item {
-    font-family: var(--serif); font-size: 0.83rem; font-style: italic;
-    color: var(--soft); line-height: 1.7;
-    padding: 0.35rem 0; border-bottom: 1px solid var(--line);
-    display: flex; align-items: baseline; gap: 0.6rem;
-  }
-  .format-item:last-child { border-bottom: none; }
-  .format-item::before {
-    content: '—';
-    font-family: var(--mono); font-size: 8px; color: var(--dim); flex-shrink: 0;
-    font-style: normal;
-  }
-
-  /* ─── CATEGORY SLOTS ─── */
-  .category-card {
-    border: 1px solid var(--line); border-radius: 2px;
-    margin-top: 0.6rem; overflow: hidden;
-    background: var(--bg-1);
-  }
-  .category-header {
-    padding: 0.85rem 1.1rem;
-    display: flex; align-items: center; justify-content: space-between;
-    border-bottom: 1px solid var(--line);
-  }
-  .category-name {
-    font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: var(--hi);
-  }
-  .category-status {
-    font-family: var(--mono); font-size: 8.5px;
-    letter-spacing: 0.14em; text-transform: uppercase; padding: 2px 8px;
-    border-radius: 2px;
-  }
-  .category-status.open   { color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.2); }
-  .category-status.taken  { color: rgba(210,175,70,0.7);  border: 1px solid rgba(210,175,70,0.25); }
-  .category-body {
-    padding: 0.65rem 1.1rem;
-    font-family: var(--serif); font-size: 0.82rem; font-style: italic;
-    color: var(--soft); line-height: 1.65;
-  }
-  .category-partner {
-    font-family: var(--mono); font-size: 8.5px;
-    letter-spacing: 0.1em; color: var(--dim); padding: 0.5rem 1.1rem;
-    display: block;
-  }
-
-  /* ─── REACH ─── */
-  .reach-row {
-    display: flex; align-items: center; gap: 1rem;
-    padding: 1rem 0; border-top: 1px solid var(--line);
-  }
+  /* REACH */
+  .reach-row { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--line); }
   .reach-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .reach-icon svg { width: 16px; height: 16px; fill: var(--soft); }
   .reach-name { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: var(--hi); }
@@ -281,61 +80,18 @@
   .reach-num { font-family: var(--sans); font-size: 1rem; font-weight: 700; color: var(--hi); text-align: right; }
   .reach-label { font-family: var(--mono); font-size: 8px; letter-spacing: 0.08em; color: var(--dim); text-align: right; }
 
-  .reach-context {
-    margin-top: 1.1rem;
-    padding: 1rem;
-    background: var(--bg-1); border: 1px solid var(--line); border-radius: 2px;
-  }
-  .reach-context-item {
-    display: flex; align-items: baseline; gap: 0.75rem;
-    padding: 0.5rem 0; border-bottom: 1px solid var(--line);
-    font-family: var(--serif); font-size: 0.83rem; font-style: italic;
-    color: var(--soft); line-height: 1.5;
-  }
-  .reach-context-item:last-child { border-bottom: none; padding-bottom: 0; }
-  .reach-context-item::before {
-    content: '→'; font-style: normal;
-    font-family: var(--mono); font-size: 9px; color: var(--dim); flex-shrink: 0;
-  }
-
-  /* ─── ACCOUNTABILITY ─── */
-  .commit-row {
-    display: flex; align-items: flex-start; gap: 1rem;
-    padding: 1.1rem 0; border-top: 1px solid var(--line);
-  }
-  .commit-icon {
-    width: 32px; height: 32px; border-radius: 2px;
-    background: var(--bg-2); border: 1px solid var(--line);
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem;
-  }
+  /* ACCOUNTABILITY — 3 items only */
+  .commit-row { display: flex; align-items: flex-start; gap: 1rem; padding: 1.1rem 0; border-top: 1px solid var(--line); }
+  .commit-icon { width: 32px; height: 32px; border-radius: 2px; background: var(--bg-2); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem; }
   .commit-icon svg { width: 13px; height: 13px; fill: none; stroke: var(--soft); stroke-width: 1.5; }
   .commit-title { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--hi); margin-bottom: 0.35rem; }
   .commit-detail { font-family: var(--serif); font-size: 0.85rem; font-style: italic; color: var(--soft); line-height: 1.75; }
 
-  /* ─── NEEDS ─── */
-  .needs-row {
-    display: flex; align-items: flex-start; gap: 1rem;
-    padding: 1.1rem 0; border-top: 1px solid var(--line);
-  }
-  .needs-num {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
-    color: var(--dim); flex-shrink: 0; width: 24px; padding-top: 0.1rem;
-  }
-  .needs-text {
-    font-family: var(--serif); font-size: 0.88rem; font-style: italic;
-    color: var(--soft); line-height: 1.75;
-  }
-  .needs-text strong { font-style: normal; color: var(--hi); font-weight: 600; }
-
-  /* ─── CONTACT ─── */
+  /* CONTACT */
   .contact-wrap { padding: 2.5rem 1.5rem 0; }
   .contact-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--hi); letter-spacing: -0.02em; margin-bottom: 0.4rem; }
   .contact-sub { font-family: var(--serif); font-size: 0.88rem; font-style: italic; color: var(--soft); line-height: 1.6; margin-bottom: 1.5rem; }
-  .contact-item {
-    display: flex; align-items: center; gap: 1rem;
-    padding: 1rem 0; border-top: 1px solid var(--line);
-    text-decoration: none; transition: background 0.1s;
-  }
+  .contact-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--line); text-decoration: none; transition: background 0.1s; }
   .contact-item:hover { background: var(--ghost); margin: 0 -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; }
   .contact-item:last-child { border-bottom: 1px solid var(--line); }
   .contact-icon { width: 32px; height: 32px; border-radius: 2px; background: var(--bg-2); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -344,12 +100,32 @@
   .contact-value { font-family: var(--sans); font-size: 0.85rem; font-weight: 500; color: var(--hi); }
   .contact-arrow { font-family: var(--mono); font-size: 10px; color: var(--dim); margin-left: auto; }
 
-  /* ─── SPONSABLE POPUP ─── */
+  /* REELS TICKER */
+  .reels-section { padding: 2.5rem 1.5rem 0; }
+  .reels-track-outer { overflow: hidden; margin: 1.25rem -1.5rem 0; position: relative; }
+  .reels-track-outer::before, .reels-track-outer::after { content: ''; position: absolute; top: 0; bottom: 0; width: 2.5rem; z-index: 2; pointer-events: none; }
+  .reels-track-outer::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+  .reels-track-outer::after  { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+  .reels-track { display: flex; gap: 0.6rem; width: max-content; animation: reels-scroll 12s linear infinite; }
+  .reels-track-outer:hover .reels-track { animation-play-state: paused; }
+  @keyframes reels-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .reel-slide { flex-shrink: 0; width: 38vw; max-width: 160px; aspect-ratio: 9/16; border-radius: 2px; overflow: hidden; position: relative; text-decoration: none; display: block; }
+  .reel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; transition: transform 0.4s ease; }
+  .reel-slide:hover img { transform: scale(1.04); }
+  .reel-slide-vignette { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(10,10,9,0.85) 100%); pointer-events: none; }
+  .reel-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%); width: 36px; height: 36px; border-radius: 50%; background: rgba(10,10,9,0.5); border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; transition: background 0.2s, transform 0.2s; }
+  .reel-slide:hover .reel-play { background: rgba(255,255,255,0.15); transform: translate(-50%, -60%) scale(1.08); }
+  .reel-play svg { width: 11px; height: 11px; fill: white; margin-left: 2px; }
+  .reel-slide-foot { position: absolute; bottom: 0; left: 0; right: 0; padding: 0.5rem 0.65rem; z-index: 2; }
+  .reel-likes { font-family: var(--sans); font-size: 0.75rem; font-weight: 600; color: white; display: flex; align-items: center; gap: 0.3rem; }
+  .reel-likes svg { width: 10px; height: 10px; }
+
+  /* SP POPUP */
   .sp-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 300; align-items: flex-start; justify-content: center; padding: 4.5rem 1.25rem 1.25rem; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
   .sp-overlay.open { display: flex; }
   .sp-card { background: #0E0F0D; border: 1px solid rgba(255,255,255,0.12); border-radius: 3px; width: 100%; max-width: 360px; overflow: hidden; animation: slideDown 0.25s cubic-bezier(0.16,1,0.3,1); }
   @keyframes slideDown { from{transform:translateY(-12px);opacity:0} to{transform:translateY(0);opacity:1} }
-  .sp-hero-section { background: linear-gradient(135deg, #141413 0%, #1A1B18 100%); padding: 2rem 1.75rem 1.5rem; border-bottom: 1px solid var(--line); text-align: center; }
+  .sp-hero-section { background: linear-gradient(135deg,#141413 0%,#1A1B18 100%); padding: 2rem 1.75rem 1.5rem; border-bottom: 1px solid var(--line); text-align: center; }
   .sp-bird { width: 90px; height: 90px; margin: -0.5rem auto -1rem; mix-blend-mode: screen; display: block; }
   .sp-tagline-cycling { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; color: var(--hi); line-height: 1.2; margin-bottom: 0.35rem; min-height: 2.1rem; }
   .sp-tagline-cycling .cycling-word { color: var(--mid); font-style: italic; font-weight: 400; }
@@ -364,89 +140,10 @@
   .sp-cta-secondary:hover { border-color: var(--line-strong); color: var(--mid); }
   .sp-note { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.1em; color: var(--dim); text-align: center; margin-top: 0.75rem; }
 
-  /* ─── REELS CAROUSEL ─── */
-  .reels-section { padding: 2.5rem 1.5rem 0; }
-
-  .reels-track-outer {
-    overflow: hidden;
-    margin: 1.25rem -1.5rem 0;
-    padding: 0 1.5rem;
-    cursor: grab;
-    user-select: none;
-  }
-
-  .reels-track {
-    display: flex;
-    gap: 0.6rem;
-    width: max-content;
-  }
-
-  .reel-slide {
-    flex-shrink: 0;
-    width: 54vw;
-    max-width: 230px;
-    aspect-ratio: 9/16;
-    border-radius: 2px;
-    overflow: hidden;
-    position: relative;
-    text-decoration: none;
-    display: block;
-  }
-
-  .reel-slide img {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-    pointer-events: none;
-    transition: transform 0.4s ease;
-  }
-  .reel-slide:hover img { transform: scale(1.03); }
-
-  .reel-slide-vignette {
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, transparent 40%, rgba(10,10,9,0.85) 100%);
-    pointer-events: none;
-  }
-
-  /* Play button */
-  .reel-play {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -60%);
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    background: rgba(10,10,9,0.5);
-    border: 1px solid rgba(255,255,255,0.3);
-    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s, transform 0.2s;
-  }
-  .reel-slide:hover .reel-play {
-    background: rgba(255,255,255,0.15);
-    transform: translate(-50%, -60%) scale(1.08);
-  }
-  .reel-play svg { width: 12px; height: 12px; fill: white; margin-left: 2px; }
-
-  /* Stats at bottom */
-  .reel-slide-foot {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 0.6rem 0.75rem;
-    z-index: 2;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-
-  .reel-likes {
-    font-family: var(--sans); font-size: 0.8rem; font-weight: 600;
-    color: white;
-    display: flex; align-items: center; gap: 0.3rem;
-  }
-  .reel-likes svg { width: 11px; height: 11px; }
-
-  /* ─── FOOTER ─── */
   .site-footer { border-top: 1px solid var(--line); padding: 1.5rem; text-align: center; margin-top: 3rem; }
   .site-footer-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; }
   .site-footer-link:hover { color: var(--soft); }
 
-  /* ─── FADE ─── */
   .fade-in { opacity: 0; transform: translateY(10px); transition: opacity 0.55s ease, transform 0.55s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
@@ -492,8 +189,7 @@
 <div class="section fade-in">
   <div class="section-label">The athlete</div>
   <div class="section-title">Pre-peak.<br>Already proven.</div>
-  <p class="body-text">Nika was the best junior lead climber in Europe at fifteen. By sixteen she was World Champion and European Senior Champion in the same year, while also climbing 9a outdoors — one of the hardest grades in women's climbing. Then a few difficult years, a war, a relocation. She came back.</p>
-  <p class="body-text">She is 23, based in Paris, and the 2026 competition season opens in May. The brands that are in before the next peak are the brands that will look clever when it happens.</p>
+  <p class="body-text">Nika was World Champion and European Senior Champion at sixteen, while also climbing 9a. A few difficult years followed — a war, a relocation. She came back. She is 23, based in Paris, and the 2026 season opens in May. The brands that are in before the next peak are the brands that will look clever when it happens.</p>
   <div class="pull">
     <p>"I know I can climb much better than I am right now. I'll come back. Just wait."</p>
   </div>
@@ -501,18 +197,13 @@
 
 <!-- PHOTO -->
 <div class="photo-raw-wrap fade-in" style="margin-top:2.5rem;">
-  <img class="photo-raw" src="Nika_Climbing.jpg" alt="" style="object-position: center 30%; max-height: 400px;">
+  <img class="photo-raw" src="Nika_Climbing.jpg" alt="" style="object-position: center 30%; max-height: 380px;">
 </div>
 
 <!-- WHAT SHE BRINGS -->
 <div class="section fade-in">
   <div class="section-label">What she brings</div>
-  <div class="section-title">Five things<br>worth paying for.</div>
-
-  <div class="brings-item">
-    <div class="brings-title">Creative involvement</div>
-    <div class="brings-body">She has a strong visual sense and expects to be part of shoots, not just present for them. The best content she's produced has had her input on framing, setting, and direction. Brands that allow this get significantly better output.</div>
-  </div>
+  <div class="section-title">Three things<br>worth paying for.</div>
 
   <div class="brings-item">
     <div class="brings-title">Credibility that transfers</div>
@@ -521,130 +212,12 @@
 
   <div class="brings-item">
     <div class="brings-title">A track record with Red Bull</div>
-    <div class="brings-body">She has worked with Red Bull at the level of Natural Heights — the production values and content quality are documented and public. That's a meaningful reference point for any brand evaluating what she produces.</div>
-  </div>
-
-  <div class="brings-item">
-    <div class="brings-title">International competition presence</div>
-    <div class="brings-body">The 2026 circuit covers Austria, France, Spain, Slovenia, Italy. Every competition is another opportunity for placement, content, and visibility in the communities brands in outdoor and action sports are trying to reach.</div>
+    <div class="brings-body">She has worked with Red Bull at the level of Natural Heights. The production values and content quality are documented and public. That's a meaningful reference point for any brand evaluating what she produces.</div>
   </div>
 
   <div class="brings-item">
     <div class="brings-title">A story that is still unfolding</div>
-    <div class="brings-body">Most athlete sponsorships are a bet on someone who has already peaked. Nika is 23, returning from a setback, and climbing better than she has in years. The story arc is compelling in a way that finished careers are not. Brands with timing instincts will recognise this.</div>
-  </div>
-</div>
-
-<!-- 2026 SEASON CALENDAR -->
-<div class="section fade-in">
-  <div class="section-label">2026 season</div>
-  <div class="section-title">Where she'll be.</div>
-  <div class="calendar-block">
-    <div class="calendar-head">Competition calendar</div>
-    <div class="cal-row">
-      <div class="cal-month">May</div>
-      <div class="cal-events">
-        <div class="cal-event">Season opens
-          <div class="cal-event-sub">European Cup circuit begins</div>
-        </div>
-      </div>
-    </div>
-    <div class="cal-row">
-      <div class="cal-month">Jun</div>
-      <div class="cal-events">
-        <div class="cal-event">European Cup — Lead
-          <div class="cal-event-sub">Innsbruck, Austria</div>
-        </div>
-      </div>
-    </div>
-    <div class="cal-row">
-      <div class="cal-month">Jun–Jul</div>
-      <div class="cal-events">
-        <div class="cal-event">IFSC World Cups
-          <div class="cal-event-sub">Chamonix, France · Briançon, France</div>
-        </div>
-      </div>
-    </div>
-    <div class="cal-row">
-      <div class="cal-month">Jul</div>
-      <div class="cal-events">
-        <div class="cal-event">European Cup — Lead
-          <div class="cal-event-sub">Switzerland</div>
-        </div>
-      </div>
-    </div>
-    <div class="cal-row">
-      <div class="cal-month">Aug</div>
-      <div class="cal-events">
-        <div class="cal-event">World Championships
-          <div class="cal-event-sub">TBC</div>
-        </div>
-      </div>
-    </div>
-    <div class="cal-row">
-      <div class="cal-month">Sep</div>
-      <div class="cal-events">
-        <div class="cal-event">IFSC World Cup
-          <div class="cal-event-sub">Koper, Slovenia</div>
-        </div>
-      </div>
-    </div>
-    <div class="cal-row open">
-      <div class="cal-month">Year</div>
-      <div class="cal-events">
-        <div class="cal-event" style="color:var(--mid);">Spain — Santa Linya · Siurana
-          <div class="cal-event-sub">Outdoor season · Available for shoots</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- WHAT A PARTNERSHIP LOOKS LIKE -->
-<div class="section fade-in">
-  <div class="section-label">Partnership formats</div>
-  <div class="section-title">What you actually get.</div>
-  <p class="body-text">These aren't fixed tiers — they're examples of how partnerships tend to work. Most brands start with one format and expand from there.</p>
-
-  <div class="format-card">
-    <div class="format-head">
-      <span class="format-name">Kit & Content</span>
-      <span class="format-type">Entry level</span>
-    </div>
-    <div class="format-body">
-      <div class="format-item">Product integration across competition and training content</div>
-      <div class="format-item">Monthly posts featuring the product in genuine use</div>
-      <div class="format-item">Monthly performance report with top integrated posts</div>
-      <div class="format-item">Brand tagged at every competition appearance</div>
-    </div>
-  </div>
-
-  <div class="format-card">
-    <div class="format-head">
-      <span class="format-name">Shoot Partner</span>
-      <span class="format-type">Mid-tier</span>
-    </div>
-    <div class="format-body">
-      <div class="format-item">Everything in Kit & Content</div>
-      <div class="format-item">1–2 dedicated shoot days per year — outdoor crag or comp setting</div>
-      <div class="format-item">Co-created content with brand creative involvement welcome</div>
-      <div class="format-item">Usage rights to content produced</div>
-      <div class="format-item">Association with Natural Heights / Unscripted film if applicable</div>
-    </div>
-  </div>
-
-  <div class="format-card">
-    <div class="format-head">
-      <span class="format-name">Full Partnership</span>
-      <span class="format-type">Long-term</span>
-    </div>
-    <div class="format-body">
-      <div class="format-item">Everything in Shoot Partner</div>
-      <div class="format-item">Category exclusivity — no competing brands in that space</div>
-      <div class="format-item">HQ visit and product testing involvement</div>
-      <div class="format-item">Co-branded film or campaign as a standalone asset</div>
-      <div class="format-item">First right of renewal as her profile grows</div>
-    </div>
+    <div class="brings-body">Most athlete sponsorships are a bet on someone who has already peaked. Nika is 23, returning from a setback, climbing better than she has in years. Brands with timing instincts will recognise what that means.</div>
   </div>
 </div>
 
@@ -652,14 +225,13 @@
 <div class="section fade-in">
   <div class="section-label">Open categories</div>
   <div class="section-title">Where there's<br>room.</div>
-  <p class="body-text" style="margin-bottom:1.25rem;">The categories below are open. Exclusivity is available in any of them. Taken categories are listed for transparency.</p>
 
   <div class="category-card">
     <div class="category-header">
       <span class="category-name">Apparel & Activewear</span>
       <span class="category-status open">Open</span>
     </div>
-    <div class="category-body">The single largest visual opportunity — she wears it at every competition and shoot. No current partner.</div>
+    <div class="category-body">The single largest visual opportunity — no current partner.</div>
   </div>
 
   <div class="category-card">
@@ -667,7 +239,7 @@
       <span class="category-name">Technology & Wearables</span>
       <span class="category-status open">Open</span>
     </div>
-    <div class="category-body">GPS, performance tracking, phones, cameras. Natural fit for a technically-minded athlete who documents her training.</div>
+    <div class="category-body">GPS, performance tracking, cameras. Natural fit for a technically-minded athlete who documents training.</div>
   </div>
 
   <div class="category-card">
@@ -675,7 +247,7 @@
       <span class="category-name">Travel & Accommodation</span>
       <span class="category-status open">Open</span>
     </div>
-    <div class="category-body">She is on the circuit across six countries in 2026. High organic integration potential — the travel is real and frequent.</div>
+    <div class="category-body">Six countries on the 2026 circuit. High organic integration potential.</div>
   </div>
 
   <div class="category-card">
@@ -683,7 +255,7 @@
       <span class="category-name">Film & Media Production</span>
       <span class="category-status open">Open</span>
     </div>
-    <div class="category-body">Nika, Unscripted is in development — one co-production partner available. First and only.</div>
+    <div class="category-body">Nika, Unscripted — one co-production partner available.</div>
   </div>
 
   <div class="category-card">
@@ -691,7 +263,6 @@
       <span class="category-name">Climbing Equipment</span>
       <span class="category-status taken">Taken</span>
     </div>
-    <div class="category-body" style="display:none;"></div>
     <span class="category-partner">Black Diamond · Tenaya</span>
   </div>
 
@@ -704,167 +275,57 @@
   </div>
 </div>
 
-<!-- PHOTO -->
-<div class="photo-raw-wrap fade-in" style="margin-top:2.5rem;">
-  <img class="photo-raw" src="Nika_Candid.jpg" alt="" style="object-position: center 30%; max-height: 360px;">
+<!-- REELS -->
+<div class="reels-section fade-in">
+  <div class="section-label">Content in action</div>
+  <div class="section-title">34.7M views.<br>On one reel.</div>
+  <div class="reels-track-outer">
+    <div class="reels-track">
+      <a class="reel-slide" href="https://www.instagram.com/reel/C43O1E3tt4l/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank"><img src="reel1.jpg" alt="" style="object-position:center 25%;"><div class="reel-slide-vignette"></div><div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="reel-slide-foot"><span class="reel-likes"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>34.7M</span></div></a>
+      <a class="reel-slide" href="https://www.instagram.com/reel/C3dOjhWNeP3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank"><img src="reel3.jpg" alt="" style="object-position:center 20%;"><div class="reel-slide-vignette"></div><div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="reel-slide-foot"><span class="reel-likes"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>554K</span></div></a>
+      <a class="reel-slide" href="https://www.instagram.com/reel/Cyyb2XXNw2H/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank"><img src="reel2.jpg" alt="" style="object-position:center 30%;"><div class="reel-slide-vignette"></div><div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="reel-slide-foot"><span class="reel-likes"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>52.2K</span></div></a>
+      <!-- duplicates for loop -->
+      <a class="reel-slide" href="https://www.instagram.com/reel/C43O1E3tt4l/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank"><img src="reel1.jpg" alt="" style="object-position:center 25%;"><div class="reel-slide-vignette"></div><div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="reel-slide-foot"><span class="reel-likes"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>34.7M</span></div></a>
+      <a class="reel-slide" href="https://www.instagram.com/reel/C3dOjhWNeP3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank"><img src="reel3.jpg" alt="" style="object-position:center 20%;"><div class="reel-slide-vignette"></div><div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="reel-slide-foot"><span class="reel-likes"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>554K</span></div></a>
+      <a class="reel-slide" href="https://www.instagram.com/reel/Cyyb2XXNw2H/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank"><img src="reel2.jpg" alt="" style="object-position:center 30%;"><div class="reel-slide-vignette"></div><div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="reel-slide-foot"><span class="reel-likes"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>52.2K</span></div></a>
+    </div>
+  </div>
 </div>
 
 <!-- REACH -->
 <div class="section fade-in">
   <div class="section-label">Reach</div>
   <div class="section-title">The numbers<br>in context.</div>
-  <p class="body-text" style="margin-bottom:0;">39,400 Instagram followers in climbing is a different asset to 39,400 followers in lifestyle. These are people who know her name, have watched her compete, and follow her because they care about the sport. Full analytics available directly from Nika on request.</p>
+  <p class="body-text">39,400 Instagram followers in climbing is a different asset to 39,400 in lifestyle. These are people who know her name and follow because they care about the sport. Full analytics on request.</p>
 
   <div class="reach-row">
-    <div class="reach-icon">
-      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-    </div>
-    <div style="flex:1">
-      <div class="reach-name">Instagram</div>
-      <div class="reach-handle">@nika_____potapova · primary channel</div>
-    </div>
-    <div>
-      <div class="reach-num">39.4K</div>
-      <div class="reach-label">Followers</div>
-    </div>
+    <div class="reach-icon"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
+    <div style="flex:1"><div class="reach-name">Instagram</div><div class="reach-handle">@nika_____potapova · primary channel</div></div>
+    <div><div class="reach-num">39.4K</div><div class="reach-label">Followers</div></div>
   </div>
-
   <div class="reach-row">
-    <div class="reach-icon">
-      <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.14a8.16 8.16 0 004.77 1.52V7.21a4.85 4.85 0 01-1-.52z"/></svg>
-    </div>
-    <div style="flex:1">
-      <div class="reach-name">TikTok</div>
-      <div class="reach-handle">@nika_shark21 · early stage</div>
-    </div>
-    <div>
-      <div class="reach-num">1K</div>
-      <div class="reach-label">Growing</div>
-    </div>
-  </div>
-
-  <div class="reach-context">
-    <div class="reach-context-item">Audience is predominantly European climbers and action sports fans — the exact demographic brands in outdoor, equipment, and activewear are spending to reach</div>
-    <div class="reach-context-item">Red Bull Natural Heights episode featuring Nika has been viewed by the wider climbing community beyond her own following</div>
-    <div class="reach-context-item">Full Instagram insights — age, gender, location, top posts by reach and engagement — available on request within 24 hours</div>
+    <div class="reach-icon"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.14a8.16 8.16 0 004.77 1.52V7.21a4.85 4.85 0 01-1-.52z"/></svg></div>
+    <div style="flex:1"><div class="reach-name">TikTok</div><div class="reach-handle">@nika_shark21 · early stage</div></div>
+    <div><div class="reach-num">1K</div><div class="reach-label">Growing</div></div>
   </div>
 </div>
 
-<!-- CONTENT IN ACTION -->
-<div class="reels-section fade-in">
-  <div class="section-label">Content in action</div>
-  <div class="section-title">34.7M views.<br>On one reel.</div>
-
-  <div class="reels-track-outer" id="reels-outer">
-    <div class="reels-track" id="reels-track">
-
-      <!-- Real slides -->
-      <a class="reel-slide" href="https://www.instagram.com/reel/C43O1E3tt4l/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
-        <img src="reel1.jpg" alt="" style="object-position: center 25%;">
-        <div class="reel-slide-vignette"></div>
-        <div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <div class="reel-slide-foot">
-          <span class="reel-likes">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            34.7M
-          </span>
-        </div>
-      </a>
-
-      <a class="reel-slide" href="https://www.instagram.com/reel/C3dOjhWNeP3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
-        <img src="reel3.jpg" alt="" style="object-position: center 20%;">
-        <div class="reel-slide-vignette"></div>
-        <div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <div class="reel-slide-foot">
-          <span class="reel-likes">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            554K
-          </span>
-        </div>
-      </a>
-
-      <a class="reel-slide" href="https://www.instagram.com/reel/Cyyb2XXNw2H/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
-        <img src="reel2.jpg" alt="" style="object-position: center 30%;">
-        <div class="reel-slide-vignette"></div>
-        <div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <div class="reel-slide-foot">
-          <span class="reel-likes">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            52.2K
-          </span>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</div>
-
-<!-- ACCOUNTABILITY -->
+<!-- ACCOUNTABILITY — 3 items -->
 <div class="section fade-in">
   <div class="section-label">Her commitment to you</div>
   <div class="section-title">The things brands<br>lose sleep over.</div>
 
   <div class="commit-row">
-    <div class="commit-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-    <div>
-      <div class="commit-title">Monthly reporting</div>
-      <div class="commit-detail">A written update every month — what she posted, what performed, what's coming. Includes her five best brand-integrated posts with context. No chasing required.</div>
-    </div>
+    <div class="commit-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>
+    <div><div class="commit-title">Monthly reporting</div><div class="commit-detail">A written update every month — what she posted, what performed, what's coming. No chasing required.</div></div>
   </div>
-
-  <div class="commit-row">
-    <div class="commit-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-    <div>
-      <div class="commit-title">Responsive and reachable</div>
-      <div class="commit-detail">Replies to emails. Shows up to calls. If something changes that affects a deliverable, she tells you before it becomes a problem — not after.</div>
-    </div>
-  </div>
-
   <div class="commit-row">
     <div class="commit-icon"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-    <div>
-      <div class="commit-title">Deliverables on time</div>
-      <div class="commit-detail">Agreed outputs get delivered on the agreed schedule. If a deadline needs to move, she asks — she doesn't just miss it.</div>
-    </div>
+    <div><div class="commit-title">Deliverables on time</div><div class="commit-detail">Agreed outputs delivered on schedule. If a deadline needs to move, she asks — she doesn't just miss it.</div></div>
   </div>
-
   <div class="commit-row">
     <div class="commit-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-    <div>
-      <div class="commit-title">Honest feedback, privately first</div>
-      <div class="commit-detail">If something isn't working — a product, a brief, a direction — she'll say so to you before it surfaces anywhere else. That's not a liability, it's the feedback loop most brands pay to suppress.</div>
-    </div>
-  </div>
-
-  <div class="commit-row">
-    <div class="commit-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-    <div>
-      <div class="commit-title">Will come to you</div>
-      <div class="commit-detail">Open to visiting brand headquarters, attending product launches, and getting properly acquainted with what a brand makes and why. She wants to understand the product, not just wear it.</div>
-    </div>
-  </div>
-</div>
-
-<!-- WHAT SHE NEEDS -->
-<div class="section fade-in">
-  <div class="section-label">What she needs from you</div>
-  <div class="section-title">How to make<br>it work.</div>
-
-  <div class="needs-row">
-    <div class="needs-num">01</div>
-    <div class="needs-text"><strong>A clear brief.</strong> What the brand stands for, what success looks like, what you actually want from the partnership. She'll do more with direction than without it.</div>
-  </div>
-  <div class="needs-row">
-    <div class="needs-num">02</div>
-    <div class="needs-text"><strong>Genuine product fit.</strong> If the product doesn't belong in her world she won't take the partnership. If it does, she'll be one of the most credible advocates you have.</div>
-  </div>
-  <div class="needs-row">
-    <div class="needs-num">03</div>
-    <div class="needs-text"><strong>Creative respect.</strong> She has an eye for how things should look and she'll want a say in shoots and visual direction. Brands that treat this as a collaboration get more than brands that hand her a brief and a product.</div>
-  </div>
-  <div class="needs-row">
-    <div class="needs-num">04</div>
-    <div class="needs-text"><strong>Long-term thinking.</strong> She is not looking for a one-season arrangement. The value compounds over time — she wants a brand that understands that.</div>
+    <div><div class="commit-title">Honest feedback, privately first</div><div class="commit-detail">If something isn't working she'll say so to you before it surfaces anywhere else. That's the feedback loop most brands pay to suppress.</div></div>
   </div>
 </div>
 
@@ -874,26 +335,17 @@
   <p class="contact-sub">All enquiries go to Ben at Sponsable. We'll respond within 24 hours and can have Nika on a call within the week.</p>
   <a href="mailto:ben@sponsable.co.uk" class="contact-item">
     <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-    <div>
-      <div class="contact-label">Email</div>
-      <div class="contact-value">ben@sponsable.co.uk</div>
-    </div>
+    <div><div class="contact-label">Email</div><div class="contact-value">ben@sponsable.co.uk</div></div>
     <span class="contact-arrow">→</span>
   </a>
-  <a href="About.html" class="contact-item">
-    <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-    <div>
-      <div class="contact-label">Athlete profile</div>
-      <div class="contact-value">sponsable.co.uk/nika</div>
-    </div>
+  <a href="partnership.html" class="contact-item">
+    <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+    <div><div class="contact-label">Before you reach out</div><div class="contact-value">Partnership formats & what she needs</div></div>
     <span class="contact-arrow">→</span>
   </a>
   <a href="history.html" class="contact-item">
     <div class="contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
-    <div>
-      <div class="contact-label">Athletic record</div>
-      <div class="contact-value">Full competition history</div>
-    </div>
+    <div><div class="contact-label">Athletic record</div><div class="contact-value">Full competition history</div></div>
     <span class="contact-arrow">→</span>
   </a>
 </div>
@@ -908,16 +360,11 @@
   <div class="sp-card">
     <div class="sp-hero-section">
       <img src="Sponsable Bird Logo White.png" alt="Sponsable" class="sp-bird" style="object-fit:contain;">
-      <div class="sp-tagline-cycling">
-        The profile trusted by<br><span class="cycling-word" id="cycling-word">climbers.</span>
-      </div>
+      <div class="sp-tagline-cycling">The profile trusted by<br><span class="cycling-word" id="cycling-word">climbers.</span></div>
       <p class="sp-sub">One profile for everything you've earned, everything you are, and every brand you want to talk to.</p>
     </div>
     <div class="sp-body">
-      <div class="sp-url">
-        <div class="sp-url-dot"></div>
-        <span class="sp-url-text">sponsable.co.uk / your-name</span>
-      </div>
+      <div class="sp-url"><div class="sp-url-dot"></div><span class="sp-url-text">sponsable.co.uk / your-name</span></div>
       <a href="https://sponsable.co.uk" target="_blank" class="sp-cta-primary">Claim your Sponsable profile</a>
       <a href="https://sponsable.co.uk" target="_blank" class="sp-cta-secondary">Explore athlete profiles</a>
       <a href="https://sponsable.co.uk" target="_blank" class="sp-cta-secondary">Learn how it works</a>
@@ -927,128 +374,25 @@
 </div>
 
 <script>
-  window.addEventListener('load', () => {
-    document.getElementById('hero-img').classList.add('loaded');
-  });
-
+  window.addEventListener('load', () => { document.getElementById('hero-img').classList.add('loaded'); });
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), 40); obs.unobserve(e.target); }
-    });
+    entries.forEach(e => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), 40); obs.unobserve(e.target); } });
   }, { threshold: 0.05 });
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-
   const spWords = ['climbers.','skiers.','surfers.','cyclists.','trail runners.','alpinists.','athletes.'];
   let spWordIdx = 0, spInterval = null;
   function openSpPopup() {
-    document.getElementById('sp-overlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-    spWordIdx = 0;
-    document.getElementById('cycling-word').textContent = spWords[0];
+    document.getElementById('sp-overlay').classList.add('open'); document.body.style.overflow = 'hidden';
+    spWordIdx = 0; document.getElementById('cycling-word').textContent = spWords[0];
     spInterval = setInterval(() => {
       spWordIdx = (spWordIdx + 1) % spWords.length;
       const el = document.getElementById('cycling-word');
-      el.style.opacity = '0'; el.style.transform = 'translateY(-4px)';
-      el.style.transition = 'opacity 0.2s, transform 0.2s';
+      el.style.opacity = '0'; el.style.transform = 'translateY(-4px)'; el.style.transition = 'opacity 0.2s, transform 0.2s';
       setTimeout(() => { el.textContent = spWords[spWordIdx]; el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, 200);
     }, 1800);
   }
-  function closeSpPopup() {
-    document.getElementById('sp-overlay').classList.remove('open');
-    document.body.style.overflow = '';
-    clearInterval(spInterval);
-  }
-  function handleSpOverlayClick(e) {
-    if (e.target === document.getElementById('sp-overlay')) closeSpPopup();
-  }
-
-  // Reel carousel — infinite loop (same pattern as gallery)
-  (function() {
-    const outer = document.getElementById('reels-outer');
-    const track = document.getElementById('reels-track');
-    if (!outer || !track) return;
-
-    const origSlides = Array.from(track.querySelectorAll('.reel-slide'));
-    const total = origSlides.length;
-
-    const clonesBefore = origSlides.slice(-2).map(s => s.cloneNode(true));
-    const clonesAfter  = origSlides.slice(0, 2).map(s => s.cloneNode(true));
-    clonesBefore.reverse().forEach(c => track.prepend(c));
-    clonesAfter.forEach(c => track.append(c));
-
-    function sw() {
-      const s = track.querySelectorAll('.reel-slide')[0];
-      return s ? s.getBoundingClientRect().width + 10 : 0;
-    }
-
-    let current = clonesBefore.length;
-    let startX = 0, isDragging = false, dragOffset = 0;
-    let isTouchDrag = false;
-
-    function setPos(instant) {
-      track.style.transition = instant ? 'none' : 'transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94)';
-      track.style.transform = `translateX(-${current * sw()}px)`;
-    }
-
-    track.addEventListener('transitionend', () => {
-      if (current < clonesBefore.length) { current += total; setPos(true); }
-      else if (current >= clonesBefore.length + total) { current -= total; setPos(true); }
-    });
-
-    requestAnimationFrame(() => setPos(true));
-
-    function advance(dir) { current += dir; setPos(false); }
-
-    // Touch
-    outer.addEventListener('touchstart', e => {
-      isTouchDrag = true;
-      startX = e.touches[0].clientX; isDragging = true;
-      track.style.transition = 'none';
-    }, { passive: true });
-    outer.addEventListener('touchmove', e => {
-      if (!isDragging) return;
-      dragOffset = e.touches[0].clientX - startX;
-      track.style.transform = `translateX(${-(current * sw()) + dragOffset}px)`;
-    }, { passive: true });
-    outer.addEventListener('touchend', () => {
-      isDragging = false;
-      if (dragOffset < -40) advance(1);
-      else if (dragOffset > 40) advance(-1);
-      else setPos(false);
-      dragOffset = 0;
-    });
-
-    // Mouse drag
-    outer.addEventListener('mousedown', e => {
-      startX = e.clientX; isDragging = true; dragOffset = 0;
-      track.style.transition = 'none';
-      outer.style.cursor = 'grabbing';
-    });
-    outer.addEventListener('mousemove', e => {
-      if (!isDragging) return;
-      dragOffset = e.clientX - startX;
-      track.style.transform = `translateX(${-(current * sw()) + dragOffset}px)`;
-    });
-    outer.addEventListener('mouseup', () => {
-      isDragging = false; outer.style.cursor = 'grab';
-      if (dragOffset < -40) advance(1);
-      else if (dragOffset > 40) advance(-1);
-      else setPos(false);
-      dragOffset = 0;
-    });
-    outer.addEventListener('mouseleave', () => {
-      if (!isDragging) return;
-      isDragging = false; outer.style.cursor = 'grab';
-      setPos(false); dragOffset = 0;
-    });
-
-    // Prevent link clicks on drag
-    track.querySelectorAll('.reel-slide').forEach(el => {
-      el.addEventListener('click', e => {
-        if (Math.abs(dragOffset) > 5) e.preventDefault();
-      });
-    });
-  })();
+  function closeSpPopup() { document.getElementById('sp-overlay').classList.remove('open'); document.body.style.overflow = ''; clearInterval(spInterval); }
+  function handleSpOverlayClick(e) { if (e.target === document.getElementById('sp-overlay')) closeSpPopup(); }
 </script>
 </body>
 </html>
