@@ -295,8 +295,8 @@
   .result-medal.gold svg { filter: drop-shadow(0 0 5px rgba(210,175,70,0.5)); }
   .result-body { flex: 1; }
   .result-place  { display: none; }
-  .result-name   { font-family: var(--sans); font-size: 0.9rem; font-weight: 600; color: white; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
-  .result-detail { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.07em; color: rgba(255,255,255,0.65); margin-top: 0.12rem; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
+  .result-name   { font-family: var(--sans); font-size: 0.9rem; font-weight: 600; color: white; }
+  .result-detail { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.07em; color: rgba(255,255,255,0.7); margin-top: 0.12rem; }
 
   /* ─── SHARED CARD OVERLAY — used by both Athletic Record and Natural Heights ─── */
   .card-img {
@@ -318,7 +318,9 @@
 
   .card-img-vignette {
     position: absolute; inset: 0;
-    background: linear-gradient(180deg, transparent 30%, rgba(10,10,9,0.85) 100%);
+    background:
+      linear-gradient(90deg, rgba(10,10,9,0.72) 0%, rgba(10,10,9,0.3) 55%, transparent 100%),
+      linear-gradient(180deg, transparent 30%, rgba(10,10,9,0.88) 100%);
     pointer-events: none;
   }
 
@@ -386,9 +388,9 @@
 
   .film-badge { display: inline-block; font-family: var(--mono); font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 0.9rem; }
 
-  .film-title { font-family: var(--serif); font-size: 2rem; font-weight: 700; color: white; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0.55rem; text-shadow: 0 2px 12px rgba(0,0,0,0.8); }
+  .film-title { font-family: var(--serif); font-size: 2rem; font-weight: 700; color: white; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0.55rem; }
 
-  .film-desc { font-family: var(--serif); font-size: 0.88rem; font-style: italic; color: rgba(255,255,255,0.88); line-height: 1.8; margin-bottom: 1.5rem; text-shadow: 0 1px 6px rgba(0,0,0,0.9); }
+  .film-desc { font-family: var(--serif); font-size: 0.88rem; font-style: italic; color: rgba(255,255,255,0.88); line-height: 1.8; margin-bottom: 1.5rem; }
 
   .film-notify { display: none; margin-bottom: 1.25rem; }
   .film-notify.open { display: block; }
@@ -439,48 +441,6 @@
     border-top: none;
   }
 
-  .film-bg {
-    position: absolute; inset: 0;
-    background: url('Nika_Bleeding.jpg') center 25% / cover no-repeat;
-    opacity: 0.5;
-  }
-
-  /* Dark overlay so text reads cleanly */
-  .film-section::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg,
-      rgba(10,10,9,0.55) 0%,
-      rgba(10,10,9,0.45) 50%,
-      rgba(10,10,9,0.65) 100%
-    );
-    pointer-events: none;
-  }
-
-  .film-inner {
-    position: relative;
-    z-index: 2;
-    padding: 2rem 1.5rem 0;
-  }
-  .winning-break {
-    position: relative;
-    height: 52vw;
-    max-height: 230px;
-    overflow: hidden;
-  }
-
-  .winning-img {
-    position: absolute; inset: 0;
-    background: url('Nika_Winning.jpg') center 25% / cover no-repeat;
-  }
-
-  .winning-vignette {
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(180deg, rgba(10,10,9,0.5) 0%, transparent 30%, transparent 65%, rgba(10,10,9,0.7) 100%),
-      linear-gradient(90deg, rgba(10,10,9,0.3) 0%, transparent 50%);
-  }
-
   /* ─── FILM CARD WITH BACKGROUND IMAGE ─── */
   .film-section {
     position: relative;
@@ -491,13 +451,11 @@
   .film-bg {
     position: absolute; inset: 0;
     background: url('Nika_Bleeding.jpg') center 25% / cover no-repeat;
-    opacity: 0.38;
+    opacity: 0.55;
   }
 
   .film-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(10,10,9,0.55) 0%, rgba(10,10,9,0.45) 100%);
-    z-index: 1;
+    display: none;
   }
 
   .film-inner {
@@ -600,8 +558,6 @@
     letter-spacing: -0.01em;
     margin-bottom: 1.1rem;
   }
-
-  .avail-item {
     display: grid;
     grid-template-columns: 90px 1fr;
     gap: 0.75rem;
@@ -686,7 +642,6 @@
   .gallery-slide:nth-child(5) img { object-position: center 40%; }
   .gallery-slide:nth-child(6) img { object-position: center 30%; }
 
-  .gallery-slide-caption {
     position: absolute;
     bottom: 0; left: 0; right: 0;
     padding: 2rem 1rem 0.85rem;
@@ -1198,13 +1153,11 @@
   </p>
   <div class="bio-expanded" id="bio-expanded">
     <p>She said yes.</p>
-    <p>Within her first year she climbed 8a. By thirteen, 8c. At fourteen she broke the women's Zlagboard endurance record — and nearly the men's. Not officially, but there's a video. At sixteen she climbed 9a, becoming the 23rd woman in history to do so. That same year she became European Youth Champion; a year later, Youth World Champion.</p>
-    <p>Her coach controlled everything — who travelled, where they slept, who they spoke to. Athletes were turned against one another, competition engineered into isolation and justified by results. He later became the subject of a court case. Nika, seventeen, was a witness.</p>
+    <p>Within her first year she climbed 8a. By thirteen, 8c. At fourteen she broke the women's Zlagboard endurance record — and nearly the men's. Not officially, but there's a video. At sixteen she climbed 9a, the 23rd woman in history to do so. That same year she became European Senior Champion in the combined discipline. A few months later, Youth World Champion.</p>
+    <p>Her coach controlled everything — who travelled, where they slept, who they spoke to. Athletes were turned against one another, competition engineered into isolation and justified by results. The situation eventually led to a court case in which Nika, seventeen, appeared as a witness.</p>
     <div class="bio-pull"><p>"I was winning. But somebody was taking pieces from me."</p></div>
-    <p>When it ended, she was back in Kyiv. 2020 going into 2021 — no coach, no structure, no clear path forward. Figuring it out alone.</p>
-    <div class="bio-pull"><p>"I felt so lost."</p></div>
-    <p>In 2022, the war started. She left Ukraine and moved to Germany, carrying a refugee card. She trained where she could — Innsbruck when the climbing was right, Paris when it made sense. Not settling, just moving. Still figuring it out.</p>
-    <p>She's in Paris now. Training again. Rediscovering that her best climbing happens when she stops thinking about it at all.</p>
+    <p>She began shaping her own path. When the war began, she left Ukraine, training between Germany and Innsbruck, hitching rides to World Cups and sleeping wherever she could.</p>
+    <p>For now she is in Paris, with a room of her own, rediscovering that her best climbing happens when she stops thinking about it at all.</p>
     <div class="bio-pull"><p>"I know I can climb much better than I am right now. I'll come back. Just wait for my comeback."</p></div>
     <button class="bio-more" onclick="toggleBio()">less</button>
   </div>
@@ -1270,7 +1223,7 @@
 
 <!-- MEDIA -->
 <div class="fade-in" style="padding: 2rem 1.5rem 0.75rem;">
-  <div style="font-family:var(--mono);font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--dim);">On Red Bull TV</div>
+  <div style="font-family:var(--mono);font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--dim);">Media</div>
 </div>
 <a href="https://www.redbull.com/int-en/episodes/natural-heights-s1-e3" target="_blank" class="media-link card-img media-card fade-in">
   <div class="card-play">
@@ -1318,29 +1271,24 @@
     <div class="gallery-track" id="gallery-track">
       <div class="gallery-slide">
         <img src="Nika_Climbing.jpg" alt="Outdoor sport climbing">
-        <div class="gallery-slide-caption">Outdoor lead</div>
       </div>
       <div class="gallery-slide">
         <img src="Nika_Winning.jpg" alt="Competition">
-        <div class="gallery-slide-caption">Competition</div>
       </div>
       <div class="gallery-slide">
         <img src="Nika_Candid.jpg" alt="">
       </div>
       <div class="gallery-slide">
         <img src="Nika_Lighting.jpg" alt="Indoor climbing">
-        <div class="gallery-slide-caption">Indoor comp</div>
       </div>
       <div class="gallery-slide">
         <img src="Nika_Working.jpg" alt="At the crag">
-        <div class="gallery-slide-caption">Santa Linya</div>
       </div>
       <div class="gallery-slide">
         <img src="Nika_BW.jpg" alt="Bouldering">
       </div>
       <div class="gallery-slide">
         <img src="Nika_Bleeding.jpg" alt="At the crag" style="object-position:center 15%;">
-        <div class="gallery-slide-caption">Santa Linya</div>
       </div>
       <div class="gallery-slide">
         <img src="Nika_Baby.jpg" alt="" style="object-position:center 20%;">
@@ -1371,7 +1319,6 @@
 <div class="answers-section fade-in">
   <div class="answers-head">
     <span class="answers-title">Nika Answers</span>
-    <span class="answers-cadence">Updated monthly</span>
   </div>
 
   <!-- Voice note answer -->
@@ -1411,7 +1358,7 @@
       </div>
       <div class="film-actions">
         <span id="film-notify-confirm" style="font-family:var(--mono);font-size:8px;letter-spacing:0.1em;color:var(--dim);display:none;">You're on the list.</span>
-        <a href="plan.html" class="film-plan-link" style="margin-left:auto;">See the full plan →</a>
+        <a href="plan.html" class="card-badge" style="margin-left:auto;">See the full plan</a>
       </div>
     </div>
   </div>
@@ -1426,7 +1373,7 @@
   <div class="answers-ask">
     <textarea id="qa-input" rows="3" placeholder="Nika answers your questions each month."></textarea>
     <div class="answers-ask-row">
-      <button class="answers-submit" onclick="submitQuestion()">Submit →</button>
+      <button class="answers-submit" onclick="submitQuestion()">Submit</button>
     </div>
   </div>
 </div>
