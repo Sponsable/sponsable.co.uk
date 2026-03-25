@@ -3,27 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nika, Unscripted — Film Project</title>
+<title>Nika, Unscripted</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0A0A09;
-    --line: rgba(255,255,255,0.07);
-    --hi: rgba(255,255,255,0.95);
-    --mid: rgba(255,255,255,0.60);
+    --bg:    #0A0A09;
+    --bg-1:  #111110;
+    --line:        rgba(255,255,255,0.07);
+    --line-strong: rgba(255,255,255,0.14);
+    --hi:   rgba(255,255,255,0.95);
+    --mid:  rgba(255,255,255,0.60);
     --soft: rgba(255,255,255,0.40);
-    --dim: rgba(255,255,255,0.35);
-    --accent: #B44E4E; /* Subtle 'bleeding' red accent */
-    
+    --dim:  rgba(255,255,255,0.42);
+    --ghost:rgba(255,255,255,0.05);
+    --pull: rgba(255,255,255,0.22);
     --serif: 'Lora', Georgia, serif;
-    --sans: 'DM Sans', system-ui, sans-serif;
-    --mono: 'DM Mono', monospace;
+    --sans:  'DM Sans', system-ui, sans-serif;
+    --mono:  'DM Mono', 'Courier New', monospace;
   }
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
   body {
     background: var(--bg);
     color: var(--hi);
@@ -31,216 +34,477 @@
     -webkit-font-smoothing: antialiased;
     max-width: 430px;
     margin: 0 auto;
-    line-height: 1.6;
+    overflow-x: hidden;
   }
 
-  /* ─── HEADER ─── */
-  .nav {
-    padding: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .back-link {
-    font-family: var(--mono);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--soft);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  /* ─── HERO ─── */
-  .film-hero {
+  /* ─── HERO — flush to top ─── */
+  .hero {
     position: relative;
-    padding: 2rem 1.5rem 4rem;
-    text-align: center;
-  }
-  .film-status {
-    font-family: var(--mono);
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--accent);
-    margin-bottom: 1rem;
-    display: block;
-  }
-  .film-title {
-    font-family: var(--serif);
-    font-size: 3.2rem;
-    font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    margin-bottom: 1.5rem;
-  }
-  .film-meta {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.1rem;
-    color: var(--mid);
+    height: 100vh; min-height: 600px;
+    overflow: hidden;
   }
 
-  /* ─── VISUAL BREAK ─── */
-  .stills-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 0.5rem;
-    padding: 0 0.5rem;
+  .hero-img {
+    position: absolute; inset: 0;
+    background: url('Nika_Bleeding.jpg') center 30% / cover no-repeat;
+    transform: scale(1.04);
+    transition: transform 10s cubic-bezier(0.25,0.46,0.45,0.94);
   }
-  .still-img {
-    width: 100%;
-    aspect-ratio: 4/5;
-    object-fit: cover;
-    background: var(--line);
-    border-radius: 2px;
-  }
-  .still-img.wide {
-    grid-column: span 2;
-    aspect-ratio: 16/10;
+  .hero-img.loaded { transform: scale(1); }
+
+  .hero-vignette {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,10,9,0.4) 0%, transparent 30%, transparent 45%, rgba(10,10,9,0.85) 80%, #0A0A09 100%),
+      linear-gradient(90deg, rgba(10,10,9,0.3) 0%, transparent 60%);
   }
 
-  /* ─── THE CORE STORY ─── */
-  .content-section {
-    padding: 4rem 1.5rem;
+  /* Bird overlaid top-right */
+  .hero-bird {
+    position: absolute; top: 1.25rem; right: 1.5rem; z-index: 5;
+    background: none; border: none; cursor: pointer; padding: 0;
+    opacity: 0.5; transition: opacity 0.2s;
   }
+  .hero-bird:hover { opacity: 0.8; }
+  .hero-bird img { width: 72px; height: 72px; mix-blend-mode: screen; display: block; object-fit: contain; }
+
+  .hero-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 0 1.5rem 3rem; z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow-line { height: 1px; width: 24px; background: var(--dim); flex-shrink: 0; }
+
+  .hero-title {
+    font-family: var(--serif); font-size: 3.6rem; font-weight: 700;
+    color: white; line-height: 0.9; letter-spacing: -0.03em;
+    margin-bottom: 0.2rem;
+  }
+
+  .hero-title-second {
+    font-family: var(--serif); font-size: 3.6rem; font-weight: 400; font-style: italic;
+    color: rgba(255,255,255,0.6); line-height: 1.0; letter-spacing: -0.025em;
+    margin-bottom: 1.1rem;
+  }
+
+  .hero-logline {
+    font-family: var(--serif); font-size: 0.95rem; font-style: italic;
+    color: rgba(255,255,255,0.55); line-height: 1.65;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Back link — appears on scroll */
+  .hero-back {
+    display: flex; align-items: center; gap: 0.45rem;
+    text-decoration: none;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    opacity: 0; transform: translateY(4px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .hero-back.visible { opacity: 1; transform: translateY(0); }
+  .hero-back:hover { color: rgba(255,255,255,0.65); }
+  .hero-back svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+  /* ─── PHOTO — raw, no decoration ─── */
+  .photo-raw-wrap { overflow: hidden; line-height: 0; }
+  .photo-raw { width: 100%; display: block; object-fit: cover; }
+
+  /* ─── BODY SECTIONS ─── */
+  .section { padding: 2.5rem 1.5rem 0; }
+
   .section-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--dim);
-    margin-bottom: 2rem;
-    display: block;
-  }
-  .copy-p {
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    color: var(--mid);
-    margin-bottom: 1.5rem;
-  }
-  .copy-p b { color: var(--hi); font-weight: 600; }
-
-  .quote-block {
-    margin: 3rem 0;
-    padding-left: 1.5rem;
-    border-left: 1px solid var(--accent);
-  }
-  .quote-text {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.4rem;
-    line-height: 1.4;
-    color: var(--hi);
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 0.85rem;
   }
 
-  /* ─── LOGISTICS / CALL TO ACTION ─── */
-  .logistics-box {
-    background: #111110;
-    padding: 2rem 1.5rem;
-    margin-top: 2rem;
-    border-top: 1px solid var(--line);
+  .section-title {
+    font-family: var(--serif); font-size: 1.6rem; font-weight: 700;
+    color: var(--hi); letter-spacing: -0.02em; line-height: 1.1;
+    margin-bottom: 0.85rem;
   }
-  .log-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.75rem 0;
+
+  .body-text {
+    font-family: var(--serif); font-size: 0.92rem; font-style: italic;
+    color: var(--soft); line-height: 1.85;
+  }
+
+  .body-text + .body-text { margin-top: 1rem; }
+
+  /* ─── PULL QUOTE ─── */
+  .pull {
+    border-left: 2px solid var(--pull);
+    padding: 0.4rem 0 0.4rem 1rem;
+    margin: 1.5rem 0;
+  }
+  .pull p {
+    font-family: var(--serif); font-size: 1.05rem; font-style: italic;
+    color: var(--hi); line-height: 1.55;
+  }
+
+  /* ─── WHAT IT IS — facts ─── */
+  .facts-block {
+    margin: 2.5rem 1.5rem 0;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: var(--bg-1);
+  }
+
+  .fact-row {
+    display: flex; align-items: baseline;
+    gap: 1rem; padding: 0.85rem 1.25rem;
     border-bottom: 1px solid var(--line);
   }
-  .log-label { font-family: var(--mono); font-size: 10px; color: var(--dim); text-transform: uppercase; }
-  .log-val { font-family: var(--sans); font-size: 0.85rem; color: var(--mid); }
+  .fact-row:last-child { border-bottom: none; }
 
-  .cta-section {
-    padding: 4rem 1.5rem;
-    text-align: center;
+  .fact-label {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--dim); flex-shrink: 0; width: 80px;
+  }
+
+  .fact-val {
+    font-family: var(--sans); font-size: 0.85rem;
+    color: var(--hi); font-weight: 500;
+  }
+
+  /* ─── NIKA'S WORDS ─── */
+  .words-section { padding: 2.5rem 1.5rem 0; }
+
+  .words-item {
+    padding: 1.1rem 0;
     border-top: 1px solid var(--line);
   }
-  .cta-btn {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background: var(--hi);
-    color: var(--bg);
-    text-transform: uppercase;
-    font-family: var(--sans);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-decoration: none;
-    border-radius: 2px;
+
+  .words-q {
+    font-family: var(--sans); font-size: 0.82rem; font-weight: 500;
+    color: var(--mid); margin-bottom: 0.8rem; line-height: 1.5;
   }
 
-  .fade-in { opacity: 0; transform: translateY(15px); transition: all 0.7s ease-out; }
+  .words-a {
+    font-family: var(--serif); font-size: 0.92rem; font-style: italic;
+    color: var(--hi); line-height: 1.8;
+    padding-left: 1rem; border-left: 2px solid var(--pull);
+  }
+
+  /* ─── NOTIFY ─── */
+  .notify-section {
+    padding: 2.5rem 1.5rem 0;
+  }
+
+  .notify-inner {
+    background: var(--bg-1); border: 1px solid var(--line);
+    border-radius: 2px; padding: 1.5rem;
+  }
+
+  .notify-title {
+    font-family: var(--serif); font-size: 1.1rem; font-weight: 600;
+    color: var(--hi); letter-spacing: -0.01em;
+    margin-bottom: 0.4rem;
+  }
+
+  .notify-sub {
+    font-family: var(--serif); font-size: 0.85rem; font-style: italic;
+    color: var(--soft); line-height: 1.6; margin-bottom: 1.25rem;
+  }
+
+  .notify-row { display: flex; gap: 0.5rem; }
+
+  .notify-input {
+    flex: 1; padding: 0.7rem 0.85rem;
+    background: var(--ghost); border: 1px solid var(--line);
+    color: var(--hi); font-family: var(--serif);
+    font-size: 0.86rem; font-style: italic;
+    outline: none; border-radius: 2px; transition: border-color 0.2s;
+  }
+  .notify-input::placeholder { color: var(--dim); font-style: italic; }
+  .notify-input:focus { border-color: var(--line-strong); }
+
+  .notify-btn {
+    padding: 0.7rem 1rem; background: none;
+    border: 1px solid var(--line); color: var(--dim);
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; border-radius: 2px; white-space: nowrap;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .notify-btn:hover { border-color: var(--line-strong); color: var(--soft); }
+
+  .notify-confirm {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
+    color: var(--dim); margin-top: 0.65rem; display: none;
+  }
+
+  /* ─── BRANDS ─── */
+  .brands-section { padding: 2.5rem 1.5rem 0; }
+
+  .brands-body {
+    font-family: var(--serif); font-size: 0.92rem; font-style: italic;
+    color: var(--soft); line-height: 1.85; margin-bottom: 1.5rem;
+  }
+
+  .brands-contact {
+    display: flex; align-items: center; gap: 0.6rem;
+    text-decoration: none;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--dim); border: 1px solid var(--line);
+    padding: 0.75rem 1rem; border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .brands-contact:hover { border-color: var(--line-strong); color: var(--soft); }
+  .brands-contact svg { width: 11px; height: 11px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+  /* ─── FOOTER ─── */
+  .site-footer {
+    margin-top: 3rem; padding: 1.5rem; text-align: center;
+    border-top: 1px solid var(--line);
+  }
+  .site-footer-link {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--dim); text-decoration: none; transition: color 0.2s;
+  }
+  .site-footer-link:hover { color: var(--soft); }
+
+  /* ─── SPONSABLE POPUP ─── */
+  .sp-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 300; align-items: flex-start; justify-content: center; padding: 4.5rem 1.25rem 1.25rem; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+  .sp-overlay.open { display: flex; }
+  .sp-card { background: #0E0F0D; border: 1px solid rgba(255,255,255,0.12); border-radius: 3px; width: 100%; max-width: 360px; overflow: hidden; animation: slideDown 0.25s cubic-bezier(0.16,1,0.3,1); }
+  @keyframes slideDown { from{transform:translateY(-12px);opacity:0} to{transform:translateY(0);opacity:1} }
+  .sp-hero-section { background: linear-gradient(135deg, #141413 0%, #1A1B18 100%); padding: 2rem 1.75rem 1.5rem; border-bottom: 1px solid var(--line); text-align: center; }
+  .sp-bird { width: 90px; height: 90px; margin: -0.5rem auto -1rem; mix-blend-mode: screen; display: block; }
+  .sp-tagline-cycling { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; color: var(--hi); line-height: 1.2; margin-bottom: 0.35rem; min-height: 2.1rem; }
+  .sp-tagline-cycling .cycling-word { color: var(--mid); font-style: italic; font-weight: 400; }
+  .sp-sub { font-family: var(--serif); font-size: 0.85rem; font-style: italic; color: var(--soft); line-height: 1.6; }
+  .sp-body { padding: 1.25rem 1.75rem 1.5rem; }
+  .sp-url { display: flex; align-items: center; gap: 0.6rem; background: var(--ghost); border: 1px solid var(--line); border-radius: 2px; padding: 0.65rem 0.85rem; margin-bottom: 1rem; }
+  .sp-url-text { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; color: var(--soft); flex: 1; }
+  .sp-url-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--line-strong); }
+  .sp-cta-primary { display: block; width: 100%; padding: 0.85rem; background: var(--hi); color: var(--bg); border: none; font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-align: center; text-decoration: none; cursor: pointer; border-radius: 2px; margin-bottom: 0.5rem; transition: opacity 0.2s; }
+  .sp-cta-primary:hover { opacity: 0.88; }
+  .sp-cta-secondary { display: block; width: 100%; padding: 0.75rem; background: transparent; color: var(--soft); border: 1px solid var(--line); font-family: var(--sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em; text-align: center; text-decoration: none; cursor: pointer; border-radius: 2px; margin-bottom: 0.45rem; transition: border-color 0.2s, color 0.2s; }
+  .sp-cta-secondary:hover { border-color: var(--line-strong); color: var(--mid); }
+  .sp-note { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.1em; color: var(--dim); text-align: center; margin-top: 0.75rem; }
+
+  /* ─── FADE ─── */
+  .fade-in { opacity: 0; transform: translateY(10px); transition: opacity 0.55s ease, transform 0.55s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
-  <nav class="nav">
-    <a href="nika.html" class="back-link">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Profile
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-img" id="hero-img"></div>
+  <div class="hero-vignette"></div>
+  <button class="hero-bird" onclick="openSpPopup()" aria-label="About Sponsable">
+    <img src="Sponsable Bird Logo White.png" alt="Sponsable">
+  </button>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      Short Film · In Development
+    </div>
+    <div class="hero-title">Nika,</div>
+    <div class="hero-title-second">Unscripted</div>
+    <p class="hero-logline">The story most people don't know, and a comeback that's still in progress.</p>
+    <a href="nika.html" class="hero-back" id="hero-back">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to profile
     </a>
-  </nav>
+  </div>
+</div>
 
-  <header class="film-hero fade-in">
-    <span class="film-status">Treatment · In Development</span>
-    <h1 class="film-title">Nika,<br>Unscripted</h1>
-    <p class="film-meta">A portrait of a comeback that hasn't happened yet.</p>
-  </header>
+<!-- WHAT IT IS -->
+<div class="section fade-in">
+  <div class="section-label">The idea</div>
+  <div class="section-title">Not a highlights reel.<br>Not a gear ad.</div>
+  <p class="body-text">Two days with Nika. Some climbing, some conversation. No script, no performance, no stylist. Just a camera and enough time for her to stop thinking about the camera.</p>
+  <p class="body-text">There's a version of Nika most people haven't seen. A junior who dominated a sport before she was old enough to drive. A teenager who won a world title and a European championship in the same year she climbed 9a. And then a few years that were quietly difficult — a coach, a war, a relocation — while she kept competing, kept building, and kept her mouth shut.</p>
+  <div class="pull">
+    <p>"I think it's time to say some of it."</p>
+  </div>
+  <p class="body-text">This is that film.</p>
+</div>
 
-  <section class="stills-grid fade-in">
-    <img src="Nika_Bleeding.jpg" class="still-img wide" alt="Stills from development">
-    <img src="Nika_Lighting.jpg" class="still-img" alt="Stills from development">
-    <img src="Nika_Candid.jpg" class="still-img" alt="Stills from development">
-  </section>
+<!-- BW PHOTO -->
+<div class="photo-raw-wrap fade-in" style="margin-top:2.5rem;">
+  <img class="photo-raw" src="Nika_BW.jpg" alt="" style="object-position: center 30%; max-height: 480px;">
+</div>
 
-  <main class="content-section">
-    <span class="section-label">The Concept</span>
-    <p class="copy-p">
-      Most climbing films are about the <b>send</b>. This isn't one of them. 
-    </p>
-    <p class="copy-p">
-      <i>Nika, Unscripted</i> is a short-form documentary exploring the space between being a child prodigy and being an independent athlete in a foreign city. It’s about the noise of the past—the records, the war, the court cases—and the silence required to actually climb well again.
-    </p>
+<!-- FACTS -->
+<div class="facts-block fade-in">
+  <div class="fact-row">
+    <span class="fact-label">Format</span>
+    <span class="fact-val">Short film, 5–10 minutes</span>
+  </div>
+  <div class="fact-row">
+    <span class="fact-label">Shoot</span>
+    <span class="fact-val">1–2 days · Paris + crag location</span>
+  </div>
+  <div class="fact-row">
+    <span class="fact-label">Window</span>
+    <span class="fact-val">Pre-season · Now – April 2026</span>
+  </div>
+  <div class="fact-row">
+    <span class="fact-label">Status</span>
+    <span class="fact-val">In development · Looking for a partner</span>
+  </div>
+</div>
 
-    <div class="quote-block fade-in">
-      <p class="quote-text">"People see the 9a on a scorecard and they think the story is finished. For me, that's where the weight started."</p>
+<!-- BELAY PHOTO -->
+<div class="photo-raw-wrap fade-in" style="margin-top:2.5rem;">
+  <img class="photo-raw" src="Nika_belay.jpg" alt="" style="object-position: center 20%; max-height: 480px;">
+</div>
+
+<!-- BELAY PHOTO -->
+<div class="photo-raw-wrap fade-in" style="margin-top:2.5rem;">
+  <img class="photo-raw" src="Nika_belay.jpg" alt="" style="object-position: center 20%; max-height: 480px;">
+</div>
+
+<!-- NIKA'S WORDS -->
+<div class="words-section fade-in">
+  <div class="section-label" style="margin-bottom:0;">Nika on it</div>
+  <div class="words-item">
+    <div class="words-q">What made you want to do this?</div>
+    <div class="words-a">I've never really told the full story. People see the results but not what was happening around them. I think there's value in saying it honestly rather than waiting until I'm retired.</div>
+  </div>
+  <div class="words-item">
+    <div class="words-q">What's the film actually about?</div>
+    <div class="words-a">Climbing, obviously. But also about what it takes to stay in the sport when things fall apart around you. I kept competing through all of it. That's the part I want people to understand.</div>
+  </div>
+  <div class="words-item">
+    <div class="words-q">Are you worried about being too honest?</div>
+    <div class="words-a">No. I know what I want to say and what I don't. The camera doesn't have to know everything.</div>
+  </div>
+</div>
+
+<!-- WORKING PHOTO -->
+<div class="photo-raw-wrap fade-in" style="margin-top:2.5rem;">
+  <img class="photo-raw" src="Nika_Working.jpg" alt="" style="object-position: center 40%; max-height: 380px;">
+</div>
+
+<!-- NOTIFY -->
+<div class="notify-section fade-in">
+  <div class="notify-inner">
+    <div class="notify-title">Follow it</div>
+    <p class="notify-sub">Leave your email and we'll tell you when the film is out. Nothing else.</p>
+    <div class="notify-row">
+      <input class="notify-input" id="notify-email" type="email" placeholder="Your email">
+      <button class="notify-btn" onclick="submitNotify()">Notify me</button>
     </div>
+    <div class="notify-confirm" id="notify-confirm">You're on the list.</div>
+  </div>
+</div>
 
-    <span class="section-label">Visual Style</span>
-    <p class="copy-p">
-      High-contrast 16mm textures mixed with raw digital 4K. We trade the sweeping drone shots of typical climbing media for tight, claustrophobic close-ups of chalk, skin, and breathing. It is intimate, percussive, and honest.
-    </p>
+<!-- BRANDS -->
+<div class="brands-section fade-in">
+  <div class="section-label">For brands</div>
+  <p class="brands-body">We're looking for one partner to co-produce this. You get integration in the film, association with Nika's story at a genuinely interesting moment in her career, and content you can actually use. No logo slap, no talking-head testimonial — something that's worth watching.</p>
+  <a href="mailto:ben@sponsable.co.uk?subject=Nika Unscripted" class="brands-contact">
+    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    Get in touch
+  </a>
+</div>
 
-    <div class="logistics-box fade-in">
-      <div class="log-row"><span class="log-label">Format</span><span class="log-val">Short Film (8–12 min)</span></div>
-      <div class="log-row"><span class="log-label">Location</span><span class="log-val">Paris · Santa Linya</span></div>
-      <div class="log-row"><span class="log-label">Director</span><span class="log-val">TBC</span></div>
-      <div class="log-row"><span class="log-label">Current Stage</span><span class="log-val">Pre-production / Funding</span></div>
+<!-- FOOTER -->
+<div class="site-footer fade-in">
+  <a href="nika.html" class="site-footer-link">← Back to Nika's profile</a>
+</div>
+
+<!-- SPONSABLE POPUP -->
+<div class="sp-overlay" id="sp-overlay" onclick="handleSpOverlayClick(event)">
+  <div class="sp-card">
+    <div class="sp-hero-section">
+      <img src="Sponsable Bird Logo White.png" alt="Sponsable" class="sp-bird" style="object-fit:contain;">
+      <div class="sp-tagline-cycling">
+        The profile trusted by<br><span class="cycling-word" id="cycling-word">climbers.</span>
+      </div>
+      <p class="sp-sub">One profile for everything you've earned, everything you are, and every brand you want to talk to.</p>
     </div>
-  </main>
+    <div class="sp-body">
+      <div class="sp-url">
+        <div class="sp-url-dot"></div>
+        <span class="sp-url-text">sponsable.co.uk / your-name</span>
+      </div>
+      <a href="https://sponsable.co.uk" target="_blank" class="sp-cta-primary">Claim your Sponsable profile</a>
+      <a href="https://sponsable.co.uk" target="_blank" class="sp-cta-secondary">Explore athlete profiles</a>
+      <a href="https://sponsable.co.uk" target="_blank" class="sp-cta-secondary">Learn how it works</a>
+      <div class="sp-note">Built for action & outdoor sports · Free to get started</div>
+    </div>
+  </div>
+</div>
 
-  <section class="cta-section fade-in">
-    <p class="copy-p" style="margin-bottom: 2rem; font-size: 0.9rem;">We are currently looking for a lead production partner or brand sponsor to finalize the project.</p>
-    <a href="nika.html" class="cta-btn">Enquire via Brand Access</a>
-  </section>
+<script>
+  // Hero pan
+  window.addEventListener('load', () => {
+    document.getElementById('hero-img').classList.add('loaded');
+  });
 
-  <footer style="padding: 2rem; text-align: center; opacity: 0.3; font-family: var(--mono); font-size: 8px; letter-spacing: 0.2em;">
-    © 2026 SPONSABLE · NIKA POTAPOVA
-  </footer>
+  // Back link on scroll
+  const heroBack = document.getElementById('hero-back');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) heroBack.classList.add('visible');
+  }, { passive: true });
 
-  <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
+  // Fade in
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), 40); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
+  // Notify
+  function submitNotify() {
+    const email = document.getElementById('notify-email').value.trim();
+    if (!email || !email.includes('@')) return;
+    document.getElementById('notify-email').value = '';
+    document.querySelector('.notify-btn').style.display = 'none';
+    document.getElementById('notify-confirm').style.display = 'block';
+  }
+
+  // Sponsable popup
+  const spWords = ['climbers.','skiers.','surfers.','cyclists.','trail runners.','alpinists.','athletes.'];
+  let spWordIdx = 0, spInterval = null;
+
+  function openSpPopup() {
+    document.getElementById('sp-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    spWordIdx = 0;
+    document.getElementById('cycling-word').textContent = spWords[0];
+    spInterval = setInterval(() => {
+      spWordIdx = (spWordIdx + 1) % spWords.length;
+      const el = document.getElementById('cycling-word');
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(-4px)';
+      el.style.transition = 'opacity 0.2s, transform 0.2s';
+      setTimeout(() => {
+        el.textContent = spWords[spWordIdx];
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, 200);
+    }, 1800);
+  }
+
+  function closeSpPopup() {
+    document.getElementById('sp-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+    clearInterval(spInterval);
+  }
+
+  function handleSpOverlayClick(e) {
+    if (e.target === document.getElementById('sp-overlay')) closeSpPopup();
+  }
+</script>
 </body>
 </html>
