@@ -806,7 +806,7 @@
   }
 
   .partners-marquee-outer:hover .partners-marquee-track {
-    animation-play-state: paused;
+    /* pause handled by JS for cross-device consistency */
   }
 
   @keyframes marquee-scroll {
@@ -1639,7 +1639,7 @@
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
   // Partner quotes
-  // Partners marquee — hover to pause and reveal quote
+  // Partners marquee — hover/tap to reveal quote
   (function() {
     const quotes = [
       "I was hunting for the best coffee in Paris. Then I found Karaffu — that was it.",
@@ -1647,56 +1647,73 @@
       "My feet are weird. Tenaya actually fit. That's the whole reason."
     ];
 
-    const box  = document.getElementById('partner-quote');
-    const text = document.getElementById('partner-quote-text');
+    const track = document.getElementById('partners-track');
+    const box   = document.getElementById('partner-quote');
+    const text  = document.getElementById('partner-quote-text');
     let activeIndex = -1;
     let hideTimer = null;
+    let isTouchDevice = false;
+
+    function showQuote(index) {
+      clearTimeout(hideTimer);
+      document.querySelectorAll('.partner-name-item').forEach(e => {
+        e.classList.toggle('active', parseInt(e.dataset.index) === index);
+      });
+      activeIndex = index;
+      box.classList.remove('visible');
+      setTimeout(() => {
+        text.textContent = quotes[index];
+        box.classList.add('visible');
+      }, 100);
+    }
+
+    function hideQuote() {
+      document.querySelectorAll('.partner-name-item').forEach(e => e.classList.remove('active'));
+      box.classList.remove('visible');
+      activeIndex = -1;
+    }
+
+    function resumeScroll() {
+      track.style.animationPlayState = 'running';
+    }
+
+    function pauseScroll() {
+      track.style.animationPlayState = 'paused';
+    }
 
     document.querySelectorAll('.partner-name-item').forEach(el => {
+      // Mouse — desktop only
       el.addEventListener('mouseenter', () => {
-        clearTimeout(hideTimer);
-        const index = parseInt(el.dataset.index);
-
-        // Highlight all items with this index
-        document.querySelectorAll('.partner-name-item').forEach(e => {
-          e.classList.toggle('active', parseInt(e.dataset.index) === index);
-        });
-
-        if (activeIndex === index) return;
-        activeIndex = index;
-
-        box.classList.remove('visible');
-        setTimeout(() => {
-          text.textContent = quotes[index];
-          box.classList.add('visible');
-        }, 100);
+        if (isTouchDevice) return;
+        pauseScroll();
+        showQuote(parseInt(el.dataset.index));
       });
 
       el.addEventListener('mouseleave', () => {
+        if (isTouchDevice) return;
         hideTimer = setTimeout(() => {
-          document.querySelectorAll('.partner-name-item').forEach(e => e.classList.remove('active'));
-          box.classList.remove('visible');
-          activeIndex = -1;
+          hideQuote();
+          resumeScroll();
         }, 300);
       });
-    });
 
-    // Touch support — tap to show quote
-    document.querySelectorAll('.partner-name-item').forEach(el => {
-      el.addEventListener('click', () => {
+      // Touch — mobile only
+      el.addEventListener('touchstart', () => { isTouchDevice = true; }, { passive: true });
+
+      el.addEventListener('click', e => {
+        if (!isTouchDevice) return;
+        e.preventDefault();
         const index = parseInt(el.dataset.index);
+
         if (activeIndex === index) {
-          document.querySelectorAll('.partner-name-item').forEach(e => e.classList.remove('active'));
-          box.classList.remove('visible');
-          activeIndex = -1;
-          return;
+          // Second tap — hide and resume
+          hideQuote();
+          resumeScroll();
+        } else {
+          // First tap — pause and show
+          pauseScroll();
+          showQuote(index);
         }
-        document.querySelectorAll('.partner-name-item').forEach(e => {
-          e.classList.toggle('active', parseInt(e.dataset.index) === index);
-        });
-        activeIndex = index;
-        text.textContent = quotes[index];
-        box.classList.add('visible');
       });
     });
   })();
