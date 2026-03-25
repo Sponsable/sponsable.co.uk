@@ -9,24 +9,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:          #0A0A09;
-    --bg-1:        #111110;
-    --bg-2:        #191918;
+    --bg:    #0A0A09;
+    --bg-1:  #111110;
+    --bg-2:  #191918;
     --line:        rgba(255,255,255,0.07);
-    --line-strong: rgba(255,255,255,0.12);
+    --line-strong: rgba(255,255,255,0.14);
     --hi:   rgba(255,255,255,0.95);
     --mid:  rgba(255,255,255,0.60);
     --soft: rgba(255,255,255,0.40);
-    --dim:  rgba(255,255,255,0.28);
+    --dim:  rgba(255,255,255,0.42);
     --ghost:rgba(255,255,255,0.05);
     --gold: rgba(210,175,70,0.9);
-    --gold-dim: rgba(210,175,70,0.55);
+    --pull: rgba(255,255,255,0.22);
     --serif: 'Lora', Georgia, serif;
     --sans:  'DM Sans', system-ui, sans-serif;
     --mono:  'DM Mono', 'Courier New', monospace;
   }
 
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior: smooth; }
 
   body {
@@ -42,186 +42,154 @@
   /* ─── HEADER ─── */
   .page-header {
     padding: 1.25rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
     border-bottom: 1px solid var(--line);
+    position: relative; z-index: 10;
   }
-
   .back-link {
     display: flex; align-items: center; gap: 0.5rem;
-    text-decoration: none;
-    font-family: var(--mono); font-size: 8.5px;
+    text-decoration: none; font-family: var(--mono); font-size: 10px;
     letter-spacing: 0.16em; text-transform: uppercase;
     color: var(--dim); transition: color 0.15s;
   }
   .back-link:hover { color: var(--soft); }
   .back-link svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; }
-
   .header-bird { width: 26px; height: 26px; mix-blend-mode: screen; opacity: 0.45; object-fit: contain; }
 
-  /* ─── HERO STRIP ─── */
-  .hero-strip {
+  /* ─── HERO ─── */
+  .hero {
     position: relative;
-    height: 38vw;
-    max-height: 165px;
+    height: 100vh; min-height: 600px;
     overflow: hidden;
   }
-
-  .hero-strip-img {
+  .hero-img {
     position: absolute; inset: 0;
-    background: url('Nika_Winning.jpg') center 20% / cover no-repeat;
+    background: url('Nika_Lead.jpg') center 25% / cover no-repeat;
+    transform: scale(1.04);
+    transition: transform 10s cubic-bezier(0.25,0.46,0.45,0.94);
   }
-
-  .hero-strip-vignette {
+  .hero-img.loaded { transform: scale(1); }
+  .hero-vignette {
     position: absolute; inset: 0;
-    background: linear-gradient(180deg,
-      rgba(10,10,9,0.3) 0%,
-      transparent 40%,
-      rgba(10,10,9,0.7) 80%,
-      #0A0A09 100%
-    );
+    background:
+      linear-gradient(180deg, rgba(10,10,9,0.55) 0%, transparent 35%, transparent 50%, rgba(10,10,9,0.75) 80%, #0A0A09 100%),
+      linear-gradient(90deg, rgba(10,10,9,0.4) 0%, transparent 60%);
   }
-
-  .hero-strip-text {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 0 1.5rem 1.25rem;
-    z-index: 2;
+  .hero-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 0 1.5rem 3rem; z-index: 2;
   }
-
-  .hero-strip-name {
-    font-family: var(--serif);
-    font-size: 1.6rem; font-weight: 700;
-    color: var(--hi); letter-spacing: -0.02em;
-    line-height: 1;
-  }
-
-  .hero-strip-sub {
-    font-family: var(--mono); font-size: 8px;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--mid); margin-top: 0.2rem;
-  }
-
-  /* ─── INTRO STAT ROW ─── */
-  .stat-strip {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-bottom: 1px solid var(--line);
-  }
-
-  .stat-cell {
-    padding: 1.1rem 1.25rem;
-    border-right: 1px solid var(--line);
-  }
-  .stat-cell:last-child { border-right: none; }
-
-  .stat-num {
-    font-family: var(--serif); font-size: 1.6rem; font-weight: 700;
-    color: var(--hi); letter-spacing: -0.03em; line-height: 1;
-    margin-bottom: 0.25rem;
-  }
-
-  .stat-num.gold { color: var(--gold); }
-
-  .stat-lbl {
-    font-family: var(--mono); font-size: 7.5px;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--dim); line-height: 1.4;
-  }
-
-  /* ─── SECTION HEADER ─── */
-  .category-head {
-    padding: 1.5rem 1.5rem 0.75rem;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .category-label {
-    font-family: var(--mono); font-size: 8.5px;
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 10px;
     letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--dim);
+    color: var(--dim); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow-line { height: 1px; width: 28px; background: var(--dim); flex-shrink: 0; }
+  .hero-name {
+    font-family: var(--serif); font-size: 4.5rem; font-weight: 700;
+    color: white; line-height: 0.88; letter-spacing: -0.035em;
+  }
+  .hero-name-second {
+    font-family: var(--serif); font-size: 4.5rem; font-weight: 400; font-style: italic;
+    color: rgba(255,255,255,0.65); line-height: 1.0; letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+  }
+  .hero-descriptor {
+    font-family: var(--serif); font-size: 1rem; font-style: italic;
+    color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 320px;
   }
 
-  /* ─── RESULT ROW ─── */
-  .result-row {
-    display: flex; align-items: center; gap: 1rem;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--line);
-    transition: background 0.15s;
-  }
-  .result-row:last-child { border-bottom: none; }
-  .result-row:hover { background: var(--ghost); }
+  /* ─── STAT STRIP ─── */
+  .stat-strip { display: grid; grid-template-columns: repeat(3,1fr); border-bottom: 1px solid var(--line); }
+  .stat-cell { padding: 1.25rem 1.25rem; border-right: 1px solid var(--line); }
+  .stat-cell:last-child { border-right: none; }
+  .stat-num { font-family: var(--serif); font-size: 2rem; font-weight: 700; color: var(--hi); letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.3rem; }
+  .stat-num.gold { color: var(--gold); }
+  .stat-lbl { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); line-height: 1.4; }
 
-  .medal {
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
+  /* ─── CHAPTER ─── */
+  .chapter { padding: 2.5rem 1.5rem 0; }
+  .chapter-era { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.6rem; }
+  .chapter-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--hi); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.85rem; }
+  .chapter-body { font-family: var(--serif); font-size: 0.92rem; font-style: italic; color: var(--soft); line-height: 1.85; }
+  .chapter-pull { border-left: 2px solid var(--pull); padding: 0.4rem 0 0.4rem 1rem; margin: 1.25rem 0; }
+  .chapter-pull p { font-family: var(--serif); font-size: 1rem; font-style: italic; color: var(--hi); line-height: 1.6; }
 
-  .medal.gold   { background: rgba(210,175,70,0.12); border: 1px solid rgba(210,175,70,0.3); }
-  .medal.silver { background: rgba(180,180,180,0.08); border: 1px solid rgba(180,180,180,0.2); }
-  .medal.bronze { background: rgba(180,120,70,0.08); border: 1px solid rgba(180,120,70,0.2); }
-  .medal.other  { background: var(--ghost); border: 1px solid var(--line); }
+  /* ─── MOMENT CARDS ─── */
+  .moment { margin: 2rem 1.5rem 0; padding: 1.5rem; background: var(--bg-1); border: 1px solid var(--line); border-radius: 2px; }
+  .moment-rank { font-family: var(--serif); font-size: 4rem; font-weight: 700; color: var(--gold); letter-spacing: -0.05em; line-height: 1; margin-bottom: 0.25rem; }
+  .moment-event { font-family: var(--sans); font-size: 0.9rem; font-weight: 600; color: var(--hi); margin-bottom: 0.2rem; }
+  .moment-detail { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; color: var(--dim); }
 
-  .medal-num {
-    font-family: var(--mono); font-size: 9px; font-weight: 500;
-    letter-spacing: 0.04em;
-  }
+  .moments-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin: 2rem 1.5rem 0; }
+  .moment-sm { padding: 1.1rem; background: var(--bg-1); border: 1px solid var(--line); border-radius: 2px; }
+  .moment-sm .moment-rank { font-size: 2.5rem; }
 
-  .medal.gold   .medal-num { color: var(--gold); }
-  .medal.silver .medal-num { color: rgba(200,200,200,0.8); }
-  .medal.bronze .medal-num { color: rgba(200,140,90,0.8); }
-  .medal.other  .medal-num { color: var(--dim); }
+  /* ─── PHOTOS ─── */
+  .photo-full { position: relative; overflow: hidden; margin-top: 2.5rem; }
+  .photo-full-img { width: 100%; display: block; object-fit: cover; }
+  .photo-full-vignette { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(10,10,9,0.85) 100%); }
+  .photo-full-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 0 1.5rem 1.25rem; font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); }
 
-  .result-body { flex: 1; min-width: 0; }
+  .photo-half { position: relative; overflow: hidden; aspect-ratio: 4/3; margin: 1.5rem 1.5rem 0; border-radius: 2px; }
+  .photo-half img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo-half-vignette { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(10,10,9,0.8) 100%); }
 
-  .result-name {
-    font-family: var(--sans); font-size: 0.88rem; font-weight: 600;
-    color: var(--hi); margin-bottom: 0.15rem;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
+  /* ─── DISRUPTION ─── */
+  .disruption { padding: 2.5rem 1.5rem 0; }
 
-  .result-meta {
-    font-family: var(--mono); font-size: 7.5px;
-    letter-spacing: 0.07em; color: var(--dim);
-    line-height: 1.4;
-  }
+  /* ─── COMEBACK TIMELINE ─── */
+  .comeback-year { margin: 0 1.5rem; display: flex; align-items: baseline; gap: 1rem; padding: 0.85rem 0; border-top: 1px solid var(--line); }
+  .comeback-year:last-child { border-bottom: 1px solid var(--line); }
+  .cb-year { font-family: var(--sans); font-size: 0.82rem; font-weight: 500; color: var(--mid); flex-shrink: 0; width: 52px; }
+  .cb-result { font-family: var(--serif); font-size: 0.9rem; font-style: italic; color: var(--hi); line-height: 1.5; }
+  .cb-detail { display: block; font-family: var(--mono); font-size: 9px; letter-spacing: 0.07em; color: var(--dim); font-style: normal; margin-top: 0.1rem; }
 
-  .result-year {
-    font-family: var(--mono); font-size: 9px;
-    color: var(--dim); flex-shrink: 0;
-  }
+  /* ─── OUTDOOR ─── */
+  .outdoor-block { margin: 2rem 1.5rem 0; padding: 1.5rem; background: var(--bg-1); border: 1px solid var(--line); border-radius: 2px; }
+  .outdoor-grade { font-family: var(--serif); font-size: 3.5rem; font-weight: 700; color: var(--hi); letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.25rem; }
+  .outdoor-name { font-family: var(--sans); font-size: 0.95rem; font-weight: 600; color: var(--hi); margin-bottom: 0.15rem; }
+  .outdoor-meta { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; color: var(--dim); margin-bottom: 0.75rem; }
+  .outdoor-note { font-family: var(--serif); font-size: 0.88rem; font-style: italic; color: var(--soft); line-height: 1.7; padding-top: 0.75rem; border-top: 1px solid var(--line); }
 
-  /* ─── OUTDOOR SECTION ─── */
-  .outdoor-row {
-    display: flex; align-items: flex-start; gap: 1rem;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--line);
-  }
-  .outdoor-row:last-child { border-bottom: none; }
+  /* ─── RESULTS TABLE ─── */
+  .results-section { padding: 2.5rem 1.5rem 0; }
+  .section-mono-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); }
 
-  .grade-badge {
-    font-family: var(--mono); font-size: 10px; font-weight: 500;
-    color: var(--hi);
-    background: var(--bg-2); border: 1px solid var(--line-strong);
-    padding: 3px 8px; border-radius: 2px;
-    flex-shrink: 0; margin-top: 2px;
-    letter-spacing: 0.04em;
-  }
+  .results-filter { display: flex; gap: 0.5rem; margin: 1.25rem 0; flex-wrap: wrap; }
+  .filter-btn { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); background: none; border: 1px solid var(--line); padding: 4px 10px; border-radius: 2px; cursor: pointer; transition: all 0.15s; }
+  .filter-btn:hover, .filter-btn.active { color: var(--hi); border-color: var(--line-strong); background: var(--ghost); }
 
-  .outdoor-body { flex: 1; }
-  .outdoor-name { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--hi); margin-bottom: 0.15rem; }
-  .outdoor-meta { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.07em; color: var(--dim); line-height: 1.4; }
-  .outdoor-note { font-family: var(--serif); font-size: 0.8rem; font-style: italic; color: var(--soft); margin-top: 0.2rem; }
+  .result-table { width: 100%; border-collapse: collapse; }
+  .result-table tr { border-bottom: 1px solid var(--line); transition: background 0.1s; }
+  .result-table tr:hover { background: var(--ghost); }
+  .result-table tr.hidden { display: none; }
+  .result-table td { padding: 0.75rem 0; vertical-align: top; }
+
+  .rt-rank { font-family: var(--mono); font-size: 11px; font-weight: 500; width: 36px; display: inline-block; }
+  .rt-rank.gold   { color: var(--gold); }
+  .rt-rank.silver { color: rgba(200,200,200,0.8); }
+  .rt-rank.bronze { color: rgba(200,140,90,0.8); }
+  .rt-rank.other  { color: var(--dim); }
+
+  .rt-event { font-family: var(--sans); font-size: 0.83rem; font-weight: 500; color: var(--hi); line-height: 1.4; }
+  .rt-meta  { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.12rem; }
+  .rt-year  { font-family: var(--mono); font-size: 9px; color: var(--dim); text-align: right; width: 38px; white-space: nowrap; }
+
+  /* ─── MEDIA ─── */
+  .media-section { padding: 2.5rem 1.5rem 0; }
+  .media-embed { border-radius: 2px; overflow: hidden; margin-top: 1rem; background: var(--bg-1); border: 1px solid var(--line); }
+  .media-embed iframe { display: block; width: 100%; aspect-ratio: 16/9; border: none; }
+  .media-embed-label { padding: 0.75rem 1rem; font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
 
   /* ─── FOOTER ─── */
-  .site-footer { border-top: 1px solid var(--line); padding: 1.5rem; text-align: center; margin-top: 2.5rem; }
-  .site-footer-link { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; }
+  .site-footer { border-top: 1px solid var(--line); padding: 1.5rem; text-align: center; margin-top: 3rem; }
+  .site-footer-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; }
   .site-footer-link:hover { color: var(--soft); }
 
   /* ─── FADE IN ─── */
-  .fade-in { opacity: 0; transform: translateY(8px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in { opacity: 0; transform: translateY(10px); transition: opacity 0.55s ease, transform 0.55s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
@@ -236,176 +204,280 @@
   <img src="Sponsable Bird Logo White.png" alt="Sponsable" class="header-bird">
 </div>
 
-<!-- HERO STRIP -->
-<div class="hero-strip">
-  <div class="hero-strip-img"></div>
-  <div class="hero-strip-vignette"></div>
-  <div class="hero-strip-text">
-    <div class="hero-strip-name">Athletic Record</div>
-    <div class="hero-strip-sub">Full History</div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-img" id="hero-img"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      Athletic Record
+    </div>
+    <div class="hero-name">Nika</div>
+    <div class="hero-name-second">Potapova</div>
+    <p class="hero-descriptor">Youth World Champion. Senior European Champion. One of the most gifted lead climbers of her generation.</p>
   </div>
 </div>
 
-<!-- SUMMARY STATS -->
+<!-- STAT STRIP -->
 <div class="stat-strip fade-in">
   <div class="stat-cell">
-    <div class="stat-num gold">2</div>
-    <div class="stat-lbl">World<br>Titles</div>
+    <div class="stat-num gold">2×</div>
+    <div class="stat-lbl">World<br>Champion</div>
   </div>
   <div class="stat-cell">
     <div class="stat-num">9a</div>
-    <div class="stat-lbl">Highest<br>outdoor grade</div>
+    <div class="stat-lbl">Highest<br>grade</div>
   </div>
   <div class="stat-cell">
-    <div class="stat-num">23rd</div>
-    <div class="stat-lbl">Woman to<br>climb 9a ever</div>
+    <div class="stat-num">8</div>
+    <div class="stat-lbl">Years<br>competing</div>
   </div>
 </div>
 
-<!-- WORLD CHAMPIONSHIP -->
-<div class="fade-in">
-  <div class="category-head">
-    <span class="category-label">World Championships</span>
-  </div>
+<!-- CHAPTER 1 -->
+<div class="chapter fade-in">
+  <div class="chapter-era">2017 — The beginning</div>
+  <div class="chapter-title">First year.<br>Three wins.</div>
+  <p class="chapter-body">Nika entered her first competition season as a junior in 2017. By June she had won three consecutive European Youth Cup Lead rounds — Imst, Dornbirn, Uster. Not podiums. Wins. In her first year.</p>
+</div>
 
-  <div class="result-row">
-    <div class="medal gold"><span class="medal-num">1st</span></div>
-    <div class="result-body">
-      <div class="result-name">Youth World Champion</div>
-      <div class="result-meta">Lead · Arco, Italy</div>
-    </div>
-    <span class="result-year">2019</span>
-  </div>
+<div class="photo-half fade-in">
+  <img src="Nika_hat.jpg" alt="Nika, early career" style="object-position: center 20%;">
+  <div class="photo-half-vignette"></div>
+</div>
 
-  <div class="result-row">
-    <div class="medal silver"><span class="medal-num">2nd</span></div>
-    <div class="result-body">
-      <div class="result-name">Vice Youth World Champion</div>
-      <div class="result-meta">Lead</div>
-    </div>
-    <span class="result-year">2018</span>
+<div class="moments-row fade-in">
+  <div class="moment-sm">
+    <div class="moment-rank">1st</div>
+    <div class="moment-event">EYC Lead</div>
+    <div class="moment-detail">Imst, AUT · 2017</div>
+  </div>
+  <div class="moment-sm">
+    <div class="moment-rank">1st</div>
+    <div class="moment-event">EYC Lead</div>
+    <div class="moment-detail">Dornbirn, AUT · 2017</div>
+  </div>
+</div>
+<div class="moments-row fade-in" style="margin-top:0.6rem;">
+  <div class="moment-sm">
+    <div class="moment-rank">1st</div>
+    <div class="moment-event">EYC Lead</div>
+    <div class="moment-detail">Uster, SUI · 2017</div>
+  </div>
+  <div class="moment-sm" style="background:transparent;border-color:transparent;"></div>
+</div>
+
+<!-- CHAPTER 2 -->
+<div class="chapter fade-in">
+  <div class="chapter-era">2018 — Rising</div>
+  <div class="chapter-title">European Champion.<br>Vice World Champion.</div>
+  <p class="chapter-body">A year later, Nika was the best junior lead climber in Europe. European Youth Champion in Imst. Then Moscow — Youth World Championships. She finished second by the narrowest of margins. Silver. Age fifteen.</p>
+</div>
+
+<div class="moments-row fade-in">
+  <div class="moment-sm">
+    <div class="moment-rank">1st</div>
+    <div class="moment-event">European Youth Champion</div>
+    <div class="moment-detail">Lead · Imst, AUT · 2018</div>
+  </div>
+  <div class="moment-sm">
+    <div class="moment-rank" style="color:rgba(200,200,200,0.8)">2nd</div>
+    <div class="moment-event">Youth World Championships</div>
+    <div class="moment-detail">Lead · Moscow · 2018</div>
   </div>
 </div>
 
-<!-- EUROPEAN CHAMPIONSHIPS -->
-<div class="fade-in">
-  <div class="category-head">
-    <span class="category-label">European Championships</span>
-  </div>
-
-  <div class="result-row">
-    <div class="medal gold"><span class="medal-num">1st</span></div>
-    <div class="result-body">
-      <div class="result-name">Senior European Champion</div>
-      <div class="result-meta">Combined · Edinburgh, Scotland</div>
-    </div>
-    <span class="result-year">2019</span>
-  </div>
-
-  <div class="result-row">
-    <div class="medal other"><span class="medal-num">7th</span></div>
-    <div class="result-body">
-      <div class="result-name">Senior European Championships</div>
-      <div class="result-meta">Lead · Moscow, Russia</div>
-    </div>
-    <span class="result-year">2020</span>
+<!-- CHAPTER 3 -->
+<div class="chapter fade-in">
+  <div class="chapter-era">2019 — The peak</div>
+  <div class="chapter-title">World Champion.<br>European Champion.<br>9a.</div>
+  <p class="chapter-body">Everything at once. Youth World Champion in Arco on lead. Senior European Champion in Edinburgh — competing against the best women in the world as a sixteen year old. And between competitions, quietly, at Santa Linya: Fuck the System, 9a. The 23rd woman in history to climb the grade.</p>
+  <div class="chapter-pull">
+    <p>"I didn't realise what it meant at the time. I just wanted to climb the route."</p>
   </div>
 </div>
 
-<!-- WORLD CUP -->
-<div class="fade-in">
-  <div class="category-head">
-    <span class="category-label">IFSC World Cup</span>
-  </div>
+<div class="photo-full fade-in">
+  <img class="photo-full-img" src="Nika_Hug.png" alt="After a win" style="object-position: center 30%; max-height: 340px;">
+  <div class="photo-full-vignette"></div>
+  <div class="photo-full-caption">Competition · 2019</div>
+</div>
 
-  <div class="result-row">
-    <div class="medal other"><span class="medal-num">SF</span></div>
-    <div class="result-body">
-      <div class="result-name">World Cup Semifinalist</div>
-      <div class="result-meta">Lead · ×4 appearances</div>
-    </div>
-    <span class="result-year">—</span>
+<div class="moment fade-in">
+  <div class="moment-rank">1st</div>
+  <div class="moment-event">Youth World Champion</div>
+  <div class="moment-detail">Lead · Arco, Italy · August 2019</div>
+</div>
+
+<div class="moment fade-in" style="margin-top:0.6rem;">
+  <div class="moment-rank">1st</div>
+  <div class="moment-event">Senior European Champion</div>
+  <div class="moment-detail">Combined · Edinburgh, Scotland · October 2019</div>
+</div>
+
+<div class="outdoor-block fade-in">
+  <div class="outdoor-grade">9a</div>
+  <div class="outdoor-name">Fuck the System</div>
+  <div class="outdoor-meta">Santa Linya, Spain · 2019</div>
+  <p class="outdoor-note">One of the hardest sport climbing routes in the world. At sixteen. The 23rd woman in history to climb the grade — at the time, one of the youngest ever.</p>
+</div>
+
+<div class="photo-full fade-in">
+  <img class="photo-full-img" src="Nika_comp.webp" alt="Competition bouldering" style="object-position: center 35%; max-height: 320px;">
+  <div class="photo-full-vignette"></div>
+</div>
+
+<!-- CHAPTER 4 -->
+<div class="disruption chapter fade-in">
+  <div class="chapter-era">2020–2022 — Disruption</div>
+  <div class="chapter-title">Everything stopped.</div>
+  <p class="chapter-body">The coach who had built her career had been controlling everything — who she spoke to, who she trusted, how she saw herself. When that ended, it left a gap. Then the pandemic. Then, in 2022, the war. She left Ukraine carrying a refugee card and trained where she could — Germany, Innsbruck, anywhere.</p>
+  <div class="chapter-pull">
+    <p>"I was winning. But somebody was taking pieces from me."</p>
+  </div>
+  <p class="chapter-body">She still competed. 7th at Senior Europeans Lead 2020. 4th at Youth World Championships 2022 — her best senior result of that period. But the momentum had broken.</p>
+</div>
+
+<div class="photo-full fade-in">
+  <img class="photo-full-img" src="Nika_crimp.jpg" alt="Competition" style="object-position: center 25%; max-height: 380px;">
+  <div class="photo-full-vignette"></div>
+</div>
+
+<!-- CHAPTER 5 -->
+<div class="chapter fade-in">
+  <div class="chapter-era">2023–2025 — The return</div>
+  <div class="chapter-title">Back on the circuit.<br>Building again.</div>
+  <p class="chapter-body">World Cup Chamonix 2023 — 25th. Her best senior World Cup result. European Cup Žilina — 14th. 2025: 8th at Campitello di Fassa. The season opens in May. The trajectory is pointing up.</p>
+  <div class="chapter-pull">
+    <p>"I know I can climb much better than I am right now. I'll come back."</p>
   </div>
 </div>
 
-<!-- OUTDOOR ASCENTS -->
-<div class="fade-in">
-  <div class="category-head">
-    <span class="category-label">Notable Outdoor Ascents</span>
+<div style="margin-top:1.5rem;">
+  <div class="comeback-year fade-in">
+    <span class="cb-year">2023</span>
+    <span class="cb-result">25th, World Cup Lead
+      <span class="cb-detail">Chamonix, France · Best senior World Cup result</span>
+    </span>
   </div>
+  <div class="comeback-year fade-in">
+    <span class="cb-year">2023</span>
+    <span class="cb-result">14th, European Cup Lead
+      <span class="cb-detail">Žilina, Slovakia</span>
+    </span>
+  </div>
+  <div class="comeback-year fade-in">
+    <span class="cb-year">2024</span>
+    <span class="cb-result">European Championships
+      <span class="cb-detail">Villars · Boulder & Lead combined</span>
+    </span>
+  </div>
+  <div class="comeback-year fade-in">
+    <span class="cb-year">2025</span>
+    <span class="cb-result">8th, European Cup Lead
+      <span class="cb-detail">Campitello di Fassa · Best result since return</span>
+    </span>
+  </div>
+  <div class="comeback-year fade-in">
+    <span class="cb-year">2025</span>
+    <span class="cb-result">14th, European Cup Lead
+      <span class="cb-detail">Toulouse, France</span>
+    </span>
+  </div>
+</div>
 
-  <div class="outdoor-row">
-    <span class="grade-badge">9a</span>
-    <div class="outdoor-body">
-      <div class="outdoor-name">Fuck the System</div>
-      <div class="outdoor-meta">Santa Linya, Spain · 2019</div>
-      <div class="outdoor-note">23rd woman in history to climb 9a.</div>
-    </div>
-  </div>
-
-  <div class="outdoor-row">
-    <span class="grade-badge">8c</span>
-    <div class="outdoor-body">
-      <div class="outdoor-name">Strelovod</div>
-      <div class="outdoor-meta">Misja Peč, Slovenia · Age 13</div>
-      <div class="outdoor-note">Climbed 8c at thirteen years old.</div>
-    </div>
-  </div>
+<div class="photo-full fade-in" style="margin-top:2rem;">
+  <img class="photo-full-img" src="Nika_Lead.jpg" alt="Competition lead climbing" style="object-position: center 30%; max-height: 420px;">
+  <div class="photo-full-vignette"></div>
 </div>
 
 <!-- MEDIA -->
-<div class="fade-in">
-  <div class="category-head">
-    <span class="category-label">Media & Brand Work</span>
-  </div>
-
-  <div class="result-row">
-    <div class="medal other"><span class="medal-num" style="font-size:7px;">RB</span></div>
-    <div class="result-body">
-      <div class="result-name">Red Bull Natural Heights — Ep. 3</div>
-      <div class="result-meta">Filmed 2024 · Released December 2025</div>
+<div class="media-section fade-in">
+  <div class="section-mono-label">On Red Bull TV</div>
+  <div class="media-embed">
+    <iframe
+      src="https://www.youtube.com/embed/OQ1lsKjYDts?rel=0&modestbranding=1"
+      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen loading="lazy">
+    </iframe>
+    <div class="media-embed-label">
+      <span>Natural Heights — Episode 3</span>
+      <span>Red Bull · 2025</span>
     </div>
-    <span class="result-year">2025</span>
-  </div>
-
-  <div class="result-row">
-    <div class="medal other"><span class="medal-num" style="font-size:7px;">RB</span></div>
-    <div class="result-body">
-      <div class="result-name">Red Bull Dual Ascent</div>
-      <div class="result-meta">Media face · with Jacob Schubert</div>
-    </div>
-    <span class="result-year">23–24</span>
   </div>
 </div>
 
-<!-- RECORDS -->
-<div class="fade-in">
-  <div class="category-head">
-    <span class="category-label">Records</span>
+<!-- FULL RESULTS -->
+<div class="results-section fade-in">
+  <div class="section-mono-label">Full Competition Record</div>
+  <div class="results-filter">
+    <button class="filter-btn active" onclick="filterResults('all',this)">All</button>
+    <button class="filter-btn" onclick="filterResults('1',this)">Wins</button>
+    <button class="filter-btn" onclick="filterResults('podium',this)">Podium</button>
+    <button class="filter-btn" onclick="filterResults('world',this)">Worlds</button>
+    <button class="filter-btn" onclick="filterResults('euro',this)">Europeans</button>
   </div>
-
-  <div class="result-row">
-    <div class="medal gold"><span class="medal-num" style="font-size:7px;">REC</span></div>
-    <div class="result-body">
-      <div class="result-name">Zlagboard Endurance Record</div>
-      <div class="result-meta">Women's record broken · Age 14. Near men's record.</div>
-    </div>
-    <span class="result-year">—</span>
-  </div>
+  <table class="result-table" id="results-table">
+    <tbody>
+      <tr data-rank="14" data-type="euro"><td><span class="rt-rank other">14</span></td><td><div class="rt-event">European Cup Lead</div><div class="rt-meta">Toulouse, France</div></td><td class="rt-year">2025</td></tr>
+      <tr data-rank="46" data-type="world"><td><span class="rt-rank other">46</span></td><td><div class="rt-event">World Cup Lead</div><div class="rt-meta">Koper, Slovenia</div></td><td class="rt-year">2025</td></tr>
+      <tr data-rank="45" data-type="world"><td><span class="rt-rank other">45</span></td><td><div class="rt-event">World Cup Lead</div><div class="rt-meta">Madrid, Spain</div></td><td class="rt-year">2025</td></tr>
+      <tr data-rank="15" data-type="euro"><td><span class="rt-rank other">15</span></td><td><div class="rt-event">European Cup Lead</div><div class="rt-meta">Ostermundigen, Switzerland</div></td><td class="rt-year">2025</td></tr>
+      <tr data-rank="58" data-type="world"><td><span class="rt-rank other">58</span></td><td><div class="rt-event">World Cup Lead</div><div class="rt-meta">Innsbruck, Austria</div></td><td class="rt-year">2025</td></tr>
+      <tr data-rank="8" data-type="euro"><td><span class="rt-rank other">8</span></td><td><div class="rt-event">European Cup Lead</div><div class="rt-meta">Campitello di Fassa, Italy</div></td><td class="rt-year">2025</td></tr>
+      <tr data-rank="16" data-type="euro"><td><span class="rt-rank other">16</span></td><td><div class="rt-event">European Championships — Combined</div><div class="rt-meta">Villars</div></td><td class="rt-year">2024</td></tr>
+      <tr data-rank="55" data-type="world"><td><span class="rt-rank other">55</span></td><td><div class="rt-event">World Cup Lead</div><div class="rt-meta">Briançon, France</div></td><td class="rt-year">2024</td></tr>
+      <tr data-rank="55" data-type="world"><td><span class="rt-rank other">55</span></td><td><div class="rt-event">World Cup Lead</div><div class="rt-meta">Chamonix, France</div></td><td class="rt-year">2024</td></tr>
+      <tr data-rank="25" data-type="world"><td><span class="rt-rank other">25</span></td><td><div class="rt-event">World Cup Lead</div><div class="rt-meta">Chamonix, France</div></td><td class="rt-year">2023</td></tr>
+      <tr data-rank="14" data-type="euro"><td><span class="rt-rank other">14</span></td><td><div class="rt-event">European Cup Lead</div><div class="rt-meta">Žilina, Slovakia</div></td><td class="rt-year">2023</td></tr>
+      <tr data-rank="4" data-type="world"><td><span class="rt-rank other">4</span></td><td><div class="rt-event">Youth World Championships — Lead</div><div class="rt-meta">Dallas, USA</div></td><td class="rt-year">2022</td></tr>
+      <tr data-rank="11" data-type="world"><td><span class="rt-rank other">11</span></td><td><div class="rt-event">World Championships — Combined</div><div class="rt-meta">Moscow</div></td><td class="rt-year">2021</td></tr>
+      <tr data-rank="3" data-type="euro"><td><span class="rt-rank bronze">3rd</span></td><td><div class="rt-event">European Youth Championships — Combined</div><div class="rt-meta">Perm, Russia</div></td><td class="rt-year">2021</td></tr>
+      <tr data-rank="7" data-type="euro"><td><span class="rt-rank other">7</span></td><td><div class="rt-event">Senior European Championships — Lead</div><div class="rt-meta">Moscow, Russia</div></td><td class="rt-year">2020</td></tr>
+      <tr data-rank="1" data-type="world"><td><span class="rt-rank gold">1st</span></td><td><div class="rt-event">Youth World Champion — Lead</div><div class="rt-meta">Arco, Italy</div></td><td class="rt-year">2019</td></tr>
+      <tr data-rank="1" data-type="euro"><td><span class="rt-rank gold">1st</span></td><td><div class="rt-event">Senior European Champion — Lead</div><div class="rt-meta">Edinburgh, Scotland</div></td><td class="rt-year">2019</td></tr>
+      <tr data-rank="1" data-type="euro"><td><span class="rt-rank gold">1st</span></td><td><div class="rt-event">European Youth Cup — Lead</div><div class="rt-meta">Imst, Austria</div></td><td class="rt-year">2019</td></tr>
+      <tr data-rank="1" data-type="euro"><td><span class="rt-rank gold">1st</span></td><td><div class="rt-event">European Youth Cup — Boulder</div><div class="rt-meta">Graz, Austria</div></td><td class="rt-year">2019</td></tr>
+      <tr data-rank="1" data-type="euro"><td><span class="rt-rank gold">1st</span></td><td><div class="rt-event">European Youth Champion — Lead</div><div class="rt-meta">Imst, Austria</div></td><td class="rt-year">2018</td></tr>
+      <tr data-rank="2" data-type="world"><td><span class="rt-rank silver">2nd</span></td><td><div class="rt-event">Vice Youth World Champion — Lead</div><div class="rt-meta">Moscow, Russia</div></td><td class="rt-year">2018</td></tr>
+      <tr data-rank="1" data-type="euro"><td><span class="rt-rank gold">1st</span></td><td><div class="rt-event">European Youth Cup — Lead</div><div class="rt-meta">Uster, Switzerland</div></td><td class="rt-year">2018</td></tr>
+      <tr data-rank="1" data-type="euro"><td><span class="rt-rank gold">1st</span></td><td><div class="rt-event">European Youth Cup — Lead</div><div class="rt-meta">Munich, Germany</div></td><td class="rt-year">2018</td></tr>
+      <tr data-rank="1" data-type="euro"><td><span class="rt-rank gold">1st</span></td><td><div class="rt-event">European Youth Cup — Lead</div><div class="rt-meta">Imst, Austria</div></td><td class="rt-year">2017</td></tr>
+      <tr data-rank="1" data-type="euro"><td><span class="rt-rank gold">1st</span></td><td><div class="rt-event">European Youth Cup — Lead</div><div class="rt-meta">Dornbirn, Austria</div></td><td class="rt-year">2017</td></tr>
+      <tr data-rank="1" data-type="euro"><td><span class="rt-rank gold">1st</span></td><td><div class="rt-event">European Youth Cup — Lead</div><div class="rt-meta">Uster, Switzerland</div></td><td class="rt-year">2017</td></tr>
+    </tbody>
+  </table>
 </div>
 
 <!-- FOOTER -->
 <div class="site-footer fade-in">
-  <a href="https://sponsable.co.uk" class="site-footer-link" target="_blank">Create your profile at sponsable.co.uk →</a>
+  <a href="nika.html" class="site-footer-link">← Back to Nika's profile</a>
 </div>
 
 <script>
+  window.addEventListener('load', () => {
+    document.getElementById('hero-img').classList.add('loaded');
+  });
+
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), 40); obs.unobserve(e.target); }
     });
-  }, { threshold: 0.05 });
+  }, { threshold: 0.06 });
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  function filterResults(type, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#results-table tr').forEach(row => {
+      if (type === 'all') { row.classList.remove('hidden'); }
+      else if (type === '1') { row.classList.toggle('hidden', row.dataset.rank !== '1'); }
+      else if (type === 'podium') { row.classList.toggle('hidden', parseInt(row.dataset.rank) > 3); }
+      else if (type === 'world') { row.classList.toggle('hidden', row.dataset.type !== 'world'); }
+      else if (type === 'euro') { row.classList.toggle('hidden', row.dataset.type !== 'euro'); }
+    });
+  }
 </script>
 </body>
 </html>
