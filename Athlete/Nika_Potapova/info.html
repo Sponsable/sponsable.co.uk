@@ -21,21 +21,23 @@
   html{scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--hi);font-family:var(--sans);-webkit-font-smoothing:antialiased;max-width:430px;margin:0 auto;overflow-x:hidden;}
 
-  /* HERO */
+  /* HERO — matches nika.html */
   .hero{position:relative;height:78vh;min-height:540px;overflow:hidden;}
-  .hero-img{position:absolute;inset:0;background:url('Nika_Wall.jpg') center 20%/cover no-repeat;transform:scale(1.04);transition:transform 10s cubic-bezier(0.25,0.46,0.45,0.94);}
+  .hero-img{position:absolute;inset:0;background:url('Nika_Wall.jpg') center 20%/cover no-repeat;transform:scale(1.04);transition:transform 9s cubic-bezier(0.25,0.46,0.45,0.94);}
   .hero-img.loaded{transform:scale(1);}
-  .hero-vignette{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,9,0.45) 0%,transparent 35%,transparent 45%,rgba(10,10,9,0.85) 80%,#0A0A09 100%),linear-gradient(90deg,rgba(10,10,9,0.35) 0%,transparent 55%);}
-  .hero-bird{position:absolute;top:1.25rem;left:1.5rem;z-index:5;background:none;border:none;cursor:pointer;padding:0;opacity:0.5;transition:opacity 0.2s;}
-  .hero-bird:hover{opacity:0.8;}
-  .hero-bird img{width:72px;height:72px;mix-blend-mode:screen;display:block;object-fit:contain;}
-  .hero-content{position:absolute;bottom:0;left:0;right:0;padding:0 1.5rem 2.5rem;z-index:2;}
-  .hero-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--dim);margin-bottom:0.6rem;}
-  .hero-name{font-family:var(--serif);font-size:3.8rem;font-weight:700;color:white;line-height:0.88;letter-spacing:-0.035em;}
-  .hero-name-second{font-family:var(--serif);font-size:3.8rem;font-weight:400;font-style:italic;color:rgba(255,255,255,0.55);line-height:1.0;letter-spacing:-0.03em;margin-bottom:1rem;}
-  .hero-credentials{display:flex;flex-direction:column;gap:0.25rem;}
-  .hero-cred{font-family:var(--mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;}
-  .hero-cred::before{content:'';display:inline-block;width:3px;height:3px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+  .hero-vignette{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,9,0.6) 0%,rgba(10,10,9,0.08) 30%,rgba(10,10,9,0.0) 48%,rgba(10,10,9,0.45) 68%,rgba(10,10,9,0.92) 88%,#0A0A09 100%),linear-gradient(90deg,rgba(10,10,9,0.28) 0%,transparent 55%);}
+  .hero-top{position:absolute;top:0;left:0;right:0;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;z-index:3;}
+  .hero-bird-btn{background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;opacity:0.5;transition:opacity 0.2s;}
+  .hero-bird-btn:hover{opacity:0.8;}
+  .hero-bird-btn img{mix-blend-mode:screen;display:block;}
+  .hero-identity{position:absolute;bottom:0;left:0;right:0;padding:0 1.5rem 2.25rem;z-index:3;}
+  .hero-eyebrow{display:flex;align-items:center;gap:0.55rem;margin-bottom:0.55rem;}
+  .flag-circle{width:16px;height:16px;border-radius:50%;overflow:hidden;border:1px solid rgba(255,255,255,0.18);display:flex;flex-direction:column;flex-shrink:0;}
+  .flag-top{flex:1;background:#005BBB;}
+  .flag-bottom{flex:1;background:#FFD500;}
+  .hero-discipline{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);}
+  .hero-name{font-family:var(--serif);font-size:5.2rem;font-weight:700;color:white;line-height:0.88;letter-spacing:-0.035em;}
+  .hero-name-second{font-family:var(--serif);font-size:5.2rem;font-weight:400;font-style:italic;color:rgba(255,255,255,0.65);line-height:1.0;letter-spacing:-0.03em;}
 
   /* SHARED */
   .section{padding:2.5rem 1.5rem 0;}
@@ -158,18 +160,18 @@
 <div class="hero">
   <div class="hero-img" id="hero-img"></div>
   <div class="hero-vignette"></div>
-  <button class="hero-bird" onclick="openSpPopup()" aria-label="About Sponsable">
-    <img src="Sponsable Bird Logo White.png" alt="Sponsable">
-  </button>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Brand Partnership Overview · 2026</div>
+  <div class="hero-top">
+    <button class="hero-bird-btn" onclick="openSpPopup()" aria-label="About Sponsable">
+      <img src="Sponsable Bird Logo White.png" alt="Sponsable" width="72" height="72" style="object-fit:contain;">
+    </button>
+  </div>
+  <div class="hero-identity">
+    <div class="hero-eyebrow">
+      <div class="flag-circle"><div class="flag-top"></div><div class="flag-bottom"></div></div>
+      <span class="hero-discipline">Ukrainian Lead Climber</span>
+    </div>
     <div class="hero-name">Nika</div>
     <div class="hero-name-second">Potapova</div>
-    <div class="hero-credentials">
-      <span class="hero-cred">Youth World Champion — Lead · Arco 2019</span>
-      <span class="hero-cred">Senior European Champion — Edinburgh 2019</span>
-      <span class="hero-cred">9a · Fuck the System · Santa Linya 2019</span>
-    </div>
   </div>
 </div>
 
@@ -192,12 +194,12 @@
 <!-- WHO SHE IS -->
 <div class="section fade-in">
   <div class="section-label">The athlete</div>
-  <div class="section-title">Pre-peak.<br>Already proven.</div>
-  <p class="body-text">Nika was World Champion and European Senior Champion at sixteen, while also climbing 9a. A few difficult years followed — a war, a relocation. She came back. She is 23, based in Paris, finishing a degree in coaching and management, and the 2026 season opens in May.</p>
+  <div class="section-title">Building the<br>Next Chapter.</div>
+  <p class="body-text">World Champion and European Senior Champion at sixteen, Nika Potapova climbed 9a the same year. Following a period of transition, she enters the 2026 season with renewed stability and upward momentum.</p>
+  <p class="body-text" style="margin-top:0.9rem;">Now 23 and based in Paris, she combines elite performance with academic training in coaching and management.</p>
   <div class="pull">
-    <p>"I know I can climb much better than I am right now. I'll come back. Just wait."</p>
+    <p>Partnership now means growing with the next phase of her career.</p>
   </div>
-  <p class="body-text">The brands that are in before the next peak are the brands that will look clever when it happens.</p>
 </div>
 
 <!-- PHOTO — full bleed, Climbing -->
@@ -211,23 +213,18 @@
   <div class="section-title">Why it works.</div>
 
   <div class="brings-item">
-    <div class="brings-title">Credibility that transfers</div>
-    <div class="brings-body">Her audience is climbers — people who know exactly who she is and what she's achieved. When she recommends a product it lands differently than a lifestyle influencer doing the same. The number is smaller. The trust is not.</div>
+    <div class="brings-title">An earned climbing audience</div>
+    <div class="brings-body">Her following is built on results and years of being part of the sport. She is also finishing a degree in coaching and management — she understands how climbing communities think, what they value, and what makes them trust a recommendation. That goes further than reach.</div>
   </div>
 
   <div class="brings-item">
-    <div class="brings-title">She understands the sport from both sides</div>
-    <div class="brings-body">She is finishing a degree in coaching and management while competing at the highest level. She thinks about climbing structurally — why athletes perform, what they need, how the sport works as a system. That makes her a more considered brand partner, not just a face.</div>
+    <div class="brings-title">Proven in production</div>
+    <div class="brings-body">She has worked with Red Bull across multiple projects — Natural Heights and Dual Ascent — and has demonstrated she can hold her own as a participant in professional creative work, not just as a subject. Brands that commission content with her know what they're getting.</div>
   </div>
 
   <div class="brings-item">
-    <div class="brings-title">A track record with Red Bull</div>
-    <div class="brings-body">She has worked with Red Bull at the level of Natural Heights. The production values and content quality are documented and public. That's a meaningful reference point for any brand evaluating what she produces.</div>
-  </div>
-
-  <div class="brings-item">
-    <div class="brings-title">A story that is still unfolding</div>
-    <div class="brings-body">Most athlete sponsorships are a bet on someone who has already peaked. Nika is 23, returning from a setback, climbing better than she has in years. Brands with timing instincts will recognise what that means.</div>
+    <div class="brings-title">Early in a long career</div>
+    <div class="brings-body">At 23, returning to form after a difficult period, she is at an interesting moment for the brands willing to recognise it. The 2026 season is already underway and the trajectory is upward.</div>
   </div>
 </div>
 
@@ -254,7 +251,7 @@
       <span class="category-name">Technology & Wearables</span>
       <span class="category-status open">Open</span>
     </div>
-    <div class="category-body">GPS, performance tracking, cameras. Natural fit for an athlete who documents everything and thinks analytically about training.</div>
+    <div class="category-body">Performance tracking, cameras, wearables. Natural fit for an athlete who manages her own training and documents everything independently.</div>
   </div>
 
   <div class="category-card">
@@ -314,8 +311,7 @@
 <!-- REACH -->
 <div class="section fade-in">
   <div class="section-label">Reach</div>
-  <div class="section-title">The numbers<br>in context.</div>
-  <p class="body-text">39,400 Instagram followers in climbing is a different asset to 39,400 in lifestyle. These are people who know her name and follow because they care about the sport. Full analytics on request.</p>
+  <div class="section-title">Instagram · 39.4K</div>
 
   <div class="reach-row">
     <div class="reach-icon"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
@@ -336,30 +332,29 @@
 
 <!-- ACCOUNTABILITY — 3 items -->
 <div class="section fade-in">
-  <div class="section-label">Her commitment to you</div>
-  <div class="section-title">The things brands<br>lose sleep over.</div>
+  <div class="section-title">Her commitment to you.</div>
 
   <div class="commit-row">
     <div class="commit-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>
-    <div><div class="commit-title">Monthly reporting</div><div class="commit-detail">A written update every month — what she posted, what performed, what's coming. No chasing required.</div></div>
+    <div><div class="commit-title">Monthly reporting</div><div class="commit-detail">What she posted, what performed, what's coming. Sent without being asked.</div></div>
   </div>
   <div class="commit-row">
     <div class="commit-icon"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-    <div><div class="commit-title">Deliverables on time</div><div class="commit-detail">Agreed outputs delivered on schedule. If a deadline needs to move, she asks — she doesn't just miss it.</div></div>
+    <div><div class="commit-title">Deliverables on time</div><div class="commit-detail">Agreed outputs on the agreed schedule. If anything changes, she says so in advance.</div></div>
   </div>
   <div class="commit-row">
     <div class="commit-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-    <div><div class="commit-title">Honest feedback, privately first</div><div class="commit-detail">If something isn't working she'll say so to you before it surfaces anywhere else. That's the feedback loop most brands pay to suppress.</div></div>
+    <div><div class="commit-title">Honest feedback</div><div class="commit-detail">If something isn't working — a product, a brief, a direction — she'll say so directly. That's more useful than silence.</div></div>
   </div>
 </div>
 
 <!-- CONTACT -->
 <div class="contact-wrap fade-in">
-  <div class="contact-title">Start here.</div>
-  <p class="contact-sub">All enquiries go to Ben at Sponsable. We'll respond within 24 hours and can have Nika on a call within the week.</p>
-  <a href="mailto:ben@sponsable.co.uk" class="contact-item">
+  <div class="contact-title">Get in touch.</div>
+  <p class="contact-sub">Nika manages her own partnerships. Reach out directly.</p>
+  <a href="mailto:nika@sponsable.co.uk" class="contact-item">
     <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-    <div><div class="contact-label">Email</div><div class="contact-value">ben@sponsable.co.uk</div></div>
+    <div><div class="contact-label">Email</div><div class="contact-value">nika@sponsable.co.uk</div></div>
     <span class="contact-arrow">→</span>
   </a>
   <a href="partnership.html" class="contact-item">
