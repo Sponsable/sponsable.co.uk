@@ -547,47 +547,48 @@
 
   .avail-timeline-head {
     font-family: var(--serif);
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.6rem;
+    font-weight: 700;
     color: var(--hi);
-    letter-spacing: -0.01em;
-    margin-bottom: 0;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 0.85rem;
   }
 
   .avail-item {
     display: grid;
     grid-template-columns: 76px 1fr;
     gap: 1rem;
-    padding: 0.75rem 0;
+    padding: 1.1rem 0;
     border-top: 1px solid var(--line);
     align-items: baseline;
   }
 
-  .avail-item:first-of-type { margin-top: 1rem; }
-  .avail-item:last-of-type  { border-bottom: 1px solid var(--line); }
+  .avail-item:last-of-type { border-bottom: none; }
 
   .avail-when {
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--soft);
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--mid);
     padding-top: 0.1rem;
   }
 
   .avail-what {
-    font-family: var(--sans);
-    font-size: 0.85rem;
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    font-style: italic;
     color: var(--hi);
     line-height: 1.5;
   }
 
-  .avail-what strong { font-weight: 600; }
   .avail-what .avail-sub {
     display: block;
-    font-size: 0.78rem;
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 0.8rem;
     color: var(--soft);
-    margin-top: 0.1rem;
+    margin-top: 0.15rem;
   }
 
   /* ─── GALLERY CAROUSEL ─── */
@@ -649,7 +650,7 @@
   .answers-section { padding: 2rem 1.5rem 0; }
 
   .answers-head {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.85rem;
   }
 
   .answers-title {
@@ -660,64 +661,45 @@
     letter-spacing: -0.02em;
     line-height: 1;
     display: block;
-    margin-bottom: 0.3rem;
   }
 
-  .answers-cadence {
-    font-family: var(--mono);
-    font-size: 8px; letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--dim);
+  /* All answer types share one class */
+  .answer-item,
+  .answer-voice,
+  .answer-spotify {
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--line);
   }
 
-  /* Each answer item — question on top, response below */
-  .answer-item {
-    padding: 1.25rem 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .answer-q {
+  /* Question label — present but not loud */
+  .answer-q,
+  .answer-voice-q,
+  .answer-spotify-q {
     font-family: var(--sans);
-    font-size: 0.8rem;
-    color: var(--soft);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--mid);
     line-height: 1.5;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.8rem;
   }
 
-  .answer-q::before {
-    content: "Q  ";
-    font-family: var(--mono);
-    font-size: 7.5px;
-    letter-spacing: 0.12em;
-    color: var(--dim);
+  /* No Q:: prefix on any of them */
+  .answer-q::before,
+  .answer-voice-q::before,
+  .answer-spotify-q::before {
+    content: none;
   }
 
+  /* Nika's text answers */
   .answer-a {
     font-family: var(--serif);
     font-size: 0.9rem; font-style: italic;
-    color: var(--mid); line-height: 1.8;
+    color: var(--hi); line-height: 1.8;
     padding-left: 1rem;
     border-left: 2px solid var(--pull);
   }
 
-  /* Voice note answer */
-  .answer-voice {
-    padding: 1.25rem 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .answer-voice-q {
-    font-family: var(--sans);
-    font-size: 0.8rem; color: var(--soft);
-    line-height: 1.5; margin-bottom: 0.85rem;
-  }
-
-  .answer-voice-q::before {
-    content: "Q  ";
-    font-family: var(--mono);
-    font-size: 7.5px; letter-spacing: 0.12em; color: var(--dim);
-  }
-
+  /* Voice note label */
   .answer-voice-label {
     font-family: var(--mono);
     font-size: 8px; letter-spacing: 0.14em;
@@ -725,27 +707,10 @@
     margin-bottom: 0.6rem;
   }
 
-  /* Spotify answer */
-  .answer-spotify {
-    padding: 1.25rem 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .answer-spotify-q {
-    font-family: var(--sans);
-    font-size: 0.8rem; color: var(--soft);
-    line-height: 1.5; margin-bottom: 0.85rem;
-  }
-
-  .answer-spotify-q::before {
-    content: "Q  ";
-    font-family: var(--mono);
-    font-size: 7.5px; letter-spacing: 0.12em; color: var(--dim);
-  }
-
-  /* Ask input */
+  /* Ask input — "your turn" feel */
   .answers-ask {
-    padding: 1.25rem 0 0;
+    padding: 1.1rem 0 0;
+    border-top: 1px solid var(--line);
   }
 
   .answers-ask textarea {
@@ -1230,7 +1195,7 @@
       </span>
     </div>
     <div class="avail-item">
-      <span class="avail-when">May 2026</span>
+      <span class="avail-when">May</span>
       <span class="avail-what">Competition season
         <span class="avail-sub">European Cup circuit opens</span>
       </span>
@@ -1339,7 +1304,7 @@
 
   <!-- Ask input -->
   <div class="answers-ask">
-    <textarea id="qa-input" rows="3" placeholder="Nika answers your questions each month."></textarea>
+    <textarea id="qa-input" rows="3" placeholder="Ask Nika a question!"></textarea>
     <div class="answers-ask-row">
       <button class="answers-submit" onclick="submitQuestion()">Submit</button>
     </div>
