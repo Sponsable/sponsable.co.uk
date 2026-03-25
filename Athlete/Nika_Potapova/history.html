@@ -319,7 +319,71 @@
   .sp-cta-secondary:hover { border-color: var(--line-strong); color: var(--mid); }
   .sp-note { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.1em; color: var(--dim); text-align: center; margin-top: 0.75rem; }
 
-  /* ─── FOOTER ─── */
+  /* ─── SCROLL BACK BAR ─── */
+  .back-bar {
+    position: fixed;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 430px;
+    padding: 0.7rem 1.5rem;
+    background: rgba(10,10,9,0.85);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; gap: 0.5rem;
+    z-index: 200;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .back-bar.visible { opacity: 1; pointer-events: all; }
+  .back-bar a {
+    display: flex; align-items: center; gap: 0.5rem;
+    text-decoration: none; font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim);
+    transition: color 0.15s;
+  }
+  .back-bar a:hover { color: var(--soft); }
+  .back-bar svg { width: 11px; height: 11px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    height: 100vh; min-height: 580px;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute; inset: 0;
+    background: url('Nika_Winning.jpg') center 22% / cover no-repeat;
+    transform: scale(1.04);
+    transition: transform 10s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .hero-img.loaded { transform: scale(1); }
+  .hero-vignette {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,10,9,0.5) 0%, transparent 35%, transparent 50%, rgba(10,10,9,0.8) 80%, #0A0A09 100%),
+      linear-gradient(90deg, rgba(10,10,9,0.35) 0%, transparent 55%);
+  }
+  .hero-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 0 1.5rem 3rem; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 0.75rem;
+  }
+  .hero-name {
+    font-family: var(--serif); font-size: 4.8rem; font-weight: 700;
+    color: white; line-height: 0.85; letter-spacing: -0.04em;
+  }
+  .hero-name-second {
+    font-family: var(--serif); font-size: 4.8rem; font-weight: 400; font-style: italic;
+    color: rgba(255,255,255,0.55); line-height: 1.0; letter-spacing: -0.035em;
+    margin-bottom: 1.25rem;
+  }
+  .hero-descriptor {
+    font-family: var(--serif); font-size: 1rem; font-style: italic;
+    color: rgba(255,255,255,0.55); line-height: 1.6;
+  }
   .site-footer { border-top: 1px solid var(--line); padding: 1.5rem; text-align: center; margin-top: 3rem; }
   .site-footer-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; }
   .site-footer-link:hover { color: var(--soft); }
@@ -331,31 +395,40 @@
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- SCROLL-TRIGGERED BACK BAR -->
+<div class="back-bar" id="back-bar">
+  <a href="nika.html">
+    <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Nika Potapova
+  </a>
+</div>
+
+<!-- HEADER — bird only -->
 <div class="page-header">
   <button class="header-bird-btn" onclick="openSpPopup()" aria-label="About Sponsable">
     <img src="Sponsable Bird Logo White.png" alt="Sponsable" style="object-fit:contain;">
   </button>
 </div>
 
-<!-- OPENING — typography only, name is the back link -->
-<div class="opening fade-in">
-  <div class="opening-label">Athletic Record</div>
-  <a href="nika.html" class="opening-back">
-    <div class="opening-name">Nika</div>
-    <div class="opening-name-second">Potapova</div>
-    <div class="opening-hint">
-      <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Back to profile
-    </div>
-  </a>
-  <div class="opening-title">Youth World Champion.<br>Senior European Champion.<br>9a.</div>
+<!-- HERO — Nika_Winning.jpg, same as the card on nika.html -->
+<div class="hero">
+  <div class="hero-img" id="hero-img"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Athletic Record</div>
+    <a href="nika.html" class="opening-back">
+      <div class="hero-name">Nika</div>
+      <div class="hero-name-second">Potapova</div>
+      <div class="opening-hint" style="margin-bottom:1.25rem;">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back to profile
+      </div>
+    </a>
+    <div class="hero-descriptor">Youth World Champion · Senior European Champion · 9a.</div>
+  </div>
 </div>
 
-<!-- FIRST PHOTO — raw, full bleed, no decoration -->
-<div class="photo-raw-wrap fade-in">
-  <img class="photo-raw" src="Nika_Lead.jpg" alt="" style="object-position: center 25%; max-height: 520px;">
-</div>
+<!-- FIRST PHOTO — Nika_Lead.jpg moves to after 2019 section -->
 
 <!-- 2017 YEAR RUN -->
 <div class="year-run fade-in">
@@ -435,7 +508,12 @@
   <div class="grade-meta">Santa Linya, Spain · 2019 · 23rd woman ever</div>
 </div>
 
-<!-- CLIMBING PHOTO (was comp) -->
+<!-- LEAD PHOTO — after 9a, peak of the page -->
+<div class="photo-raw-wrap fade-in">
+  <img class="photo-raw" src="Nika_Lead.jpg" alt="" style="object-position: center 25%; max-height: 520px;">
+</div>
+
+<!-- CLIMBING PHOTO -->
 <div class="photo-raw-wrap fade-in">
   <img class="photo-raw" src="Nika_Climbing.jpg" alt="" style="object-position: center 30%; max-height: 360px;">
 </div>
@@ -569,6 +647,17 @@
 </div>
 
 <script>
+  window.addEventListener('load', () => {
+    const heroImg = document.getElementById('hero-img');
+    if (heroImg) heroImg.classList.add('loaded');
+  });
+
+  // Show back bar on scroll
+  const backBar = document.getElementById('back-bar');
+  window.addEventListener('scroll', () => {
+    backBar.classList.toggle('visible', window.scrollY > 60);
+  }, { passive: true });
+
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), 40); obs.unobserve(e.target); }
