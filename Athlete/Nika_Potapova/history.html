@@ -11,7 +11,6 @@
   :root {
     --bg:    #0A0A09;
     --bg-1:  #111110;
-    --bg-2:  #191918;
     --line:        rgba(255,255,255,0.07);
     --line-strong: rgba(255,255,255,0.14);
     --hi:   rgba(255,255,255,0.95);
@@ -19,7 +18,7 @@
     --soft: rgba(255,255,255,0.40);
     --dim:  rgba(255,255,255,0.42);
     --ghost:rgba(255,255,255,0.05);
-    --gold: rgba(210,175,70,0.9);
+    --gold: rgba(210,175,70,0.95);
     --pull: rgba(255,255,255,0.22);
     --serif: 'Lora', Georgia, serif;
     --sans:  'DM Sans', system-ui, sans-serif;
@@ -56,109 +55,224 @@
   .back-link svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; }
   .header-bird { width: 26px; height: 26px; mix-blend-mode: screen; opacity: 0.45; object-fit: contain; }
 
-  /* ─── HERO ─── */
-  .hero {
-    position: relative;
-    height: 100vh; min-height: 600px;
-    overflow: hidden;
+  /* ─── OPENING — pure typography ─── */
+  .opening {
+    padding: 3.5rem 1.5rem 3rem;
   }
-  .hero-img {
-    position: absolute; inset: 0;
-    background: url('Nika_Lead.jpg') center 25% / cover no-repeat;
-    transform: scale(1.04);
-    transition: transform 10s cubic-bezier(0.25,0.46,0.45,0.94);
-  }
-  .hero-img.loaded { transform: scale(1); }
-  .hero-vignette {
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(180deg, rgba(10,10,9,0.55) 0%, transparent 35%, transparent 50%, rgba(10,10,9,0.75) 80%, #0A0A09 100%),
-      linear-gradient(90deg, rgba(10,10,9,0.4) 0%, transparent 60%);
-  }
-  .hero-content {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 0 1.5rem 3rem; z-index: 2;
-  }
-  .hero-eyebrow {
+
+  .opening-label {
     font-family: var(--mono); font-size: 10px;
     letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--dim); margin-bottom: 0.75rem;
-    display: flex; align-items: center; gap: 0.75rem;
+    color: var(--dim); margin-bottom: 1.25rem;
   }
-  .hero-eyebrow-line { height: 1px; width: 28px; background: var(--dim); flex-shrink: 0; }
-  .hero-name {
+
+  .opening-name {
+    font-family: var(--serif); font-size: 5rem; font-weight: 700;
+    color: white; line-height: 0.85; letter-spacing: -0.04em;
+    margin-bottom: 0.1rem;
+  }
+
+  .opening-name-second {
+    font-family: var(--serif); font-size: 5rem; font-weight: 400;
+    font-style: italic; color: rgba(255,255,255,0.5);
+    line-height: 1.0; letter-spacing: -0.035em;
+    margin-bottom: 2rem;
+  }
+
+  .opening-title {
+    font-family: var(--serif); font-size: 1.1rem; font-style: italic;
+    color: var(--mid); line-height: 1.6;
+  }
+
+  /* ─── FULL-BLEED PHOTO — no caption, no vignette, just image ─── */
+  .photo-raw {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .photo-raw-wrap {
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  /* ─── BIG NUMBER BLOCK ─── */
+  .number-block {
+    padding: 3rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .number-block-year {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 1rem;
+  }
+
+  .number-big {
+    font-family: var(--serif); font-size: 7rem; font-weight: 700;
+    color: var(--gold); line-height: 0.85; letter-spacing: -0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .number-event {
+    font-family: var(--sans); font-size: 1rem; font-weight: 600;
+    color: var(--hi); margin-bottom: 0.2rem;
+  }
+
+  .number-place {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.1em; color: var(--dim);
+  }
+
+  /* ─── YEAR RUN — list of wins in a year ─── */
+  .year-run {
+    padding: 2.5rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .year-run-label {
+    font-family: var(--serif); font-size: 4rem; font-weight: 700;
+    color: rgba(255,255,255,0.08); letter-spacing: -0.05em;
+    line-height: 1; margin-bottom: 1.5rem;
+  }
+
+  .year-run-item {
+    display: flex; align-items: baseline;
+    gap: 1rem; padding: 0.7rem 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .year-run-rank {
+    font-family: var(--serif); font-size: 1.4rem; font-weight: 700;
+    color: var(--gold); letter-spacing: -0.03em;
+    flex-shrink: 0; width: 2.5rem;
+  }
+
+  .year-run-name {
+    font-family: var(--sans); font-size: 0.88rem; font-weight: 500;
+    color: var(--hi); flex: 1;
+  }
+
+  .year-run-where {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.08em; color: var(--dim);
+    flex-shrink: 0;
+  }
+
+  /* ─── PULL QUOTE — standalone, no framing ─── */
+  .pull-standalone {
+    padding: 3rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .pull-standalone p {
+    font-family: var(--serif); font-size: 1.45rem; font-weight: 600;
+    color: var(--hi); line-height: 1.4; letter-spacing: -0.015em;
+  }
+
+  .pull-standalone-year {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--dim); margin-top: 1rem;
+  }
+
+  /* ─── 9A BLOCK ─── */
+  .grade-block {
+    padding: 3rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .grade-num {
+    font-family: var(--serif); font-size: 9rem; font-weight: 700;
+    color: white; line-height: 0.85; letter-spacing: -0.06em;
+    margin-bottom: 1rem;
+  }
+
+  .grade-route {
+    font-family: var(--sans); font-size: 1rem; font-weight: 600;
+    color: var(--hi); margin-bottom: 0.25rem;
+  }
+
+  .grade-meta {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.1em; color: var(--dim);
+  }
+
+  /* ─── DISRUPTION — sparse, deliberate ─── */
+  .disruption-block {
+    padding: 3rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .disruption-year {
     font-family: var(--serif); font-size: 4.5rem; font-weight: 700;
-    color: white; line-height: 0.88; letter-spacing: -0.035em;
-  }
-  .hero-name-second {
-    font-family: var(--serif); font-size: 4.5rem; font-weight: 400; font-style: italic;
-    color: rgba(255,255,255,0.65); line-height: 1.0; letter-spacing: -0.03em;
-    margin-bottom: 1.25rem;
-  }
-  .hero-descriptor {
-    font-family: var(--serif); font-size: 1rem; font-style: italic;
-    color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 320px;
+    color: rgba(255,255,255,0.12); letter-spacing: -0.05em;
+    line-height: 1; margin-bottom: 1.5rem;
   }
 
-  /* ─── STAT STRIP ─── */
-  .stat-strip { display: grid; grid-template-columns: repeat(3,1fr); border-bottom: 1px solid var(--line); }
-  .stat-cell { padding: 1.25rem 1.25rem; border-right: 1px solid var(--line); }
-  .stat-cell:last-child { border-right: none; }
-  .stat-num { font-family: var(--serif); font-size: 2rem; font-weight: 700; color: var(--hi); letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.3rem; }
-  .stat-num.gold { color: var(--gold); }
-  .stat-lbl { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); line-height: 1.4; }
+  .disruption-line {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--dim); padding: 0.6rem 0;
+    border-top: 1px solid var(--line);
+  }
 
-  /* ─── CHAPTER ─── */
-  .chapter { padding: 2.5rem 1.5rem 0; }
-  .chapter-era { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.6rem; }
-  .chapter-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--hi); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.85rem; }
-  .chapter-body { font-family: var(--serif); font-size: 0.92rem; font-style: italic; color: var(--soft); line-height: 1.85; }
-  .chapter-pull { border-left: 2px solid var(--pull); padding: 0.4rem 0 0.4rem 1rem; margin: 1.25rem 0; }
-  .chapter-pull p { font-family: var(--serif); font-size: 1rem; font-style: italic; color: var(--hi); line-height: 1.6; }
+  .disruption-line.loud {
+    color: var(--soft); font-size: 11px;
+  }
 
-  /* ─── MOMENT CARDS ─── */
-  .moment { margin: 2rem 1.5rem 0; padding: 1.5rem; background: var(--bg-1); border: 1px solid var(--line); border-radius: 2px; }
-  .moment-rank { font-family: var(--serif); font-size: 4rem; font-weight: 700; color: var(--gold); letter-spacing: -0.05em; line-height: 1; margin-bottom: 0.25rem; }
-  .moment-event { font-family: var(--sans); font-size: 0.9rem; font-weight: 600; color: var(--hi); margin-bottom: 0.2rem; }
-  .moment-detail { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; color: var(--dim); }
+  /* ─── COMEBACK ─── */
+  .comeback-block {
+    padding: 2.5rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
 
-  .moments-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin: 2rem 1.5rem 0; }
-  .moment-sm { padding: 1.1rem; background: var(--bg-1); border: 1px solid var(--line); border-radius: 2px; }
-  .moment-sm .moment-rank { font-size: 2.5rem; }
+  .comeback-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 1.5rem;
+  }
 
-  /* ─── PHOTOS ─── */
-  .photo-full { position: relative; overflow: hidden; margin-top: 2.5rem; }
-  .photo-full-img { width: 100%; display: block; object-fit: cover; }
-  .photo-full-vignette { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(10,10,9,0.85) 100%); }
-  .photo-full-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 0 1.5rem 1.25rem; font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); }
+  .comeback-row {
+    display: flex; align-items: baseline;
+    gap: 1rem; padding: 0.7rem 0;
+    border-top: 1px solid var(--line);
+  }
 
-  .photo-half { position: relative; overflow: hidden; aspect-ratio: 4/3; margin: 1.5rem 1.5rem 0; border-radius: 2px; }
-  .photo-half img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .photo-half-vignette { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(10,10,9,0.8) 100%); }
+  .comeback-row:last-child { border-bottom: 1px solid var(--line); }
 
-  /* ─── DISRUPTION ─── */
-  .disruption { padding: 2.5rem 1.5rem 0; }
+  .cb-year {
+    font-family: var(--sans); font-size: 0.82rem; font-weight: 500;
+    color: var(--mid); flex-shrink: 0; width: 44px;
+  }
 
-  /* ─── COMEBACK TIMELINE ─── */
-  .comeback-year { margin: 0 1.5rem; display: flex; align-items: baseline; gap: 1rem; padding: 0.85rem 0; border-top: 1px solid var(--line); }
-  .comeback-year:last-child { border-bottom: 1px solid var(--line); }
-  .cb-year { font-family: var(--sans); font-size: 0.82rem; font-weight: 500; color: var(--mid); flex-shrink: 0; width: 52px; }
-  .cb-result { font-family: var(--serif); font-size: 0.9rem; font-style: italic; color: var(--hi); line-height: 1.5; }
-  .cb-detail { display: block; font-family: var(--mono); font-size: 9px; letter-spacing: 0.07em; color: var(--dim); font-style: normal; margin-top: 0.1rem; }
+  .cb-result {
+    font-family: var(--serif); font-size: 0.9rem; font-style: italic;
+    color: var(--hi); flex: 1; line-height: 1.4;
+  }
 
-  /* ─── OUTDOOR ─── */
-  .outdoor-block { margin: 2rem 1.5rem 0; padding: 1.5rem; background: var(--bg-1); border: 1px solid var(--line); border-radius: 2px; }
-  .outdoor-grade { font-family: var(--serif); font-size: 3.5rem; font-weight: 700; color: var(--hi); letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.25rem; }
-  .outdoor-name { font-family: var(--sans); font-size: 0.95rem; font-weight: 600; color: var(--hi); margin-bottom: 0.15rem; }
-  .outdoor-meta { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; color: var(--dim); margin-bottom: 0.75rem; }
-  .outdoor-note { font-family: var(--serif); font-size: 0.88rem; font-style: italic; color: var(--soft); line-height: 1.7; padding-top: 0.75rem; border-top: 1px solid var(--line); }
+  .cb-place {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--dim); flex-shrink: 0;
+  }
 
   /* ─── RESULTS TABLE ─── */
   .results-section { padding: 2.5rem 1.5rem 0; }
-  .section-mono-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); }
 
-  .results-filter { display: flex; gap: 0.5rem; margin: 1.25rem 0; flex-wrap: wrap; }
-  .filter-btn { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); background: none; border: 1px solid var(--line); padding: 4px 10px; border-radius: 2px; cursor: pointer; transition: all 0.15s; }
+  .results-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--dim); margin-bottom: 1.25rem;
+  }
+
+  .results-filter { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .filter-btn {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--dim);
+    background: none; border: 1px solid var(--line);
+    padding: 4px 10px; border-radius: 2px; cursor: pointer;
+    transition: all 0.15s;
+  }
   .filter-btn:hover, .filter-btn.active { color: var(--hi); border-color: var(--line-strong); background: var(--ghost); }
 
   .result-table { width: 100%; border-collapse: collapse; }
@@ -167,7 +281,7 @@
   .result-table tr.hidden { display: none; }
   .result-table td { padding: 0.75rem 0; vertical-align: top; }
 
-  .rt-rank { font-family: var(--mono); font-size: 11px; font-weight: 500; width: 36px; display: inline-block; }
+  .rt-rank { font-family: var(--mono); font-size: 11px; font-weight: 500; display: inline-block; width: 32px; }
   .rt-rank.gold   { color: var(--gold); }
   .rt-rank.silver { color: rgba(200,200,200,0.8); }
   .rt-rank.bronze { color: rgba(200,140,90,0.8); }
@@ -175,21 +289,15 @@
 
   .rt-event { font-family: var(--sans); font-size: 0.83rem; font-weight: 500; color: var(--hi); line-height: 1.4; }
   .rt-meta  { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.12rem; }
-  .rt-year  { font-family: var(--mono); font-size: 9px; color: var(--dim); text-align: right; width: 38px; white-space: nowrap; }
-
-  /* ─── MEDIA ─── */
-  .media-section { padding: 2.5rem 1.5rem 0; }
-  .media-embed { border-radius: 2px; overflow: hidden; margin-top: 1rem; background: var(--bg-1); border: 1px solid var(--line); }
-  .media-embed iframe { display: block; width: 100%; aspect-ratio: 16/9; border: none; }
-  .media-embed-label { padding: 0.75rem 1rem; font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
+  .rt-year  { font-family: var(--mono); font-size: 9px; color: var(--dim); text-align: right; width: 36px; white-space: nowrap; }
 
   /* ─── FOOTER ─── */
   .site-footer { border-top: 1px solid var(--line); padding: 1.5rem; text-align: center; margin-top: 3rem; }
   .site-footer-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; }
   .site-footer-link:hover { color: var(--soft); }
 
-  /* ─── FADE IN ─── */
-  .fade-in { opacity: 0; transform: translateY(10px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  /* ─── FADE ─── */
+  .fade-in { opacity: 0; transform: translateY(12px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
@@ -204,213 +312,166 @@
   <img src="Sponsable Bird Logo White.png" alt="Sponsable" class="header-bird">
 </div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-img" id="hero-img"></div>
-  <div class="hero-vignette"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-line"></div>
-      Athletic Record
-    </div>
-    <div class="hero-name">Nika</div>
-    <div class="hero-name-second">Potapova</div>
-    <p class="hero-descriptor">Youth World Champion. Senior European Champion. One of the most gifted lead climbers of her generation.</p>
+<!-- OPENING — typography only -->
+<div class="opening fade-in">
+  <div class="opening-label">Athletic Record</div>
+  <div class="opening-name">Nika</div>
+  <div class="opening-name-second">Potapova</div>
+  <div class="opening-title">Youth World Champion.<br>Senior European Champion.<br>9a.</div>
+</div>
+
+<!-- FIRST PHOTO — raw, full bleed, no decoration -->
+<div class="photo-raw-wrap fade-in">
+  <img class="photo-raw" src="Nika_Lead.jpg" alt="" style="object-position: center 25%; max-height: 520px;">
+</div>
+
+<!-- 2017 YEAR RUN -->
+<div class="year-run fade-in">
+  <div class="year-run-label">2017</div>
+  <div class="year-run-item">
+    <span class="year-run-rank">1st</span>
+    <span class="year-run-name">European Youth Cup — Lead</span>
+    <span class="year-run-where">Imst</span>
+  </div>
+  <div class="year-run-item">
+    <span class="year-run-rank">1st</span>
+    <span class="year-run-name">European Youth Cup — Lead</span>
+    <span class="year-run-where">Dornbirn</span>
+  </div>
+  <div class="year-run-item">
+    <span class="year-run-rank">1st</span>
+    <span class="year-run-name">European Youth Cup — Lead</span>
+    <span class="year-run-where">Uster</span>
   </div>
 </div>
 
-<!-- STAT STRIP -->
-<div class="stat-strip fade-in">
-  <div class="stat-cell">
-    <div class="stat-num gold">2×</div>
-    <div class="stat-lbl">World<br>Champion</div>
-  </div>
-  <div class="stat-cell">
-    <div class="stat-num">9a</div>
-    <div class="stat-lbl">Highest<br>grade</div>
-  </div>
-  <div class="stat-cell">
-    <div class="stat-num">8</div>
-    <div class="stat-lbl">Years<br>competing</div>
-  </div>
+<!-- HAT PHOTO -->
+<div class="photo-raw-wrap fade-in">
+  <img class="photo-raw" src="Nika_hat.jpg" alt="" style="object-position: center 20%; max-height: 420px;">
 </div>
 
-<!-- CHAPTER 1 -->
-<div class="chapter fade-in">
-  <div class="chapter-era">2017 — The beginning</div>
-  <div class="chapter-title">First year.<br>Three wins.</div>
-  <p class="chapter-body">Nika entered her first competition season as a junior in 2017. By June she had won three consecutive European Youth Cup Lead rounds — Imst, Dornbirn, Uster. Not podiums. Wins. In her first year.</p>
-</div>
-
-<div class="photo-half fade-in">
-  <img src="Nika_hat.jpg" alt="Nika, early career" style="object-position: center 20%;">
-  <div class="photo-half-vignette"></div>
-</div>
-
-<div class="moments-row fade-in">
-  <div class="moment-sm">
-    <div class="moment-rank">1st</div>
-    <div class="moment-event">EYC Lead</div>
-    <div class="moment-detail">Imst, AUT · 2017</div>
+<!-- 2018 YEAR RUN -->
+<div class="year-run fade-in">
+  <div class="year-run-label">2018</div>
+  <div class="year-run-item">
+    <span class="year-run-rank">1st</span>
+    <span class="year-run-name">European Youth Champion — Lead</span>
+    <span class="year-run-where">Imst</span>
   </div>
-  <div class="moment-sm">
-    <div class="moment-rank">1st</div>
-    <div class="moment-event">EYC Lead</div>
-    <div class="moment-detail">Dornbirn, AUT · 2017</div>
+  <div class="year-run-item">
+    <span class="year-run-rank">1st</span>
+    <span class="year-run-name">European Youth Cup — Lead</span>
+    <span class="year-run-where">Uster</span>
   </div>
-</div>
-<div class="moments-row fade-in" style="margin-top:0.6rem;">
-  <div class="moment-sm">
-    <div class="moment-rank">1st</div>
-    <div class="moment-event">EYC Lead</div>
-    <div class="moment-detail">Uster, SUI · 2017</div>
+  <div class="year-run-item">
+    <span class="year-run-rank">1st</span>
+    <span class="year-run-name">European Youth Cup — Lead</span>
+    <span class="year-run-where">Munich</span>
   </div>
-  <div class="moment-sm" style="background:transparent;border-color:transparent;"></div>
-</div>
-
-<!-- CHAPTER 2 -->
-<div class="chapter fade-in">
-  <div class="chapter-era">2018 — Rising</div>
-  <div class="chapter-title">European Champion.<br>Vice World Champion.</div>
-  <p class="chapter-body">A year later, Nika was the best junior lead climber in Europe. European Youth Champion in Imst. Then Moscow — Youth World Championships. She finished second by the narrowest of margins. Silver. Age fifteen.</p>
-</div>
-
-<div class="moments-row fade-in">
-  <div class="moment-sm">
-    <div class="moment-rank">1st</div>
-    <div class="moment-event">European Youth Champion</div>
-    <div class="moment-detail">Lead · Imst, AUT · 2018</div>
-  </div>
-  <div class="moment-sm">
-    <div class="moment-rank" style="color:rgba(200,200,200,0.8)">2nd</div>
-    <div class="moment-event">Youth World Championships</div>
-    <div class="moment-detail">Lead · Moscow · 2018</div>
+  <div class="year-run-item">
+    <span class="year-run-rank" style="color:rgba(200,200,200,0.8)">2nd</span>
+    <span class="year-run-name">Youth World Championships — Lead</span>
+    <span class="year-run-where">Moscow</span>
   </div>
 </div>
 
-<!-- CHAPTER 3 -->
-<div class="chapter fade-in">
-  <div class="chapter-era">2019 — The peak</div>
-  <div class="chapter-title">World Champion.<br>European Champion.<br>9a.</div>
-  <p class="chapter-body">Everything at once. Youth World Champion in Arco on lead. Senior European Champion in Edinburgh — competing against the best women in the world as a sixteen year old. And between competitions, quietly, at Santa Linya: Fuck the System, 9a. The 23rd woman in history to climb the grade.</p>
-  <div class="chapter-pull">
-    <p>"I didn't realise what it meant at the time. I just wanted to climb the route."</p>
-  </div>
+<!-- BIG NUMBER — Youth World Champion -->
+<div class="number-block fade-in">
+  <div class="number-block-year">Arco, Italy · August 2019</div>
+  <div class="number-big">1st</div>
+  <div class="number-event">Youth World Champion</div>
+  <div class="number-place">Lead · Age 16</div>
 </div>
 
-<div class="photo-full fade-in">
-  <img class="photo-full-img" src="Nika_Hug.png" alt="After a win" style="object-position: center 30%; max-height: 340px;">
-  <div class="photo-full-vignette"></div>
-  <div class="photo-full-caption">Competition · 2019</div>
+<!-- HUG PHOTO -->
+<div class="photo-raw-wrap fade-in">
+  <img class="photo-raw" src="Nika_Hug.png" alt="" style="object-position: center 30%; max-height: 380px;">
 </div>
 
-<div class="moment fade-in">
-  <div class="moment-rank">1st</div>
-  <div class="moment-event">Youth World Champion</div>
-  <div class="moment-detail">Lead · Arco, Italy · August 2019</div>
+<!-- BIG NUMBER — European Champion -->
+<div class="number-block fade-in">
+  <div class="number-block-year">Edinburgh, Scotland · October 2019</div>
+  <div class="number-big">1st</div>
+  <div class="number-event">Senior European Champion</div>
+  <div class="number-place">Combined · Competing against seniors</div>
 </div>
 
-<div class="moment fade-in" style="margin-top:0.6rem;">
-  <div class="moment-rank">1st</div>
-  <div class="moment-event">Senior European Champion</div>
-  <div class="moment-detail">Combined · Edinburgh, Scotland · October 2019</div>
+<!-- 9A -->
+<div class="grade-block fade-in">
+  <div class="grade-num">9a</div>
+  <div class="grade-route">Fuck the System</div>
+  <div class="grade-meta">Santa Linya, Spain · 2019 · 23rd woman ever</div>
 </div>
 
-<div class="outdoor-block fade-in">
-  <div class="outdoor-grade">9a</div>
-  <div class="outdoor-name">Fuck the System</div>
-  <div class="outdoor-meta">Santa Linya, Spain · 2019</div>
-  <p class="outdoor-note">One of the hardest sport climbing routes in the world. At sixteen. The 23rd woman in history to climb the grade — at the time, one of the youngest ever.</p>
+<!-- COMP PHOTO -->
+<div class="photo-raw-wrap fade-in">
+  <img class="photo-raw" src="Nika_comp.webp" alt="" style="object-position: center 35%; max-height: 360px;">
 </div>
 
-<div class="photo-full fade-in">
-  <img class="photo-full-img" src="Nika_comp.webp" alt="Competition bouldering" style="object-position: center 35%; max-height: 320px;">
-  <div class="photo-full-vignette"></div>
+<!-- PULL QUOTE -->
+<div class="pull-standalone fade-in">
+  <p>"I was winning. But somebody was taking pieces from me."</p>
+  <div class="pull-standalone-year">2019–2022</div>
 </div>
 
-<!-- CHAPTER 4 -->
-<div class="disruption chapter fade-in">
-  <div class="chapter-era">2020–2022 — Disruption</div>
-  <div class="chapter-title">Everything stopped.</div>
-  <p class="chapter-body">The coach who had built her career had been controlling everything — who she spoke to, who she trusted, how she saw herself. When that ended, it left a gap. Then the pandemic. Then, in 2022, the war. She left Ukraine carrying a refugee card and trained where she could — Germany, Innsbruck, anywhere.</p>
-  <div class="chapter-pull">
-    <p>"I was winning. But somebody was taking pieces from me."</p>
-  </div>
-  <p class="chapter-body">She still competed. 7th at Senior Europeans Lead 2020. 4th at Youth World Championships 2022 — her best senior result of that period. But the momentum had broken.</p>
+<!-- DISRUPTION -->
+<div class="disruption-block fade-in">
+  <div class="disruption-year">2020<br>2021<br>2022</div>
+  <div class="disruption-line loud">War. Ukraine. Refugee card.</div>
+  <div class="disruption-line">Coach. Court case. Witness.</div>
+  <div class="disruption-line">Germany. Innsbruck. Wherever.</div>
+  <div class="disruption-line">Still competing.</div>
 </div>
 
-<div class="photo-full fade-in">
-  <img class="photo-full-img" src="Nika_crimp.jpg" alt="Competition" style="object-position: center 25%; max-height: 380px;">
-  <div class="photo-full-vignette"></div>
+<!-- CRIMP PHOTO -->
+<div class="photo-raw-wrap fade-in">
+  <img class="photo-raw" src="Nika_crimp.jpg" alt="" style="object-position: center 25%; max-height: 420px;">
 </div>
 
-<!-- CHAPTER 5 -->
-<div class="chapter fade-in">
-  <div class="chapter-era">2023–2025 — The return</div>
-  <div class="chapter-title">Back on the circuit.<br>Building again.</div>
-  <p class="chapter-body">World Cup Chamonix 2023 — 25th. Her best senior World Cup result. European Cup Žilina — 14th. 2025: 8th at Campitello di Fassa. The season opens in May. The trajectory is pointing up.</p>
-  <div class="chapter-pull">
-    <p>"I know I can climb much better than I am right now. I'll come back."</p>
-  </div>
+<!-- PULL QUOTE 2 -->
+<div class="pull-standalone fade-in">
+  <p>"I know I can climb much better than I am right now. I'll come back."</p>
+  <div class="pull-standalone-year">Paris, 2025</div>
 </div>
 
-<div style="margin-top:1.5rem;">
-  <div class="comeback-year fade-in">
+<!-- COMEBACK -->
+<div class="comeback-block fade-in">
+  <div class="comeback-label">The return</div>
+  <div class="comeback-row">
     <span class="cb-year">2023</span>
-    <span class="cb-result">25th, World Cup Lead
-      <span class="cb-detail">Chamonix, France · Best senior World Cup result</span>
-    </span>
+    <span class="cb-result">World Cup Lead — Chamonix</span>
+    <span class="cb-place">25th</span>
   </div>
-  <div class="comeback-year fade-in">
+  <div class="comeback-row">
     <span class="cb-year">2023</span>
-    <span class="cb-result">14th, European Cup Lead
-      <span class="cb-detail">Žilina, Slovakia</span>
-    </span>
+    <span class="cb-result">European Cup Lead — Žilina</span>
+    <span class="cb-place">14th</span>
   </div>
-  <div class="comeback-year fade-in">
+  <div class="comeback-row">
     <span class="cb-year">2024</span>
-    <span class="cb-result">European Championships
-      <span class="cb-detail">Villars · Boulder & Lead combined</span>
-    </span>
+    <span class="cb-result">European Championships — Villars</span>
+    <span class="cb-place">16th</span>
   </div>
-  <div class="comeback-year fade-in">
+  <div class="comeback-row">
     <span class="cb-year">2025</span>
-    <span class="cb-result">8th, European Cup Lead
-      <span class="cb-detail">Campitello di Fassa · Best result since return</span>
-    </span>
+    <span class="cb-result">European Cup Lead — Campitello di Fassa</span>
+    <span class="cb-place">8th</span>
   </div>
-  <div class="comeback-year fade-in">
+  <div class="comeback-row">
     <span class="cb-year">2025</span>
-    <span class="cb-result">14th, European Cup Lead
-      <span class="cb-detail">Toulouse, France</span>
-    </span>
+    <span class="cb-result">European Cup Lead — Toulouse</span>
+    <span class="cb-place">14th</span>
   </div>
-</div>
-
-<div class="photo-full fade-in" style="margin-top:2rem;">
-  <img class="photo-full-img" src="Nika_Lead.jpg" alt="Competition lead climbing" style="object-position: center 30%; max-height: 420px;">
-  <div class="photo-full-vignette"></div>
-</div>
-
-<!-- MEDIA -->
-<div class="media-section fade-in">
-  <div class="section-mono-label">On Red Bull TV</div>
-  <div class="media-embed">
-    <iframe
-      src="https://www.youtube.com/embed/OQ1lsKjYDts?rel=0&modestbranding=1"
-      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen loading="lazy">
-    </iframe>
-    <div class="media-embed-label">
-      <span>Natural Heights — Episode 3</span>
-      <span>Red Bull · 2025</span>
-    </div>
+  <div class="comeback-row">
+    <span class="cb-year">2026</span>
+    <span class="cb-result" style="color:var(--dim);font-style:normal;">Season opens May ↗</span>
+    <span class="cb-place"></span>
   </div>
 </div>
 
 <!-- FULL RESULTS -->
 <div class="results-section fade-in">
-  <div class="section-mono-label">Full Competition Record</div>
+  <div class="results-label">Full record</div>
   <div class="results-filter">
     <button class="filter-btn active" onclick="filterResults('all',this)">All</button>
     <button class="filter-btn" onclick="filterResults('1',this)">Wins</button>
@@ -456,10 +517,6 @@
 </div>
 
 <script>
-  window.addEventListener('load', () => {
-    document.getElementById('hero-img').classList.add('loaded');
-  });
-
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), 40); obs.unobserve(e.target); }
