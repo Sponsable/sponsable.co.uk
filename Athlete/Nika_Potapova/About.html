@@ -304,12 +304,6 @@
     overflow: hidden;
   }
 
-  /* Athletic Record card */
-  .card-img.results-card {
-    aspect-ratio: 16/9;
-    background: url('Nika_Winning.jpg') center 20% / cover no-repeat;
-  }
-
   /* Natural Heights card */
   .card-img.media-card {
     aspect-ratio: 16/9;
@@ -380,9 +374,22 @@
     padding: 1.1rem 0;
   }
 
-  /* Card needs to be taller to accommodate doubled row spacing */
+  /* Athletic Record card — height driven by content, not aspect ratio */
   .card-img.results-card {
-    aspect-ratio: 16/8;
+    aspect-ratio: unset;
+    min-height: 180px;
+    background: url('Nika_Winning.jpg') center 20% / cover no-repeat;
+  }
+
+  /* Card overlay for results — relative not absolute so it expands with content */
+  .card-img.results-card .card-overlay {
+    position: relative;
+    inset: unset;
+    padding: 1.25rem 1.5rem 1.25rem;
+  }
+
+  .card-img.results-card .card-img-vignette {
+    position: absolute; inset: 0;
   }
 
   /* ─── MEDIA (legacy, keep for fallback) ─── */
@@ -1113,7 +1120,7 @@
   </div>
   <p class="bio-text">
     Before there were walls, there were trees. That's where Nika learned to climb. When a friend took her to a gym, she was asked after a single session if she wanted to move straight into the advanced group.
-    <button class="bio-more" id="bio-more-btn" onclick="toggleBio()"> … more</button>
+    <button class="bio-more" id="bio-more-btn" onclick="toggleBio()">… more</button>
   </p>
   <div class="bio-expanded" id="bio-expanded">
     <p>She said yes.</p>
