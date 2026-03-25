@@ -364,18 +364,82 @@
   .sp-cta-secondary:hover { border-color: var(--line-strong); color: var(--mid); }
   .sp-note { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.1em; color: var(--dim); text-align: center; margin-top: 0.75rem; }
 
-  /* ─── INSTAGRAM EMBEDS ─── */
+  /* ─── REELS CAROUSEL ─── */
   .reels-section { padding: 2.5rem 1.5rem 0; }
 
-  .reel-wrap {
-    margin-top: 1rem;
-    border-radius: 2px; overflow: hidden;
-    border: 1px solid var(--line);
+  .reels-track-outer {
+    overflow: hidden;
+    margin: 1.25rem -1.5rem 0;
+    padding: 0 1.5rem;
+    cursor: grab;
+    user-select: none;
   }
-  .reel-wrap + .reel-wrap { margin-top: 0.75rem; }
 
-  /* Force embeds to match our dark background */
-  .reel-wrap blockquote { margin: 0 !important; }
+  .reels-track {
+    display: flex;
+    gap: 0.6rem;
+    width: max-content;
+  }
+
+  .reel-slide {
+    flex-shrink: 0;
+    width: 54vw;
+    max-width: 230px;
+    aspect-ratio: 9/16;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    display: block;
+  }
+
+  .reel-slide img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    pointer-events: none;
+    transition: transform 0.4s ease;
+  }
+  .reel-slide:hover img { transform: scale(1.03); }
+
+  .reel-slide-vignette {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(10,10,9,0.85) 100%);
+    pointer-events: none;
+  }
+
+  /* Play button */
+  .reel-play {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -60%);
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(10,10,9,0.5);
+    border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .reel-slide:hover .reel-play {
+    background: rgba(255,255,255,0.15);
+    transform: translate(-50%, -60%) scale(1.08);
+  }
+  .reel-play svg { width: 12px; height: 12px; fill: white; margin-left: 2px; }
+
+  /* Stats at bottom */
+  .reel-slide-foot {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 0.6rem 0.75rem;
+    z-index: 2;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .reel-likes {
+    font-family: var(--sans); font-size: 0.8rem; font-weight: 600;
+    color: white;
+    display: flex; align-items: center; gap: 0.3rem;
+  }
+  .reel-likes svg { width: 11px; height: 11px; }
 
   /* ─── FOOTER ─── */
   .site-footer { border-top: 1px solid var(--line); padding: 1.5rem; text-align: center; margin-top: 3rem; }
@@ -689,22 +753,51 @@
 <!-- CONTENT IN ACTION -->
 <div class="reels-section fade-in">
   <div class="section-label">Content in action</div>
-  <div class="section-title">What she actually<br>produces.</div>
-  <p class="body-text" style="margin-bottom:0;">Three of her top performing reels. This is what brand integration looks like in practice — not a product shot, not a studio setup. Real climbing, real settings.</p>
+  <div class="section-title">34.7M views.<br>On one reel.</div>
 
-  <div class="reel-wrap">
-    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/C3dOjhWNeP3/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;box-shadow:none;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote>
-  </div>
+  <div class="reels-track-outer" id="reels-outer">
+    <div class="reels-track" id="reels-track">
 
-  <div class="reel-wrap">
-    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/Cyyb2XXNw2H/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;box-shadow:none;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote>
-  </div>
+      <!-- Real slides -->
+      <a class="reel-slide" href="https://www.instagram.com/reel/C43O1E3tt4l/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+        <img src="reel1.jpg" alt="" style="object-position: center 25%;">
+        <div class="reel-slide-vignette"></div>
+        <div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="reel-slide-foot">
+          <span class="reel-likes">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            34.7M
+          </span>
+        </div>
+      </a>
 
-  <div class="reel-wrap">
-    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/C43O1E3tt4l/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;box-shadow:none;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote>
+      <a class="reel-slide" href="https://www.instagram.com/reel/C3dOjhWNeP3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+        <img src="reel3.jpg" alt="" style="object-position: center 20%;">
+        <div class="reel-slide-vignette"></div>
+        <div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="reel-slide-foot">
+          <span class="reel-likes">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            554K
+          </span>
+        </div>
+      </a>
+
+      <a class="reel-slide" href="https://www.instagram.com/reel/Cyyb2XXNw2H/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+        <img src="reel2.jpg" alt="" style="object-position: center 30%;">
+        <div class="reel-slide-vignette"></div>
+        <div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="reel-slide-foot">
+          <span class="reel-likes">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            52.2K
+          </span>
+        </div>
+      </a>
+
+    </div>
   </div>
 </div>
-<script async src="//www.instagram.com/embed.js"></script>
 
 <!-- ACCOUNTABILITY -->
 <div class="section fade-in">
@@ -868,6 +961,94 @@
   function handleSpOverlayClick(e) {
     if (e.target === document.getElementById('sp-overlay')) closeSpPopup();
   }
+
+  // Reel carousel — infinite loop (same pattern as gallery)
+  (function() {
+    const outer = document.getElementById('reels-outer');
+    const track = document.getElementById('reels-track');
+    if (!outer || !track) return;
+
+    const origSlides = Array.from(track.querySelectorAll('.reel-slide'));
+    const total = origSlides.length;
+
+    const clonesBefore = origSlides.slice(-2).map(s => s.cloneNode(true));
+    const clonesAfter  = origSlides.slice(0, 2).map(s => s.cloneNode(true));
+    clonesBefore.reverse().forEach(c => track.prepend(c));
+    clonesAfter.forEach(c => track.append(c));
+
+    function sw() {
+      const s = track.querySelectorAll('.reel-slide')[0];
+      return s ? s.getBoundingClientRect().width + 10 : 0;
+    }
+
+    let current = clonesBefore.length;
+    let startX = 0, isDragging = false, dragOffset = 0;
+    let isTouchDrag = false;
+
+    function setPos(instant) {
+      track.style.transition = instant ? 'none' : 'transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94)';
+      track.style.transform = `translateX(-${current * sw()}px)`;
+    }
+
+    track.addEventListener('transitionend', () => {
+      if (current < clonesBefore.length) { current += total; setPos(true); }
+      else if (current >= clonesBefore.length + total) { current -= total; setPos(true); }
+    });
+
+    requestAnimationFrame(() => setPos(true));
+
+    function advance(dir) { current += dir; setPos(false); }
+
+    // Touch
+    outer.addEventListener('touchstart', e => {
+      isTouchDrag = true;
+      startX = e.touches[0].clientX; isDragging = true;
+      track.style.transition = 'none';
+    }, { passive: true });
+    outer.addEventListener('touchmove', e => {
+      if (!isDragging) return;
+      dragOffset = e.touches[0].clientX - startX;
+      track.style.transform = `translateX(${-(current * sw()) + dragOffset}px)`;
+    }, { passive: true });
+    outer.addEventListener('touchend', () => {
+      isDragging = false;
+      if (dragOffset < -40) advance(1);
+      else if (dragOffset > 40) advance(-1);
+      else setPos(false);
+      dragOffset = 0;
+    });
+
+    // Mouse drag
+    outer.addEventListener('mousedown', e => {
+      startX = e.clientX; isDragging = true; dragOffset = 0;
+      track.style.transition = 'none';
+      outer.style.cursor = 'grabbing';
+    });
+    outer.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      dragOffset = e.clientX - startX;
+      track.style.transform = `translateX(${-(current * sw()) + dragOffset}px)`;
+    });
+    outer.addEventListener('mouseup', () => {
+      isDragging = false; outer.style.cursor = 'grab';
+      if (dragOffset < -40) advance(1);
+      else if (dragOffset > 40) advance(-1);
+      else setPos(false);
+      dragOffset = 0;
+    });
+    outer.addEventListener('mouseleave', () => {
+      if (!isDragging) return;
+      isDragging = false; outer.style.cursor = 'grab';
+      setPos(false); dragOffset = 0;
+    });
+
+    // Prevent link clicks on drag
+    track.querySelectorAll('.reel-slide').forEach(el => {
+      el.addEventListener('click', e => {
+        if (Math.abs(dragOffset) > 5) e.preventDefault();
+      });
+    });
+  })();
 </script>
 </body>
 </html>
