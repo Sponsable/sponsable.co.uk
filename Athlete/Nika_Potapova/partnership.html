@@ -36,6 +36,11 @@
   .opening-title { font-family: var(--serif); font-size: 2rem; font-weight: 700; color: var(--hi); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.85rem; }
   .opening-body { font-family: var(--serif); font-size: 0.92rem; font-style: italic; color: var(--soft); line-height: 1.85; }
 
+  .photo-raw-wrap{overflow:hidden;line-height:0;}
+  .photo-raw{width:100%;display:block;object-fit:cover;}
+  .photo-inset{overflow:hidden;line-height:0;margin:2.5rem 1.5rem 0;border-radius:2px;}
+  .photo-inset img{width:100%;display:block;object-fit:cover;}
+
   /* SHARED */
   .section { padding: 2.5rem 1.5rem 0; }
   .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.85rem; }
@@ -163,6 +168,11 @@
   </div>
 </div>
 
+<!-- PHOTO -->
+<div class="photo-raw-wrap fade-in" style="margin-top:2.5rem;">
+  <img class="photo-raw" src="Nika_BW.jpg" alt="" style="object-position:center 30%;max-height:360px;">
+</div>
+
 <!-- CALENDAR -->
 <div class="section fade-in">
   <div class="section-label">2026 season</div>
@@ -198,6 +208,11 @@
       <div class="cal-events"><div class="cal-event" style="color:var(--mid);">Spain — Santa Linya · Siurana<div class="cal-event-sub">Outdoor season · Available for shoots</div></div></div>
     </div>
   </div>
+</div>
+
+<!-- PHOTO -->
+<div class="photo-inset fade-in">
+  <img src="Nika_belay.jpg" alt="" style="object-position:center 20%;max-height:340px;">
 </div>
 
 <!-- FULL ACCOUNTABILITY -->
